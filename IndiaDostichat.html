@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>India Dosti Chat - Friendship IRC Chat Room</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      color: white;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+        url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #00ff88;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ff88;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-box {
+      max-width: 850px;
+      background: rgba(0,0,0,0.45);
+      padding: 45px;
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: #00ff88;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      color: #f0f0f0;
+    }
+
+    .join-btn {
+      display: inline-block;
+      background: #00c853;
+      color: white;
+      padding: 16px 38px;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 10px 25px rgba(0,200,83,0.4);
+    }
+
+    .join-btn:hover {
+      background: #00e676;
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 70px 8%;
+      background: #ffffff;
+      color: #222;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 25px;
+      color: #0b7a3b;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #f7f7f7;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: #0b7a3b;
+    }
+
+    footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 8px;
+        display: inline-block;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">IndiaDostiChat</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#blog">Blog</a>
+      <a href="#news">News</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="hero-box">
+      <h1>Welcome to <span>India Dosti Chat</span></h1>
+      <p>
+        Join a friendly Indian IRC chat room where people can talk, make friends,
+        share thoughts, and enjoy clean conversations in real time.
+      </p>
+
+      <a class="join-btn"
+         href="https://kiwiirc.hybridirc.com/#indiadostichat"
+         target="_blank">
+        Join Chat
+      </a>
+    </div>
+  </main>
+
+  <section id="blog">
+    <h2>Blog</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Why Online Friendship Still Matters</h3>
+        <p>Chat rooms are still one of the simplest ways to meet people, talk freely, and build real online friendships.</p>
+      </div>
+      <div class="card">
+        <h3>IRC Chat Room Etiquette</h3>
+        <p>Respect others, avoid spam, do not abuse users, and keep the chat friendly for everyone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <h2>News</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>IndiaDostiChat is Live</h3>
+        <p>Our HybridIRC-based friendship chat room is now available for users through the web.</p>
+      </div>
+      <div class="card">
+        <h3>More Features Coming Soon</h3>
+        <p>We may add chat rules, moderator info, blog updates, and community announcements soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>About India Dosti Chat</h3>
+        <p>
+          India Dosti Chat is a simple friendship-based IRC community for people
+          who want to talk, connect, and enjoy casual conversations.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Our Goal</h3>
+        <p>
+          Our goal is to keep the room active, friendly, respectful, and easy to join
+          from any device.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 IndiaDostiChat.com | Powered by HybridIRC
+  </footer>
+
+</body>
+</html>
