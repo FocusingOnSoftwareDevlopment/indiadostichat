@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room - IndiaDostiChat</title>
+    <meta name="description" content="Join the #IndiaDostiChat room live.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="IndiaDostiChat" onerror="this.style.display='none'">
+                IndiaDostiChat
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact/Rules</a></li>
+                <li><a href="chat.html" class="btn-chat">Join Chat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="display: flex; flex-direction: column;">
+        <div class="chat-container">
+            
+            <!-- Security Gate -->
+            <div id="chatGate" class="chat-gate">
+                <div class="gate-card">
+                    <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'">
+                    <h2 style="margin-bottom: 1rem; color: var(--accent-color);">Welcome to #IndiaDostiChat</h2>
+                    <p style="margin-bottom: 2rem; color: #666;">Please verify you are human to join the chat room. This protects our community from spam.</p>
+                    
+                    <!-- Turnstile Widget (Demo Site Key used here, replace with real one) -->
+                    <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-callback="onTurnstileSuccess" style="margin-bottom: 2rem;"></div>
+                    
+                    <!-- Disabled until Turnstile passes -->
+                    <button id="enterChatBtn" class="btn-submit" disabled style="background-color: #ccc;">Verify to Join Room</button>
+                </div>
+            </div>
+
+            <!-- Fullscreen Chat Frame -->
+            <div id="chatWrapper" class="chat-frame-wrapper">
+                <!-- Using modern KiwiIRC nextclient to fix xhr poll and connection issues -->
+                <iframe src="https://kiwiirc.com/nextclient/irc.kiwiirc.com/#IndiaDostiChat" title="IndiaDostiChat Live Chat"></iframe>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
