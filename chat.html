@@ -7,10 +7,10 @@
   <link rel="icon" href="assets/logo/logo.png" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="config.js"></script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" id="siteHeader">
     <a class="brand" href="index.html">
       <img class="logo" data-logo alt="IndiaDostiChat logo" />
       <span data-site-name>IndiaDostiChat</span>
@@ -26,24 +26,16 @@
     </nav>
   </header>
 
-  <main class="chat-page">
-    <section class="page-title">
-      <h1>Join <span data-site-name>IndiaDostiChat</span></h1>
-      <p>Complete verification once, then chat directly on this website.</p>
-    </section>
-
+  <main class="chat-page" id="chatMain">
     <section id="captchaBox" class="captcha-box">
       <h2>Security Check</h2>
-      <p>This step helps prevent bots and spam users.</p>
+      <p>Please complete the reCAPTCHA below to prove you are human and access the chatroom.</p>
 
-      <div id="turnstileContainer"></div>
-
-      <div id="fallbackCaptcha" class="fallback-captcha">
-        <label id="fallbackLabel" for="fallbackInput">Type CHAT to enter</label>
-        <input id="fallbackInput" type="text" placeholder="Enter answer" autocomplete="off" />
-        <button class="btn primary" id="fallbackVerify">Verify & Enter</button>
-        <p class="error" id="captchaError"></p>
+      <!-- REPLACE SITE_KEY_HERE WITH YOUR REAL GOOGLE RECAPTCHA SITE KEY -->
+      <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <div class="g-recaptcha" data-sitekey="SITE_KEY_HERE" data-callback="onCaptchaSuccess"></div>
       </div>
+      
     </section>
 
     <section id="chatBox" class="chat-box hidden">
