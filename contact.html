@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Rules - IndiaDostiChat</title>
+    <meta name="description" content="Read the rules of IndiaDostiChat and contact our moderation team.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="IndiaDostiChat" onerror="this.style.display='none'">
+                IndiaDostiChat
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact/Rules</a></li>
+                <li><a href="chat.html" class="btn-chat">Join Chat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>Contact & Rules</h1>
+            <p>Please read our community guidelines before joining.</p>
+        </div>
+
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                <!-- Rules Section -->
+                <div style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <h2 style="color: var(--accent-color); margin-bottom: 1.5rem;"><i class="fas fa-gavel" style="color: var(--primary-color);"></i> Chat Rules</h2>
+                    <ul style="color: #555; padding-left: 1.5rem; line-height: 1.8;">
+                        <li><strong>Be Respectful:</strong> Treat others the way you want to be treated. No hate speech or harassment.</li>
+                        <li><strong>No Spamming:</strong> Flooding the chat with repetitive messages or links will result in a ban.</li>
+                        <li><strong>Keep it Clean:</strong> No explicit or NSFW content. This is a family-friendly community.</li>
+                        <li><strong>Listen to Moderators:</strong> The decisions of ops (@ prefix) are final.</li>
+                        <li><strong>English/Hindi preferred:</strong> To ensure everyone understands each other, please stick to English or Hindi (Roman script is fine).</li>
+                    </ul>
+                </div>
+
+                <!-- Contact Form Section -->
+                <div style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <h2 style="color: var(--accent-color); margin-bottom: 1.5rem;"><i class="fas fa-envelope" style="color: var(--primary-color);"></i> Contact Us</h2>
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" rows="4" required></textarea>
+                        </div>
+                        
+                        <!-- Turnstile Widget for Form Protection -->
+                        <div class="form-group">
+                            <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 IndiaDostiChat.com. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
