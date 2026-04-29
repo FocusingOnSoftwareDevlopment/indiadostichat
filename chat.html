@@ -11,11 +11,39 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     
-    <!-- Cloudflare Turnstile -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
-<body style="margin: 0; padding: 0; overflow: hidden; background: url('assets/images/chat_bg.png') center/cover no-repeat #000;">
-    <!-- Fullscreen Chat Frame pointing to HybridIRC in Dark Mode -->
-    <iframe src="https://kiwiirc.hybridirc.com/?theme=dark#indiaDostiChat" title="IndiaDostiChat Live Chat" style="width: 100vw; height: 100vh; border: none; display: block; opacity: 0.7;"></iframe>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="IndiaDostiChat" onerror="this.style.display='none'">
+                IndiaDostiChat
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact/Rules</a></li>
+                <li><a href="chat.html" class="btn-chat">Join Chat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main takes the rest of the height below header (80px) -->
+    <main style="display: flex; flex-direction: column; height: calc(100vh - 80px); margin-top: 80px; padding: 0;">
+        <!-- The background is applied ONLY to the chat container area -->
+        <div class="chat-container" style="height: 100%; width: 100%; background: url('assets/images/chat_bg.png') center/cover no-repeat #000;">
+            
+            <div id="chatWrapper" class="chat-frame-wrapper" style="display: block; height: 100%;">
+                <!-- Opacity increased to 0.95 so chat is highly visible, but background faintly bleeds through -->
+                <iframe src="https://kiwiirc.hybridirc.com/?theme=dark#indiaDostiChat" title="IndiaDostiChat Live Chat" style="width: 100%; height: 100%; border: none; display: block; opacity: 0.92;"></iframe>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
