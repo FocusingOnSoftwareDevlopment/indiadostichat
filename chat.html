@@ -12,33 +12,15 @@
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     
 </head>
-<body>
+<body style="margin: 0; padding: 0; overflow: hidden; background-color: #000;">
 
-    <header>
-        <nav>
-            <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="IndiaDostiChat" onerror="this.style.display='none'">
-                IndiaDostiChat
-            </a>
-            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact/Rules</a></li>
-                <li><a href="chat.html" class="btn-chat">Join Chat</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Main takes the rest of the height below header (80px) -->
-    <main style="display: flex; flex-direction: column; height: calc(100vh - 80px); margin-top: 80px; padding: 0;">
-        <!-- The background is applied ONLY to the chat container area -->
-        <div class="chat-container" style="height: 100%; width: 100%; background: url('assets/images/chat_bg.png') center/cover no-repeat #000;">
+    <main style="display: flex; flex-direction: column; height: 100vh; width: 100vw; margin: 0; padding: 0;">
+        <!-- The background is applied ONLY to the chat container area, with a 20px padding so it frames the chat -->
+        <div class="chat-container" style="height: 100%; width: 100%; padding: 20px; box-sizing: border-box; background: url('assets/images/chat_bg.png') center/cover no-repeat #000;">
             
-            <div id="chatWrapper" class="chat-frame-wrapper" style="display: block; height: 100%;">
-                <!-- Opacity increased to 0.95 so chat is highly visible, but background faintly bleeds through -->
-                <iframe src="https://kiwiirc.hybridirc.com/?theme=dark#indiaDostiChat" title="IndiaDostiChat Live Chat" style="width: 100%; height: 100%; border: none; display: block; opacity: 0.92;"></iframe>
+            <!-- Opacity is removed (solid 1.0) so text is 100% perfectly visible, and we add rounded corners -->
+            <div id="chatWrapper" class="chat-frame-wrapper" style="display: block; height: 100%; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <iframe src="https://kiwiirc.hybridirc.com/?theme=dark#indiaDostiChat" title="IndiaDostiChat Live Chat" style="width: 100%; height: 100%; border: none; display: block;"></iframe>
             </div>
 
         </div>
