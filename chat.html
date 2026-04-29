@@ -33,30 +33,12 @@
         </nav>
     </header>
 
-    <main style="display: flex; flex-direction: column;">
-        <div class="chat-container">
-            
-            <!-- Security Gate -->
-            <div id="chatGate" class="chat-gate">
-                <div class="gate-card">
-                    <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'">
-                    <h2 style="margin-bottom: 1rem; color: var(--accent-color);">Welcome to #IndiaDostiChat</h2>
-                    <p style="margin-bottom: 2rem; color: #666;">Please verify you are human to join the chat room. This protects our community from spam.</p>
-                    
-                    <!-- Turnstile Widget (Demo Site Key used here, replace with real one) -->
-                    <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-callback="onTurnstileSuccess" style="margin-bottom: 2rem;"></div>
-                    
-                    <!-- Disabled until Turnstile passes -->
-                    <button id="enterChatBtn" class="btn-submit" disabled style="background-color: #ccc;">Verify to Join Room</button>
-                </div>
+    <main style="display: flex; flex-direction: column; height: calc(100vh - 80px); margin-top: 80px; padding: 0;">
+        <div class="chat-container" style="height: 100%; width: 100%;">
+            <!-- Fullscreen Chat Frame directly pointing to HybridIRC -->
+            <div id="chatWrapper" class="chat-frame-wrapper" style="display: block; height: 100%;">
+                <iframe src="https://kiwiirc.hybridirc.com/#IndiaDostiChat" title="IndiaDostiChat Live Chat" style="width: 100%; height: 100%; border: none;"></iframe>
             </div>
-
-            <!-- Fullscreen Chat Frame -->
-            <div id="chatWrapper" class="chat-frame-wrapper">
-                <!-- Using modern KiwiIRC nextclient to fix xhr poll and connection issues -->
-                <iframe src="https://kiwiirc.com/nextclient/irc.kiwiirc.com/#IndiaDostiChat" title="IndiaDostiChat Live Chat"></iframe>
-            </div>
-
         </div>
     </main>
 
