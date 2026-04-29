@@ -79,3 +79,23 @@ function onTurnstileSuccess(token) {
         enterChatBtn.textContent = 'Join Room #IndiaDostiChat';
     }
 }
+
+// Visitor Counter Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const visitorCountEls = document.querySelectorAll('#visitor-count');
+    if (visitorCountEls.length > 0) {
+        fetch('https://api.counterapi.dev/v1/indiadostichat/visitors/up')
+            .then(response => response.json())
+            .then(data => {
+                visitorCountEls.forEach(el => {
+                    el.innerText = data.count;
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching visitor count:', error);
+                visitorCountEls.forEach(el => {
+                    el.innerText = 'Unavailable';
+                });
+            });
+    }
+});
