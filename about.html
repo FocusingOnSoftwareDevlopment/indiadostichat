@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - IndiaDostiChat</title>
-    <meta name="description" content="Learn about IndiaDostiChat, the history of our community, and our mission to connect Indians globally.">
+    <title>IndiaDostiChat - The Best Indian Chat Community</title>
+    <meta name="description" content="Join IndiaDostiChat to meet new friends from India and around the world. Secure, fast, and friendly IRC chat rooms.">
     
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Favicon (Upload your favicon.ico to assets/images/) -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 <body>
@@ -16,10 +22,14 @@
     <header>
         <nav>
             <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="IndiaDostiChat" onerror="this.style.display='none'">
+                <img src="assets/images/logo.png" alt="IndiaDostiChat Logo" onerror="this.src='https://via.placeholder.com/150x40?text=IndiaDostiChat'">
                 IndiaDostiChat
             </a>
-            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -31,38 +41,68 @@
     </header>
 
     <main>
-        <div class="page-header">
-            <h1>About IndiaDostiChat</h1>
-            <p>Connecting hearts across borders since our inception.</p>
-        </div>
+        <section class="hero">
+            <h1>Welcome to IndiaDostiChat</h1>
+            <p>Connect with thousands of friendly people from India and across the globe. Secure, fast, and incredibly fun.</p>
+            <div class="hero-buttons">
+                <a href="chat.html" class="btn-primary">Start Chatting Now</a>
+                <a href="about.html" class="btn-secondary">Learn More</a>
+            </div>
+        </section>
 
-        <div class="container">
-            <div style="background: white; padding: 3rem; border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h2 style="color: var(--accent-color); margin-bottom: 1.5rem;">Our Story</h2>
-                <p style="margin-bottom: 1.5rem; color: #555;">IndiaDostiChat was founded with a simple goal: to provide a safe, fast, and reliable platform for Indians around the world to connect. Whether you are living in India or are part of the vast NRI community, our chat rooms offer a slice of home.</p>
-                
-                <h2 style="color: var(--accent-color); margin-bottom: 1.5rem;">Our Mission</h2>
-                <p style="margin-bottom: 1.5rem; color: #555;">We strive to maintain a family-friendly environment where people can discuss culture, technology, Bollywood, sports, and daily life without the toxicity often found on modern social media platforms.</p>
-                
-                <div class="grid" style="margin-top: 3rem;">
-                    <div style="text-align: center;">
-                        <i class="fas fa-users" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                        <h3 style="margin-bottom: 0.5rem;">Global Community</h3>
-                        <p style="color: #666; font-size: 0.9rem;">Thousands of active members daily.</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <i class="fas fa-comments" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                        <h3 style="margin-bottom: 0.5rem;">Real-time Chat</h3>
-                        <p style="color: #666; font-size: 0.9rem;">Instant messaging powered by IRC.</p>
-                    </div>
+        <section class="features">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure & Safe</h3>
+                    <p>Protected by modern bot-prevention technologies. Our moderators ensure a clean environment.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Lightning Fast</h3>
+                    <p>Built on powerful IRC networks, ensuring your messages arrive instantly with zero lag.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Chat anywhere, anytime. Our platform is perfectly optimized for desktop, tablet, and mobile devices.</p>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="index.html" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;">
+                    <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'"> 
+                    IndiaDostiChat
+                </a>
+                <p>The premier destination for Indians globally to connect, share, and build friendships.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul style="list-style: none;">
+                    <li><a href="index.html" style="color: #ccc; text-decoration: none;">Home</a></li>
+                    <li><a href="about.html" style="color: #ccc; text-decoration: none;">About Us</a></li>
+                    <li><a href="contact.html" style="color: #ccc; text-decoration: none;">Rules & Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
         <div class="footer-bottom">
             <p>&copy; 2026 IndiaDostiChat.com. All Rights Reserved.</p>
+            <div style="margin-top: 1rem;">
+                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Findiadostichat.com&count_bg=%23FF9933&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Total+Visitors&edge_flat=false" alt="Website Visitors">
+            </div>
         </div>
     </footer>
 
