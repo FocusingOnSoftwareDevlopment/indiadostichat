@@ -240,3 +240,40 @@ footer {
   .cards, .grid { grid-template-columns: 1fr; }
   .site-header { padding: 12px 5%; }
 }
+/* Fullscreen mode when chat is active */
+body.chat-active {
+  overflow: hidden; /* Prevent body scrolling */
+}
+
+body.chat-active .site-header {
+  position: relative;
+}
+
+body.chat-active .chat-page {
+  padding: 0;
+  min-height: calc(100vh - 73px); /* Fits exactly under the header */
+  display: flex;
+  flex-direction: column;
+}
+
+body.chat-active .chat-box {
+  border-radius: 0;
+  border: none;
+  flex: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body.chat-active .chat-box iframe {
+  width: 100%;
+  flex: 1;
+  min-height: calc(100vh - 73px);
+  border: 0;
+  display: block;
+}
+
+body.chat-active footer {
+  display: none; /* Hide footer to maximize chat space */
+}
+
