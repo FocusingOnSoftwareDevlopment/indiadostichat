@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat - IndiaDostiChat</title>
+  <link rel="icon" href="assets/logo/logo.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="config.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img class="logo" data-logo alt="IndiaDostiChat logo" />
+      <span data-site-name>IndiaDostiChat</span>
+    </a>
+    <button class="menu-toggle" aria-label="Open menu">☰</button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="chat.html">Chat</a>
+      <a href="rules.html">Rules</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="chat-page">
+    <section class="page-title">
+      <h1>Join <span data-site-name>IndiaDostiChat</span></h1>
+      <p>Complete verification once, then chat directly on this website.</p>
+    </section>
+
+    <section id="captchaBox" class="captcha-box">
+      <h2>Security Check</h2>
+      <p>This step helps prevent bots and spam users.</p>
+
+      <div id="turnstileContainer"></div>
+
+      <div id="fallbackCaptcha" class="fallback-captcha">
+        <label id="fallbackLabel" for="fallbackInput">Type CHAT to enter</label>
+        <input id="fallbackInput" type="text" placeholder="Enter answer" autocomplete="off" />
+        <button class="btn primary" id="fallbackVerify">Verify & Enter</button>
+        <p class="error" id="captchaError"></p>
+      </div>
+    </section>
+
+    <section id="chatBox" class="chat-box hidden">
+      <iframe id="kiwiFrame" title="IndiaDostiChat IRC Client" allow="clipboard-read; clipboard-write"></iframe>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> <span data-site-name>IndiaDostiChat</span>. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/chat.js"></script>
+</body>
+</html>
