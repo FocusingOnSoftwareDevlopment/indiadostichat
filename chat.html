@@ -26,35 +26,55 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="assets/logo/logo.svg">
     <style>
-        /* Mobile viewport fix to prevent scrolling and zooming */
+        /* Modern layout for chat page with SEO content */
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
+            background-color: #111;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
-            background-color: #000;
-            position: fixed;
-            width: 100%;
-            touch-action: none;
+        }
+        .chat-header {
+            background: linear-gradient(135deg, #2c3e50, #000);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        .chat-header h1 {
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+        .chat-header p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
         }
         #chat-frame {
             border: none;
+            flex: 1;
             width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+        }
+        @media (max-width: 600px) {
+            .chat-header h1 { font-size: 1rem; }
+            .chat-header p { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Visually hidden H1 for SEO -->
-    <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">IndiaDostiChat Live Chat Room</h1>
-    
-    <!-- Fullscreen solid Chat Frame with no borders, padding, or background images -->
+    <header class="chat-header">
+        <h1>Join IndiaDostiChat Live Indian Chat Room</h1>
+        <p>Start chatting instantly in our free anonymous India chat room. Use a nickname, join from mobile or desktop, and enjoy Hindi, English, and desi friendship chat powered by IRC.</p>
+    </header>
+
+    <!-- Fullscreen solid Chat Frame -->
     <iframe id="chat-frame" src="https://kiwiirc.hybridirc.com/?theme=default#indiaDostiChat" title="IndiaDostiChat Live Chat"></iframe>
 
 </body>
