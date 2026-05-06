@@ -25,13 +25,15 @@ body.dark-mode {
 }
 
 body.dark-mode .hero {
-  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.98)), url('../images/hero-bg.jpg') center/cover;
+  background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.98)), url('../images/hero-bg.jpg') !important;
+  background-position: center !important;
+  background-size: cover !important;
 }
 
 body.dark-mode .hero p {
-  color: #ffffff;
-  opacity: 1;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  color: #ffffff !important;
+  opacity: 1 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8) !important;
 }
 
 body.dark-mode section[style] {
