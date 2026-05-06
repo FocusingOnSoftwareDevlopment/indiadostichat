@@ -31,9 +31,9 @@ body.dark-mode .hero {
 }
 
 body.dark-mode .hero p {
-  color: #ffffff !important;
+  color: var(--accent-color) !important;
+  font-weight: 500;
   opacity: 1 !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.8) !important;
 }
 
 body.dark-mode section[style] {
