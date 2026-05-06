@@ -4,10 +4,42 @@
   --accent-color: #000080; /* Navy Blue (Ashoka Chakra) */
   --bg-color: #f8f9fa;
   --text-color: #333333;
+  --section-bg: #ffffff;
   --card-bg: #ffffff;
   --header-bg: rgba(255, 255, 255, 0.95);
+  --border-color: #e5e7eb;
   --border-radius: 12px;
   --transition: all 0.3s ease;
+}
+
+body.dark-mode {
+  --primary-color: #FF9933;
+  --secondary-color: #22c55e;
+  --accent-color: #60a5fa;
+  --bg-color: #0f172a;
+  --text-color: #e5e7eb;
+  --section-bg: #111827;
+  --card-bg: #1e293b;
+  --header-bg: rgba(2, 6, 23, 0.95);
+  --border-color: #334155;
+}
+
+body.dark-mode section[style] {
+  background-color: var(--section-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+body.dark-mode .page-header[style] {
+  background: linear-gradient(135deg, var(--section-bg) 0%, var(--card-bg) 100%) !important;
+}
+
+body.dark-mode .faq-section[style] {
+  background: var(--section-bg) !important;
+}
+
+body, header, nav, section, .card, .faq-item, footer, button {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 * {
@@ -120,6 +152,38 @@ nav {
   cursor: pointer;
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--section-bg);
+  color: var(--text-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+.theme-toggle .theme-icon {
+  transition: transform 0.3s ease;
+}
+
+body.dark-mode .theme-toggle .theme-icon {
+  transform: rotate(20deg);
+}
+
 /* Main Content Padding */
 main {
   margin-top: 80px;
@@ -149,7 +213,8 @@ main {
 
 .hero p {
   font-size: 1.2rem;
-  color: #555;
+  color: var(--text-color);
+  opacity: 0.8;
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
@@ -312,9 +377,11 @@ main {
 .form-control {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   font-family: inherit;
+  background: var(--card-bg);
+  color: var(--text-color);
   transition: var(--transition);
 }
 
@@ -407,7 +474,7 @@ footer {
     top: 100%;
     left: 0;
     width: 100%;
-    background: white;
+    background: var(--card-bg);
     flex-direction: column;
     padding: 2rem;
     box-shadow: 0 10px 15px rgba(0,0,0,0.1);
