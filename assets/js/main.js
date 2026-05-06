@@ -115,17 +115,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const savedTheme = localStorage.getItem("theme");
+    let savedTheme = null;
+    try {
+        savedTheme = localStorage.getItem("theme");
+    } catch (e) {
+        console.warn("localStorage not available", e);
+    }
     const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
     const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
 
     applyTheme(initialTheme);
 
     if (themeToggle) {
-        themeToggle.addEventListener("click", function () {
+        themeToggle.addEventListener("click", function (e) {
+            e.preventDefault();
             const isDark = document.body.classList.contains("dark-mode");
             const newTheme = isDark ? "light" : "dark";
-            localStorage.setItem("theme", newTheme);
+            try {
+                localStorage.setItem("theme", newTheme);
+            } catch (err) {}
             applyTheme(newTheme);
         });
     }
