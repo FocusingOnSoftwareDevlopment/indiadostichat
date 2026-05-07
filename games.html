@@ -127,7 +127,7 @@
                     <h3>Skribbl</h3>
                     <p style="margin-bottom: 1.5rem;">Draw, guess, and laugh with friends from IndiaDostiChat. Create a private Skribbl room and share the invite link in the chat.</p>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="https://skribbl.io/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: block;">Play / Create Room</a>
+                        <button onclick="playGameFullscreen('https://skribbl.io/')" class="btn-primary" style="display: block; width: 100%; text-align: center; border: none; cursor: pointer; font-size: 1rem; font-family: inherit; padding: 1rem;">Play Skribbl Here</button>
                         <button class="btn-secondary copy-invite-btn" data-invite="Join me for Skribbl on IndiaDostiChat! Create or join a room here: https://skribbl.io/ and share your room link in chat.">Copy Invite Message</button>
                     </div>
                 </div>
@@ -138,9 +138,9 @@
                     <h3>Chess</h3>
                     <p style="margin-bottom: 1.5rem;">Challenge IndiaDostiChat users to a chess match. Play quick games, casual games, or invite a friend directly.</p>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="https://lichess.org/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: block;">Play on Lichess</a>
-                        <a href="https://www.chess.com/play/online" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display: block;">Play on Chess.com</a>
-                        <button class="btn-secondary copy-invite-btn" data-invite="Challenge me to chess on IndiaDostiChat! Play here: https://lichess.org/ or https://www.chess.com/play/online">Copy Invite Message</button>
+                        <button onclick="playGameFullscreen('https://papergames.io/en/chess')" class="btn-primary" style="display: block; width: 100%; text-align: center; border: none; cursor: pointer; font-size: 1rem; font-family: inherit; padding: 1rem;">Play Chess Here</button>
+                        <a href="https://lichess.org/" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display: block; text-align: center;">Play on Lichess</a>
+                        <button class="btn-secondary copy-invite-btn" data-invite="Challenge me to chess on IndiaDostiChat! Play here: https://papergames.io/en/chess">Copy Invite Message</button>
                     </div>
                 </div>
 
@@ -150,7 +150,7 @@
                     <h3>Smash Karts</h3>
                     <p style="margin-bottom: 1.5rem;">Race and battle with IndiaDostiChat users in a fun multiplayer kart arena. Create or join a match and share the game link in chat.</p>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="https://smashkarts.io/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: block;">Play Smash Karts</a>
+                        <button onclick="playGameFullscreen('https://smashkarts.io/')" class="btn-primary" style="display: block; width: 100%; text-align: center; border: none; cursor: pointer; font-size: 1rem; font-family: inherit; padding: 1rem;">Play Smash Karts Here</button>
                         <button class="btn-secondary copy-invite-btn" data-invite="Join me for Smash Karts on IndiaDostiChat! Play here: https://smashkarts.io/ and share your room link in chat.">Copy Invite Message</button>
                     </div>
                 </div>
@@ -219,6 +219,23 @@
         </div>
     </main>
 
+    <div id="gameOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:black; z-index:999999;">
+        <iframe id="gameIframe" src="" style="width:100%; height:100%; border:none;" title="Game Window" allowfullscreen></iframe>
+        <button onclick="closeGameOverlay()" style="position:absolute; top:15px; right:15px; background:var(--primary-color); color:white; border:none; padding:10px 20px; font-size:1.2rem; font-weight:bold; cursor:pointer; border-radius:8px; z-index:1000000; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: background 0.3s;" onmouseover="this.style.backgroundColor='var(--secondary-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'">&times; Close Game</button>
+    </div>
+
+    <script>
+        function playGameFullscreen(url) {
+            document.getElementById('gameIframe').src = url;
+            document.getElementById('gameOverlay').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+        function closeGameOverlay() {
+            document.getElementById('gameOverlay').style.display = 'none';
+            document.getElementById('gameIframe').src = '';
+            document.body.style.overflow = '';
+        }
+    </script>
     <footer>
         <div class="footer-content">
             <div class="footer-section">
