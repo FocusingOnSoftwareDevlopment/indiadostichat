@@ -558,6 +558,19 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
+  nav {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    gap: 8px;
+  }
+
+  .logo img {
+    height: 32px;
+  }
+
   .mobile-menu-btn {
     display: block;
   }

@@ -44,7 +44,6 @@ def minify_css(css_path, min_path):
 def minify_js(js_path, min_path):
     with open(js_path, 'r', encoding='utf-8') as f:
         js = f.read()
-    js = re.sub(r'//.*', '', js)
     js = re.sub(r'/\*.*?\*/', '', js, flags=re.DOTALL)
     js = re.sub(r'\s+', ' ', js)
     with open(min_path, 'w', encoding='utf-8') as f:
