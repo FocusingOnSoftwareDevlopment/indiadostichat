@@ -12,7 +12,7 @@
   --transition: all 0.3s ease;
   --hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(240,253,244,0.78));
   --hero-text-shadow: 0 2px 8px rgba(255,255,255,0.45);
-  --landing-bg-image: url('../images/backgrounds/friendship-1.jpg');
+  --landing-bg-image: url('../images/backgrounds/friendship-1.png');
 }
 
 body.dark-mode {
