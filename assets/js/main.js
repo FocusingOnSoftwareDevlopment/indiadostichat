@@ -138,28 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Copy Invite Message logic
-    const copyButtons = document.querySelectorAll('.copy-invite-btn');
-    copyButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const inviteText = btn.getAttribute('data-invite');
-            if (inviteText && navigator.clipboard) {
-                navigator.clipboard.writeText(inviteText).then(() => {
-                    const originalText = btn.textContent;
-                    btn.textContent = 'Copied!';
-                    btn.style.backgroundColor = 'var(--secondary-color)';
-                    btn.style.color = '#ffffff';
-                    setTimeout(() => {
-                        btn.textContent = originalText;
-                        btn.style.backgroundColor = '';
-                        btn.style.color = '';
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Could not copy text: ', err);
-                });
-            }
-        });
-    });
+    // Copy Invite Message logic (Removed per request)
 
     // Rotating Background Logic for Landing Pages
     const landingHeroes = document.querySelectorAll('.landing-hero');
