@@ -26,12 +26,15 @@ for fname in files_to_update:
             
         new_content, count = pattern.subn(replacer, content)
         
-        if count > 0:
+        # Bump cache buster
+        new_content = new_content.replace('?v=6', '?v=7')
+        
+        if content != new_content:
             with open(fname, 'w', encoding='utf-8') as f:
                 f.write(new_content)
             print(f"Updated {fname}")
         else:
-            print(f"No page-header found in {fname}")
+            print(f"No changes needed in {fname}")
 
 def minify_css(css_path, min_path):
     with open(css_path, 'r', encoding='utf-8') as f:

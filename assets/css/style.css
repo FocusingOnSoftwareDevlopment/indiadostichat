@@ -47,12 +47,24 @@ body.dark-mode section[style] {
   color: var(--text-color) !important;
 }
 
-body.dark-mode .page-header[style] {
-  background: linear-gradient(135deg, var(--section-bg) 0%, var(--card-bg) 100%) !important;
+body.dark-mode .page-header {
+  background: linear-gradient(135deg, var(--section-bg) 0%, var(--card-bg) 100%);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
-body.dark-mode .faq-section[style] {
-  background: var(--section-bg) !important;
+body.dark-mode .faq-section {
+  background: var(--section-bg);
+}
+
+body.dark-mode .card h2, 
+body.dark-mode .card h3 {
+  color: var(--primary-color) !important;
+}
+
+body.dark-mode .card p {
+  color: var(--text-color);
+  opacity: 0.9;
 }
 
 body, header, nav, section, .card, .faq-item, footer, button {
