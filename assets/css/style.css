@@ -13,6 +13,7 @@
   --hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(240,253,244,0.78));
   --hero-text-shadow: 0 2px 8px rgba(255,255,255,0.45);
   --landing-bg-image: url('../images/backgrounds/friendship-1.png');
+  --footer-bg: #000080;
 }
 
 body.dark-mode {
@@ -27,6 +28,7 @@ body.dark-mode {
   --border-color: #334155;
   --hero-overlay: linear-gradient(135deg, rgba(2,6,23,0.88), rgba(15,23,42,0.78));
   --hero-text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  --footer-bg: #020617;
 }
 
 body.dark-mode .hero {
@@ -515,7 +517,7 @@ body.dark-mode .landing-hero p {
 
 /* Footer */
 footer {
-  background: var(--accent-color);
+  background: var(--footer-bg);
   color: white;
   padding: 3rem 2rem 1rem;
   text-align: center;
@@ -565,8 +567,13 @@ footer {
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1rem;
-  color: #888;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
+}
+
+.footer-bottom div[style],
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* Responsive */
