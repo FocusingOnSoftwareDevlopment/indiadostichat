@@ -160,4 +160,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Rotating Background Logic for Landing Pages
+    const landingHeroes = document.querySelectorAll('.landing-hero');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && landingHeroes.length > 0) {
+        landingHeroes.forEach(hero => {
+            const bgAttr = hero.getAttribute('data-bg-images');
+            if (bgAttr) {
+                const images = bgAttr.split(',').map(src => src.trim()).filter(src => src.length > 0);
+                if (images.length > 1) {
+                    let currentIndex = 0;
+                    
+                    // Preload all images
+                    images.forEach(src => {
+                        const img = new Image();
+                        img.src = src;
+                    });
+
+                    // Set initial image
+                    hero.style.setProperty('--landing-bg-image', `url('${images[currentIndex]}')`);
+
+                    // Rotate every 8 seconds
+                    setInterval(() => {
+                        currentIndex = (currentIndex + 1) % images.length;
+                        hero.style.setProperty('--landing-bg-image', `url('${images[currentIndex]}')`);
+                    }, 8000);
+                } else if (images.length === 1) {
+                    hero.style.setProperty('--landing-bg-image', `url('${images[0]}')`);
+                }
+            }
+        });
+    }
 });
