@@ -1,15 +1,7 @@
 import os
 import re
 
-files_to_update = [
-    'india-chat.html', 'indian-chat.html', 'anonymous-indian-chat.html', 'hindi-chat.html', 
-    'desi-chat.html', 'indian-friendship-chat.html', 'irc-chat-india.html', 'mobile-indian-chat.html',
-    'mumbai-chat-room.html', 'delhi-chat-room.html', 'bangalore-chat-room.html', 'chennai-chat-room.html', 
-    'kolkata-chat-room.html', 'hyderabad-chat-room.html', 'pune-chat-room.html', 'jaipur-chat-room.html', 
-    'ahmedabad-chat-room.html', 'lucknow-chat-room.html', 'surat-chat-room.html', 'kanpur-chat-room.html',
-    'tamil-chat-room.html', 'telugu-chat-room.html', 'bengali-chat-room.html', 'marathi-chat-room.html', 
-    'gujarati-chat-room.html', 'punjabi-chat-room.html', 'malayalam-chat-room.html', 'kannada-chat-room.html'
-]
+files_to_update = [f for f in os.listdir('.') if f.endswith('.html')]
 
 bg_attr = 'class="landing-hero" data-bg-images="assets/images/backgrounds/friendship-1.jpg,assets/images/backgrounds/friendship-2.jpg,assets/images/backgrounds/friendship-3.jpg,assets/images/backgrounds/friendship-4.jpg,assets/images/backgrounds/friendship-5.jpg"'
 
@@ -27,7 +19,9 @@ for fname in files_to_update:
         new_content, count = pattern.subn(replacer, content)
         
         # Bump cache buster
-        new_content = new_content.replace('?v=6', '?v=7')
+        new_content = new_content.replace('?v=7', '?v=8')
+        new_content = new_content.replace('?v=6', '?v=8')
+        new_content = new_content.replace('?v=5', '?v=8')
         
         if content != new_content:
             with open(fname, 'w', encoding='utf-8') as f:
