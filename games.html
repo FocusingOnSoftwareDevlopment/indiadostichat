@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>IndiaDostiChat Games - Play Skribbl, Chess & Smash Karts</title>
     <meta name="description" content="Play Skribbl, Chess, and Smash Karts with IndiaDostiChat users. Join fun browser games, create rooms, and invite friends from the chat community.">
     <link rel="canonical" href="https://www.indiadostichat.com/games.html">
@@ -219,7 +219,7 @@
         </div>
     </main>
 
-    <div id="gameOverlay" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:black; z-index:999999;">
+    <div id="gameOverlay" style="display:none; width:100%; height:100vh; background:black; z-index:999999;">
         <iframe id="gameIframe" src="" style="width:100%; height:100%; border:none;" title="Game Window" allowfullscreen></iframe>
         <button onclick="closeGameOverlay()" style="position:absolute; top:10px; right:10px; background:rgba(220, 53, 69, 0.7); color:white; border:none; width:44px; height:44px; border-radius:50%; font-size:1.8rem; line-height: 1; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1000000; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: all 0.2s;" onmouseover="this.style.background='rgba(220, 53, 69, 1)'; this.style.transform='scale(1.1)';" onmouseout="this.style.background='rgba(220, 53, 69, 0.7)'; this.style.transform='scale(1)';" title="Close Game">&times;</button>
     </div>
@@ -227,13 +227,35 @@
     <script>
         function playGameFullscreen(url) {
             document.getElementById('gameIframe').src = url;
-            document.getElementById('gameOverlay').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Hide normal page content
+            document.querySelector('header').style.display = 'none';
+            document.querySelector('main').style.display = 'none';
+            document.querySelector('footer').style.display = 'none';
+            
+            // Show game overlay in normal flow
+            const overlay = document.getElementById('gameOverlay');
+            overlay.style.display = 'block';
+            
+            // Prevent bouncing
+            document.body.style.overscrollBehavior = 'none';
+            document.documentElement.style.overscrollBehavior = 'none';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
         }
         function closeGameOverlay() {
             document.getElementById('gameOverlay').style.display = 'none';
             document.getElementById('gameIframe').src = '';
-            document.body.style.overflow = '';
+            
+            // Restore normal page content
+            document.querySelector('header').style.display = '';
+            document.querySelector('main').style.display = '';
+            document.querySelector('footer').style.display = '';
+            
+            // Restore behavior
+            document.body.style.overscrollBehavior = '';
+            document.documentElement.style.overscrollBehavior = '';
         }
     </script>
     <footer>
