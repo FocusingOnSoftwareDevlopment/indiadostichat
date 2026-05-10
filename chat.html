@@ -23,7 +23,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.min.css?v=8">
+    <link rel="stylesheet" href="assets/css/style.min.css?v=9">
     <link rel="icon" type="image/x-icon" href="assets/logo/logo.svg">
     <style>
         /* Reverted to clean fullscreen layout */
@@ -54,6 +54,34 @@
     <!-- Crawlable H1 for SEO (Visually Hidden) -->
     <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Join IndiaDostiChat Live Indian Chat Room</h1>
     <p style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Start chatting instantly in our free anonymous India chat room. Use a nickname, join from mobile or desktop, and enjoy Hindi, English, and desi friendship chat powered by IRC.</p>
+
+    <!-- Age Gate Modal -->
+    <div id="age-gate-modal" class="age-gate-modal" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
+      <div class="age-gate-card">
+        <div class="age-gate-icon">🛡️</div>
+        <h2 id="age-gate-title">Safety & Age Notice</h2>
+        <p>
+          IndiaDostiChat is intended only for users aged 18 and above. If you are under 18, you must leave this page immediately.
+        </p>
+        <p>Before entering, please understand and agree to the following safety guidelines:</p>
+        <ul>
+          <li><strong>Protect Your Privacy:</strong> Do not share phone numbers, home address, passwords, OTP, financial details, private photos, or sensitive information.</li>
+          <li><strong>Stay Safe:</strong> Do not trust strangers with money, personal details, or private content.</li>
+          <li><strong>Prohibited Content:</strong> Do not post or request adult, sexual, abusive, hateful, threatening, illegal, or harmful content.</li>
+          <li><strong>Respect Others:</strong> Do not harass, bully, spam, impersonate, scam, or disturb other users.</li>
+          <li><strong>User Responsibility:</strong> IndiaDostiChat does not verify user identity. Conversations are user-generated, and users are responsible for their own actions.</li>
+          <li><strong>Moderation:</strong> Moderators may remove, mute, kick, or ban users who break the rules.</li>
+          <li><strong>Reporting:</strong> Report suspicious, unsafe, or rule-breaking behavior to moderators immediately.</li>
+        </ul>
+        <p>
+          By clicking <strong>"I am 18+ and I Agree,"</strong> you confirm that you are at least 18 years old and agree to follow the IndiaDostiChat rules.
+        </p>
+        <div class="age-gate-actions">
+          <button id="age-gate-accept" class="btn btn-primary">I am 18+ and I Agree</button>
+          <button id="age-gate-exit" class="btn btn-secondary">Exit</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Fullscreen solid Chat Frame -->
     <iframe id="chat-frame" src="https://kiwiirc.hybridirc.com/?theme=default#indiaDostiChat" title="IndiaDostiChat Live Chat"></iframe>

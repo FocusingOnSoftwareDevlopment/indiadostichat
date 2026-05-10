@@ -663,3 +663,215 @@ body.dark-mode .back-to-top:hover {
   background: var(--accent-color);
   color: var(--bg-color);
 }
+
+/* Age Gate Modal */
+.age-gate-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.age-gate-modal.active {
+  display: flex;
+}
+
+.age-gate-card {
+  width: min(720px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--card-bg, #ffffff);
+  color: var(--text-color, #1f2937);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  text-align: left;
+}
+
+.age-gate-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.age-gate-card h2 {
+  margin-bottom: 12px;
+  font-size: 28px;
+  color: var(--accent-color);
+}
+
+.age-gate-card p,
+.age-gate-card li {
+  line-height: 1.6;
+}
+
+.age-gate-card ul {
+  margin: 16px 0;
+  padding-left: 22px;
+}
+
+.age-gate-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.age-gate-actions .btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.age-gate-actions .btn-primary {
+  background: var(--primary-color, #16a34a);
+  color: #ffffff;
+}
+
+.age-gate-actions .btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.age-gate-actions .btn-secondary {
+  background: transparent;
+  color: var(--text-color, #1f2937);
+  border: 1px solid var(--border-color, #e5e7eb);
+}
+
+.age-gate-actions .btn-secondary:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+body.dark-mode .age-gate-modal {
+  background: rgba(0, 0, 0, 0.78);
+}
+
+body.dark-mode .age-gate-actions .btn-secondary:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+body.age-gate-open {
+  overflow: hidden;
+}
+
+.safety-note {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-top: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.safety-note a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .age-gate-card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .age-gate-card h2 {
+    font-size: 22px;
+  }
+
+  .age-gate-actions {
+    flex-direction: column;
+  }
+
+  .age-gate-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Safety Alert Popup */
+.safety-alert-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.safety-alert-overlay.active {
+  display: flex;
+}
+
+.safety-alert-card {
+  background: var(--card-bg, #ffffff);
+  color: var(--text-color, #1f2937);
+  padding: 32px;
+  border-radius: 24px;
+  max-width: 540px;
+  width: 100%;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  border: 1px solid var(--border-color);
+  animation: alertFadeIn 0.3s ease-out;
+}
+
+@keyframes alertFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.safety-alert-card i {
+  font-size: 48px;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+}
+
+.safety-alert-card h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--accent-color);
+}
+
+.safety-alert-card p {
+  margin-bottom: 24px;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.safety-alert-card .btn-ok {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.safety-alert-card .btn-ok:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+}
+
+body.dark-mode .safety-alert-overlay {
+  background: rgba(0, 0, 0, 0.82);
+}
