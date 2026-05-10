@@ -175,23 +175,42 @@ document.addEventListener('DOMContentLoaded', () => {
         const safetyOverlay = document.createElement("div");
         safetyOverlay.className = "safety-alert-overlay active";
         safetyOverlay.innerHTML = `
-            <div class="safety-alert-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Safety Notice</h3>
-                <p>IndiaDostiChat is a public chat community for users aged 18 and above. We do not verify every user identity, so always chat safely and never share private information.</p>
-                <button class="btn-ok">I Understand</button>
+            <div class="safety-alert-card" style="max-width: 600px;">
+                <i class="fas fa-exclamation-triangle" style="color: #FF9933;"></i>
+                <h3>Safety & Responsibility Notice</h3>
+                <p style="text-align: left; font-size: 0.95rem;">
+                    IndiaDostiChat is a public chat community for users aged 18 and above. Before entering, please acknowledge the following:
+                </p>
+                <ul style="text-align: left; font-size: 0.9rem; margin-bottom: 20px; padding-left: 20px; line-height: 1.5; color: var(--text-color); opacity: 0.9;">
+                    <li><strong>Age Requirement:</strong> You must be 18+ to use this service.</li>
+                    <li><strong>No Identity Verification:</strong> We do not verify user identities. Always chat safely.</li>
+                    <li><strong>User Responsibility:</strong> You are solely responsible for your interactions. Never share private info (numbers, OTPs, or addresses).</li>
+                    <li><strong>Disclaimer:</strong> IndiaDostiChat and its owners are not responsible for user behavior, conversations, or any consequences of your use of this platform.</li>
+                </ul>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn-ok" style="background: #28a745;">I Agree & Enter</button>
+                    <button class="btn-leave" style="background: #dc3545; color: white; border: none; padding: 12px 40px; border-radius: 999px; font-weight: 700; cursor: pointer; transition: var(--transition);">Leave Site</button>
+                </div>
             </div>
         `;
         document.body.appendChild(safetyOverlay);
         document.body.classList.add("age-gate-open");
 
         const okBtn = safetyOverlay.querySelector(".btn-ok");
+        const leaveBtn = safetyOverlay.querySelector(".btn-leave");
+
         if (okBtn) {
             okBtn.onclick = function() {
                 localStorage.setItem("idc_safety_accepted", "true");
                 safetyOverlay.classList.remove("active");
                 document.body.classList.remove("age-gate-open");
                 setTimeout(() => safetyOverlay.remove(), 300);
+            };
+        }
+
+        if (leaveBtn) {
+            leaveBtn.onclick = function() {
+                window.location.href = "https://www.google.com";
             };
         }
     }
