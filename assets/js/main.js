@@ -72,11 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Set active link in navigation
-    const currentLocation = location.pathname.split('/').pop();
+    const path = location.pathname;
     const navItems = document.querySelectorAll('.nav-links a');
     navItems.forEach(item => {
         const href = item.getAttribute('href');
-        if (href === currentLocation || (currentLocation === '' && href === 'index.html')) {
+        if (href === path || (path === '/' && href === '/')) {
             item.style.color = 'var(--primary-color)';
         }
     });
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         ageGateExit.onclick = function() {
-            window.location.href = "index.html";
+            window.location.href = "/";
         };
 
         window.addEventListener("keydown", (e) => {
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 7. Dynamic Safety Alert Popup ---
-    const isChatPage = window.location.pathname.includes("chat.html");
+    const isChatPage = window.location.pathname.includes("/chat/");
     const isSafetyAccepted = localStorage.getItem("idc_safety_accepted") === "true";
     const isAgeGateAccepted = localStorage.getItem("idc_age_gate_accepted") === "true";
 
