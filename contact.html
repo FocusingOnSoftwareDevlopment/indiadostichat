@@ -52,58 +52,91 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="rules.html">Rules</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="donate/">Donate</a></li>
+                <li><a href="donate.html">Donate</a></li>
             </ul>
         </nav>
     </header>
 
+    
     <main>
-        <section class="landing-hero" data-bg-images="assets/images/backgrounds/friendship-1.png,assets/images/backgrounds/friendship-2.png,assets/images/backgrounds/friendship-3.png,assets/images/backgrounds/friendship-4.png,assets/images/backgrounds/friendship-5.png">
-            <h1>Contact IndiaDostiChat</h1>
-            <p>Please read our community guidelines before joining.</p>
+        <section class="landing-hero">
+            <h1>Contact Us - Reach the IndiaDostiChat Team</h1>
+            <p>We're here to help! Get in touch for support, feedback, or inquiries.</p>
         </section>
 
         <div class="container">
-            <div class="grid" style="grid-template-columns: 1fr 1fr;">
-                <!-- Rules Section -->
-                <div class="card" style="text-align: left;">
-                    <h2 style="color: var(--accent-color); margin-bottom: 1.5rem;"><i class="fas fa-gavel" style="color: var(--primary-color);"></i> Safe Chatting</h2>
-                    <p style="margin-bottom: 1rem;">We maintain a strictly moderated environment to ensure the safety of our users. If you encounter any issues, please report them through the form or to an op in the chat room.</p>
-                    <p>Ready to join? <a href="chat.html">Join IndiaDostiChat</a> and start meeting friends today.</p>
+            <section style="margin-bottom: 3rem; line-height: 1.8; color: var(--text-color);">
+                <p>Have a question about our **free Indian chat room**? Need help with a technical issue or want to provide feedback on our community? We value your input and are here to ensure your experience on IndiaDostiChat is exceptional. Our team is dedicated to maintaining a **safe moderated Indian chat community**, and your reports and suggestions help us achieve that goal.</p>
+                
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div class="card" style="padding: 2rem; border: 1px solid var(--border-color);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">General Inquiries</h3>
+                        <p>For general questions about our platform and how to join the **anonymous Indian chat**, please contact us at:</p>
+                        <p><strong>Email:</strong> support@indiadostichat.com</p>
+                    </div>
+                    <div class="card" style="padding: 2rem; border: 1px solid var(--border-color);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Report an Issue</h3>
+                        <p>If you encounter a user breaking our rules or a technical bug, please let us know immediately. Your safety is our priority.</p>
+                        <a href="rules.html" class="btn-secondary" style="display: inline-block; margin-top: 1rem;">View Rules</a>
+                    </div>
                 </div>
 
-                <!-- Contact Form Section -->
-                <div class="card" style="text-align: left;">
-                    <h2 style="color: var(--accent-color); margin-bottom: 1.5rem;"><i class="fas fa-envelope" style="color: var(--primary-color);"></i> Contact Us</h2>
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" rows="4" required></textarea>
-                        </div>
-                        
-                        <!-- Turnstile Widget for Form Protection -->
-                        <div class="form-group">
-                            <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
-                        </div>
-
-                        <button type="submit" class="btn-submit">Send Message</button>
-                    </form>
+                <h2 style="margin: 3rem 0 1rem; color: var(--accent-color); text-align: center;">Frequently Asked Questions</h2>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>How do I report a user?</strong>
+                        <p>You can report a user directly in the chat to an active moderator or send us an email with details.</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Can I become a moderator?</strong>
+                        <p>We are always looking for active and responsible community members. Please stay active in the chat and follow the rules!</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Why was I banned?</strong>
+                        <p>Bans are usually issued for breaking our community rules. Please review the <a href="rules.html">Rules page</a> for more information.</p>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 
+    
     <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="./" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;">
+                    <img src="assets/logo/logo.svg" alt="IndiaDostiChat Indian Chat Room Logo" style="height: 30px;" onerror="this.style.display='none'"> 
+                    IndiaDostiChat
+                </a>
+                <p>The premier destination for Indians globally to connect, share, and build friendships in a free Indian chat room.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Explore IndiaDostiChat</h4>
+                <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                    <li><a href="./" style="color: #ccc; text-decoration: none;">Home</a></li>
+                    <li><a href="chat.html" style="color: #ccc; text-decoration: none;">Chat</a></li>
+                    <li><a href="india-chat.html" style="color: #ccc; text-decoration: none;">India Chat</a></li>
+                    <li><a href="anonymous-indian-chat.html" style="color: #ccc; text-decoration: none;">Anonymous Indian Chat</a></li>
+                    <li><a href="hindi-chat.html" style="color: #ccc; text-decoration: none;">Hindi Chat</a></li>
+                    <li><a href="desi-chat.html" style="color: #ccc; text-decoration: none;">Desi Chat</a></li>
+                    <li><a href="indian-friendship-chat.html" style="color: #ccc; text-decoration: none;">Indian Friendship Chat</a></li>
+                    <li><a href="mobile-indian-chat.html" style="color: #ccc; text-decoration: none;">Mobile Indian Chat</a></li>
+                    <li><a href="games.html" style="color: #ccc; text-decoration: none;">Games</a></li>
+                    <li><a href="donate.html" style="color: #ccc; text-decoration: none;">Donate</a></li>
+                    <li><a href="rules.html" style="color: #ccc; text-decoration: none;">Rules</a></li>
+                    <li><a href="contact.html" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
         <div class="footer-bottom">
-            
             <p>&copy; 2026 IndiaDostiChat.com. All Rights Reserved.</p>
             <div style="margin-top: 1rem; color: #aaa; font-weight: 500; font-size: 0.95rem;">
                 <i class="fas fa-eye" style="color: var(--primary-color);"></i> Total Visitors: <span id="visitor-count">Loading...</span>
