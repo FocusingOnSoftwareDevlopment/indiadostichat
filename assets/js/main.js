@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ageGateAccept.onclick = function() {
             localStorage.setItem("idc_age_gate_accepted", "true");
+            localStorage.setItem("idc_safety_accepted", "true");
             ageGateModal.classList.remove("active");
             document.body.classList.remove("age-gate-open");
         };
@@ -202,6 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (okBtn) {
             okBtn.onclick = function() {
                 localStorage.setItem("idc_safety_accepted", "true");
+                localStorage.setItem("idc_age_gate_accepted", "true");
                 safetyOverlay.classList.remove("active");
                 document.body.classList.remove("age-gate-open");
                 setTimeout(() => safetyOverlay.remove(), 300);
