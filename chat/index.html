@@ -53,7 +53,7 @@
 
     <!-- Crawlable H1 for SEO (Visually Hidden) -->
     <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Join IndiaDostiChat Live Indian Chat Room</h1>
-    <p style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Start chatting instantly in our free anonymous India chat room. Use a nickname, join from mobile or desktop, and enjoy Hindi, English, and desi friendship chat powered by IRC.</p>
+    <p style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Start chatting instantly in our free anonymous India chat room. Use a nickname, join from mobile or desktop, and enjoy Hindi, English, and desi friendship chat powered by IRC. IndiaDostiChat opens users into the main #IndiaDostiChat channel first. After joining, users can also explore community channels such as #trivia for quiz games and #allindiachat.com for more Indian chat conversations.</p>
 
     <!-- Age Gate Modal -->
     <div id="age-gate-modal" class="age-gate-modal" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
@@ -84,10 +84,17 @@
     </div>
 
     <!-- Fullscreen solid Chat Frame -->
-    <iframe id="chat-frame" src="https://kiwiirc.hybridirc.com/?theme=default#indiaDostiChat" title="IndiaDostiChat Live Chat"></iframe>
-    <div style="position: absolute; bottom: 15px; left: 15px; background: rgba(0,0,0,0.7); color: white; padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; font-family: 'Inter', sans-serif; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); max-width: 320px; backdrop-filter: blur(5px);">
-        Want to play with chat friends? Visit our <a href="../games/" target="_blank" rel="noopener noreferrer" style="color: #FF9933; text-decoration: underline; font-weight: bold;">Games page</a> or support us via <a href="../donate/" target="_blank" rel="noopener noreferrer" style="color: #FF9933; text-decoration: underline; font-weight: bold;">Donation</a>.
+    <iframe id="chat-frame" src="https://kiwiirc.hybridirc.com/?theme=default#IndiaDostiChat,#trivia,#allindiachat.com" title="IndiaDostiChat Live Chat"></iframe>
+    <div style="position: absolute; bottom: 15px; left: 15px; background: rgba(0,0,0,0.85); color: white; padding: 12px 18px; border-radius: 8px; font-size: 0.88rem; font-family: 'Inter', sans-serif; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); max-width: 340px; backdrop-filter: blur(8px); line-height: 1.4;">
+        <div style="margin-bottom: 8px;">
+            Want to play games? Visit our <a href="../games/" target="_blank" rel="noopener noreferrer" style="color: #FF9933; text-decoration: underline; font-weight: bold;">Games page</a> or support us via <a href="../donate/" target="_blank" rel="noopener noreferrer" style="color: #FF9933; text-decoration: underline; font-weight: bold;">Donation</a>.
+        </div>
+        <div style="font-size: 0.8rem; opacity: 0.9; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 8px; margin-top: 8px;">
+            🛡️ All channels follow IndiaDostiChat safety rules. Be respectful, avoid spam, and <a href="../rules/" target="_blank" rel="noopener noreferrer" style="color: #FF9933; text-decoration: underline; font-weight: bold;">Read Chat Rules &rarr;</a>
+        </div>
         <button aria-label="Close" onclick="this.parentElement.style.display='none'" style="background:none; border:none; color:#ccc; position:absolute; top:4px; right:6px; cursor:pointer; font-size:16px; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#ccc'">&times;</button>
     </div>
+
+    <script src="../assets/js/main.min.js?v=10" defer></script>
 </body>
 </html>

@@ -875,3 +875,37 @@ body.age-gate-open {
 body.dark-mode .safety-alert-overlay {
   background: rgba(0, 0, 0, 0.82);
 }
+
+/* Explicit Dark Mode Overrides for Safety & Age Gate warning modals */
+body.dark-mode .age-gate-card,
+body.dark-mode .safety-alert-card {
+  background: #1e293b !important;
+  color: #e5e7eb !important;
+  border-color: #334155 !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55) !important;
+}
+
+body.dark-mode .age-gate-card h2,
+body.dark-mode .safety-alert-card h3 {
+  color: #ffb16c !important;
+}
+
+body.dark-mode .age-gate-card p,
+body.dark-mode .age-gate-card li,
+body.dark-mode .safety-alert-card p,
+body.dark-mode .safety-alert-card li {
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .age-gate-actions .btn-secondary,
+body.dark-mode .safety-alert-card .btn-leave {
+  color: #e5e7eb !important;
+  border-color: #334155 !important;
+  background: transparent !important;
+}
+
+body.dark-mode .age-gate-actions .btn-secondary:hover,
+body.dark-mode .safety-alert-card .btn-leave:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
