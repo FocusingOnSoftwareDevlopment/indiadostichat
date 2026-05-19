@@ -72,12 +72,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Set active link in navigation
-    const path = location.pathname;
+    const path = location.pathname.replace(/\/index\.html$/, '/');
     const navItems = document.querySelectorAll('.nav-links a');
     navItems.forEach(item => {
-        const href = item.getAttribute('href');
-        if (href === path || (path === '/' && href === '/')) {
-            item.style.color = 'var(--primary-color)';
+        try {
+            const itemPath = new URL(item.href, window.location.origin).pathname.replace(/\/index\.html$/, '/');
+            if (itemPath === path) {
+                item.style.color = 'var(--primary-color)';
+                item.classList.add('active');
+            }
+        } catch (e) {
+            // Ignore
         }
     });
 
