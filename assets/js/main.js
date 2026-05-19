@@ -89,10 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 3. Visitor Counter ---
     const visitorCountEls = document.querySelectorAll('#visitor-count');
     if (visitorCountEls.length > 0) {
-        fetch('https://api.counterapi.dev/v1/indiadostichat/visitors/up')
+        fetch('https://api.counterapi.dev/v1/indiadostichat_main/visitors/up')
             .then(res => res.json())
             .then(data => {
-                visitorCountEls.forEach(el => el.innerText = data.count);
+                const formattedCount = Number(data.count).toLocaleString();
+                visitorCountEls.forEach(el => el.innerText = formattedCount);
             })
             .catch(() => {
                 visitorCountEls.forEach(el => el.innerText = 'Unavailable');
