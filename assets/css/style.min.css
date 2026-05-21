@@ -913,7 +913,7 @@ body.dark-mode .safety-alert-card .btn-leave:hover {
 
 /* UNO Tournament Styles */
 body.uno-tournament-page {
-  background-image: linear-gradient(rgba(248, 249, 250, 0.85), rgba(248, 249, 250, 0.85)), url('../uno/uno-bg.jpg?v=2');
+  background-image: linear-gradient(rgba(248, 249, 250, 0.85), rgba(248, 249, 250, 0.85)), url('../uno/uno-bg.png?v=1');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -921,11 +921,11 @@ body.uno-tournament-page {
 }
 
 body.uno-tournament-page.dark-mode {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('../uno/uno-bg.jpg?v=2');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('../uno/uno-bg.png?v=1');
 }
 
 .uno-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('../uno/uno-bg.jpg?v=2');
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('../uno/uno-bg.png?v=1');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
