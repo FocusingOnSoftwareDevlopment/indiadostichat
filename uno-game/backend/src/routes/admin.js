@@ -22,7 +22,7 @@ router.post('/login', async (req, res) => {
   }
 
   // Get configured hash from .env (fallback hash is for password: 'heisenberg123')
-  const defaultHash = '$2a$10$7Z2D5J6.nO72r5t/p.mKpew5i3o.2L8r19M/Tq2X8jYm.zW/c1t2G';
+  const defaultHash = '$2a$10$zuPdbN2NiyuvH/II8aclNeA9nn6KxTkJxoVGx5JkcWJeuQHuK4pjK';
   const adminHash = process.env.ADMIN_PASSWORD_HASH || defaultHash;
 
   try {

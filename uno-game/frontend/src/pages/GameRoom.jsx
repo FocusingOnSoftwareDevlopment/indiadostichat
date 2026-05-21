@@ -230,7 +230,7 @@ const GameRoom = () => {
           <div className="flex items-center gap-2">
             <div className="flex flex-col">
               <span className="text-sm font-black tracking-widest text-slate-100 uppercase">
-                DUNO <span className="text-amber-400 font-medium text-[10px] tracking-normal normal-case ml-1.5 hidden sm:inline">Dragon Card Clash</span>
+                DUNO <span className="text-amber-400 font-medium text-[10px] tracking-normal normal-case ml-1.5 hidden sm:inline">dragon clash card game</span>
               </span>
               <span className="text-[8px] text-slate-500 tracking-wider font-bold uppercase mt-[-2px]">
                 IndiaDostiChat Arena
@@ -373,7 +373,7 @@ const GameRoom = () => {
         </main>
 
         <footer className="w-full text-center text-slate-600 text-[10px] uppercase tracking-widest z-10">
-          DUNO: Dragon Card Clash &bull; Play responsibly
+          DUNO dragon clash card game &bull; Play responsibly
         </footer>
       </div>
     );

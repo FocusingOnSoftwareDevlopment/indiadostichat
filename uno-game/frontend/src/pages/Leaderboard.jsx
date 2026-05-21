@@ -24,7 +24,8 @@ const Leaderboard = () => {
 
   // Resolve API URL dynamically
   const apiUrl = import.meta.env.VITE_API_URL || 
-    (window.location.hostname === 'localhost' ? 'http://localhost:5000/Duno-room' : window.location.origin + '/Duno-room');
+    (window.location.hostname === 'localhost' ? 'http://localhost:5000/Duno-room' : 
+     (window.location.hostname.includes('indiadostichat.com') ? 'http://103.86.176.185/Duno-room' : window.location.origin + '/Duno-room'));
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -206,7 +207,7 @@ const Leaderboard = () => {
 
       {/* Footer bar */}
       <footer className="w-full text-center text-slate-600 text-[10px] uppercase tracking-widest z-10 pt-4">
-        DUNO: Dragon Card Clash Leaderboard &bull; Updated real-time
+        DUNO dragon clash card game Leaderboard &bull; Updated real-time
       </footer>
     </div>
   );

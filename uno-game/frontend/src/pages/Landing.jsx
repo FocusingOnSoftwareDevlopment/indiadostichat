@@ -108,7 +108,7 @@ const Landing = () => {
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-black tracking-widest text-slate-100 uppercase">
-              DUNO <span className="text-amber-400 font-medium text-xs tracking-normal normal-case block sm:inline sm:ml-2 sm:text-sm">Dragon Card Clash</span>
+              DUNO <span className="text-amber-400 font-medium text-xs tracking-normal normal-case block sm:inline sm:ml-2 sm:text-sm">dragon clash card game</span>
             </span>
             <span className="text-[9px] text-slate-500 tracking-wider font-bold uppercase mt-[-2px]">
               IndiaDostiChat Arena
@@ -139,8 +139,8 @@ const Landing = () => {
           <div className="absolute top-[-5px] left-[10%] right-[10%] h-[3px] bg-gradient-to-r from-red-650 via-amber-550 to-yellow-500 rounded-full"></div>
           
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-yellow-500 tracking-wide uppercase">
-              Dragon Clash
+            <h1 className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-yellow-500 tracking-wide uppercase leading-tight">
+              DUNO dragon clash card game
             </h1>
             <p className="text-slate-400 text-xs mt-1">
               Enter the multiplayer dark fantasy dragon card arena
@@ -211,18 +211,18 @@ const Landing = () => {
 
             {/* Join Room Box */}
             <form onSubmit={handleJoinRoom} className="space-y-4">
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="text"
                   value={roomInput}
                   onChange={(e) => setRoomInput(e.target.value)}
                   placeholder="Enter Room Code"
-                  className="flex-1 bg-slate-950/60 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-slate-650 focus:outline-none focus:border-amber-500 transition-colors shadow-inner uppercase text-center tracking-widest text-sm"
+                  className="w-full sm:flex-1 bg-slate-950/60 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-slate-650 focus:outline-none focus:border-amber-500 transition-colors shadow-inner uppercase text-center tracking-widest text-sm"
                 />
                 <button
                   type="submit"
                   disabled={loading || !usernameInput.trim() || !roomInput.trim()}
-                  className="px-6 bg-white/5 hover:bg-white/10 disabled:opacity-50 border border-white/10 text-white font-extrabold rounded-xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-2.5 bg-white/5 hover:bg-white/10 disabled:opacity-50 border border-white/10 text-white font-extrabold rounded-xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Users className="w-4 h-4" />
                   JOIN
@@ -235,7 +235,7 @@ const Landing = () => {
 
       {/* Footer */}
       <footer className="w-full max-w-4xl mx-auto text-center text-slate-600 text-[10px] uppercase tracking-widest z-10 border-t border-white/5 pt-4">
-        &copy; 2026 IndiaDostiChat DUNO: Dragon Card Clash. All rights reserved.
+        &copy; 2026 IndiaDostiChat DUNO dragon clash card game. All rights reserved.
       </footer>
     </div>
   );

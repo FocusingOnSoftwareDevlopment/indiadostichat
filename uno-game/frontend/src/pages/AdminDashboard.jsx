@@ -42,7 +42,8 @@ const AdminDashboard = () => {
 
   // Resolve API URL dynamically
   const apiUrl = import.meta.env.VITE_API_URL || 
-    (window.location.hostname === 'localhost' ? 'http://localhost:5000/Duno-room' : window.location.origin + '/Duno-room');
+    (window.location.hostname === 'localhost' ? 'http://localhost:5000/Duno-room' : 
+     (window.location.hostname.includes('indiadostichat.com') ? 'http://103.86.176.185/Duno-room' : window.location.origin + '/Duno-room'));
 
   useEffect(() => {
     if (!token) {
@@ -255,7 +256,7 @@ const AdminDashboard = () => {
               <span className="text-base font-black tracking-widest text-slate-200">HEISENBERG</span>
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-red-500/20 border border-red-500/30 text-red-400 font-extrabold uppercase">ROOT</span>
             </div>
-            <p className="text-slate-400 text-[10px] uppercase tracking-wider">DUNO: DRAGON CARD CLASH SECURE CONTROLLER</p>
+            <p className="text-slate-400 text-[10px] uppercase tracking-wider">DUNO DRAGON CLASH CARD GAME SECURE CONTROLLER</p>
           </div>
         </div>
         <button
@@ -330,7 +331,7 @@ const AdminDashboard = () => {
                   {activeTab === 'database' && 'System Database Operations'}
                 </h2>
                 <p className="text-slate-400 text-xs mt-0.5">
-                  {activeTab === 'rooms' && 'Manage running lobbies and active dragon card clash tables'}
+                  {activeTab === 'rooms' && 'Manage running lobbies and active DUNO dragon clash card game tables'}
                   {activeTab === 'bans' && 'Blacklist malicious IPs or players permanently'}
                   {activeTab === 'history' && 'Audit logs of completed game outcomes'}
                   {activeTab === 'database' && 'Root database commands and score resets'}

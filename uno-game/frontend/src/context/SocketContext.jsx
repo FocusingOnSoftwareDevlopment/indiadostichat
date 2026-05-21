@@ -22,9 +22,9 @@ export const SocketProvider = ({ children }) => {
   const [error, setError] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
 
-  // Socket connection URL resolution
   const socketUrl = import.meta.env.VITE_API_URL || 
-    (window.location.hostname === 'localhost' ? 'http://localhost:5000' : window.location.origin);
+    (window.location.hostname === 'localhost' ? 'http://localhost:5000' : 
+     (window.location.hostname.includes('indiadostichat.com') ? 'http://103.86.176.185' : window.location.origin));
 
   useEffect(() => {
     const newSocket = io(socketUrl, {

@@ -28,7 +28,8 @@ const AdminSpectate = () => {
 
   const token = localStorage.getItem('dosti_admin_token') || '';
   const apiUrl = import.meta.env.VITE_API_URL || 
-    (window.location.hostname === 'localhost' ? 'http://localhost:5000/Duno-room' : window.location.origin + '/Duno-room');
+    (window.location.hostname === 'localhost' ? 'http://localhost:5000/Duno-room' : 
+     (window.location.hostname.includes('indiadostichat.com') ? 'http://103.86.176.185/Duno-room' : window.location.origin + '/Duno-room'));
 
   useEffect(() => {
     if (!token) {
