@@ -1080,10 +1080,17 @@ body.dark-mode .uno-floating-card.yellow .uno-floating-card-center {
   line-height: 1.15;
   margin-top: 0;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #ffffff 30%, #ffd2d2 60%, #ffe4be 100%);
+  background: linear-gradient(90deg, #ff3b30, #ffcc00, #34c759, #007aff, #ff3b30);
+  background-size: 400% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  animation: rainbowText 6s linear infinite;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+}
+
+@keyframes rainbowText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
 }
 
 .uno-hero-gif {
