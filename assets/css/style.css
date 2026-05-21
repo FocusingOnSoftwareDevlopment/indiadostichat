@@ -1538,4 +1538,115 @@ body.uno-embed-mode .uno-section-card {
   }
 }
 
+/* Play Now Section Styles */
+.uno-play-now-section {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.uno-play-btn-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--uno-red), var(--uno-yellow));
+  color: #fff !important;
+  padding: 1.1rem 2.75rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  border-radius: 50px;
+  box-shadow: 0 0 20px var(--uno-red-glow);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: pulseGlow 2s infinite;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.uno-play-btn-glow:hover {
+  transform: scale(1.06) translateY(-3px);
+  box-shadow: 0 0 30px var(--uno-yellow-glow);
+  background: linear-gradient(135deg, var(--uno-yellow), var(--uno-red));
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.uno-play-btn-glow i {
+  font-size: 1.5rem;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px var(--uno-red-glow);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--uno-yellow-glow), 0 0 15px var(--uno-red-glow);
+  }
+  100% {
+    box-shadow: 0 0 15px var(--uno-red-glow);
+  }
+}
+
+.play-guide-box {
+  text-align: left;
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 5px solid var(--uno-yellow);
+}
+
+body.dark-mode .play-guide-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 5px solid var(--uno-yellow);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.play-guide-box h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #1e293b;
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.dark-mode .play-guide-box h4 {
+  color: var(--uno-yellow);
+}
+
+.play-guide-box ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+body.dark-mode .play-guide-box ul {
+  color: #cbd5e1;
+}
+
+.play-guide-box li {
+  margin-bottom: 0.5rem;
+}
+
+.play-guide-box li:last-child {
+  margin-bottom: 0;
+}
+
+.play-guide-box strong {
+  color: #0f172a;
+}
+
+body.dark-mode .play-guide-box strong {
+  color: #fff;
+}
+
+
 
