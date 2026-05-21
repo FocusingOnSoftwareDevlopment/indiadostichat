@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --color-unored: #EA3223;
+  --color-unoyellow: #FFD700;
+  --color-unogreen: #39FF14;
+  --color-unoblue: #1F51FF;
+  --color-unodark: #0F172A;
+  --color-unocardred: #EF4444;
+  --color-unocardblue: #3B82F6;
+  --color-unocardgreen: #10B981;
+  --color-unocardyellow: #FBBF24;
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-bounce-slow: bounce 3s infinite;
+  --animate-spin-slow: spin 12s linear infinite;
+  --animate-spin-reverse-slow: spin-reverse 12s linear infinite;
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+body {
+  @apply bg-slate-900 text-slate-100 font-sans antialiased overflow-x-hidden;
+}
+
+/* Glassmorphism utility classes */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Premium gradient dynamic background */
+.animated-bg {
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #2e1065, #020617);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Dynamic glow button pulse */
+.glow-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glow-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: 0.75s;
+  opacity: 0;
+}
+
+.glow-btn:hover::after {
+  opacity: 1;
+  left: 125%;
+}
+
+/* Floating animation for background components */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+.float-slow {
+  animation: float 8s ease-in-out infinite;
+}
