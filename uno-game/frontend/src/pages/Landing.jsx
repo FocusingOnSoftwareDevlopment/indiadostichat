@@ -37,6 +37,7 @@ const Landing = () => {
       navigate(`/room/${randomRoomId}`);
     } catch (err) {
       console.error(err);
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -59,6 +60,7 @@ const Landing = () => {
       navigate(`/room/${cleanRoomId}`);
     } catch (err) {
       console.error(err);
+      setError(err.message);
     } finally {
       setLoading(false);
     }

@@ -11,6 +11,7 @@ const leaderboardRouter = require('./routes/leaderboard');
 const handleSocketConnections = require('./game/sockets');
 
 const app = express();
+app.set('trust proxy', 1);
 const server = http.createServer(app);
 
 const PORT = process.env.PORT || 5000;
