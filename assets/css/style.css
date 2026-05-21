@@ -1165,9 +1165,9 @@ body.dark-mode .uno-floating-card.yellow .uno-floating-card-center {
   text-align: center;
 }
 body.dark-mode .uno-tournament-card {
-  background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Card Hover Glows */
@@ -1222,11 +1222,11 @@ body.dark-mode .uno-tournament-card {
   margin: 0 auto;
 }
 body.dark-mode .uno-form-card {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-top: 6px solid transparent !important;
   border-image: linear-gradient(90deg, var(--uno-red), var(--uno-yellow), var(--uno-green), var(--uno-blue)) 1;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Form input custom focus styling */
@@ -1249,8 +1249,8 @@ body.dark-mode .uno-form-card {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 body.dark-mode .uno-form .form-control {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: white;
 }
 .uno-form .form-control:focus {
@@ -1369,8 +1369,8 @@ body.dark-mode .form-message.info { background-color: rgba(7, 89, 133, 0.2); col
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
 }
 body.dark-mode .uno-verification-card {
-  background: rgba(15, 23, 42, 0.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-left: 6px solid #eab308 !important;
 }
 
@@ -1390,8 +1390,8 @@ body.dark-mode .uno-safety-card {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
 }
 body.dark-mode .uno-privacy-card {
-  background: rgba(15, 23, 42, 0.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 .faq-list .faq-item {
@@ -1410,8 +1410,8 @@ body.dark-mode .uno-privacy-card {
   border-color: rgba(0, 122, 255, 0.3);
 }
 body.dark-mode .faq-list .faq-item {
-  background: rgba(15, 23, 42, 0.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (prefers-reduced-motion: reduce) {

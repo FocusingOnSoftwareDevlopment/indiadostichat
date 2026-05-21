@@ -10,10 +10,21 @@
         savedTheme = localStorage.getItem("theme");
     } catch (e) {}
 
-    const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
+    // Check URL parameters for theme override
+    const urlParams = new URLSearchParams(window.location.search);
+    const themeParam = urlParams.get('theme') || urlParams.get('dark');
     
-    if (initialTheme === "dark") {
+    let isDark = false;
+    if (themeParam === 'dark' || themeParam === '1' || themeParam === 'true') {
+        isDark = true;
+    } else if (themeParam === 'light' || themeParam === '0' || themeParam === 'false') {
+        isDark = false;
+    } else {
+        const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        isDark = (savedTheme === "dark") || (!savedTheme && systemPrefersDark);
+    }
+    
+    if (isDark) {
         document.body.classList.add("dark-mode");
     } else {
         document.body.classList.remove("dark-mode");

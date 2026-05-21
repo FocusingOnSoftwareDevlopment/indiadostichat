@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.min.css?v=18">
+    <link rel="stylesheet" href="assets/css/style.min.css?v=105">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/logo/logo.svg">
@@ -96,12 +96,46 @@
     }
     </script>
     <script>
-        if (window.location.search.includes('embed=true') || window.location.search.includes('chat=true')) {
-            document.documentElement.classList.add('uno-embed-mode');
-            document.addEventListener('DOMContentLoaded', function() {
-                document.body.classList.add('uno-embed-mode');
-            });
-        }
+        (function() {
+            // Embed mode check
+            const isEmbed = window.location.search.includes('embed=true') || window.location.search.includes('chat=true');
+            if (isEmbed) {
+                document.documentElement.classList.add('uno-embed-mode');
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('uno-embed-mode');
+                });
+            }
+
+            // Theme detection check
+            const urlParams = new URLSearchParams(window.location.search);
+            const themeParam = urlParams.get('theme') || urlParams.get('dark');
+            let isDark = false;
+            
+            if (themeParam === 'dark' || themeParam === '1' || themeParam === 'true') {
+                isDark = true;
+            } else if (themeParam === 'light' || themeParam === '0' || themeParam === 'false') {
+                isDark = false;
+            } else {
+                let savedTheme = null;
+                try {
+                    savedTheme = localStorage.getItem("theme");
+                } catch (e) {}
+                const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                isDark = (savedTheme === "dark") || (!savedTheme && systemPrefersDark);
+            }
+
+            if (isDark) {
+                document.documentElement.classList.add('dark-mode');
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('dark-mode');
+                });
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.remove('dark-mode');
+                });
+            }
+        })();
     </script>
 </head>
 <body class="uno-tournament-page">
@@ -377,6 +411,6 @@
 
     <!-- Razorpay Checkout Script -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script src="assets/js/main.min.js?v=12" defer></script>
+    <script src="assets/js/main.min.js?v=13" defer></script>
 </body>
 </html>
