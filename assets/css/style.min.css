@@ -925,21 +925,16 @@ body.uno-tournament-page.dark-mode {
 }
 
 .uno-hero {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: unoGradient 15s ease infinite;
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('../uno/uno-bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: white;
   padding: 6rem 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
   border-radius: 0 0 32px 32px;
-}
-
-@keyframes unoGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 .uno-card-float {
