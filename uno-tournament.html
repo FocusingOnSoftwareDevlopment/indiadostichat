@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNO Tournament Registration - IndiaDostiChat</title>
+    <meta name="description" content="Register for the IndiaDostiChat UNO tournament, enter your username, pay the entry fee through Razorpay, and join the online UNO competition.">
+    <link rel="canonical" href="https://www.indiadostichat.com/uno-tournament.html">
+    
+    <!-- OpenGraph -->
+    <meta property="og:title" content="UNO Tournament Registration - IndiaDostiChat">
+    <meta property="og:description" content="Register for the IndiaDostiChat UNO tournament, pay through Razorpay, and join the online UNO competition.">
+    <meta property="og:url" content="https://www.indiadostichat.com/uno-tournament.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UNO Tournament Registration - IndiaDostiChat">
+    <meta name="twitter:description" content="Register for the IndiaDostiChat UNO tournament, pay through Razorpay, and join the online UNO competition.">
+    <meta property="twitter:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.min.css?v=11">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/logo/logo.svg">
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Is username required?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Username is required."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is email required?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Email is optional."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do I need to enter phone number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Phone number is not required and must not be collected."
+        }
+      }, {
+        "@type": "Question",
+        "name": "When is my registration saved?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Registration is saved only after successful Razorpay payment."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is payment automatically verified?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Payment is saved as 'Paid - Client Reported' and admin verifies manually in Razorpay Dashboard."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Can minors participate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Users must be 18+ if entry fee or prize money is involved."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is the entry fee refundable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entry fee is generally non-refundable unless the tournament is cancelled."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Does payment guarantee winning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Payment does not guarantee winning."
+        }
+      }]
+    }
+    </script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="assets/logo/logo.svg" alt="IndiaDostiChat Logo" style="height: 40px;" onerror="this.style.display='none'">
+                IndiaDostiChat
+            </a>
+            
+            <div class="nav-controls" style="display: flex; align-items: center; gap: 10px;">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                  <span class="theme-icon">🌙</span>
+                </button>
+                <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="./">Home</a></li>
+                <li><a href="chat/">Chat</a></li>
+                <li><a href="games/">Games</a></li>
+                <li><a href="blog/">Blog</a></li>
+                <li><a href="about/">About</a></li>
+                <li><a href="rules/">Rules</a></li>
+                <li><a href="contact/">Contact</a></li>
+                <li><a href="donate/">Donate</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="uno-hero">
+            <h1 style="font-size: 3.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin-bottom: 1rem;">IndiaDostiChat UNO Tournament</h1>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem; opacity: 0.95;">
+                Pay ₹25, register your IndiaDostiChat username, and compete for a ₹2500 prize in our community UNO competition.
+            </p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <span style="background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px; font-weight: bold;">Entry Fee: ₹25</span>
+                <span style="background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px; font-weight: bold; color: #fbbf24;">Prize: ₹2500</span>
+                <span style="background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px; font-weight: bold;">Limited Slots</span>
+                <span style="background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px; font-weight: bold; color: #ef4444;">18+ Only</span>
+                <span style="background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px; font-weight: bold;">Manual Payment Verification</span>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- 2. Tournament Details -->
+            <section style="margin: 4rem 0;">
+                <h2 class="section-title">Tournament Details</h2>
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div class="uno-tournament-card uno-card-float" style="animation-delay: 0s;">
+                        <i class="fas fa-gamepad" style="font-size: 2.5rem; color: #23a6d5; margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--accent-color);">Game</h3>
+                        <p style="font-size: 1.1rem; font-weight: bold;">UNO</p>
+                    </div>
+                    <div class="uno-tournament-card uno-card-float" style="animation-delay: 1s;">
+                        <i class="fas fa-ticket-alt" style="font-size: 2.5rem; color: #e73c7e; margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--accent-color);">Entry Fee</h3>
+                        <p style="font-size: 1.1rem; font-weight: bold;">₹25</p>
+                    </div>
+                    <div class="uno-tournament-card uno-card-float" style="animation-delay: 2s;">
+                        <i class="fas fa-trophy" style="font-size: 2.5rem; color: #fbbf24; margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--accent-color);">Prize</h3>
+                        <p style="font-size: 1.1rem; font-weight: bold;">₹2500</p>
+                    </div>
+                    <div class="uno-tournament-card uno-card-float" style="animation-delay: 3s;">
+                        <i class="fas fa-comments" style="font-size: 2.5rem; color: #16a34a; margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--accent-color);">Platform</h3>
+                        <p style="font-size: 1.1rem; font-weight: bold;">IndiaDostiChat</p>
+                    </div>
+                    <div class="uno-tournament-card uno-card-float" style="animation-delay: 0.5s;">
+                        <i class="fas fa-credit-card" style="font-size: 2.5rem; color: #8b5cf6; margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--accent-color);">Payment</h3>
+                        <p style="font-size: 1.1rem; font-weight: bold;">Razorpay</p>
+                    </div>
+                    <div class="uno-tournament-card uno-card-float" style="animation-delay: 1.5s;">
+                        <i class="fas fa-users" style="font-size: 2.5rem; color: #ec4899; margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--accent-color);">Status</h3>
+                        <p style="font-size: 1.1rem; font-weight: bold;">Limited Slots</p>
+                    </div>
+                    <div class="uno-tournament-card uno-card-float" style="animation-delay: 2.5s;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 2.5rem; color: #ef4444; margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--accent-color);">Age</h3>
+                        <p style="font-size: 1.1rem; font-weight: bold;">18+ only</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Register and Pay -->
+            <section style="margin: 4rem 0;">
+                <h2 class="section-title">Register and Pay</h2>
+                <div class="uno-form-card">
+                    <form id="uno-form" class="uno-form">
+                        <div class="form-group">
+                            <label for="uno-username">IndiaDostiChat Username / Nickname *</label>
+                            <input type="text" id="uno-username" name="username" class="form-control" required placeholder="Enter your chat username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="uno-email">Email (Optional)</label>
+                            <input type="email" id="uno-email" name="email" class="form-control" placeholder="Enter email (optional)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="uno-notes">Notes (Optional)</label>
+                            <textarea id="uno-notes" name="notes" class="form-control" rows="3" placeholder="Any note (optional)"></textarea>
+                        </div>
+
+                        <button type="button" id="pay-uno-btn" class="uno-pay-btn">
+                            Pay ₹25 and Register
+                        </button>
+
+                        <p id="uno-message" class="form-message"></p>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 4. Payment Verification -->
+            <section style="margin: 4rem 0; padding: 2rem; background: var(--card-bg); border-radius: 12px; border-left: 5px solid #fbbf24;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Payment Verification</h3>
+                <p>After successful Razorpay payment, your registration details will be saved. Your payment status will show as "Paid - Client Reported". Admin will manually verify your payment in Razorpay Dashboard before confirming your tournament slot.</p>
+            </section>
+
+            <!-- 5. UNO Tournament Rules -->
+            <section style="margin: 4rem 0;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">UNO Tournament Rules</h3>
+                <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                    <li>Use the same username during registration and game.</li>
+                    <li>Do not impersonate another player.</li>
+                    <li>Do not abuse, spam, or harass other players.</li>
+                    <li>Follow admin instructions.</li>
+                    <li>Late users may be disqualified.</li>
+                    <li>Cheating or unfair play may lead to disqualification.</li>
+                    <li>Admin decision is final for disputes.</li>
+                    <li>Prize is given only after verification and fair play confirmation.</li>
+                </ul>
+            </section>
+
+            <!-- 6. Safety and Participation Notice -->
+            <section style="margin: 4rem 0; padding: 2rem; background: rgba(239, 68, 68, 0.1); border-radius: 12px; border: 1px solid rgba(239, 68, 68, 0.2);">
+                <h3 style="color: #ef4444; margin-bottom: 1rem;">Safety and Participation Notice</h3>
+                <p>This tournament is for users aged 18 and above if entry fee or prize money is involved. Participate only if online paid competitions are allowed in your location. Use your own payment method. Do not use someone else's card, UPI, wallet, or Razorpay account without permission. Entry fee is generally non-refundable unless the tournament is cancelled. Payment does not guarantee winning.</p>
+            </section>
+
+            <!-- 7. Privacy Notice -->
+            <section style="margin: 4rem 0; padding: 2rem; background: var(--card-bg); border-radius: 12px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Privacy Notice</h3>
+                <p>IndiaDostiChat only collects your chat username, optional email, Razorpay payment ID, amount, payment status, and tournament details for registration and verification. We do not collect card details, CVV, OTP, UPI PIN, bank details, or Razorpay password.</p>
+            </section>
+
+            <!-- 8. FAQ -->
+            <section class="faq-section" style="margin: 4rem 0;">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <div class="faq-item" style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">Is username required?</h4>
+                        <p style="color: var(--text-color);">Username is required.</p>
+                    </div>
+                    <div class="faq-item" style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">Is email required?</h4>
+                        <p style="color: var(--text-color);">Email is optional.</p>
+                    </div>
+                    <div class="faq-item" style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">Do I need to enter phone number?</h4>
+                        <p style="color: var(--text-color);">Phone number is not required and must not be collected.</p>
+                    </div>
+                    <div class="faq-item" style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">When is my registration saved?</h4>
+                        <p style="color: var(--text-color);">Registration is saved only after successful Razorpay payment.</p>
+                    </div>
+                    <div class="faq-item" style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">Is payment automatically verified?</h4>
+                        <p style="color: var(--text-color);">Payment is saved as "Paid - Client Reported" and admin verifies manually in Razorpay Dashboard.</p>
+                    </div>
+                    <div class="faq-item" style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">Can minors participate?</h4>
+                        <p style="color: var(--text-color);">Users must be 18+ if entry fee or prize money is involved.</p>
+                    </div>
+                    <div class="faq-item" style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">Is the entry fee refundable?</h4>
+                        <p style="color: var(--text-color);">Entry fee is generally non-refundable unless the tournament is cancelled.</p>
+                    </div>
+                    <div class="faq-item" style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">Does payment guarantee winning?</h4>
+                        <p style="color: var(--text-color);">Payment does not guarantee winning.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="/" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;">
+                    <img src="assets/logo/logo.svg" alt="IndiaDostiChat Logo" style="height: 30px;" onerror="this.style.display='none'"> 
+                    IndiaDostiChat
+                </a>
+                <p>The premier destination for Indians globally to connect, share, and build friendships in a free Indian chat room.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Explore IndiaDostiChat</h4>
+                <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                    <li><a href="/" style="color: #ccc; text-decoration: none;">Home</a></li>
+                    <li><a href="chat/" style="color: #ccc; text-decoration: none;">Chat</a></li>
+                    <li><a href="games/" style="color: #ccc; text-decoration: none;">Games</a></li>
+                    <li><a href="donate/" style="color: #ccc; text-decoration: none;">Donate</a></li>
+                    <li><a href="rules/" style="color: #ccc; text-decoration: none;">Rules</a></li>
+                    <li><a href="contact/" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                    <li><a href="sitemap/" style="color: #ccc; text-decoration: none;">Sitemap</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 IndiaDostiChat.com. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Razorpay Checkout Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="assets/js/main.min.js?v=11" defer></script>
+</body>
+</html>
