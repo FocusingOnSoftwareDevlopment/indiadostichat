@@ -1033,6 +1033,38 @@ body.uno-tournament-page.dark-mode {
   border: 1px solid #bae6fd;
 }
 
+/* UNO Tournament Layout Rules */
+.uno-section {
+  margin: 4rem 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.uno-section-card {
+  margin: 4rem 0;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.uno-verification-card {
+  background: var(--card-bg) !important;
+  border-left: 5px solid #fbbf24 !important;
+}
+
+.uno-safety-card {
+  background: rgba(239, 68, 68, 0.1) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+}
+
+body.dark-mode .uno-safety-card {
+  background: rgba(239, 68, 68, 0.15) !important;
+}
+
+.uno-privacy-card {
+  background: var(--card-bg) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .uno-hero,
   .uno-card-float,
