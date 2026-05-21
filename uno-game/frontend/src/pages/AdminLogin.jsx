@@ -12,7 +12,7 @@ const AdminLogin = () => {
 
   // Resolve API URL dynamically
   const apiUrl = import.meta.env.VITE_API_URL || 
-    (window.location.hostname === 'localhost' ? 'http://localhost:5000' : window.location.origin);
+    (window.location.hostname === 'localhost' ? 'http://localhost:5000/Duno-room' : window.location.origin + '/Duno-room');
 
   const handleLogin = async (e) => {
     e.preventDefault();

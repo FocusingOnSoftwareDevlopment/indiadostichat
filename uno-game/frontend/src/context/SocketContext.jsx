@@ -28,6 +28,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     const newSocket = io(socketUrl, {
+      path: '/Duno-room/socket.io',
       transports: ['websocket', 'polling'],
       autoConnect: true,
       reconnection: true,

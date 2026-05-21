@@ -2,6 +2,32 @@
 const { createDeck, isPlayable, calculateHandScore } = require('./cards');
 const db = require('../db');
 
+function formatDragonCard(card) {
+  if (!card) return 'unknown card';
+  const clanNames = {
+    red: 'Fire Clan',
+    blue: 'Ice Clan',
+    green: 'Forest Clan',
+    yellow: 'Thunder Clan',
+    wild: 'Elder Dragon'
+  };
+  const valNames = {
+    skip: 'Dragon Freeze',
+    reverse: 'Dragon Turn',
+    draw2: 'Dragon Bite +2',
+    wild: 'Elder Dragon',
+    wild4: 'Chaos Dragon +4'
+  };
+  
+  if (card.color === 'wild') {
+    return valNames[card.value] || 'Elder Dragon';
+  }
+  
+  const clan = clanNames[card.color] || card.color;
+  const val = valNames[card.value] || card.value;
+  return `${clan} ${val}`;
+}
+
 // In-memory room manager
 const rooms = new Map();
 
@@ -98,7 +124,7 @@ class Room {
         clearTimeout(existingPlayer.disconnectTimer);
         existingPlayer.disconnectTimer = null;
       }
-      this.addLog(`${username} reconnected.`);
+      this.addLog(`${username} re-entered the dragon arena.`);
       return true;
     }
 
@@ -122,7 +148,7 @@ class Room {
       disconnectTimer: null
     });
 
-    this.addLog(`${username} joined the lobby.`);
+    this.addLog(`${username} joined the dragon arena.`);
     return true;
   }
 
@@ -136,7 +162,7 @@ class Room {
     if (this.status === 'waiting') {
       // Remove immediately in waiting lobby
       this.players.splice(playerIndex, 1);
-      this.addLog(`${player.username} left the lobby.`);
+      this.addLog(`${player.username} left the dragon arena.`);
       
       // Pass host authority to next player if host left
       if (player.isHost && this.players.length > 0) {
@@ -163,7 +189,7 @@ class Room {
           // Return cards to draw deck bottom to clean hand
           this.deck.push(...removedPlayer.cards);
           this.players.splice(activeIdx, 1);
-          this.addLog(`${removedPlayer.username} left permanently (timeout).`);
+          this.addLog(`${removedPlayer.username} left the dragon arena (timeout).`);
 
           if (this.players.length < 2) {
             this.forceEndGame('Not enough active players remaining.');
@@ -217,8 +243,8 @@ class Room {
     // Set initial matching color
     this.currentColor = firstCard.color === 'wild' ? 'red' : firstCard.color;
     
-    this.addLog('Game started! Cards dealt.');
-    this.addLog(`First card is [${firstCard.color.toUpperCase()} ${firstCard.value.toUpperCase()}].`);
+    this.addLog('Dragon battle started! Cards dealt.');
+    this.addLog(`First card is [${formatDragonCard(firstCard)}].`);
 
     // Apply immediate action effects if first card is special
     this.applyCardEffects(firstCard, true);
@@ -255,13 +281,27 @@ class Room {
       this.wildAwaitingColor = true;
     }
 
-    this.addLog(`${username} played [${card.color.toUpperCase()} ${card.value.toUpperCase()}].`);
+    let playedMsg = '';
+    if (card.value === 'wild') {
+      playedMsg = `${username} summoned Elder Dragon.`;
+    } else if (card.value === 'wild4') {
+      playedMsg = `${username} summoned Chaos Dragon +4.`;
+    } else if (card.value === 'skip') {
+      playedMsg = `${username} used Dragon Freeze.`;
+    } else if (card.value === 'reverse') {
+      playedMsg = `${username} used Dragon Turn.`;
+    } else if (card.value === 'draw2') {
+      playedMsg = `${username} used Dragon Bite +2.`;
+    } else {
+      playedMsg = `${username} played ${formatDragonCard(card)}.`;
+    }
+    this.addLog(playedMsg);
 
     // Check if player is down to 1 card and check UNO rules
     if (activePlayer.cards.length === 1) {
       if (!this.unoPressed) {
         this.penaltyActive = true;
-        this.addLog(`⚠️  ${username} has 1 card left but did not call UNO! Penalized.`);
+        this.addLog(`⚠️  ${username} forgot to ROAR and received penalty cards.`);
       }
     } else {
       this.unoPressed = false; // Reset UNO trigger for next rounds
@@ -290,9 +330,15 @@ class Room {
     const validColors = ['red', 'yellow', 'green', 'blue'];
     if (!validColors.includes(chosenColor)) throw new Error('Invalid color chosen.');
 
+    const clanNames = {
+      red: 'Fire Clan',
+      blue: 'Ice Clan',
+      green: 'Forest Clan',
+      yellow: 'Thunder Clan'
+    };
     this.currentColor = chosenColor;
     this.wildAwaitingColor = false;
-    this.addLog(`Color changed to ${chosenColor.toUpperCase()}.`);
+    this.addLog(`Clan changed to ${clanNames[chosenColor] || chosenColor}.`);
 
     // Retrieve the wild card played
     const topCard = this.discardPile[this.discardPile.length - 1];
@@ -318,17 +364,17 @@ class Room {
 
     switch (card.value) {
       case 'skip':
-        this.addLog(`${nextPlayer.username} turn skipped.`);
+        this.addLog(`${nextPlayer.username} was frozen and skipped.`);
         // Increment turn index past next player
         this.currentTurn = nextPlayerIdx;
         break;
       case 'reverse':
         this.direction *= -1;
-        this.addLog(`Play direction reversed.`);
+        this.addLog(`Play direction turned.`);
         // If 2 players, reverse acts like Skip
         if (this.players.length === 2 && !isFirstPlay) {
           this.currentTurn = nextPlayerIdx;
-          this.addLog(`${nextPlayer.username} turn skipped.`);
+          this.addLog(`${nextPlayer.username} was frozen and skipped.`);
         }
         break;
       case 'draw2':
@@ -355,7 +401,7 @@ class Room {
       activePlayer.cards.push(...penaltyCards);
       this.penaltyActive = false;
       this.unoPressed = false;
-      this.addLog(`${username} drew 2 penalty cards for forgetting UNO.`);
+      this.addLog(`${username} forgot to ROAR and received penalty cards.`);
       this.nextTurn();
       return;
     }
@@ -391,14 +437,14 @@ class Room {
     if (player.cards.length === 2 && isOwnTurn) {
       // Declaring UNO preemptively before playing the 2nd to last card
       this.unoPressed = true;
-      this.addLog(`${username} called UNO!`);
+      this.addLog(`${username} shouted ROAR.`);
     } else if (player.cards.length === 1) {
       // Declaring UNO right after turn play
       this.unoPressed = true;
       this.penaltyActive = false;
-      this.addLog(`${username} called UNO!`);
+      this.addLog(`${username} shouted ROAR.`);
     } else {
-      throw new Error("You can only call UNO when you have 1 or 2 cards.");
+      throw new Error("You can only ROAR when you have 1 or 2 cards.");
     }
   }
 
@@ -473,7 +519,7 @@ class Room {
           activePlayer.cards.pop();
           this.discardPile.push(drawn);
           this.currentColor = drawn.color === 'wild' ? 'red' : drawn.color;
-          this.addLog(`System played [${drawn.color.toUpperCase()} ${drawn.value.toUpperCase()}] for ${activePlayer.username}.`);
+          this.addLog(`System played [${formatDragonCard(drawn)}] for ${activePlayer.username}.`);
           this.applyCardEffects(drawn, false);
         }
         
@@ -509,7 +555,7 @@ class Room {
     // Default to at least 50 points if other players' hands score zero
     if (roundScore === 0) roundScore = 50;
 
-    this.addLog(`🏆 ${winnerName} won the game! Score: +${roundScore} points.`);
+    this.addLog(`🏆 ${winnerName} won the dragon battle.`);
 
     try {
       // Save stats to database (async, fails silently to in-memory fallback if pg offline)

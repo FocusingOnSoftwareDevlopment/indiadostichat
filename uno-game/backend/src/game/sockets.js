@@ -143,6 +143,9 @@ function handleSocketConnections(io) {
         callback({ success: true });
 
         if (room.status === 'ended') {
+          // Broadcast final state first so they know it ended and can show results!
+          broadcastGameState(room);
+
           // Game finished! Send final winner stats
           io.to(roomId).emit('game_ended', {
             winner: username,
@@ -206,6 +209,9 @@ function handleSocketConnections(io) {
         callback({ success: true });
 
         if (room.status === 'ended') {
+          // Broadcast final state first so they know it ended and can show results!
+          broadcastGameState(room);
+
           io.to(roomId).emit('game_ended', {
             winner: username,
             logs: room.logs
@@ -219,8 +225,16 @@ function handleSocketConnections(io) {
       }
     });
 
-    // 7. Call UNO Warning
+    // 7. Call ROAR / UNO Warning
     socket.on('call_uno', (callback) => {
+      handleRoar(callback);
+    });
+
+    socket.on('call_roar', (callback) => {
+      handleRoar(callback);
+    });
+
+    function handleRoar(callback) {
       const { roomId, username } = socket;
       if (!roomId || !username) return;
 
@@ -229,12 +243,12 @@ function handleSocketConnections(io) {
 
       try {
         room.pressUno(username);
-        callback({ success: true });
+        if (typeof callback === 'function') callback({ success: true });
         broadcastGameState(room);
       } catch (err) {
-        callback({ error: err.message });
+        if (typeof callback === 'function') callback({ error: err.message });
       }
-    });
+    }
 
     // 8. Send Chat Message
     socket.on('send_chat', (text) => {

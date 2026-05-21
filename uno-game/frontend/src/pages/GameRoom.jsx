@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSocket } from '../context/SocketContext';
 import UnoCard from '../components/UnoCard';
 import ColorWheel from '../components/ColorWheel';
 import Chat from '../components/Chat';
-import { Copy, Play, LogOut, Check, Shield, Users, MessageCircle, Volume2, VolumeX, RefreshCw } from 'lucide-react';
+import { Copy, Play, LogOut, Check, Shield, Users, MessageCircle, Volume2, VolumeX, RefreshCw, Link } from 'lucide-react';
 import soundManager from '../utils/SoundManager';
 
 const GameRoom = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
+
+  // Memoized embers array to prevent re-generating positions on render
+  const embers = useMemo(() => {
+    return Array.from({ length: 20 }).map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      size: `${Math.random() * 6 + 4}px`,
+      duration: `${Math.random() * 8 + 6}s`,
+      delay: `${Math.random() * 8}s`,
+      drift: `${Math.random() * 80 - 40}px`,
+    }));
+  }, []);
   const {
     connected,
     username,
@@ -29,6 +41,7 @@ const GameRoom = () => {
   } = useSocket();
 
   const [copySuccess, setCopySuccess] = useState(false);
+  const [copyLinkSuccess, setCopyLinkSuccess] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [muted, setMuted] = useState(soundManager.isMuted());
   
@@ -53,6 +66,14 @@ const GameRoom = () => {
     setCopySuccess(true);
     soundManager.play('click');
     setTimeout(() => setCopySuccess(false), 2000);
+  };
+
+  const handleCopyLink = () => {
+    const joinLink = `${window.location.origin}/Duno-room/room/${roomId}`;
+    navigator.clipboard.writeText(joinLink);
+    setCopyLinkSuccess(true);
+    soundManager.play('click');
+    setTimeout(() => setCopyLinkSuccess(false), 2000);
   };
 
   const handleToggleMute = () => {
@@ -150,10 +171,14 @@ const GameRoom = () => {
 
   const handleCallUno = () => {
     soundManager.play('click');
-    callUno().catch((err) => {
-      setError(err.message);
-      setTimeout(() => setError(''), 4000);
-    });
+    callUno()
+      .then(() => {
+        soundManager.play('roar');
+      })
+      .catch((err) => {
+        setError(err.message);
+        setTimeout(() => setError(''), 4000);
+      });
   };
 
   // Seating configuration helper (circular arrangement)
@@ -183,26 +208,50 @@ const GameRoom = () => {
 
     return (
       <div className="min-h-screen animated-bg flex flex-col justify-between p-4 sm:p-6 relative overflow-hidden">
+        {/* Floating Embers */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+          {embers.map((ember) => (
+            <div
+              key={ember.id}
+              className="ember"
+              style={{
+                left: ember.left,
+                '--ember-size': ember.size,
+                '--ember-duration': ember.duration,
+                '--ember-drift': ember.drift,
+                animationDelay: ember.delay,
+              }}
+            />
+          ))}
+        </div>
+
         {/* Header toolbar */}
         <div className="w-full max-w-5xl mx-auto flex items-center justify-between z-10 border-b border-white/5 pb-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-black tracking-widest text-slate-300">DOSTI <span className="text-unoyellow">CARDS</span></span>
-            <span className="px-2 py-0.5 text-[9px] font-bold rounded bg-unoblue/20 border border-unoblue/40 text-blue-300 uppercase tracking-widest">Lobby</span>
+            <div className="flex flex-col">
+              <span className="text-sm font-black tracking-widest text-slate-100 uppercase">
+                DUNO <span className="text-amber-400 font-medium text-[10px] tracking-normal normal-case ml-1.5 hidden sm:inline">Dragon Card Clash</span>
+              </span>
+              <span className="text-[8px] text-slate-500 tracking-wider font-bold uppercase mt-[-2px]">
+                IndiaDostiChat Arena
+              </span>
+            </div>
+            <span className="px-2 py-0.5 text-[9px] font-bold rounded bg-amber-500/20 border border-amber-500/40 text-amber-300 uppercase tracking-widest">Arena Lobby</span>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={handleToggleMute}
-              className="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all"
+              className="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all cursor-pointer"
               aria-label="Toggle mute"
             >
               {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
             </button>
             <button
               onClick={handleLeave}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-xs font-bold uppercase tracking-wider text-red-300 transition-all hover:scale-105"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-xs font-bold uppercase tracking-wider text-red-300 transition-all hover:scale-105 cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" />
-              Exit
+              Retreat
             </button>
           </div>
         </div>
@@ -211,30 +260,41 @@ const GameRoom = () => {
         <main className="w-full max-w-4xl mx-auto my-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-6 z-10">
           <div className="md:col-span-2 glass p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl space-y-6">
             {error && (
-              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-200 text-xs font-bold text-center">
+              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-200 text-xs font-bold text-center animate-pulse">
                 {error}
               </div>
             )}
             
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-950/40 p-4 rounded-2xl border border-white/5">
               <div>
-                <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Lobby Code</span>
+                <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Arena Code</span>
                 <h2 className="text-2xl font-black text-white tracking-widest uppercase mt-0.5">{roomId}</h2>
               </div>
-              <button
-                onClick={handleCopyCode}
-                className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-unoblue hover:bg-blue-600 font-extrabold text-xs uppercase tracking-wider text-white transition-all transform active:scale-95 shadow-lg shadow-blue-500/15"
-              >
-                {copySuccess ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                {copySuccess ? 'Copied!' : 'Copy Code'}
-              </button>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyCode}
+                  className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 font-extrabold text-xs uppercase tracking-wider text-white transition-all transform active:scale-95 shadow-lg shadow-amber-500/15 cursor-pointer"
+                >
+                  {copySuccess ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                  {copySuccess ? 'Copied Code!' : 'Copy Code'}
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCopyLink}
+                  className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 font-extrabold text-xs uppercase tracking-wider text-white transition-all transform active:scale-95 shadow-lg shadow-sky-500/15 cursor-pointer"
+                >
+                  {copyLinkSuccess ? <Check className="w-4 h-4" /> : <Link className="w-4 h-4" />}
+                  {copyLinkSuccess ? 'Copied Link!' : 'Copy Link'}
+                </button>
+              </div>
             </div>
 
             {/* Players slots */}
             <div className="space-y-3">
               <h3 className="text-xs font-extrabold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
-                <Users className="w-4 h-4 text-unoyellow" />
-                Players ({currentLobby.length} / 8)
+                <Users className="w-4 h-4 text-amber-400" />
+                Dragon Warriors ({currentLobby.length} / 8)
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {currentLobby.map((player, idx) => (
@@ -243,7 +303,7 @@ const GameRoom = () => {
                     className={`flex items-center justify-between p-3.5 rounded-2xl transition-all border ${
                       player.active 
                         ? player.username === username
-                          ? 'bg-blue-900/10 border-unoblue/30 text-white'
+                          ? 'bg-amber-900/10 border-amber-500/30 text-white'
                           : 'bg-slate-900/40 border-white/5 text-slate-200'
                         : 'bg-slate-900/10 border-white/5 opacity-50 text-slate-400'
                     }`}
@@ -251,15 +311,15 @@ const GameRoom = () => {
                     <div className="flex items-center gap-2">
                       <span className="font-extrabold text-sm">{player.username}</span>
                       {player.isHost && (
-                        <Shield className="w-3.5 h-3.5 text-unoyellow fill-unoyellow/20" title="Room Host" />
+                        <Shield className="w-3.5 h-3.5 text-amber-400 fill-amber-400/20" title="Arena Host" />
                       )}
                     </div>
                     {player.isReady ? (
-                      <span className="px-2 py-0.5 rounded-lg bg-green-500/10 border border-green-500/20 text-[10px] font-extrabold text-unogreen uppercase tracking-wider">
+                      <span className="px-2 py-0.5 rounded-lg bg-green-500/10 border border-green-500/20 text-[10px] font-extrabold text-emerald-400 uppercase tracking-wider">
                         Ready
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-[10px] font-extrabold text-unoyellow uppercase tracking-wider">
+                      <span className="px-2 py-0.5 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-[10px] font-extrabold text-amber-400 uppercase tracking-wider">
                         Waiting
                       </span>
                     )}
@@ -272,36 +332,36 @@ const GameRoom = () => {
             <div className="border-t border-white/5 pt-6 flex gap-3">
               <button
                 onClick={toggleReady}
-                className={`flex-1 font-extrabold py-3.5 px-4 rounded-xl transition-all uppercase tracking-wider text-sm shadow ${
+                className={`flex-1 font-extrabold py-3.5 px-4 rounded-xl transition-all uppercase tracking-wider text-sm shadow cursor-pointer ${
                   currentLobby.find(p => p.username === username)?.isReady && !isHost
                     ? 'bg-slate-800 hover:bg-slate-700 text-slate-300 border border-white/10'
-                    : 'bg-unogreen hover:bg-green-600 text-white'
+                    : 'bg-emerald-600 hover:bg-emerald-500 text-white'
                 }`}
               >
                 {currentLobby.find(p => p.username === username)?.isReady && !isHost
                   ? 'Not Ready'
-                  : 'Toggle Ready'}
+                  : 'Ready to Clash'}
               </button>
               
               {isHost && (
                 <button
                   onClick={startGame}
                   disabled={!allReady || currentLobby.length < 2}
-                  className="flex-1 glow-btn bg-gradient-to-r from-unored to-unoyellow disabled:opacity-50 text-white font-extrabold py-3.5 px-4 rounded-xl transition-all uppercase tracking-wider text-sm shadow flex items-center justify-center gap-2"
+                  className="flex-1 glow-btn bg-gradient-to-r from-red-700 via-amber-600 to-yellow-500 disabled:opacity-50 text-white font-extrabold py-3.5 px-4 rounded-xl transition-all uppercase tracking-wider text-sm shadow flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Play className="w-4 h-4 fill-white" />
-                  Start Game
+                  Begin Clash
                 </button>
               )}
             </div>
             {!allReady && isHost && (
               <p className="text-[10px] text-center text-slate-500 uppercase tracking-wider">
-                Waiting for all players to toggle ready...
+                Waiting for all warriors to ready up...
               </p>
             )}
             {currentLobby.length < 2 && isHost && (
-              <p className="text-[10px] text-center text-unoyellow uppercase tracking-wider">
-                Need at least 2 players to start.
+              <p className="text-[10px] text-center text-amber-400 uppercase tracking-wider">
+                Need at least 2 warriors to start the clash.
               </p>
             )}
           </div>
@@ -313,7 +373,7 @@ const GameRoom = () => {
         </main>
 
         <footer className="w-full text-center text-slate-600 text-[10px] uppercase tracking-widest z-10">
-          Dosti Cards &bull; Play responsibly
+          DUNO: Dragon Card Clash &bull; Play responsibly
         </footer>
       </div>
     );
@@ -321,16 +381,40 @@ const GameRoom = () => {
 
   // ACTIVE BOARD GAME PLAY SCREEN
   const currentColorStyles = {
-    red: 'shadow-unocardred/30 bg-unocardred text-white',
-    blue: 'shadow-unocardblue/30 bg-unocardblue text-white',
-    green: 'shadow-unocardgreen/30 bg-unocardgreen text-white',
-    yellow: 'shadow-unocardyellow/30 bg-unocardyellow text-slate-900',
+    red: 'shadow-red-950/30 bg-gradient-to-r from-red-800 to-red-650 text-white',
+    blue: 'shadow-blue-950/30 bg-gradient-to-r from-sky-850 to-indigo-900 text-white',
+    green: 'shadow-green-950/30 bg-gradient-to-r from-emerald-800 to-emerald-650 text-white',
+    yellow: 'shadow-purple-950/30 bg-gradient-to-r from-indigo-950 via-purple-900 to-yellow-600 text-yellow-100',
+  };
+
+  const clanNames = {
+    red: 'Fire Clan',
+    blue: 'Ice Clan',
+    green: 'Forest Clan',
+    yellow: 'Thunder Clan',
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between relative overflow-hidden h-screen select-none">
+    <div className="min-h-screen animated-bg text-slate-100 flex flex-col justify-between relative overflow-hidden h-screen select-none">
       {/* Background Subtle overlays */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(30,27,75,0.4),rgba(2,6,23,0.9))] pointer-events-none"></div>
+
+      {/* Floating Embers */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {embers.map((ember) => (
+          <div
+            key={ember.id}
+            className="ember"
+            style={{
+              left: ember.left,
+              '--ember-size': ember.size,
+              '--ember-duration': ember.duration,
+              '--ember-drift': ember.drift,
+              animationDelay: ember.delay,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Main Board Container */}
       <div className="relative flex-1 flex flex-col items-center justify-center p-2 sm:p-4">
@@ -339,35 +423,35 @@ const GameRoom = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={handleLeave}
-              className="p-1.5 sm:p-2 bg-slate-900/60 hover:bg-red-950/20 border border-white/10 hover:border-red-500/20 text-slate-400 hover:text-red-400 rounded-xl transition-all flex items-center justify-center"
-              title="Leave Room"
+              className="p-1.5 sm:p-2 bg-slate-900/60 hover:bg-red-950/20 border border-white/10 hover:border-red-500/20 text-slate-400 hover:text-red-400 rounded-xl transition-all flex items-center justify-center cursor-pointer"
+              title="Retreat from Arena"
             >
               <LogOut className="w-4 h-4" />
             </button>
             <div className="bg-slate-900/80 border border-white/5 px-2.5 py-1 rounded-xl text-[10px] sm:text-xs font-extrabold uppercase text-slate-300">
-              Room: <span className="text-unoyellow tracking-wider">{roomId}</span>
+              Arena: <span className="text-amber-400 tracking-wider">{roomId}</span>
             </div>
           </div>
           
           <div className="flex items-center gap-2">
             <button
               onClick={handleToggleMute}
-              className="p-1.5 sm:p-2 rounded-xl bg-slate-900/60 hover:bg-slate-800 border border-white/10 text-slate-300 transition-all"
+              className="p-1.5 sm:p-2 rounded-xl bg-slate-900/60 hover:bg-slate-800 border border-white/10 text-slate-300 transition-all cursor-pointer"
             >
               {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
             </button>
             <button
               onClick={() => setShowChat(!showChat)}
-              className={`p-1.5 sm:p-2 rounded-xl border transition-all flex items-center justify-center relative ${
+              className={`p-1.5 sm:p-2 rounded-xl border transition-all flex items-center justify-center relative cursor-pointer ${
                 showChat
-                  ? 'bg-unoblue text-white border-unoblue'
+                  ? 'bg-amber-600 text-white border-amber-600'
                   : 'bg-slate-900/60 border-white/10 text-slate-300'
               }`}
             >
               <MessageCircle className="w-4 h-4" />
               {/* Notification count */}
               {chatMessages.length > 0 && !showChat && (
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-unored animate-pulse"></span>
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
               )}
             </button>
           </div>
@@ -383,37 +467,42 @@ const GameRoom = () => {
               <div className={`absolute inset-0 rounded-full blur-2xl opacity-25 ${
                 gameState.currentColor === 'red' ? 'bg-red-500' :
                 gameState.currentColor === 'blue' ? 'bg-blue-500' :
-                gameState.currentColor === 'green' ? 'bg-green-500' : 'bg-yellow-400'
+                gameState.currentColor === 'green' ? 'bg-green-500' : 'bg-purple-600'
               }`}></div>
               
               {/* Discard & Draw piles row */}
               <div className="flex gap-4 items-center z-10">
-                {/* DRAW DECK PILE */}
+                {/* DRAW DECK PILE (Spellbook style) */}
                 <div
                   onClick={handleDrawCard}
                   className={`
-                    w-16 h-24 sm:w-20 sm:h-28 rounded-lg bg-unodark border-2 border-white/15 
+                    w-16 h-24 sm:w-20 sm:h-28 rounded-lg bg-slate-900 border-2 border-amber-600/50 
                     shadow-xl flex items-center justify-center cursor-pointer select-none
                     transform hover:scale-105 active:scale-95 transition-all
-                    ${!isMyTurn || gameState.wildAwaitingColor ? 'opacity-70 pointer-events-none brightness-50' : 'hover:border-unoblue'}
+                    ${!isMyTurn || gameState.wildAwaitingColor ? 'opacity-70 pointer-events-none brightness-50' : 'hover:border-amber-500'}
                   `}
-                  title="Draw Card"
+                  title="Convene Spell (Draw Card)"
                 >
-                  <div className="w-[85%] h-[85%] rounded bg-unored border border-white/10 flex items-center justify-center font-black text-2xl tracking-tighter text-white rotate-[-12deg] shadow-inner select-none">
-                    D
+                  <div className="w-[85%] h-[85%] rounded bg-gradient-to-br from-slate-950 via-stone-900 to-amber-950 border border-amber-500/20 flex flex-col items-center justify-center rotate-[-12deg] shadow-inner select-none relative overflow-hidden">
+                    <div className="absolute w-12 h-12 rounded-full border border-amber-500/10 animate-pulse"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-amber-500 drop-shadow-md">
+                      <path d="M12 2L2 22h20L12 2z" />
+                      <circle cx="12" cy="13" r="2.5" fill="currentColor" className="text-amber-600" />
+                    </svg>
+                    <span className="text-[6.5px] font-black text-amber-400 tracking-wider uppercase mt-1">DUNO</span>
                   </div>
                 </div>
 
                 {/* DISCARD PILE (TOP PLAYED CARD) */}
                 <div className="relative shadow-2xl select-none">
                   {gameState.topCard ? (
-                    <UnoCard card={gameState.topCard} isPlayable={false} size="sm" className="sm:w-20 sm:h-28" />
+                    <UnoCard key={gameState.topCard.id} card={gameState.topCard} isPlayable={false} size="sm" className="sm:w-20 sm:h-28 animate-deal" />
                   ) : (
                     <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-lg border border-dashed border-white/10 bg-slate-900"></div>
                   )}
-                  {/* Current Active color banner */}
+                  {/* Current Active clan banner */}
                   <div className={`absolute bottom-[-10px] left-[5%] right-[5%] py-0.5 rounded-full text-[8px] font-black uppercase text-center tracking-widest border border-white/10 ${currentColorStyles[gameState.currentColor]}`}>
-                    {gameState.currentColor}
+                    {clanNames[gameState.currentColor] || gameState.currentColor}
                   </div>
                 </div>
               </div>
@@ -421,16 +510,16 @@ const GameRoom = () => {
               {/* Turn indicator and play timer details */}
               <div className="mt-6 flex flex-col items-center justify-center z-10">
                 <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Current Turn</span>
-                <span className={`text-xs sm:text-sm font-black tracking-tight mt-0.5 uppercase ${isMyTurn ? 'text-unoyellow' : 'text-slate-200'}`}>
+                <span className={`text-xs sm:text-sm font-black tracking-tight mt-0.5 uppercase ${isMyTurn ? 'text-amber-400' : 'text-slate-200'}`}>
                   {isMyTurn ? 'Your Turn!' : gameState.activePlayerName}
                 </span>
                 
                 {/* Visual Circular Timer */}
                 <div className={`mt-2 px-3 py-1 rounded-full text-[10px] font-black tracking-widest border flex items-center gap-1.5 ${
                   gameState.secondsRemaining <= 5 
-                    ? 'bg-unored/20 border-unored text-red-400 animate-pulse'
+                    ? 'bg-red-500/20 border-red-500 text-red-450 animate-pulse'
                     : isMyTurn
-                      ? 'bg-unoyellow/10 border-unoyellow text-unoyellow'
+                      ? 'bg-amber-500/10 border-amber-500 text-amber-400'
                       : 'bg-slate-900 border-white/10 text-slate-400'
                 }`}>
                   <RefreshCw className={`w-3.5 h-3.5 ${gameState.direction === 1 ? 'animate-spin-slow' : 'animate-reverse'}`} />
@@ -467,7 +556,7 @@ const GameRoom = () => {
                     w-12 h-12 sm:w-14 sm:h-14 rounded-full flex flex-col items-center justify-center border-2 shadow-lg transition-all
                     ${
                       isPlayerTurn
-                        ? 'bg-slate-900 border-unoyellow shadow-unoyellow/20 scale-110'
+                        ? 'bg-slate-900 border-amber-400 shadow-amber-400/20 scale-110'
                         : 'bg-slate-900/90 border-white/10'
                     }
                     ${!player.active ? 'opacity-40 filter grayscale' : ''}
@@ -487,13 +576,13 @@ const GameRoom = () => {
                 {/* Nickname and status */}
                 <div className="mt-1.5 flex flex-col items-center text-center">
                   <span className={`text-[10px] font-black tracking-tight max-w-[80px] truncate ${
-                    isSelf ? 'text-unoblue font-black' : isPlayerTurn ? 'text-unoyellow font-bold' : 'text-slate-300'
+                    isSelf ? 'text-cyan-400 font-black' : isPlayerTurn ? 'text-amber-400 font-bold' : 'text-slate-300'
                   }`}>
                     {isSelf ? 'YOU' : player.username}
                   </span>
                   {!player.active && (
                     <span className="text-[7px] font-extrabold text-red-400 uppercase tracking-widest leading-none">
-                      Disc...
+                      Fled
                     </span>
                   )}
                 </div>
@@ -508,7 +597,7 @@ const GameRoom = () => {
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-950/80 backdrop-blur-md">
           <div className="glass p-6 sm:p-8 rounded-3xl max-w-sm w-full mx-4 text-center border border-white/10 shadow-2xl animate-scaleUp">
             <h3 className="text-xl font-black mb-1 uppercase tracking-wider text-slate-200">PLAY OR KEEP?</h3>
-            <p className="text-xs text-slate-400 mb-6">You drew a playable card!</p>
+            <p className="text-xs text-slate-400 mb-6">You drew a playable spell card!</p>
             
             <div className="flex justify-center mb-6">
               <UnoCard card={drawnPlayableCard} isPlayable={false} size="md" />
@@ -517,13 +606,13 @@ const GameRoom = () => {
             <div className="flex gap-4">
               <button
                 onClick={() => handleDrawnDecision(true)}
-                className="flex-1 bg-unogreen hover:bg-green-600 text-white font-extrabold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs shadow"
+                className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs shadow cursor-pointer"
               >
-                Play Card
+                Cast Spell
               </button>
               <button
                 onClick={() => handleDrawnDecision(false)}
-                className="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-white/10 font-extrabold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs shadow"
+                className="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-white/10 font-extrabold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs shadow cursor-pointer"
               >
                 Keep Card
               </button>
@@ -540,7 +629,7 @@ const GameRoom = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-lg">
           <div className="glass p-8 rounded-3xl max-w-md w-full mx-4 text-center border border-white/10 shadow-2xl animate-scaleUp space-y-6">
             <div>
-              <span className="text-[10px] font-black uppercase text-unoyellow tracking-widest">Victory Board</span>
+              <span className="text-[10px] font-black uppercase text-amber-400 tracking-widest">Victory Board</span>
               <h2 className="text-3xl font-black text-white tracking-tight uppercase mt-1">ROUND ENDED</h2>
             </div>
 
@@ -551,9 +640,8 @@ const GameRoom = () => {
                   <span className="font-extrabold text-slate-200">{p.username}</span>
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-slate-500 uppercase font-bold tracking-widest">{p.cardsCount} cards</span>
-                    {/* Display score delta */}
-                    <span className={`font-black ${p.cardsCount === 0 ? 'text-unogreen' : 'text-slate-400'}`}>
-                      {p.cardsCount === 0 ? 'WINNER' : 'Losed'}
+                    <span className={`font-black text-xs uppercase tracking-wider ${p.cardsCount === 0 ? 'text-emerald-400' : 'text-slate-405'}`}>
+                      {p.cardsCount === 0 ? 'VICTORIOUS' : 'DEFEATED'}
                     </span>
                   </div>
                 </div>
@@ -563,9 +651,9 @@ const GameRoom = () => {
             <div className="border-t border-white/5 pt-6">
               <button
                 onClick={handleLeave}
-                className="w-full glow-btn bg-gradient-to-r from-unored to-indigo-600 text-white font-extrabold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs shadow-lg shadow-indigo-500/20"
+                className="w-full glow-btn bg-gradient-to-r from-red-700 via-amber-600 to-indigo-850 text-white font-extrabold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs shadow-lg shadow-amber-500/20 cursor-pointer"
               >
-                Back to Lobby
+                Return to Lobby
               </button>
             </div>
           </div>
@@ -576,7 +664,7 @@ const GameRoom = () => {
       <div className="relative bg-slate-900/80 backdrop-blur-md border-t border-white/5 p-3 sm:p-5 flex flex-col gap-3 z-30 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
         {/* Error Notification banner */}
         {error && (
-          <div className="absolute top-[-36px] left-[5%] right-[5%] mx-auto max-w-sm p-1.5 rounded-lg bg-red-500/20 border border-red-500/40 text-red-200 text-[10px] font-extrabold text-center uppercase tracking-widest">
+          <div className="absolute top-[-36px] left-[5%] right-[5%] mx-auto max-w-sm p-1.5 rounded-lg bg-red-500/20 border border-red-500/40 text-red-200 text-[10px] font-extrabold text-center uppercase tracking-widest animate-pulse">
             {error}
           </div>
         )}
@@ -590,27 +678,27 @@ const GameRoom = () => {
             </span>
           </div>
 
-          {/* UNO BUZZER BUTTON */}
+          {/* ROAR BUZZER BUTTON */}
           <button
             onClick={handleCallUno}
             disabled={!clientPlayer || clientPlayer.cards.length > 2}
             className={`
-              px-5 py-1.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300
+              px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 cursor-pointer
               ${
                 clientPlayer && clientPlayer.cards.length <= 2
-                  ? 'bg-unored text-white border-2 border-red-300 animate-pulse hover:shadow-red-500/20 hover:scale-105 active:scale-95'
-                  : 'bg-slate-800 border border-white/5 text-slate-500 cursor-not-allowed'
+                  ? 'bg-gradient-to-r from-red-700 via-amber-600 to-yellow-500 text-white border-2 border-amber-400 animate-pulse hover:shadow-amber-500/35 hover:scale-105 active:scale-95'
+                  : 'bg-slate-800 border border-white/5 text-slate-505 cursor-not-allowed'
               }
             `}
           >
-            Uno!
+            🔥 ROAR! 🔥
           </button>
         </div>
 
         {/* Scrollable Player hand cards row */}
         <div className="w-full overflow-x-auto scrollbar-none py-4">
           <div className="flex gap-2 sm:gap-3 px-2 min-w-max justify-center items-end h-44 sm:h-48">
-            {clientPlayer?.cards.map((card) => {
+            {clientPlayer?.cards.map((card, index) => {
               const playable = isMyTurn && !gameState.wildAwaitingColor && (
                 gameState.topCard === null || 
                 card.color === 'wild' || 
@@ -619,12 +707,16 @@ const GameRoom = () => {
               );
 
               return (
-                <div key={card.id} className="first:ml-0 transform transition-all duration-300">
+                <div 
+                  key={card.id} 
+                  className="first:ml-0 transform transition-all duration-300 animate-deal"
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
                   <UnoCard
-                    card={card}
-                    onClick={() => handleCardClick(card)}
-                    isPlayable={playable}
-                    size="md"
+                     card={card}
+                     onClick={() => handleCardClick(card)}
+                     isPlayable={playable}
+                     size="md"
                   />
                 </div>
               );

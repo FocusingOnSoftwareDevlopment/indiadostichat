@@ -42,7 +42,7 @@ const AdminDashboard = () => {
 
   // Resolve API URL dynamically
   const apiUrl = import.meta.env.VITE_API_URL || 
-    (window.location.hostname === 'localhost' ? 'http://localhost:5000' : window.location.origin);
+    (window.location.hostname === 'localhost' ? 'http://localhost:5000/Duno-room' : window.location.origin + '/Duno-room');
 
   useEffect(() => {
     if (!token) {
@@ -248,14 +248,14 @@ const AdminDashboard = () => {
       <header className="w-full max-w-6xl mx-auto flex items-center justify-between z-10 border-b border-white/5 pb-4 mb-6">
         <div className="flex items-center gap-3">
           <div className="bg-slate-800 p-2 rounded-xl border border-white/10 flex items-center justify-center">
-            <Shield className="w-5 h-5 text-unored" />
+            <Shield className="w-5 h-5 text-amber-500" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <span className="text-base font-black tracking-widest text-slate-200">HEISENBERG</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-unored/20 border border-unored/30 text-unored font-extrabold uppercase">ROOT</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-red-500/20 border border-red-500/30 text-red-400 font-extrabold uppercase">ROOT</span>
             </div>
-            <p className="text-slate-400 text-[10px] uppercase tracking-wider">DOSTI CARDS SECURE CONTROLLER</p>
+            <p className="text-slate-400 text-[10px] uppercase tracking-wider">DUNO: DRAGON CARD CLASH SECURE CONTROLLER</p>
           </div>
         </div>
         <button
@@ -279,8 +279,8 @@ const AdminDashboard = () => {
                 : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200'
             }`}
           >
-            <Activity className="w-4 h-4 text-unoblue" />
-            Active Rooms
+            <Activity className="w-4 h-4 text-amber-500" />
+            Active Arenas
           </button>
           <button
             onClick={() => handleTabChange('bans')}
@@ -290,7 +290,7 @@ const AdminDashboard = () => {
                 : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200'
             }`}
           >
-            <UserX className="w-4 h-4 text-unored" />
+            <UserX className="w-4 h-4 text-red-500" />
             Bans Control
           </button>
           <button
@@ -301,8 +301,8 @@ const AdminDashboard = () => {
                 : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200'
             }`}
           >
-            <History className="w-4 h-4 text-unoyellow" />
-            Game History
+            <History className="w-4 h-4 text-amber-400" />
+            Battle Ledger
           </button>
           <button
             onClick={() => handleTabChange('database')}
@@ -312,7 +312,7 @@ const AdminDashboard = () => {
                 : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200'
             }`}
           >
-            <Database className="w-4 h-4 text-unogreen" />
+            <Database className="w-4 h-4 text-emerald-400" />
             DB Utilities
           </button>
         </section>
@@ -324,13 +324,13 @@ const AdminDashboard = () => {
             <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-6">
               <div>
                 <h2 className="text-lg font-black text-white uppercase tracking-tight">
-                  {activeTab === 'rooms' && 'Active Card Matches'}
+                  {activeTab === 'rooms' && 'Active Dragon Arena Matches'}
                   {activeTab === 'bans' && 'Network Ban Registry'}
                   {activeTab === 'history' && 'Completed Match Ledger'}
                   {activeTab === 'database' && 'System Database Operations'}
                 </h2>
                 <p className="text-slate-400 text-xs mt-0.5">
-                  {activeTab === 'rooms' && 'Manage running lobbies and active card game tables'}
+                  {activeTab === 'rooms' && 'Manage running lobbies and active dragon card clash tables'}
                   {activeTab === 'bans' && 'Blacklist malicious IPs or players permanently'}
                   {activeTab === 'history' && 'Audit logs of completed game outcomes'}
                   {activeTab === 'database' && 'Root database commands and score resets'}
@@ -427,7 +427,7 @@ const AdminDashboard = () => {
                                   }}
                                   className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-200 transition-colors"
                                 >
-                                  <Eye className="w-3 h-3 text-unoblue" />
+                                  <Eye className="w-3 h-3 text-amber-500" />
                                   Spectate
                                 </button>
                                 <button
@@ -471,7 +471,7 @@ const AdminDashboard = () => {
                       {/* Left: Ban addition form */}
                       <div className="md:col-span-1 bg-slate-950/30 rounded-2xl p-4 border border-white/5 h-fit">
                         <h3 className="text-xs font-black text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-                          <PlusCircle className="w-4 h-4 text-unored" />
+                          <PlusCircle className="w-4 h-4 text-red-500" />
                           Issue New Ban
                         </h3>
                         <form onSubmit={handleAddBan} className="space-y-4">
@@ -515,7 +515,7 @@ const AdminDashboard = () => {
                           <button
                             type="submit"
                             disabled={actionLoading || !banValue.trim()}
-                            className="w-full py-2.5 rounded-xl bg-unored hover:bg-red-700 disabled:opacity-50 text-white font-extrabold text-xs uppercase tracking-widest transition-transform hover:scale-[1.02]"
+                            className="w-full py-2.5 rounded-xl bg-red-700 hover:bg-red-650 disabled:opacity-50 text-white font-extrabold text-xs uppercase tracking-widest transition-transform hover:scale-[1.02]"
                           >
                             Add Ban Rule
                           </button>
@@ -584,7 +584,7 @@ const AdminDashboard = () => {
                                 <tr key={row.id} className="hover:bg-white/[0.02] text-slate-300">
                                   <td className="px-4 py-3 font-mono text-[10px] uppercase text-indigo-400">{row.room_id}</td>
                                   <td className="px-4 py-3 font-bold text-white">{row.winner_username}</td>
-                                  <td className="px-4 py-3 font-bold text-unoyellow">+{row.score_awarded}</td>
+                                  <td className="px-4 py-3 font-bold text-amber-400">+{row.score_awarded}</td>
                                   <td className="px-4 py-3 text-slate-400 max-w-[200px] truncate">
                                     {Array.isArray(row.players_list) 
                                       ? row.players_list.map(p => `${p.username} (${p.score})`).join(', ') 
@@ -606,7 +606,7 @@ const AdminDashboard = () => {
                   {activeTab === 'database' && (
                     <div className="space-y-6 max-w-xl">
                       <div className="bg-red-500/5 border border-red-500/10 rounded-2xl p-5 flex gap-4">
-                        <AlertTriangle className="w-8 h-8 text-unored shrink-0 mt-1" />
+                        <AlertTriangle className="w-8 h-8 text-red-500 shrink-0 mt-1" />
                         <div>
                           <h3 className="text-sm font-black text-white uppercase tracking-wider mb-1">DANGER ZONE</h3>
                           <p className="text-slate-400 text-xs leading-relaxed mb-4">

@@ -53,7 +53,8 @@ class SoundManager {
           this.playDeal();
           break;
         case 'warning':
-          this.playWarning();
+        case 'roar':
+          this.playRoar();
           break;
         default:
           break;
@@ -161,20 +162,52 @@ class SoundManager {
     }
   }
 
-  playWarning() {
-    const osc = this.ctx.createOscillator();
+  playRoar() {
+    const time = this.ctx.currentTime;
+    
+    // Create multiple low frequency sawtooth/triangle oscillators for a thick, detuned growl
+    const osc1 = this.ctx.createOscillator();
+    const osc2 = this.ctx.createOscillator();
+    const noise = this.ctx.createOscillator();
+    
+    // Low pass filter to remove high harshness and keep it rumbling/heavy
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(150, time);
+    filter.frequency.exponentialRampToValueAtTime(60, time + 0.8);
+    
     const gain = this.ctx.createGain();
-    osc.connect(gain);
+    
+    osc1.connect(filter);
+    osc2.connect(filter);
+    noise.connect(filter);
+    filter.connect(gain);
     gain.connect(this.ctx.destination);
-
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(150, this.ctx.currentTime);
-
-    gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.35);
-
-    osc.start();
-    osc.stop(this.ctx.currentTime + 0.35);
+    
+    osc1.type = 'sawtooth';
+    osc1.frequency.setValueAtTime(95, time); // Detuned low freq
+    osc1.frequency.linearRampToValueAtTime(45, time + 0.8);
+    
+    osc2.type = 'sawtooth';
+    osc2.frequency.setValueAtTime(92, time); // Slighly detuned
+    osc2.frequency.linearRampToValueAtTime(42, time + 0.8);
+    
+    noise.type = 'triangle';
+    noise.frequency.setValueAtTime(130, time); // Throat buzz
+    noise.frequency.linearRampToValueAtTime(30, time + 0.8);
+    
+    // Volume envelope: rapid swell, then rumble down
+    gain.gain.setValueAtTime(0.01, time);
+    gain.gain.linearRampToValueAtTime(0.35, time + 0.1);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.85);
+    
+    osc1.start(time);
+    osc2.start(time);
+    noise.start(time);
+    
+    osc1.stop(time + 0.9);
+    osc2.stop(time + 0.9);
+    noise.stop(time + 0.9);
   }
 
   playError() {
@@ -194,23 +227,34 @@ class SoundManager {
   }
 
   playWin() {
-    const notes = [261.63, 329.63, 392.00, 523.25]; // C E G C
     const time = this.ctx.currentTime;
-
-    notes.forEach((freq, idx) => {
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, time + idx * 0.15);
-
-      gain.gain.setValueAtTime(0.15, time + idx * 0.15);
-      gain.gain.exponentialRampToValueAtTime(0.01, time + idx * 0.15 + 0.35);
-
-      osc.start(time + idx * 0.15);
-      osc.stop(time + idx * 0.15 + 0.35);
+    const chords = [
+      [196.00, 246.94, 293.66], // G Major
+      [261.63, 329.63, 392.00], // C Major
+      [293.66, 369.99, 440.00], // D Major
+      [392.00, 493.88, 587.33]  // G Major Octave
+    ];
+    
+    chords.forEach((chord, chordIdx) => {
+      const startTime = time + chordIdx * 0.25;
+      const duration = 0.5;
+      
+      chord.forEach((freq) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, startTime);
+        
+        gain.gain.setValueAtTime(0.01, startTime);
+        gain.gain.linearRampToValueAtTime(0.08, startTime + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+        
+        osc.start(startTime);
+        osc.stop(startTime + duration);
+      });
     });
   }
 }

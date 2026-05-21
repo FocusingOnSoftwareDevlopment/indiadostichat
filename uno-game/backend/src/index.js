@@ -38,17 +38,19 @@ const apiLimiter = rateLimit({
 });
 
 // Apply rate limits to all auth and API endpoints
-app.use('/api/', apiLimiter);
+app.use(['/api/', '/Duno-room/api/'], apiLimiter);
 
 // Bind custom variables to express context
 app.set('db', db);
 
 // 2. HTTP Routing API endpoints
 app.use('/api/admin', adminRouter);
+app.use('/Duno-room/api/admin', adminRouter);
 app.use('/api/leaderboard', leaderboardRouter);
+app.use('/Duno-room/api/leaderboard', leaderboardRouter);
 
 // Health check endpoint
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/Duno-room/api/health'], (req, res) => {
   res.json({
     status: 'healthy',
     time: new Date(),
@@ -59,11 +61,11 @@ app.get('/api/health', (req, res) => {
 // Serve frontend build files in production (VPS setup)
 const path = require('path');
 const frontendBuildPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
-app.use(express.static(frontendBuildPath));
+app.use('/Duno-room', express.static(frontendBuildPath));
 
 // Catch-all route to serve frontend index.html for SPA client-side routing
-app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api')) {
+app.get('/Duno-room/*', (req, res, next) => {
+  if (req.path.startsWith('/Duno-room/api')) {
     return next();
   }
   res.sendFile(path.join(frontendBuildPath, 'index.html'), (err) => {
@@ -73,8 +75,17 @@ app.get('*', (req, res, next) => {
   });
 });
 
+// Catch-all redirect for root or other paths to /Duno-room
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api') || req.path.startsWith('/Duno-room/api')) {
+    return next();
+  }
+  res.redirect('/Duno-room');
+});
+
 // 3. Socket.IO Setup
 const io = new Server(server, {
+  path: '/Duno-room/socket.io',
   cors: corsOptions,
   pingTimeout: 30000,
   pingInterval: 15000,

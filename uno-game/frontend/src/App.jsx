@@ -10,7 +10,7 @@ import AdminSpectate from './pages/AdminSpectate';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Duno-room">
       <SocketProvider>
         <Routes>
           <Route path="/" element={<Landing />} />

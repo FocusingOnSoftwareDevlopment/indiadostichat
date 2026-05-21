@@ -28,7 +28,7 @@ const AdminSpectate = () => {
 
   const token = localStorage.getItem('dosti_admin_token') || '';
   const apiUrl = import.meta.env.VITE_API_URL || 
-    (window.location.hostname === 'localhost' ? 'http://localhost:5000' : window.location.origin);
+    (window.location.hostname === 'localhost' ? 'http://localhost:5000/Duno-room' : window.location.origin + '/Duno-room');
 
   useEffect(() => {
     if (!token) {
@@ -146,6 +146,13 @@ const AdminSpectate = () => {
     }
   };
 
+  const clanNames = {
+    red: 'Fire Clan',
+    blue: 'Ice Clan',
+    green: 'Forest Clan',
+    yellow: 'Thunder Clan',
+  };
+
   const renderColorDot = (color) => {
     const dots = {
       red: 'bg-unored',
@@ -239,10 +246,10 @@ const AdminSpectate = () => {
                   </div>
 
                   <div className="mt-4 border-t border-white/5 pt-3 w-full">
-                    <div className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">Matching Color</div>
+                    <div className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">Active Clan</div>
                     <div className="flex items-center justify-center gap-1.5 mt-1 text-xs font-black text-white capitalize">
                       {renderColorDot(spectateState.currentColor)}
-                      {spectateState.currentColor}
+                      {clanNames[spectateState.currentColor] || spectateState.currentColor}
                     </div>
                   </div>
 

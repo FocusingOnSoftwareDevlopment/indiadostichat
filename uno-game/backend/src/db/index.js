@@ -76,9 +76,23 @@ async function handleMockQuery(text, params) {
   // 3. Upsert Leaderboard stats
   if (sql.includes('insert into leaderboard') || sql.includes('update leaderboard')) {
     const username = params[0];
-    const winsDelta = params[1] || 0;
-    const gamesDelta = params[2] || 0;
-    const scoreDelta = params[3] || 0;
+    let winsDelta = 0;
+    let gamesDelta = 0;
+    let scoreDelta = 0;
+
+    if (sql.includes('1, 1, $2') || sql.includes('1,1,$2') || sql.includes('1, 1,')) {
+      winsDelta = 1;
+      gamesDelta = 1;
+      scoreDelta = params[1] || 0;
+    } else if (sql.includes('0, 1, 0') || sql.includes('0,1,0') || sql.includes('0, 1,')) {
+      winsDelta = 0;
+      gamesDelta = 1;
+      scoreDelta = 0;
+    } else {
+      winsDelta = params[1] || 0;
+      gamesDelta = params[2] || 0;
+      scoreDelta = params[3] || 0;
+    }
 
     let player = mockDb.leaderboard.get(username);
     if (!player) {
