@@ -112,19 +112,142 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. Visitor Counter ---
+    // --- 3. Visitor Counter & Chat Entry Counter ---
     const visitorCountEls = document.querySelectorAll('#visitor-count');
+    const joinCountEls = document.querySelectorAll('#join-count');
+
+    // Get today's local date string (YYYY-MM-DD)
+    const today = new Date();
+    const dateStr = today.getFullYear() + '-' + 
+                    String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                    String(today.getDate()).padStart(2, '0');
+
+    // Clean up older local storage keys
+    try {
+        for (let i = localStorage.length - 1; i >= 0; i--) {
+            const key = localStorage.key(i);
+            if (key) {
+                if ((key.startsWith('idc_visit_counted_') && key !== 'idc_visit_counted_' + dateStr) ||
+                    (key.startsWith('idc_join_counted_') && key !== 'idc_join_counted_' + dateStr)) {
+                    localStorage.removeItem(key);
+                }
+            }
+        }
+    } catch (e) {
+        console.warn("Storage cleanup failed:", e);
+    }
+
+    const visitKey = 'idc_visit_counted_' + dateStr;
+    const joinKey = 'idc_join_counted_' + dateStr;
+
+    // 3a. Community Visits (Visitor Counter) logic
     if (visitorCountEls.length > 0) {
-        fetch('https://api.counterapi.dev/v1/indiadostichat_main/visitors/up')
+        let isVisited = false;
+        try {
+            isVisited = localStorage.getItem(visitKey) === 'true';
+        } catch (e) {}
+
+        const visitorApiUrl = isVisited 
+            ? 'https://api.counterapi.dev/v1/indiadostichat_main/visitors'
+            : 'https://api.counterapi.dev/v1/indiadostichat_main/visitors/up';
+
+        fetch(visitorApiUrl)
             .then(res => res.json())
             .then(data => {
-                const formattedCount = Number(data.count).toLocaleString();
-                visitorCountEls.forEach(el => el.innerText = formattedCount);
+                if (data && typeof data.count !== 'undefined') {
+                    const formattedCount = Number(data.count).toLocaleString();
+                    visitorCountEls.forEach(el => el.innerText = formattedCount);
+                    if (!isVisited) {
+                        try {
+                            localStorage.setItem(visitKey, 'true');
+                        } catch (e) {}
+                    }
+                } else {
+                    visitorCountEls.forEach(el => el.innerText = 'Unavailable');
+                }
             })
             .catch(() => {
                 visitorCountEls.forEach(el => el.innerText = 'Unavailable');
             });
     }
+
+    // Function to update join count elements
+    function updateJoinUI(count) {
+        const formattedCount = Number(count).toLocaleString();
+        joinCountEls.forEach(el => el.innerText = formattedCount);
+    }
+
+    // Function to handle join chat increment safely
+    function incrementJoinChat() {
+        let isJoined = false;
+        try {
+            isJoined = localStorage.getItem(joinKey) === 'true';
+        } catch (e) {}
+
+        if (!isJoined) {
+            try {
+                localStorage.setItem(joinKey, 'true');
+            } catch (e) {}
+            return fetch('https://api.counterapi.dev/v1/indiadostichat_main/join_chat/up')
+                .then(res => res.json())
+                .then(data => {
+                    if (data && typeof data.count !== 'undefined') {
+                        updateJoinUI(data.count);
+                    }
+                })
+                .catch(err => console.error("Error incrementing join count:", err));
+        }
+        return Promise.resolve();
+    }
+
+    // 3b. Join Chat Counter logic
+    if (joinCountEls.length > 0) {
+        // Fetch current join count (always show it)
+        fetch('https://api.counterapi.dev/v1/indiadostichat_main/join_chat')
+            .then(res => res.json())
+            .then(data => {
+                if (data && typeof data.count !== 'undefined') {
+                    updateJoinUI(data.count);
+                } else {
+                    joinCountEls.forEach(el => el.innerText = 'Unavailable');
+                }
+            })
+            .catch(() => {
+                joinCountEls.forEach(el => el.innerText = 'Unavailable');
+            });
+    }
+
+    // Check if the user is on the chat page directly
+    const pathLower = window.location.pathname.toLowerCase();
+    const isDirectChatPage = pathLower.includes('/chat/') || 
+                             pathLower.endsWith('/chat') || 
+                             pathLower.endsWith('/chat.html') || 
+                             pathLower.endsWith('/chat/index.html');
+
+    if (isDirectChatPage) {
+        incrementJoinChat();
+    }
+
+    // Attach click listeners to Join Chat links/buttons on other pages
+    document.addEventListener('click', (e) => {
+        let targetEl = e.target;
+        while (targetEl && targetEl !== document.body) {
+            if (targetEl.tagName === 'A' && targetEl.href) {
+                try {
+                    const url = new URL(targetEl.href, window.location.origin);
+                    const hrefPath = url.pathname.toLowerCase();
+                    if (hrefPath.includes('/chat/') || 
+                        hrefPath.endsWith('/chat') || 
+                        hrefPath.endsWith('/chat.html') || 
+                        hrefPath.endsWith('/chat/index.html')) {
+                        incrementJoinChat();
+                        break;
+                    }
+                } catch (err) {}
+            }
+            targetEl = targetEl.parentElement;
+        }
+    });
 
     // --- 4. Landing Page Rotating Backgrounds ---
     const landingHeroes = document.querySelectorAll('.landing-hero');
