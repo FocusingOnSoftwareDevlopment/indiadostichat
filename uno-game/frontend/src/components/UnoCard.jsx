@@ -176,7 +176,7 @@ const UnoCard = ({ card, onClick, isPlayable = true, size = 'md', className = ''
         ${bgStyles[color] || bgStyles.wild} 
         transition-all duration-300
         ${isPlayable && onClick ? 'cursor-pointer hover:-translate-y-5 hover:shadow-2xl hover:scale-105 active:scale-95' : 'cursor-not-allowed'}
-        ${!isPlayable ? 'brightness-[70%] filter saturate-[75%] border-slate-700/60 shadow-none' : ''}
+        ${!isPlayable ? 'brightness-[95%] saturate-[100%] border-slate-700/40 shadow-sm' : ''}
         ${className}
       `}
     >

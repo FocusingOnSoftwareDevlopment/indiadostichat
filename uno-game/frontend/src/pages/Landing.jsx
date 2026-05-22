@@ -105,7 +105,7 @@ const Landing = () => {
       {/* Header / Logo */}
       <header className="w-full max-w-4xl mx-auto flex items-center justify-between z-10">
         <div className="flex items-center gap-3">
-          <img src="/Duno-room/duno-logo.jpg" alt="DUNO Logo" className="w-10 h-10 rounded-xl object-cover shadow-lg shadow-amber-500/20" />
+          <img src="/Duno-room/duno-logo.jpg" alt="DUNO Logo" className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-2xl shadow-amber-500/25 border border-white/10" />
           <div className="flex flex-col">
             <span className="text-xl font-black tracking-widest text-slate-100 uppercase">
               DUNO <span className="text-amber-400 font-medium text-xs tracking-normal normal-case block sm:inline sm:ml-2 sm:text-sm">dragon clash card game</span>
@@ -138,6 +138,10 @@ const Landing = () => {
         <div className="glass p-8 rounded-3xl border border-white/10 shadow-2xl relative">
           <div className="absolute top-[-5px] left-[10%] right-[10%] h-[3px] bg-gradient-to-r from-red-650 via-amber-550 to-yellow-500 rounded-full"></div>
           
+          <div className="flex justify-center mb-6">
+            <img src="/Duno-room/duno-logo.jpg" alt="DUNO Logo" className="w-36 h-36 sm:w-40 sm:h-40 rounded-3xl object-cover shadow-2xl shadow-amber-500/30 border border-amber-500/20 hover:scale-105 transition-all duration-300" />
+          </div>
+
           <div className="text-center mb-8">
             <h1 className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-yellow-500 tracking-wide uppercase leading-tight">
               DUNO dragon clash card game

@@ -12,8 +12,13 @@ def minify_css(css):
     return css.strip()
 
 def minify_js(js):
-    js = re.sub(r'(?<!:)\/\/.*', '', js)
-    js = re.sub(r'/\*.*?\*/', '', js, flags=re.DOTALL)
+    pattern = re.compile(r'("(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\'|`(?:[^`\\]|\\.)*`|/\*[\s\S]*?\*/|//.*)')
+    def replacer(match):
+        s = match.group(0)
+        if s.startswith('/*') or s.startswith('//'):
+            return ''
+        return s
+    js = pattern.sub(replacer, js)
     lines = [line.strip() for line in js.splitlines() if line.strip()]
     return '\n'.join(lines)
 

@@ -104,10 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 """
 
-with open('assets/js/main.js', 'a', encoding='utf-8') as f:
-    f.write('\n' + js_code + '\n')
+with open('assets/js/main.js', 'r', encoding='utf-8') as f:
+    existing_content = f.read()
 
-print('Appended JS successfully.')
+if "// --- 8. UNO Tournament Razorpay Integration ---" not in existing_content:
+    with open('assets/js/main.js', 'a', encoding='utf-8') as f:
+        f.write('\n' + js_code + '\n')
+    print('Appended JS successfully.')
+else:
+    print('JS already appended, skipping append.')
 
 import re
 
@@ -119,8 +124,13 @@ def minify_css(css):
     return css.strip()
 
 def minify_js(js):
-    js = re.sub(r'//.*', '', js)
-    js = re.sub(r'/\*.*?\*/', '', js, flags=re.DOTALL)
+    pattern = re.compile(r'("(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\'|`(?:[^`\\]|\\.)*`|/\*[\s\S]*?\*/|//.*)')
+    def replacer(match):
+        s = match.group(0)
+        if s.startswith('/*') or s.startswith('//'):
+            return ''
+        return s
+    js = pattern.sub(replacer, js)
     js = re.sub(r'\s+', ' ', js)
     return js.strip()
 

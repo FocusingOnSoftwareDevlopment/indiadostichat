@@ -344,10 +344,10 @@ const AdminSpectate = () => {
             Match Logs
           </h3>
 
-          <div className="flex-1 overflow-y-auto space-y-2 pr-1 scrollbar-none text-[10px] font-mono leading-relaxed">
+          <div className="flex-1 overflow-y-auto space-y-2 pr-1 scrollbar-none text-xs sm:text-sm font-semibold leading-normal">
             {spectateState?.logs && spectateState.logs.length > 0 ? (
               spectateState.logs.map((log, index) => (
-                <div key={index} className="p-2 rounded bg-black/25 text-slate-300 border-l-2 border-white/5">
+                <div key={index} className="p-2.5 rounded-lg bg-slate-900/60 text-slate-200 border-l-3 border-indigo-500/50">
                   {log}
                 </div>
               ))

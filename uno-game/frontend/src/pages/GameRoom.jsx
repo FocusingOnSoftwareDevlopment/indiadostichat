@@ -9,56 +9,56 @@ import soundManager from '../utils/SoundManager';
 
 const CornerDragons = () => {
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-[60] select-none">
       {/* Top Left - Fire Dragon (Red Glow) */}
-      <div className="absolute -top-4 -left-4 w-36 h-36 md:w-52 md:h-52 text-red-500/20 md:text-red-500/10 transform -rotate-12 transition-all duration-700 animate-pulse">
+      <div className="absolute -top-4 -left-4 w-48 h-48 md:w-64 md:h-64 text-red-500 opacity-100 transform -rotate-12 transition-all duration-700 animate-pulse">
         <svg
           viewBox="0 0 100 100"
           fill="currentColor"
           className="w-full h-full"
-          style={{ filter: 'drop-shadow(0 0 25px rgba(239, 68, 68, 0.6))' }}
+          style={{ filter: 'drop-shadow(0 0 45px rgba(239, 68, 68, 0.95))' }}
         >
           <path d="M90,85 C85,80 75,70 65,65 C55,60 45,62 38,55 C35,52 38,48 42,48 C30,42 20,30 25,18 C28,15 32,18 30,22 C35,16 42,10 48,12 C44,18 43,24 45,28 C50,22 56,18 65,20 C58,25 55,30 54,35 C62,32 70,32 78,38 C70,40 62,42 58,48 C65,48 72,52 75,58 C68,58 60,56 55,62 C62,68 70,72 80,75 C70,75 60,72 52,78 C58,82 65,85 75,88 C60,88 50,82 45,75 C40,82 32,88 20,90 C35,88 42,80 44,72 C35,75 28,75 20,70 C30,70 38,65 40,58 C32,58 25,55 18,48 C28,48 34,52 38,45 C28,40 22,35 15,25 C25,30 32,35 34,42 C36,32 34,22 28,15 C38,20 44,28 42,38 C46,28 52,22 60,18 C54,24 52,32 50,38 C56,32 64,28 72,28 C64,32 58,38 56,44 C62,38 70,36 78,38 C70,42 62,45 58,52 C64,52 70,55 74,60 C66,60 58,58 54,64 C60,70 66,74 74,78 C64,78 55,75 48,82 C54,85 60,88 68,90 C53,90 42,85 36,78 Z" />
-          <circle cx="28" cy="22" r="1.5" className="fill-red-200 animate-pulse" />
+          <circle cx="28" cy="22" r="1.5" className="fill-red-100 animate-pulse" />
         </svg>
       </div>
 
       {/* Top Right - Ice Dragon (Blue Glow) */}
-      <div className="absolute -top-4 -right-4 w-36 h-36 md:w-52 md:h-52 text-cyan-400/20 md:text-cyan-400/10 transform scale-x-[-1] -rotate-12 transition-all duration-700 animate-pulse">
+      <div className="absolute -top-4 -right-4 w-48 h-48 md:w-64 md:h-64 text-cyan-400 opacity-100 transform scale-x-[-1] -rotate-12 transition-all duration-700 animate-pulse">
         <svg
           viewBox="0 0 100 100"
           fill="currentColor"
           className="w-full h-full"
-          style={{ filter: 'drop-shadow(0 0 25px rgba(34, 211, 238, 0.6))' }}
+          style={{ filter: 'drop-shadow(0 0 45px rgba(34, 211, 238, 0.95))' }}
         >
           <path d="M90,85 C85,80 75,70 65,65 C55,60 45,62 38,55 C35,52 38,48 42,48 C30,42 20,30 25,18 C28,15 32,18 30,22 C35,16 42,10 48,12 C44,18 43,24 45,28 C50,22 56,18 65,20 C58,25 55,30 54,35 C62,32 70,32 78,38 C70,40 62,42 58,48 C65,48 72,52 75,58 C68,58 60,56 55,62 C62,68 70,72 80,75 C70,75 60,72 52,78 C58,82 65,85 75,88 C60,88 50,82 45,75 C40,82 32,88 20,90 C35,88 42,80 44,72 C35,75 28,75 20,70 C30,70 38,65 40,58 C32,58 25,55 18,48 C28,48 34,52 38,45 C28,40 22,35 15,25 C25,30 32,35 34,42 C36,32 34,22 28,15 C38,20 44,28 42,38 C46,28 52,22 60,18 C54,24 52,32 50,38 C56,32 64,28 72,28 C64,32 58,38 56,44 C62,38 70,36 78,38 C70,42 62,45 58,52 C64,52 70,55 74,60 C66,60 58,58 54,64 C60,70 66,74 74,78 C64,78 55,75 48,82 C54,85 60,88 68,90 C53,90 42,85 36,78 Z" />
-          <circle cx="28" cy="22" r="1.5" className="fill-cyan-100 animate-pulse" />
+          <circle cx="28" cy="22" r="1.5" className="fill-cyan-50 animate-pulse" />
         </svg>
       </div>
 
       {/* Bottom Left - Forest Dragon (Green Glow) */}
-      <div className="absolute -bottom-4 -left-4 w-36 h-36 md:w-52 md:h-52 text-emerald-500/20 md:text-emerald-500/10 transform scale-y-[-1] -rotate-12 transition-all duration-700 animate-pulse">
+      <div className="absolute -bottom-4 -left-4 w-48 h-48 md:w-64 md:h-64 text-emerald-500 opacity-100 transform scale-y-[-1] -rotate-12 transition-all duration-700 animate-pulse">
         <svg
           viewBox="0 0 100 100"
           fill="currentColor"
           className="w-full h-full"
-          style={{ filter: 'drop-shadow(0 0 25px rgba(16, 185, 129, 0.6))' }}
+          style={{ filter: 'drop-shadow(0 0 45px rgba(16, 185, 129, 0.95))' }}
         >
           <path d="M90,85 C85,80 75,70 65,65 C55,60 45,62 38,55 C35,52 38,48 42,48 C30,42 20,30 25,18 C28,15 32,18 30,22 C35,16 42,10 48,12 C44,18 43,24 45,28 C50,22 56,18 65,20 C58,25 55,30 54,35 C62,32 70,32 78,38 C70,40 62,42 58,48 C65,48 72,52 75,58 C68,58 60,56 55,62 C62,68 70,72 80,75 C70,75 60,72 52,78 C58,82 65,85 75,88 C60,88 50,82 45,75 C40,82 32,88 20,90 C35,88 42,80 44,72 C35,75 28,75 20,70 C30,70 38,65 40,58 C32,58 25,55 18,48 C28,48 34,52 38,45 C28,40 22,35 15,25 C25,30 32,35 34,42 C36,32 34,22 28,15 C38,20 44,28 42,38 C46,28 52,22 60,18 C54,24 52,32 50,38 C56,32 64,28 72,28 C64,32 58,38 56,44 C62,38 70,36 78,38 C70,42 62,45 58,52 C64,52 70,55 74,60 C66,60 58,58 54,64 C60,70 66,74 74,78 C64,78 55,75 48,82 C54,85 60,88 68,90 C53,90 42,85 36,78 Z" />
-          <circle cx="28" cy="22" r="1.5" className="fill-emerald-200 animate-pulse" />
+          <circle cx="28" cy="22" r="1.5" className="fill-emerald-100 animate-pulse" />
         </svg>
       </div>
 
       {/* Bottom Right - Thunder Dragon (Yellow Glow) */}
-      <div className="absolute -bottom-4 -right-4 w-36 h-36 md:w-52 md:h-52 text-amber-400/20 md:text-amber-400/10 transform scale-x-[-1] scale-y-[-1] -rotate-12 transition-all duration-700 animate-pulse">
+      <div className="absolute -bottom-4 -right-4 w-48 h-48 md:w-64 md:h-64 text-amber-400 opacity-100 transform scale-x-[-1] scale-y-[-1] -rotate-12 transition-all duration-700 animate-pulse">
         <svg
           viewBox="0 0 100 100"
           fill="currentColor"
           className="w-full h-full"
-          style={{ filter: 'drop-shadow(0 0 25px rgba(245, 158, 11, 0.6))' }}
+          style={{ filter: 'drop-shadow(0 0 45px rgba(245, 158, 11, 0.95))' }}
         >
           <path d="M90,85 C85,80 75,70 65,65 C55,60 45,62 38,55 C35,52 38,48 42,48 C30,42 20,30 25,18 C28,15 32,18 30,22 C35,16 42,10 48,12 C44,18 43,24 45,28 C50,22 56,18 65,20 C58,25 55,30 54,35 C62,32 70,32 78,38 C70,40 62,42 58,48 C65,48 72,52 75,58 C68,58 60,56 55,62 C62,68 70,72 80,75 C70,75 60,72 52,78 C58,82 65,85 75,88 C60,88 50,82 45,75 C40,82 32,88 20,90 C35,88 42,80 44,72 C35,75 28,75 20,70 C30,70 38,65 40,58 C32,58 25,55 18,48 C28,48 34,52 38,45 C28,40 22,35 15,25 C25,30 32,35 34,42 C36,32 34,22 28,15 C38,20 44,28 42,38 C46,28 52,22 60,18 C54,24 52,32 50,38 C56,32 64,28 72,28 C64,32 58,38 56,44 C62,38 70,36 78,38 C70,42 62,45 58,52 C64,52 70,55 74,60 C66,60 58,58 54,64 C60,70 66,74 74,78 C64,78 55,75 48,82 C54,85 60,88 68,90 C53,90 42,85 36,78 Z" />
-          <circle cx="28" cy="22" r="1.5" className="fill-amber-200 animate-pulse" />
+          <circle cx="28" cy="22" r="1.5" className="fill-amber-100 animate-pulse" />
         </svg>
       </div>
     </div>
@@ -66,20 +66,17 @@ const CornerDragons = () => {
 };
 
 const copyToClipboard = (text) => {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
+  if (navigator.clipboard && window.isSecureContext) {
     return navigator.clipboard.writeText(text);
   } else {
-    // Fallback for non-secure HTTP contexts
     const textArea = document.createElement("textarea");
     textArea.value = text;
-    // Prevent scrolling and position off-screen
-    textArea.style.position = "fixed";
+    textArea.style.position = "absolute";
+    textArea.style.left = "-9999px";
     textArea.style.top = "0";
-    textArea.style.left = "0";
-    textArea.style.opacity = "0";
     document.body.appendChild(textArea);
-    textArea.focus();
     textArea.select();
+    textArea.setSelectionRange(0, 99999);
     let successful = false;
     try {
       successful = document.execCommand('copy');
@@ -324,7 +321,8 @@ const GameRoom = () => {
 
         {/* Header toolbar */}
         <div className="w-full max-w-5xl mx-auto flex items-center justify-between z-10 border-b border-white/5 pb-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <img src="/Duno-room/duno-logo.jpg" alt="DUNO Logo" className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-white/10 shadow-lg shadow-amber-500/25" />
             <div className="flex flex-col">
               <span className="text-sm font-black tracking-widest text-slate-100 uppercase">
                 DUNO <span className="text-amber-400 font-medium text-[10px] tracking-normal normal-case ml-1.5 hidden sm:inline">dragon clash card game</span>
@@ -520,7 +518,7 @@ const GameRoom = () => {
       <div className="relative flex-1 flex flex-col items-center justify-center p-2 sm:p-4">
         {/* Top Header bar inside game */}
         <div className="absolute top-2 left-2 right-2 flex justify-between items-center z-30">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
               onClick={handleLeave}
               className="p-1.5 sm:p-2 bg-slate-900/60 hover:bg-red-950/20 border border-white/10 hover:border-red-500/20 text-slate-400 hover:text-red-400 rounded-xl transition-all flex items-center justify-center cursor-pointer"
@@ -528,6 +526,7 @@ const GameRoom = () => {
             >
               <LogOut className="w-4 h-4" />
             </button>
+            <img src="/Duno-room/duno-logo.jpg" alt="DUNO Logo" className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-white/10 shadow-md shadow-amber-500/10" />
             <div className="bg-slate-900/80 border border-white/5 px-2.5 py-1 rounded-xl text-[10px] sm:text-xs font-extrabold uppercase text-slate-300">
               Arena: <span className="text-amber-400 tracking-wider">{roomId}</span>
             </div>

@@ -35,6 +35,7 @@ const apiLimiter = rateLimit({
   max: 100, // Limit each IP to 100 requests per windowMs
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { trustProxy: false },
   message: { error: 'Too many requests. Please try again after 15 minutes.' }
 });
 
