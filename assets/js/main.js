@@ -278,14 +278,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 amount: 2500,
                 currency: "INR",
                 name: "IndiaDostiChat",
-                description: "UNO Tournament Entry Fee",
+                description: "DUNO Tournament Entry Fee",
                 prefill: {
                     name: username,
                     email: email
                 },
                 notes: {
                     username: username,
-                    tournament: "IndiaDostiChat UNO Tournament"
+                    tournament: "IndiaDostiChat DUNO Tournament"
                 },
                 handler: function (response) {
                     const payload = {
@@ -294,9 +294,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         razorpay_payment_id: response.razorpay_payment_id,
                         payment_status: "Paid - Client Reported",
                         amount: "25",
-                        tournament: "IndiaDostiChat UNO Tournament",
+                        tournament: "IndiaDostiChat DUNO Tournament",
                         notes: notes,
-                        source: "uno-tournament"
+                        source: "duno-tournament"
                     };
 
                     fetch(GOOGLE_SCRIPT_URL, {

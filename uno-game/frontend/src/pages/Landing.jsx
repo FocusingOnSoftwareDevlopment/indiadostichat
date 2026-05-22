@@ -105,9 +105,7 @@ const Landing = () => {
       {/* Header / Logo */}
       <header className="w-full max-w-4xl mx-auto flex items-center justify-between z-10">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-700 via-amber-500 to-yellow-500 flex items-center justify-center font-black text-xl text-slate-900 shadow-lg shadow-amber-500/20">
-            D
-          </div>
+          <img src="/Duno-room/duno-logo.jpg" alt="DUNO Logo" className="w-10 h-10 rounded-xl object-cover shadow-lg shadow-amber-500/20" />
           <div className="flex flex-col">
             <span className="text-xl font-black tracking-widest text-slate-100 uppercase">
               DUNO <span className="text-amber-400 font-medium text-xs tracking-normal normal-case block sm:inline sm:ml-2 sm:text-sm">dragon clash card game</span>
