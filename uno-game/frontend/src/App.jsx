@@ -9,6 +9,11 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminSpectate from './pages/AdminSpectate';
 
 function App() {
+  if (window.location.hostname.includes('indiadostichat.com') && window.location.protocol === 'https:') {
+    window.location.replace('http://103.86.176.185' + window.location.pathname + window.location.search + window.location.hash);
+    return null;
+  }
+
   return (
     <BrowserRouter basename="/Duno-room">
       <SocketProvider>

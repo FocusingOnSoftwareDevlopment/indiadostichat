@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.onclick = function(e) {
             e.preventDefault();
             const isDark = document.body.classList.toggle("dark-mode");
+            document.documentElement.classList.toggle("dark-mode", isDark);
             const newTheme = isDark ? "dark" : "light";
             try {
                 localStorage.setItem("theme", newTheme);
