@@ -65,6 +65,32 @@ const CornerDragons = () => {
   );
 };
 
+const copyToClipboard = (text) => {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
+  } else {
+    // Fallback for non-secure HTTP contexts
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    // Prevent scrolling and position off-screen
+    textArea.style.position = "fixed";
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.opacity = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    let successful = false;
+    try {
+      successful = document.execCommand('copy');
+    } catch (err) {
+      console.error('Fallback copy failed', err);
+    }
+    document.body.removeChild(textArea);
+    return successful ? Promise.resolve() : Promise.reject(new Error('Copy failed'));
+  }
+};
+
 const GameRoom = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
@@ -120,18 +146,28 @@ const GameRoom = () => {
   }, [username, navigate]);
 
   const handleCopyCode = () => {
-    navigator.clipboard.writeText(roomId);
-    setCopySuccess(true);
-    soundManager.play('click');
-    setTimeout(() => setCopySuccess(false), 2000);
+    copyToClipboard(roomId)
+      .then(() => {
+        setCopySuccess(true);
+        soundManager.play('click');
+        setTimeout(() => setCopySuccess(false), 2000);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleCopyLink = () => {
     const joinLink = `${window.location.origin}/Duno-room/room/${roomId}`;
-    navigator.clipboard.writeText(joinLink);
-    setCopyLinkSuccess(true);
-    soundManager.play('click');
-    setTimeout(() => setCopyLinkSuccess(false), 2000);
+    copyToClipboard(joinLink)
+      .then(() => {
+        setCopyLinkSuccess(true);
+        soundManager.play('click');
+        setTimeout(() => setCopyLinkSuccess(false), 2000);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleToggleMute = () => {
