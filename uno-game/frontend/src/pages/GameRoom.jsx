@@ -7,63 +7,6 @@ import Chat from '../components/Chat';
 import { Copy, Play, LogOut, Check, Shield, Users, MessageCircle, Volume2, VolumeX, RefreshCw, Link } from 'lucide-react';
 import soundManager from '../utils/SoundManager';
 
-const CornerDragons = () => {
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-[60] select-none">
-      {/* Top Left - Fire Dragon (Red Glow) */}
-      <div className="absolute -top-4 -left-4 w-48 h-48 md:w-64 md:h-64 text-red-500 opacity-100 transform -rotate-12 transition-all duration-700 animate-pulse">
-        <svg
-          viewBox="0 0 100 100"
-          fill="currentColor"
-          className="w-full h-full"
-          style={{ filter: 'drop-shadow(0 0 45px rgba(239, 68, 68, 0.95))' }}
-        >
-          <path d="M90,85 C85,80 75,70 65,65 C55,60 45,62 38,55 C35,52 38,48 42,48 C30,42 20,30 25,18 C28,15 32,18 30,22 C35,16 42,10 48,12 C44,18 43,24 45,28 C50,22 56,18 65,20 C58,25 55,30 54,35 C62,32 70,32 78,38 C70,40 62,42 58,48 C65,48 72,52 75,58 C68,58 60,56 55,62 C62,68 70,72 80,75 C70,75 60,72 52,78 C58,82 65,85 75,88 C60,88 50,82 45,75 C40,82 32,88 20,90 C35,88 42,80 44,72 C35,75 28,75 20,70 C30,70 38,65 40,58 C32,58 25,55 18,48 C28,48 34,52 38,45 C28,40 22,35 15,25 C25,30 32,35 34,42 C36,32 34,22 28,15 C38,20 44,28 42,38 C46,28 52,22 60,18 C54,24 52,32 50,38 C56,32 64,28 72,28 C64,32 58,38 56,44 C62,38 70,36 78,38 C70,42 62,45 58,52 C64,52 70,55 74,60 C66,60 58,58 54,64 C60,70 66,74 74,78 C64,78 55,75 48,82 C54,85 60,88 68,90 C53,90 42,85 36,78 Z" />
-          <circle cx="28" cy="22" r="1.5" className="fill-red-100 animate-pulse" />
-        </svg>
-      </div>
-
-      {/* Top Right - Ice Dragon (Blue Glow) */}
-      <div className="absolute -top-4 -right-4 w-48 h-48 md:w-64 md:h-64 text-cyan-400 opacity-100 transform scale-x-[-1] -rotate-12 transition-all duration-700 animate-pulse">
-        <svg
-          viewBox="0 0 100 100"
-          fill="currentColor"
-          className="w-full h-full"
-          style={{ filter: 'drop-shadow(0 0 45px rgba(34, 211, 238, 0.95))' }}
-        >
-          <path d="M90,85 C85,80 75,70 65,65 C55,60 45,62 38,55 C35,52 38,48 42,48 C30,42 20,30 25,18 C28,15 32,18 30,22 C35,16 42,10 48,12 C44,18 43,24 45,28 C50,22 56,18 65,20 C58,25 55,30 54,35 C62,32 70,32 78,38 C70,40 62,42 58,48 C65,48 72,52 75,58 C68,58 60,56 55,62 C62,68 70,72 80,75 C70,75 60,72 52,78 C58,82 65,85 75,88 C60,88 50,82 45,75 C40,82 32,88 20,90 C35,88 42,80 44,72 C35,75 28,75 20,70 C30,70 38,65 40,58 C32,58 25,55 18,48 C28,48 34,52 38,45 C28,40 22,35 15,25 C25,30 32,35 34,42 C36,32 34,22 28,15 C38,20 44,28 42,38 C46,28 52,22 60,18 C54,24 52,32 50,38 C56,32 64,28 72,28 C64,32 58,38 56,44 C62,38 70,36 78,38 C70,42 62,45 58,52 C64,52 70,55 74,60 C66,60 58,58 54,64 C60,70 66,74 74,78 C64,78 55,75 48,82 C54,85 60,88 68,90 C53,90 42,85 36,78 Z" />
-          <circle cx="28" cy="22" r="1.5" className="fill-cyan-50 animate-pulse" />
-        </svg>
-      </div>
-
-      {/* Bottom Left - Forest Dragon (Green Glow) */}
-      <div className="absolute -bottom-4 -left-4 w-48 h-48 md:w-64 md:h-64 text-emerald-500 opacity-100 transform scale-y-[-1] -rotate-12 transition-all duration-700 animate-pulse">
-        <svg
-          viewBox="0 0 100 100"
-          fill="currentColor"
-          className="w-full h-full"
-          style={{ filter: 'drop-shadow(0 0 45px rgba(16, 185, 129, 0.95))' }}
-        >
-          <path d="M90,85 C85,80 75,70 65,65 C55,60 45,62 38,55 C35,52 38,48 42,48 C30,42 20,30 25,18 C28,15 32,18 30,22 C35,16 42,10 48,12 C44,18 43,24 45,28 C50,22 56,18 65,20 C58,25 55,30 54,35 C62,32 70,32 78,38 C70,40 62,42 58,48 C65,48 72,52 75,58 C68,58 60,56 55,62 C62,68 70,72 80,75 C70,75 60,72 52,78 C58,82 65,85 75,88 C60,88 50,82 45,75 C40,82 32,88 20,90 C35,88 42,80 44,72 C35,75 28,75 20,70 C30,70 38,65 40,58 C32,58 25,55 18,48 C28,48 34,52 38,45 C28,40 22,35 15,25 C25,30 32,35 34,42 C36,32 34,22 28,15 C38,20 44,28 42,38 C46,28 52,22 60,18 C54,24 52,32 50,38 C56,32 64,28 72,28 C64,32 58,38 56,44 C62,38 70,36 78,38 C70,42 62,45 58,52 C64,52 70,55 74,60 C66,60 58,58 54,64 C60,70 66,74 74,78 C64,78 55,75 48,82 C54,85 60,88 68,90 C53,90 42,85 36,78 Z" />
-          <circle cx="28" cy="22" r="1.5" className="fill-emerald-100 animate-pulse" />
-        </svg>
-      </div>
-
-      {/* Bottom Right - Thunder Dragon (Yellow Glow) */}
-      <div className="absolute -bottom-4 -right-4 w-48 h-48 md:w-64 md:h-64 text-amber-400 opacity-100 transform scale-x-[-1] scale-y-[-1] -rotate-12 transition-all duration-700 animate-pulse">
-        <svg
-          viewBox="0 0 100 100"
-          fill="currentColor"
-          className="w-full h-full"
-          style={{ filter: 'drop-shadow(0 0 45px rgba(245, 158, 11, 0.95))' }}
-        >
-          <path d="M90,85 C85,80 75,70 65,65 C55,60 45,62 38,55 C35,52 38,48 42,48 C30,42 20,30 25,18 C28,15 32,18 30,22 C35,16 42,10 48,12 C44,18 43,24 45,28 C50,22 56,18 65,20 C58,25 55,30 54,35 C62,32 70,32 78,38 C70,40 62,42 58,48 C65,48 72,52 75,58 C68,58 60,56 55,62 C62,68 70,72 80,75 C70,75 60,72 52,78 C58,82 65,85 75,88 C60,88 50,82 45,75 C40,82 32,88 20,90 C35,88 42,80 44,72 C35,75 28,75 20,70 C30,70 38,65 40,58 C32,58 25,55 18,48 C28,48 34,52 38,45 C28,40 22,35 15,25 C25,30 32,35 34,42 C36,32 34,22 28,15 C38,20 44,28 42,38 C46,28 52,22 60,18 C54,24 52,32 50,38 C56,32 64,28 72,28 C64,32 58,38 56,44 C62,38 70,36 78,38 C70,42 62,45 58,52 C64,52 70,55 74,60 C66,60 58,58 54,64 C60,70 66,74 74,78 C64,78 55,75 48,82 C54,85 60,88 68,90 C53,90 42,85 36,78 Z" />
-          <circle cx="28" cy="22" r="1.5" className="fill-amber-100 animate-pulse" />
-        </svg>
-      </div>
-    </div>
-  );
-};
 
 const copyToClipboard = (text) => {
   if (navigator.clipboard && window.isSecureContext) {
@@ -299,8 +242,6 @@ const GameRoom = () => {
 
     return (
       <div className="min-h-screen animated-bg flex flex-col justify-between p-4 sm:p-6 relative overflow-hidden">
-        {/* Glowing Corner Dragons */}
-        <CornerDragons />
 
         {/* Floating Embers */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -491,8 +432,6 @@ const GameRoom = () => {
 
   return (
     <div className="min-h-screen animated-bg text-slate-100 flex flex-col justify-between relative overflow-hidden h-screen select-none">
-      {/* Glowing Corner Dragons */}
-      <CornerDragons />
 
       {/* Background Subtle overlays */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(30,27,75,0.4),rgba(2,6,23,0.9))] pointer-events-none"></div>
