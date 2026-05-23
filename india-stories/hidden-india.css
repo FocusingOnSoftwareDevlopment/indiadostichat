@@ -1,0 +1,860 @@
+/* Hidden India Content Section Custom CSS */
+/* Prefix: hidden-india- */
+
+:root {
+  --hi-bg: #030611;
+  --hi-text: #f3f4f6;
+  --hi-text-muted: #9ca3af;
+  --hi-accent-gold: #d4af37;
+  --hi-accent-saffron: #ff9933;
+  --hi-accent-green: #138808;
+  --hi-accent-white: #ffffff;
+  --hi-accent-navy: #000080;
+  --hi-card-bg: rgba(17, 24, 39, 0.6);
+  --hi-card-border: rgba(255, 255, 255, 0.08);
+  --hi-glow-saffron: rgba(255, 153, 51, 0.4);
+  --hi-glow-green: rgba(19, 136, 8, 0.4);
+  --hi-glow-gold: rgba(212, 175, 55, 0.5);
+  --hi-font-serif: 'Playfair Display', Georgia, serif;
+  --hi-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --hi-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Styles */
+.hidden-india-page {
+  background-color: var(--hi-bg);
+  color: var(--hi-text);
+  font-family: var(--hi-font-sans);
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Glowing Ambient Orbs */
+.hidden-india-page::before,
+.hidden-india-page::after {
+  content: '';
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(150px);
+  opacity: 0.15;
+}
+
+.hidden-india-page::before {
+  top: 5%;
+  left: -10%;
+  background: radial-gradient(circle, var(--hi-accent-saffron), transparent 70%);
+}
+
+.hidden-india-page::after {
+  top: 40%;
+  right: -10%;
+  background: radial-gradient(circle, var(--hi-accent-green), transparent 70%);
+}
+
+.hidden-india-content-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hero Section */
+.hidden-india-hero {
+  position: relative;
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 2rem;
+  box-sizing: border-box;
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.8) 0%, var(--hi-bg) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hidden-india-kicker {
+  font-family: var(--hi-font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--hi-accent-saffron);
+  margin-bottom: 1.5rem;
+  animation: hiFadeInDown 1s ease-out;
+}
+
+.hidden-india-title {
+  font-family: var(--hi-font-serif);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--hi-accent-white);
+  margin: 0 0 1.5rem 0;
+  background: linear-gradient(135deg, #ffffff 30%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hiFadeInUp 1.2s ease-out;
+}
+
+.hidden-india-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 300;
+  max-width: 800px;
+  color: var(--hi-text-muted);
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+  animation: hiFadeInUp 1.4s ease-out;
+}
+
+/* Tagline System */
+.hidden-india-tagline-container {
+  min-height: 4.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  animation: hiFadeInUp 1.6s ease-out;
+}
+
+.hidden-india-tagline {
+  font-family: var(--hi-font-serif);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--hi-accent-gold);
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  max-width: 900px;
+}
+
+.hidden-india-tagline.active {
+  opacity: 1;
+}
+
+/* Interactive Map Section */
+.hidden-india-map-section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.hidden-india-map-title-wrapper {
+  margin-bottom: 3.5rem;
+}
+
+.hidden-india-map-tagline {
+  font-family: var(--hi-font-serif);
+  font-size: 1.8rem;
+  color: var(--hi-accent-white);
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.hidden-india-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  aspect-ratio: 612 / 696;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 20px;
+  border: 1px solid var(--hi-card-border);
+  padding: 2rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Map SVG styles */
+#hidden-india-svg-map {
+  width: 100%;
+  height: 100%;
+}
+
+.hidden-india-state-path {
+  fill: #0c1224;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1.2;
+  transition: var(--hi-transition);
+}
+
+.hidden-india-state-path:hover {
+  fill: #141e3a;
+  stroke: rgba(255, 153, 51, 0.4);
+}
+
+/* Glowing City Dots */
+.hidden-india-city-group {
+  pointer-events: bounding-box;
+  cursor: pointer;
+}
+
+.hidden-india-city-dot {
+  fill: var(--hi-accent-gold);
+  filter: drop-shadow(0 0 6px var(--hi-accent-gold));
+  transition: var(--hi-transition);
+}
+
+.hidden-india-city-pulse {
+  fill: none;
+  stroke: var(--hi-accent-gold);
+  stroke-width: 1.5;
+  transform-origin: center;
+  animation: hiPulse 2.5s infinite ease-out;
+}
+
+/* Dynamic color shifts based on region */
+.hidden-india-city-group[data-city="Mumbai"] .hidden-india-city-dot,
+.hidden-india-city-group[data-city="Pune"] .hidden-india-city-dot,
+.hidden-india-city-group[data-city="Ahmedabad"] .hidden-india-city-dot {
+  fill: var(--hi-accent-saffron);
+  filter: drop-shadow(0 0 6px var(--hi-accent-saffron));
+}
+.hidden-india-city-group[data-city="Mumbai"] .hidden-india-city-pulse,
+.hidden-india-city-group[data-city="Pune"] .hidden-india-city-pulse,
+.hidden-india-city-group[data-city="Ahmedabad"] .hidden-india-city-pulse {
+  stroke: var(--hi-accent-saffron);
+}
+
+.hidden-india-city-group[data-city="Bangalore"] .hidden-india-city-dot,
+.hidden-india-city-group[data-city="Chennai"] .hidden-india-city-dot,
+.hidden-india-city-group[data-city="Hyderabad"] .hidden-india-city-dot {
+  fill: var(--hi-accent-green);
+  filter: drop-shadow(0 0 6px var(--hi-accent-green));
+}
+.hidden-india-city-group[data-city="Bangalore"] .hidden-india-city-pulse,
+.hidden-india-city-group[data-city="Chennai"] .hidden-india-city-pulse,
+.hidden-india-city-group[data-city="Hyderabad"] .hidden-india-city-pulse {
+  stroke: var(--hi-accent-green);
+}
+
+.hidden-india-city-group:hover .hidden-india-city-dot {
+  transform: scale(1.5);
+  fill: #ffffff !important;
+  filter: drop-shadow(0 0 10px #ffffff) !important;
+}
+
+/* Connection Lines */
+.hidden-india-connection-line {
+  fill: none;
+  stroke: rgba(212, 175, 55, 0.15);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 8;
+  animation: hiDash 30s linear infinite;
+  transition: var(--hi-transition);
+}
+
+.hidden-india-city-group:hover ~ .hidden-india-connection-line {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 2;
+}
+
+/* City Tooltip/Hover Labels inside Map */
+.hidden-india-map-tooltip {
+  position: absolute;
+  background: rgba(3, 6, 17, 0.95);
+  border: 1px solid var(--hi-accent-gold);
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--hi-text);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -120%) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.hidden-india-map-tooltip.active {
+  opacity: 1;
+  transform: translate(-50%, -120%) scale(1);
+}
+
+.hidden-india-map-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: rgba(3, 6, 17, 0.95) transparent transparent;
+}
+
+/* Editorial Content Sections */
+.hidden-india-section {
+  padding: 5rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hidden-india-section:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hidden-india-section-title {
+  font-family: var(--hi-font-serif);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--hi-accent-white);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hidden-india-section-title::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.15), transparent);
+}
+
+.hidden-india-para {
+  font-size: 1.1rem;
+  color: #d1d5db;
+  margin-bottom: 1.8rem;
+  text-align: justify;
+}
+
+.hidden-india-para::first-letter {
+  font-family: var(--hi-font-serif);
+}
+
+.hidden-india-section.reveal-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+}
+
+.hidden-india-section.reveal-element.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Quote Layout */
+.hidden-india-quote {
+  font-family: var(--hi-font-serif);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--hi-accent-gold);
+  border-left: 3px solid var(--hi-accent-saffron);
+  padding-left: 2rem;
+  margin: 3rem 0;
+  background: linear-gradient(to right, rgba(255, 153, 51, 0.03), transparent);
+  border-radius: 0 8px 8px 0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Premium Card Grids */
+.hidden-india-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.hidden-india-card {
+  background: var(--hi-card-bg);
+  border: 1px solid var(--hi-card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: var(--hi-transition);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hidden-india-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.hidden-india-card-num {
+  font-family: var(--hi-font-serif);
+  font-size: 1.5rem;
+  color: var(--hi-accent-saffron);
+  font-weight: 700;
+}
+
+.hidden-india-card-title {
+  font-family: var(--hi-font-serif);
+  font-size: 1.3rem;
+  color: var(--hi-accent-white);
+  margin: 0;
+}
+
+.hidden-india-card-text {
+  font-size: 0.95rem;
+  color: var(--hi-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Table of Contents */
+.hidden-india-toc-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.hidden-india-toc-title {
+  font-family: var(--hi-font-serif);
+  font-size: 2rem;
+  text-align: center;
+  color: var(--hi-accent-white);
+  margin-bottom: 3rem;
+}
+
+.hidden-india-toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.hidden-india-toc-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--hi-card-border);
+  border-radius: 8px;
+  color: var(--hi-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--hi-transition);
+}
+
+.hidden-india-toc-link::before {
+  content: '→';
+  color: var(--hi-accent-gold);
+  transition: var(--hi-transition);
+}
+
+.hidden-india-toc-link:hover {
+  background: var(--hi-card-bg);
+  border-color: var(--hi-accent-gold);
+  color: var(--hi-accent-white);
+  transform: translateX(5px);
+}
+
+.hidden-india-toc-link:hover::before {
+  transform: translateX(3px);
+}
+
+/* Call to Action (CTA) Section */
+.hidden-india-cta-section {
+  padding: 7rem 2rem;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(255, 153, 51, 0.05) 0%, var(--hi-bg) 70%);
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  position: relative;
+}
+
+.hidden-india-cta-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hidden-india-cta-title {
+  font-family: var(--hi-font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--hi-accent-white);
+  margin-bottom: 1.5rem;
+}
+
+.hidden-india-cta-text {
+  font-size: 1.15rem;
+  color: var(--hi-text-muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.hidden-india-cta-btn {
+  display: inline-block;
+  font-family: var(--hi-font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #030611;
+  background: linear-gradient(135deg, var(--hi-accent-gold) 0%, #facc15 100%);
+  padding: 1.1rem 2.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(250, 204, 21, 0.2);
+  transition: var(--hi-transition);
+}
+
+.hidden-india-cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(250, 204, 21, 0.4);
+}
+
+.hidden-india-cta-safety {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.hidden-india-cta-safety a {
+  color: var(--hi-accent-gold);
+  text-decoration: none;
+  transition: var(--hi-transition);
+}
+
+.hidden-india-cta-safety a:hover {
+  text-decoration: underline;
+}
+
+/* FAQ Layout */
+.hidden-india-faq-section {
+  padding: 5rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hidden-india-faq-title {
+  font-family: var(--hi-font-serif);
+  font-size: 2.2rem;
+  color: var(--hi-accent-white);
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.hidden-india-faq-item {
+  background: rgba(15, 23, 42, 0.3);
+  border: 1px solid var(--hi-card-border);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: var(--hi-transition);
+}
+
+.hidden-india-faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: var(--hi-font-sans);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--hi-accent-white);
+  padding: 1.5rem 2rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hidden-india-faq-question::after {
+  content: '+';
+  font-size: 1.5rem;
+  color: var(--hi-accent-gold);
+  transition: var(--hi-transition);
+}
+
+.hidden-india-faq-item.active {
+  border-color: rgba(212, 175, 55, 0.3);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.hidden-india-faq-item.active .hidden-india-faq-question::after {
+  content: '−';
+  transform: rotate(180deg);
+}
+
+.hidden-india-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+}
+
+.hidden-india-faq-answer-content {
+  padding: 0 2rem 1.5rem 2rem;
+  color: var(--hi-text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Sources and Further Reading Layout */
+.hidden-india-sources-section {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.hidden-india-sources-note {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.hidden-india-sources-title {
+  font-weight: 600;
+  color: var(--hi-text-muted);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hidden-india-sources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+
+.hidden-india-sources-list a {
+  color: var(--hi-text-muted);
+  text-decoration: none;
+  transition: var(--hi-transition);
+}
+
+.hidden-india-sources-list a:hover {
+  color: var(--hi-accent-white);
+  text-decoration: underline;
+}
+
+/* Related Hidden Pages Link Grid */
+.hidden-india-related-section {
+  padding: 5rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hidden-india-related-title {
+  font-family: var(--hi-font-serif);
+  font-size: 1.8rem;
+  color: var(--hi-accent-white);
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.hidden-india-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.hidden-india-related-card {
+  background: rgba(15, 23, 42, 0.3);
+  border: 1px solid var(--hi-card-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: var(--hi-transition);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hidden-india-related-card:hover {
+  background: var(--hi-card-bg);
+  border-color: var(--hi-accent-gold);
+  transform: translateY(-5px);
+}
+
+.hidden-india-related-card h4 {
+  font-family: var(--hi-font-serif);
+  font-size: 1.2rem;
+  color: var(--hi-accent-white);
+  margin: 0;
+}
+
+.hidden-india-related-card p {
+  font-size: 0.9rem;
+  color: var(--hi-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Header & Footer Override styling for hidden pages */
+.hidden-india-header {
+  background: rgba(3, 6, 17, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.hidden-india-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+}
+
+.hidden-india-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--hi-font-sans);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--hi-accent-white);
+  text-decoration: none;
+}
+
+.hidden-india-logo span {
+  background: linear-gradient(90deg, var(--hi-accent-saffron), var(--hi-accent-gold), var(--hi-accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hidden-india-logo img {
+  height: 35px;
+}
+
+.hidden-india-nav-btn {
+  background: linear-gradient(135deg, var(--hi-accent-saffron), #ff7a00);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(255, 153, 51, 0.2);
+  transition: var(--hi-transition);
+}
+
+.hidden-india-nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 153, 51, 0.4);
+}
+
+.hidden-india-footer {
+  background: #02040b;
+  color: var(--hi-text-muted);
+  padding: 4rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+}
+
+.hidden-india-footer p {
+  margin: 0.5rem 0;
+}
+
+.hidden-india-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.hidden-india-footer-links a {
+  color: var(--hi-text-muted);
+  text-decoration: none;
+  transition: var(--hi-transition);
+}
+
+.hidden-india-footer-links a:hover {
+  color: var(--hi-accent-white);
+  text-decoration: underline;
+}
+
+/* Keyframe Animations */
+@keyframes hiFadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hiFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hiPulse {
+  0% {
+    transform: scale(0.95);
+    stroke-opacity: 1;
+  }
+  100% {
+    transform: scale(2.8);
+    stroke-opacity: 0;
+  }
+}
+
+@keyframes hiDash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .hidden-india-section.reveal-element {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hidden-india-map-container {
+    padding: 0.5rem;
+    border-radius: 12px;
+  }
+  .hidden-india-hero {
+    min-height: auto;
+    padding: 8rem 1rem 4rem 1rem;
+  }
+  .hidden-india-section {
+    padding: 4rem 1.2rem;
+  }
+  .hidden-india-quote {
+    font-size: 1.25rem;
+    padding-left: 1.2rem;
+    margin: 2rem 0;
+  }
+}
