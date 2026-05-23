@@ -27,12 +27,14 @@ function initMenuDrawer() {
   if (!toggleBtn || !drawer) return;
 
   const openDrawer = () => {
+    drawer.classList.add('active');
     drawer.setAttribute('aria-hidden', 'false');
     toggleBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
   };
 
   const closeDrawer = () => {
+    drawer.classList.remove('active');
     drawer.setAttribute('aria-hidden', 'true');
     toggleBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = ''; // Restore scrolling
@@ -53,7 +55,7 @@ function initMenuDrawer() {
 
   // Close when pressing Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') {
+    if (e.key === 'Escape' && drawer.classList.contains('active')) {
       closeDrawer();
     }
   });

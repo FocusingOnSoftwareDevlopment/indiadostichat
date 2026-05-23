@@ -708,15 +708,20 @@
   width: 100%;
   top: 0;
   z-index: 1000;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
 .hidden-india-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1.2rem 2rem;
+  padding: 0 2rem;
+  height: 100%;
 }
 
 .hidden-india-nav-right {
@@ -764,7 +769,7 @@
   transition: visibility 0.4s;
 }
 
-.hidden-india-drawer[aria-hidden="false"] {
+.hidden-india-drawer.active {
   visibility: visible;
   pointer-events: auto;
 }
@@ -783,7 +788,7 @@
   transition: opacity 0.4s ease;
 }
 
-.hidden-india-drawer[aria-hidden="false"] .hidden-india-drawer-backdrop {
+.hidden-india-drawer.active .hidden-india-drawer-backdrop {
   opacity: 1;
 }
 
@@ -808,7 +813,7 @@
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hidden-india-drawer[aria-hidden="false"] .hidden-india-drawer-content {
+.hidden-india-drawer.active .hidden-india-drawer-content {
   transform: translateX(0);
 }
 
@@ -1047,6 +1052,12 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .hidden-india-header {
+    height: 60px;
+  }
+  .hidden-india-nav {
+    padding: 0 1rem;
+  }
   .hidden-india-map-container {
     padding: 0;
     border-radius: 12px;
@@ -1064,4 +1075,28 @@
     padding-left: 1.2rem;
     margin: 2rem 0;
   }
+}
+
+/* Flag of India Styling */
+.hidden-india-logo img.hidden-india-nav-flag {
+  height: 16px;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 10px;
+  border-radius: 2px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.hidden-india-hero-flag-wrapper {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  animation: hiFadeInDown 1s ease-out;
+}
+
+.hidden-india-hero-flag {
+  height: 24px;
+  width: auto;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 153, 51, 0.4), 0 0 15px rgba(19, 136, 8, 0.4);
 }
