@@ -7,12 +7,48 @@ document.addEventListener('DOMContentLoaded', () => {
   // Check for reduced motion preferences
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  initDropdownMenu();
   initTaglineRotator(prefersReducedMotion);
   initMapInteractivity();
   initRevealOnScroll(prefersReducedMotion);
   initFaqAccordion();
   initSmoothScroll();
 });
+
+/**
+ * 0. Dropdown Menu Toggle
+ */
+function initDropdownMenu() {
+  const dropdown = document.querySelector('.hidden-india-dropdown');
+  const btn = document.querySelector('.hidden-india-dropdown-btn');
+  if (!dropdown || !btn) return;
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isActive = dropdown.classList.contains('active');
+    if (isActive) {
+      dropdown.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    } else {
+      dropdown.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Close when clicking anywhere else
+  document.addEventListener('click', () => {
+    dropdown.classList.remove('active');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+
+  // Close when pressing Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dropdown.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 
 /**
  * 1. Rotating Hero Taglines
@@ -62,61 +98,92 @@ function initTaglineRotator(prefersReducedMotion) {
 }
 
 /**
- * 2. Animated Map City Hover Labels
+ * 2. Animated Map City Hover Labels (With Relative Percentages & Closest-City Tap targeting)
  */
 function initMapInteractivity() {
   const mapContainer = document.querySelector('.hidden-india-map-container');
+  const svg = document.querySelector('#hidden-india-svg-map');
   const cityGroups = document.querySelectorAll('.hidden-india-city-group');
-  if (!mapContainer || cityGroups.length === 0) return;
+  if (!mapContainer || !svg || cityGroups.length === 0) return;
 
   // Create tooltip element dynamically
   const tooltip = document.createElement('div');
   tooltip.className = 'hidden-india-map-tooltip';
   mapContainer.appendChild(tooltip);
 
-  cityGroups.forEach(group => {
-    const cityName = group.getAttribute('data-city');
-    const stateName = group.getAttribute('data-state');
-
-    const showTooltip = (circle) => {
-      if (!circle) return;
-      const cx = parseFloat(circle.getAttribute('cx'));
-      const cy = parseFloat(circle.getAttribute('cy'));
-      const xPercent = (cx / 612) * 100;
-      const yPercent = (cy / 696) * 100;
-
-      tooltip.textContent = `${cityName}, ${stateName}`;
-      tooltip.style.left = `${xPercent}%`;
-      tooltip.style.top = `${yPercent}%`;
-      tooltip.classList.add('active');
+  // Read cities data from DOM attributes
+  const cities = Array.from(cityGroups).map(group => {
+    return {
+      el: group,
+      name: group.getAttribute('data-city'),
+      state: group.getAttribute('data-state'),
+      x: parseFloat(group.getAttribute('data-x')),
+      y: parseFloat(group.getAttribute('data-y'))
     };
+  });
 
-    group.addEventListener('mouseenter', () => {
-      const circle = group.querySelector('.hidden-india-city-dot');
-      showTooltip(circle);
+  const showCityTooltip = (city) => {
+    tooltip.textContent = `${city.name}, ${city.state}`;
+    tooltip.style.left = `${(city.x / 612) * 100}%`;
+    tooltip.style.top = `${(city.y / 696) * 100}%`;
+    tooltip.classList.add('active');
+  };
+
+  const hideTooltip = () => {
+    tooltip.classList.remove('active');
+  };
+
+  // 1. Desktop Hover: use mouseenter/mouseleave for precision
+  cities.forEach(city => {
+    city.el.addEventListener('mouseenter', () => {
+      showCityTooltip(city);
     });
-
-    group.addEventListener('mouseleave', () => {
-      tooltip.classList.remove('active');
-    });
-
-    // Touch/tap trigger for mobile compatibility
-    group.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const circle = group.querySelector('.hidden-india-city-dot');
-      const isActive = tooltip.classList.contains('active') && tooltip.textContent === `${cityName}, ${stateName}`;
-      
-      if (isActive) {
-        tooltip.classList.remove('active');
-      } else {
-        showTooltip(circle);
-      }
+    city.el.addEventListener('mouseleave', () => {
+      hideTooltip();
     });
   });
 
-  // Tap anywhere else to dismiss tooltip on mobile
+  // 2. Click/Touch targeting for both mobile and desktop clicking:
+  // We listen on the SVG element itself.
+  svg.addEventListener('click', (e) => {
+    e.stopPropagation();
+    
+    const rect = svg.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+    
+    // Convert screen click coordinates to viewBox units (0-612, 0-696)
+    const viewX = (clickX / rect.width) * 612;
+    const viewY = (clickY / rect.height) * 696;
+    
+    let closestCity = null;
+    let minDistance = Infinity;
+    
+    cities.forEach(city => {
+      const dist = Math.sqrt((viewX - city.x) ** 2 + (viewY - city.y) ** 2);
+      if (dist < minDistance) {
+        minDistance = dist;
+        closestCity = city;
+      }
+    });
+    
+    // If click is within 45 viewBox units (approx. 20-30px on screen), show tooltip
+    if (minDistance < 45) {
+      const isActive = tooltip.classList.contains('active') && 
+                       tooltip.textContent === `${closestCity.name}, ${closestCity.state}`;
+      if (isActive) {
+        hideTooltip();
+      } else {
+        showCityTooltip(closestCity);
+      }
+    } else {
+      hideTooltip();
+    }
+  });
+
+  // Tap/click anywhere else to dismiss tooltip
   document.addEventListener('click', () => {
-    tooltip.classList.remove('active');
+    hideTooltip();
   });
 }
 
