@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Check for reduced motion preferences
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  initDropdownMenu();
+  initMenuDrawer();
   initTaglineRotator(prefersReducedMotion);
   initMapInteractivity();
   initRevealOnScroll(prefersReducedMotion);
@@ -16,36 +16,45 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * 0. Dropdown Menu Toggle
+ * 0. SpaceX-style Right Menu Drawer Toggle
  */
-function initDropdownMenu() {
-  const dropdown = document.querySelector('.hidden-india-dropdown');
-  const btn = document.querySelector('.hidden-india-dropdown-btn');
-  if (!dropdown || !btn) return;
+function initMenuDrawer() {
+  const toggleBtn = document.querySelector('.hidden-india-menu-toggle');
+  const closeBtn = document.querySelector('.hidden-india-drawer-close');
+  const drawer = document.getElementById('hidden-india-drawer');
+  const backdrop = document.querySelector('.hidden-india-drawer-backdrop');
 
-  btn.addEventListener('click', (e) => {
+  if (!toggleBtn || !drawer) return;
+
+  const openDrawer = () => {
+    drawer.setAttribute('aria-hidden', 'false');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  };
+
+  const closeDrawer = () => {
+    drawer.setAttribute('aria-hidden', 'true');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = ''; // Restore scrolling
+  };
+
+  toggleBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    const isActive = dropdown.classList.contains('active');
-    if (isActive) {
-      dropdown.classList.remove('active');
-      btn.setAttribute('aria-expanded', 'false');
-    } else {
-      dropdown.classList.add('active');
-      btn.setAttribute('aria-expanded', 'true');
-    }
+    openDrawer();
   });
 
-  // Close when clicking anywhere else
-  document.addEventListener('click', () => {
-    dropdown.classList.remove('active');
-    btn.setAttribute('aria-expanded', 'false');
-  });
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeDrawer);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeDrawer);
+  }
 
   // Close when pressing Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      dropdown.classList.remove('active');
-      btn.setAttribute('aria-expanded', 'false');
+    if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') {
+      closeDrawer();
     }
   });
 }
