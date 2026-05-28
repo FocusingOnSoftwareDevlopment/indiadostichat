@@ -723,8 +723,47 @@ footer {
     text-align: center;
   }
   
-  .hero h1 {
-    font-size: 2.5rem;
+  .hero {
+    padding: 3rem 1rem 2.5rem;
+    min-height: auto;
+  }
+  
+  .hero-content {
+    padding: 2rem 1.25rem 1.75rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  }
+  
+  .hero h1.hero-flag-heading {
+    font-size: clamp(1.8rem, 6.5vw, 2.5rem);
+    margin-bottom: 0.8rem;
+    gap: 8px;
+  }
+  
+  .hero p.hero-subtitle {
+    font-size: clamp(0.98rem, 3.8vw, 1.15rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.98rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  
+  .hero-content p.hero-helper-text {
+    margin-top: 1.2rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
   }
   
   .footer-content {
