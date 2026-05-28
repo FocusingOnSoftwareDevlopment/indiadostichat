@@ -248,9 +248,22 @@ main {
 .hero-content {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 900px;
+  width: min(850px, 94%);
   margin: 0 auto;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .hero-content {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
 .hero-rotating-bg {
@@ -286,11 +299,11 @@ main {
   right: 0;
   bottom: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.55) 100%);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 body.dark-mode .hero-bg-overlay {
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.6) 100%);
+  background: rgba(0, 0, 0, 0.32);
 }
 
 .hero-location-label {
