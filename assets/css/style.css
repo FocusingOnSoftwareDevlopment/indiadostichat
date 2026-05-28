@@ -286,11 +286,11 @@ main {
   right: 0;
   bottom: 0;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(240, 253, 244, 0.75));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.55) 100%);
 }
 
 body.dark-mode .hero-bg-overlay {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95));
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.6) 100%);
 }
 
 .hero-location-label {
@@ -335,6 +335,11 @@ body.dark-mode .hero h1.hero-flag-heading {
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.85);
+}
+
+body.dark-mode .hero p.hero-subtitle {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
 }
 
 .hero-buttons {
