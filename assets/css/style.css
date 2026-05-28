@@ -32,9 +32,7 @@ body.dark-mode {
 }
 
 body.dark-mode .hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.98)), url('../images/hero-bg.jpg') !important;
-  background-position: center !important;
-  background-size: cover !important;
+  background: none !important;
 }
 
 body.dark-mode .hero p {
@@ -228,10 +226,15 @@ main {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('../images/hero-bg.jpg') center/cover;
-  padding: 6rem 2rem;
+  background: none !important;
+  padding: 8rem 2rem;
   text-align: center;
   position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero::before {
@@ -239,22 +242,99 @@ main {
   position: absolute;
   top: 0; left: 0; right: 0; height: 4px;
   background: linear-gradient(90deg, var(--primary-color) 33%, white 33%, white 66%, var(--secondary-color) 66%);
+  z-index: 10;
 }
 
-.hero h1 {
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-rotating-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  transform: scale(1.02);
+}
+
+.hero-bg-layer.active {
+  opacity: 1;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(240, 253, 244, 0.75));
+}
+
+body.dark-mode .hero-bg-overlay {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95));
+}
+
+.hero-location-label {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  z-index: 3;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.hero h1.hero-flag-heading {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
-.hero p {
-  font-size: 1.2rem;
+body.dark-mode .hero h1.hero-flag-heading {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero p.hero-subtitle {
+  font-size: 1.25rem;
   color: var(--text-color);
-  opacity: 0.8;
+  opacity: 0.9;
   margin-bottom: 2rem;
-  max-width: 600px;
+  max-width: 750px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
 }
 
 .hero-buttons {

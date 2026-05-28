@@ -269,6 +269,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 4b. Homepage Hero Rotating Backgrounds ---
+    const heroBgLayers = document.querySelectorAll('.hero-bg-layer');
+    const locationLabel = document.querySelector('.hero-location-label');
+    
+    if (heroBgLayers.length > 0) {
+        const heroImages = [
+            { src: "assets/images/home-hero/mumbai-gateway.webp", label: "Mumbai" },
+            { src: "assets/images/home-hero/delhi-india-gate.webp", label: "Delhi" },
+            { src: "assets/images/home-hero/hyderabad-charminar.webp", label: "Hyderabad" },
+            { src: "assets/images/home-hero/jaipur-hawa-mahal.webp", label: "Jaipur" },
+            { src: "assets/images/home-hero/kerala-backwaters.webp", label: "Kerala" },
+            { src: "assets/images/home-hero/kashmir-mountains.webp", label: "Kashmir" },
+            { src: "assets/images/home-hero/varanasi-ghats.webp", label: "Varanasi" },
+            { src: "assets/images/home-hero/goa-beach.webp", label: "Goa" },
+            { src: "assets/images/home-hero/india-festival-lights.webp", label: "India" }
+        ];
+
+        let currentImgIdx = 0;
+        let activeLayerIdx = 0;
+
+        // Preload other images after the page loads
+        window.addEventListener('load', () => {
+            for (let i = 1; i < heroImages.length; i++) {
+                const img = new Image();
+                img.src = heroImages[i].src;
+            }
+        });
+
+        if (!prefersReducedMotion && heroBgLayers.length >= 2) {
+            setInterval(() => {
+                const nextImgIdx = (currentImgIdx + 1) % heroImages.length;
+                const nextLayerIdx = 1 - activeLayerIdx;
+                
+                const activeLayer = heroBgLayers[activeLayerIdx];
+                const inactiveLayer = heroBgLayers[nextLayerIdx];
+
+                // Set image on the inactive layer
+                inactiveLayer.style.backgroundImage = `url('${heroImages[nextImgIdx].src}')`;
+                
+                // Add active to inactive layer, remove from active
+                inactiveLayer.classList.add('active');
+                activeLayer.classList.remove('active');
+
+                // Update location label
+                if (locationLabel) {
+                    locationLabel.style.opacity = '0';
+                    setTimeout(() => {
+                        locationLabel.textContent = heroImages[nextImgIdx].label;
+                        locationLabel.style.opacity = '1';
+                    }, 400);
+                }
+
+                currentImgIdx = nextImgIdx;
+                activeLayerIdx = nextLayerIdx;
+            }, 6000);
+        }
+    }
+
     // --- 5. Back to Top Button ---
     const backToTopBtn = document.createElement('button');
     backToTopBtn.className = 'back-to-top';
