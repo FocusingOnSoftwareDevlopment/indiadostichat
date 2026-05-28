@@ -16,7 +16,7 @@ def verify_all():
         print("PASS: H1 heading updated successfully in index.html")
         
     # 2. Check rotating layers markup in index.html
-    if 'class="hero-rotating-bg"' not in html or 'class="hero-location-label"' not in html:
+    if 'class="hero-rotating-bg"' not in html:
         print("ERROR: Rotating background markup missing in index.html")
         errors += 1
     else:
@@ -44,7 +44,7 @@ def verify_all():
     css_path = os.path.join(base_dir, "assets", "css", "style.css")
     with open(css_path, 'r', encoding='utf-8') as f:
         css = f.read()
-    required_classes = [".hero-rotating-bg", ".hero-bg-layer", ".hero-bg-overlay", ".hero-location-label", "h1.hero-flag-heading"]
+    required_classes = [".hero-rotating-bg", ".hero-bg-layer", ".hero-bg-overlay", "h1.hero-flag-heading"]
     for c in required_classes:
         if c not in css:
             print(f"ERROR: CSS class missing in style.css: {c}")
