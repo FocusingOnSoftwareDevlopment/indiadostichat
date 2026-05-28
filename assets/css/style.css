@@ -306,35 +306,53 @@ body.dark-mode .hero-bg-overlay {
   background: rgba(0, 0, 0, 0.32);
 }
 
-.hero-location-badge {
-  display: inline-flex;
+.hero-location-sidebar {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  background: rgba(255, 153, 51, 0.08);
-  border: 1px solid rgba(255, 153, 51, 0.25);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--accent-color);
-  margin-bottom: 1.2rem;
-  transition: var(--transition);
+  background: rgba(15, 23, 42, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 16px 10px;
+  border-radius: 30px;
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
-.hero-location-badge i {
+.hero-location-sidebar i {
   color: var(--primary-color);
   font-size: 0.95rem;
+  animation: bounceMarker 2s infinite ease-in-out;
 }
 
 .hero-location-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 8px;
+  color: #f1f5f9;
   transition: opacity 0.3s ease;
   display: inline-block;
 }
 
-body.dark-mode .hero-location-badge {
-  background: rgba(255, 153, 51, 0.05);
-  border-color: rgba(255, 153, 51, 0.15);
-  color: var(--primary-color);
+body.dark-mode .hero-location-sidebar {
+  background: rgba(15, 23, 42, 0.65);
+}
+
+@keyframes bounceMarker {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
 .hero h1.hero-flag-heading {
@@ -794,6 +812,30 @@ footer {
     margin-top: 1.2rem !important;
     font-size: 0.9rem !important;
     line-height: 1.5 !important;
+  }
+  
+  .hero-location-sidebar {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: 12px;
+    transform: translateX(-50%);
+    flex-direction: row;
+    padding: 6px 14px;
+    border-radius: 20px;
+    gap: 6px;
+    background: rgba(15, 23, 42, 0.72);
+  }
+  
+  .hero-location-sidebar .hero-location-text {
+    writing-mode: horizontal-tb;
+    margin-top: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .hero-location-sidebar i {
+    animation: none;
   }
   
   .footer-content {
