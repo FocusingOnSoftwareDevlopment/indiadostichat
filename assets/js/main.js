@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4b. Homepage Hero Rotating Backgrounds ---
     const heroBgLayers = document.querySelectorAll('.hero-bg-layer');
-    const locationLabel = document.querySelector('.hero-location-label');
+    const locationLabel = document.querySelector('.hero-location-text');
     
     if (heroBgLayers.length > 0) {
         const heroImages = [

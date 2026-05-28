@@ -306,22 +306,35 @@ body.dark-mode .hero-bg-overlay {
   background: rgba(0, 0, 0, 0.32);
 }
 
-.hero-location-label {
-  position: absolute;
-  bottom: 15px;
-  right: 20px;
-  z-index: 3;
-  font-size: 0.82rem;
+.hero-location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 153, 51, 0.08);
+  border: 1px solid rgba(255, 153, 51, 0.25);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.88rem;
   font-weight: 600;
-  padding: 4px 12px;
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.55);
-  color: #ffffff;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: opacity 0.5s ease;
-  pointer-events: none;
+  color: var(--accent-color);
+  margin-bottom: 1.2rem;
+  transition: var(--transition);
+}
+
+.hero-location-badge i {
+  color: var(--primary-color);
+  font-size: 0.95rem;
+}
+
+.hero-location-text {
+  transition: opacity 0.3s ease;
+  display: inline-block;
+}
+
+body.dark-mode .hero-location-badge {
+  background: rgba(255, 153, 51, 0.05);
+  border-color: rgba(255, 153, 51, 0.15);
+  color: var(--primary-color);
 }
 
 .hero h1.hero-flag-heading {
@@ -342,6 +355,18 @@ body.dark-mode .hero-bg-overlay {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   display: inline-block;
   vertical-align: middle;
+}
+
+.hero p.hero-subtitle img.subtitle-flag-icon {
+  height: 0.9em;
+  width: auto;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 2px;
+  position: relative;
+  top: -1px;
 }
 
 body.dark-mode .hero h1.hero-flag-heading {
