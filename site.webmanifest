@@ -1,19 +1,21 @@
 {
   "name": "IndiaDostiChat",
   "short_name": "IDC",
+  "description": "IndiaDostiChat is a free India chat room for Indian friends, Hindi chat, desi chat and community games.",
   "icons": [
     {
-      "src": "/favicon-192x192.png",
+      "src": "/favicon-192x192.png?v=3",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/favicon-512x512.png",
+      "src": "/favicon-512x512.png?v=3",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "theme_color": "#16a34a",
+  "theme_color": "#0b3d91",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "start_url": "/"
 }
