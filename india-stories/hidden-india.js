@@ -135,7 +135,28 @@ function initMapInteractivity() {
 
   const showCityTooltip = (city) => {
     tooltip.textContent = `${city.name}, ${city.state}`;
-    tooltip.style.left = `${(city.x / 612) * 100}%`;
+    
+    // Temporarily make active but hidden to get actual dimensions
+    tooltip.style.visibility = 'hidden';
+    tooltip.classList.add('active');
+    const tooltipWidth = tooltip.offsetWidth;
+    tooltip.classList.remove('active');
+    tooltip.style.visibility = '';
+    
+    const containerWidth = mapContainer.offsetWidth;
+    
+    // Calculate raw X position in pixels relative to the container
+    let leftPx = (city.x / 612) * containerWidth;
+    
+    // Constrain tooltip horizontally within map container (10px padding from edges)
+    const halfWidth = tooltipWidth / 2;
+    if (leftPx - halfWidth < 10) {
+      leftPx = halfWidth + 10;
+    } else if (leftPx + halfWidth > containerWidth - 10) {
+      leftPx = containerWidth - halfWidth - 10;
+    }
+    
+    tooltip.style.left = `${leftPx}px`;
     tooltip.style.top = `${(city.y / 696) * 100}%`;
     tooltip.classList.add('active');
   };

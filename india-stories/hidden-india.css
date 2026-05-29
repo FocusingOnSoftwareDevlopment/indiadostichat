@@ -373,6 +373,13 @@
   margin: 3rem 0;
 }
 
+.hidden-india-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 .hidden-india-card {
   background: var(--hi-card-bg);
   border: 1px solid var(--hi-card-border);
@@ -980,7 +987,8 @@
 .hidden-india-footer-links {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
   margin-top: 1.5rem;
   list-style: none;
   padding: 0;
@@ -1067,13 +1075,60 @@
     min-height: auto;
     padding: 8rem 1rem 4rem 1rem;
   }
+  .hidden-india-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+  }
+  .hidden-india-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 2rem;
+  }
   .hidden-india-section {
     padding: 4rem 1.2rem;
+  }
+  .hidden-india-para {
+    text-align: left;
+    font-size: 1rem;
   }
   .hidden-india-quote {
     font-size: 1.25rem;
     padding-left: 1.2rem;
     margin: 2rem 0;
+  }
+  .hidden-india-drawer-links a {
+    padding: 0.6rem 0;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hidden-india-logo {
+    font-size: 1.1rem;
+    gap: 6px;
+  }
+  .hidden-india-logo img {
+    height: 28px;
+  }
+  .hidden-india-logo img.hidden-india-nav-flag {
+    display: none !important;
+  }
+  .hidden-india-nav-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+  .hidden-india-nav-right {
+    gap: 1rem;
+  }
+  .hidden-india-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem;
+  }
+  .hidden-india-video-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+  .hidden-india-toc-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
