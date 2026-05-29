@@ -230,15 +230,15 @@
 }
 
 .hidden-india-state-path {
-  fill: #0c1224;
-  stroke: rgba(255, 255, 255, 0.08);
+  fill: #080d1a;
+  stroke: rgba(255, 255, 255, 0.15);
   stroke-width: 1.2;
   transition: var(--hi-transition);
 }
 
 .hidden-india-state-path:hover {
-  fill: #141e3a;
-  stroke: rgba(255, 153, 51, 0.4);
+  fill: #111a30;
+  stroke: rgba(255, 153, 51, 0.6);
 }
 
 /* Glowing City Dots */
@@ -316,11 +316,11 @@
   padding: 0.6rem 1.2rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--hi-text);
+  color: #ffffff; /* Always white text for high contrast on dark background */
   pointer-events: none;
   opacity: 0;
   transform: translate(-50%, -120%) scale(0.9);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Instant coordinates movement, smooth fade/scale */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
   z-index: 100;
   white-space: nowrap;
@@ -1252,11 +1252,11 @@
   background-color: var(--hi-accent-gold) !important;
 }
 .light-mode .hidden-india-state-path {
-  fill: #fdf7ec !important;
-  stroke: var(--is-border) !important;
+  fill: #f3e5ce !important;
+  stroke: rgba(15, 23, 42, 0.15) !important;
 }
 .light-mode .hidden-india-state-path:hover {
-  fill: #fcf0da !important;
+  fill: #e8d7bb !important;
   stroke: var(--hi-accent-saffron) !important;
 }
 .light-mode .hidden-india-toc-link {

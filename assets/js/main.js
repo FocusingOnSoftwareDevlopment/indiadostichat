@@ -606,6 +606,97 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- 9. Premium India Stories Loader Transition ---
+    function generateChakraSVG() {
+        let lines = '';
+        for (let i = 0; i < 24; i++) {
+            const angle = i * 15;
+            lines += `<line x1="60" y1="60" x2="60" y2="12" transform="rotate(${angle} 60 60)" />`;
+            const dotAngle = angle + 7.5;
+            const rad = (dotAngle * Math.PI) / 180;
+            const dotX = 60 + 44 * Math.sin(rad);
+            const dotY = 60 - 44 * Math.cos(rad);
+            lines += `<circle cx="${dotX}" cy="${dotY}" r="1.5" />`;
+        }
+        return `
+            <svg class="india-stories-loader-chakra-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="60" cy="60" r="54" class="chakra-outer-ring" stroke-width="3" fill="none" />
+                <circle cx="60" cy="60" r="48" class="chakra-inner-ring" stroke-width="0.8" fill="none" />
+                <circle cx="60" cy="60" r="8" class="chakra-hub" />
+                <circle cx="60" cy="60" r="3" fill="#ffffff" />
+                <g class="chakra-spokes" stroke-width="1.8" stroke-linecap="round">
+                    ${lines}
+                </g>
+            </svg>
+        `;
+    }
+
+    // Dynamic Injection of Loader overlay
+    const loaderContainer = document.createElement('div');
+    loaderContainer.id = 'india-stories-loader';
+    loaderContainer.className = 'india-stories-loader';
+    loaderContainer.setAttribute('aria-hidden', 'true');
+    loaderContainer.innerHTML = `
+        <div class="india-stories-loader-card">
+            <div class="india-stories-loader-chakra" aria-hidden="true">
+                ${generateChakraSVG()}
+            </div>
+            <h2>Opening India Stories…</h2>
+            <p>A journey through India’s culture, history and people</p>
+            <div class="india-stories-loader-line" aria-hidden="true"></div>
+        </div>
+    `;
+    document.body.appendChild(loaderContainer);
+
+    // Click interceptor for India Stories links
+    document.addEventListener('click', function(event) {
+        const link = event.target.closest('a');
+        if (!link) return;
+
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        // Determine absolute URL destination
+        let destinationUrl;
+        try {
+            destinationUrl = new URL(link.href, window.location.origin);
+        } catch (e) {
+            return; // Invalid URL
+        }
+
+        // Check if destination is pointing to /india-stories/
+        const isIndiaStories = destinationUrl.origin === window.location.origin &&
+            (destinationUrl.pathname === '/india-stories/' || 
+             destinationUrl.pathname.startsWith('/india-stories/'));
+
+        if (!isIndiaStories) return;
+
+        // Skip if modifier keys are pressed or if link opens in new tab
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (link.target === '_blank') return;
+
+        // Prevent immediate navigation
+        event.preventDefault();
+
+        // Add class to body
+        document.body.classList.add('is-loading-india-stories');
+
+        // Show the loader overlay
+        const loader = document.getElementById('india-stories-loader');
+        if (loader) {
+            loader.setAttribute('aria-hidden', 'false');
+            loader.classList.add('active');
+        }
+
+        // Motion preferences check
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const delay = reduceMotion ? 100 : 900;
+
+        window.setTimeout(function() {
+            window.location.href = link.href;
+        }, delay);
+    });
 });
 
 // --- PWA Installation Event Listener (runs immediately) ---

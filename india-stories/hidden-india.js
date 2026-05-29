@@ -153,7 +153,8 @@ function initMapInteractivity() {
   const mapContainer = document.querySelector('.hidden-india-map-container');
   const svg = document.querySelector('#hidden-india-svg-map');
   const cityGroups = document.querySelectorAll('.hidden-india-city-group');
-  if (!mapContainer || !svg || cityGroups.length === 0) return;
+  const statePaths = document.querySelectorAll('.hidden-india-state-path');
+  if (!mapContainer || !svg) return;
 
   // Create tooltip element dynamically
   const tooltip = document.createElement('div');
@@ -199,16 +200,75 @@ function initMapInteractivity() {
     tooltip.classList.add('active');
   };
 
+  const showStateTooltip = (stateName, event) => {
+    const isNew = tooltip.textContent !== stateName || !tooltip.classList.contains('active');
+    if (isNew) {
+      tooltip.textContent = stateName;
+      tooltip.style.visibility = 'hidden';
+      tooltip.classList.add('active');
+    }
+    
+    const tooltipWidth = tooltip.offsetWidth || 120;
+    
+    if (isNew) {
+      tooltip.classList.remove('active');
+      tooltip.style.visibility = '';
+    }
+    
+    const containerRect = mapContainer.getBoundingClientRect();
+    const leftPx = event.clientX - containerRect.left;
+    const topPx = event.clientY - containerRect.top;
+    
+    let adjustedLeft = leftPx;
+    const halfWidth = tooltipWidth / 2;
+    const containerWidth = containerRect.width;
+    
+    if (adjustedLeft - halfWidth < 10) {
+      adjustedLeft = halfWidth + 10;
+    } else if (adjustedLeft + halfWidth > containerWidth - 10) {
+      adjustedLeft = containerWidth - halfWidth - 10;
+    }
+    
+    tooltip.style.left = `${adjustedLeft}px`;
+    tooltip.style.top = `${topPx - 15}px`; // Show slightly above mouse cursor
+    
+    if (isNew) {
+      tooltip.classList.add('active');
+    }
+  };
+
   const hideTooltip = () => {
     tooltip.classList.remove('active');
   };
 
-  // 1. Desktop Hover: use mouseenter/mouseleave for precision
+  // 1a. Desktop Hover for Cities
   cities.forEach(city => {
-    city.el.addEventListener('mouseenter', () => {
+    city.el.addEventListener('mouseenter', (e) => {
+      e.stopPropagation();
       showCityTooltip(city);
     });
     city.el.addEventListener('mouseleave', () => {
+      hideTooltip();
+    });
+  });
+
+  // 1b. Desktop Hover for States and Union Territories
+  statePaths.forEach(path => {
+    path.addEventListener('mouseenter', (e) => {
+      const stateName = path.getAttribute('name');
+      if (stateName) {
+        showStateTooltip(stateName, e);
+      }
+    });
+    
+    path.addEventListener('mousemove', (e) => {
+      const stateName = path.getAttribute('name');
+      if (stateName && tooltip.classList.contains('active')) {
+        showStateTooltip(stateName, e);
+      }
+    });
+
+    path.addEventListener('mouseleave', () => {
       hideTooltip();
     });
   });
@@ -237,8 +297,8 @@ function initMapInteractivity() {
       }
     });
     
-    // If click is within 45 viewBox units (approx. 20-30px on screen), show tooltip
-    if (minDistance < 45) {
+    // If click is within 45 viewBox units (approx. 20-30px on screen), show city tooltip
+    if (minDistance < 45 && closestCity) {
       const isActive = tooltip.classList.contains('active') && 
                        tooltip.textContent === `${closestCity.name}, ${closestCity.state}`;
       if (isActive) {
@@ -247,7 +307,46 @@ function initMapInteractivity() {
         showCityTooltip(closestCity);
       }
     } else {
-      hideTooltip();
+      // If we clicked a state path, let's show the state/UT name tooltip!
+      const clickedStatePath = e.target.closest('.hidden-india-state-path');
+      if (clickedStatePath) {
+        const stateName = clickedStatePath.getAttribute('name');
+        if (stateName) {
+          const isActive = tooltip.classList.contains('active') && 
+                           tooltip.textContent === stateName;
+          if (isActive) {
+            hideTooltip();
+          } else {
+            // Re-use showStateTooltip logic but with static click coordinates
+            tooltip.textContent = stateName;
+            
+            // Get tooltip dimensions
+            tooltip.style.visibility = 'hidden';
+            tooltip.classList.add('active');
+            const tooltipWidth = tooltip.offsetWidth;
+            tooltip.classList.remove('active');
+            tooltip.style.visibility = '';
+            
+            let adjustedLeft = clickX;
+            const halfWidth = tooltipWidth / 2;
+            const containerWidth = rect.width;
+            
+            if (adjustedLeft - halfWidth < 10) {
+              adjustedLeft = halfWidth + 10;
+            } else if (adjustedLeft + halfWidth > containerWidth - 10) {
+              adjustedLeft = containerWidth - halfWidth - 10;
+            }
+            
+            tooltip.style.left = `${adjustedLeft}px`;
+            tooltip.style.top = `${clickY - 15}px`;
+            tooltip.classList.add('active');
+          }
+        } else {
+          hideTooltip();
+        }
+      } else {
+        hideTooltip();
+      }
     }
   });
 
