@@ -3,10 +3,42 @@
  * Vanilla JavaScript - No external libraries
  */
 
+// Early Theme Check to avoid flash of dark background in light mode
+(function() {
+  let savedTheme = null;
+  try {
+    savedTheme = localStorage.getItem("theme");
+  } catch (e) {}
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const themeParam = urlParams.get('theme') || urlParams.get('dark');
+  
+  let isLight = false;
+  if (themeParam === 'light' || themeParam === '0' || themeParam === 'false') {
+    isLight = true;
+  } else if (themeParam === 'dark' || themeParam === '1' || themeParam === 'true') {
+    isLight = false;
+  } else {
+    isLight = (savedTheme === "light");
+  }
+  
+  if (isLight) {
+    document.documentElement.classList.add("light-mode");
+  } else {
+    document.documentElement.classList.remove("light-mode");
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Sync body class with html element
+  if (document.documentElement.classList.contains("light-mode")) {
+    document.body.classList.add("light-mode");
+  }
+
   // Check for reduced motion preferences
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  initThemeToggle();
   initMenuDrawer();
   initTaglineRotator(prefersReducedMotion);
   initMapInteractivity();
@@ -299,5 +331,57 @@ function initSmoothScroll() {
         });
       }
     });
+  });
+}
+
+/**
+ * 6. Lightbulb Theme Toggle (Dark/Light mode switch with micro-animation)
+ */
+function initThemeToggle() {
+  const headerRight = document.querySelector('.hidden-india-nav-right');
+  if (!headerRight) return;
+
+  // Create bulb toggle button
+  const bulbToggle = document.createElement('button');
+  bulbToggle.id = 'hidden-india-bulb-toggle';
+  bulbToggle.className = 'hidden-india-bulb-toggle';
+  bulbToggle.setAttribute('aria-label', 'Toggle dark mode');
+  bulbToggle.setAttribute('title', 'Toggle dark mode');
+  
+  // Custom bulb SVG content
+  bulbToggle.innerHTML = `
+    <div class="bulb-glow"></div>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path class="bulb-fill" d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .3 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5z" />
+      <line x1="9" y1="18" x2="15" y2="18" />
+      <line x1="10" y1="22" x2="14" y2="22" />
+      <line class="bulb-ray" x1="12" y1="2" x2="12" y2="4" />
+      <line class="bulb-ray" x1="5" y1="5" x2="6.4" y2="6.4" />
+      <line class="bulb-ray" x1="2" y1="12" x2="4" y2="12" />
+      <line class="bulb-ray" x1="5" y1="19" x2="6.4" y2="17.6" />
+      <line class="bulb-ray" x1="19" y1="5" x2="17.6" y2="6.4" />
+      <line class="bulb-ray" x1="22" y1="12" x2="20" y2="12" />
+      <line class="bulb-ray" x1="19" y1="19" x2="17.6" y2="17.6" />
+    </svg>
+  `;
+
+  // Insert bulb toggle as the first element inside nav-right
+  headerRight.insertBefore(bulbToggle, headerRight.firstChild);
+
+  bulbToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Add vibration shake class
+    bulbToggle.classList.add('clicked');
+    setTimeout(() => {
+      bulbToggle.classList.remove('clicked');
+    }, 450);
+
+    const isLightNow = document.body.classList.toggle('light-mode');
+    document.documentElement.classList.toggle('light-mode', isLightNow);
+    
+    try {
+      localStorage.setItem('theme', isLightNow ? 'light' : 'dark');
+    } catch (err) {}
   });
 }

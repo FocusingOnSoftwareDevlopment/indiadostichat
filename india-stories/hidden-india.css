@@ -1144,6 +1144,9 @@
   display: inline-block !important;
 }
 
+padding: 0.4rem 1.1rem;
+}
+
 .hidden-india-kicker-flag {
   height: 12px !important;
   width: 18px !important;
@@ -1153,4 +1156,176 @@
   opacity: 0.85;
   box-shadow: 0 0 4px rgba(255, 153, 51, 0.3), 0 0 4px rgba(19, 136, 8, 0.3);
   display: inline-block !important;
+}
+
+/* --- Light Mode Color System Overrides --- */
+.light-mode {
+  --hi-bg: #f8fafc;
+  --hi-text: #0f172a;
+  --hi-text-muted: #475569;
+  --hi-accent-gold: #b45309;
+  --hi-accent-saffron: #ea580c;
+  --hi-accent-green: #166534;
+  --hi-accent-white: #0f172a;
+  --hi-accent-navy: #1e3a8a;
+  --hi-card-bg: rgba(255, 255, 255, 0.75);
+  --hi-card-border: rgba(15, 23, 42, 0.08);
+  --hi-glow-saffron: rgba(234, 88, 12, 0.12);
+  --hi-glow-green: rgba(22, 101, 52, 0.12);
+  --hi-glow-gold: rgba(180, 83, 9, 0.12);
+}
+
+/* Light Mode Layout Overrides */
+.light-mode .hidden-india-header {
+  background: rgba(248, 250, 252, 0.92);
+  border-bottom-color: rgba(15, 23, 42, 0.06);
+}
+.light-mode .hidden-india-drawer-content {
+  background: rgba(241, 245, 249, 0.98);
+  border-left-color: rgba(15, 23, 42, 0.06);
+}
+.light-mode .hidden-india-drawer-logo span,
+.light-mode .hidden-india-logo span {
+  background: linear-gradient(90deg, #ea580c, #b45309, #166534);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.light-mode .hidden-india-logo {
+  color: #0f172a;
+}
+.light-mode .hidden-india-drawer-links a:hover {
+  color: #0f172a;
+}
+.light-mode .hidden-india-state-path {
+  fill: #f1f5f9;
+  stroke: rgba(15, 23, 42, 0.08);
+}
+.light-mode .hidden-india-state-path:hover {
+  fill: #e2e8f0;
+  stroke: rgba(234, 88, 12, 0.4);
+}
+.light-mode .hidden-india-toc-link {
+  background: rgba(255, 255, 255, 0.6);
+}
+.light-mode .hidden-india-related-card {
+  background: rgba(255, 255, 255, 0.6);
+}
+.light-mode .hidden-india-faq-item {
+  background: rgba(255, 255, 255, 0.5);
+}
+.light-mode .hidden-india-faq-item.active {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(180, 83, 9, 0.3);
+}
+.light-mode .hidden-india-faq-question {
+  color: #0f172a;
+}
+.light-mode .hidden-india-faq-answer-content {
+  color: #334155;
+}
+.light-mode .hidden-india-quote {
+  background: linear-gradient(to right, rgba(234, 88, 12, 0.03), transparent);
+}
+.light-mode .hidden-india-map-container {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+.light-mode .hidden-india-map-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: #b45309;
+  color: #0f172a;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.light-mode .hidden-india-map-tooltip::after {
+  border-color: rgba(255, 255, 255, 0.98) transparent transparent;
+}
+.light-mode .hidden-india-footer {
+  background: #f1f5f9;
+  border-top-color: rgba(15, 23, 42, 0.06);
+}
+
+/* Minimalist Bulb Toggle Button styling */
+.hidden-india-bulb-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hi-text-muted);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+  padding: 0;
+}
+.hidden-india-bulb-toggle:hover {
+  color: var(--hi-accent-gold);
+  background: rgba(255, 255, 255, 0.05);
+}
+.light-mode .hidden-india-bulb-toggle:hover {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+/* Bulb SVG styling */
+.hidden-india-bulb-toggle svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+}
+
+/* Rays styling */
+.hidden-india-bulb-toggle .bulb-ray {
+  transition: stroke-dashoffset 0.4s ease, opacity 0.4s ease;
+  opacity: 0.3;
+}
+.light-mode .hidden-india-bulb-toggle .bulb-ray {
+  opacity: 1;
+  stroke: #d97706;
+}
+
+/* Backdrop glow */
+.hidden-india-bulb-toggle .bulb-glow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--hi-accent-gold);
+  filter: blur(8px);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* When light mode is active */
+.light-mode .hidden-india-bulb-toggle svg {
+  color: #d97706;
+}
+.light-mode .hidden-india-bulb-toggle svg .bulb-fill {
+  fill: #f59e0b;
+}
+.light-mode .hidden-india-bulb-toggle .bulb-glow {
+  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(3.5);
+}
+
+/* Toggle shake animation */
+.hidden-india-bulb-toggle.clicked svg {
+  animation: bulbShake 0.4s ease;
+}
+@keyframes bulbShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
 }
