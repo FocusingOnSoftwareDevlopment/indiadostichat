@@ -524,7 +524,7 @@ function updateHeroOverlay(isLight) {
   if (urlMatch && urlMatch[1]) {
     const imageUrl = urlMatch[1];
     if (isLight) {
-      hero.style.backgroundImage = `linear-gradient(to bottom, rgba(255, 248, 236, 0.55), rgba(255, 248, 236, 0.99)), url('${imageUrl}')`;
+      hero.style.backgroundImage = `linear-gradient(to bottom, rgba(255, 248, 236, 0.2), rgba(255, 248, 236, 0.65)), url('${imageUrl}')`;
     } else {
       hero.style.backgroundImage = `linear-gradient(to bottom, rgba(3, 6, 17, 0.7), rgba(3, 6, 17, 0.95)), url('${imageUrl}')`;
     }
