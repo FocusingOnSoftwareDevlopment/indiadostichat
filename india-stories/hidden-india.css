@@ -25,11 +25,13 @@
   /* Scoped variables for India Stories */
   --is-bg: #05070d;
   --is-surface: rgba(255, 255, 255, 0.06);
+  --is-surface-soft: rgba(255, 255, 255, 0.03);
   --is-text: #f8fafc;
   --is-muted: #cbd5e1;
   --is-heading: #ffffff;
   --is-link: #93c5fd;
   --is-border: rgba(255, 255, 255, 0.14);
+  --is-card-shadow: rgba(0, 0, 0, 0.3);
 
   /* Map old variables to the scoped variables */
   --hi-bg: var(--is-bg);
@@ -50,13 +52,15 @@
 }
 
 .hidden-india-page.light-mode {
-  --is-bg: #fff8ec; /* warm cream */
+  --is-bg: #fff8ec;
   --is-surface: #ffffff;
-  --is-text: #1f2937; /* navy-charcoal */
-  --is-muted: #4b5563;
-  --is-heading: #0f172a;
-  --is-link: #0b5cad; /* dark blue */
-  --is-border: rgba(15, 23, 42, 0.16);
+  --is-surface-soft: #f8ead3;
+  --is-text: #172033;
+  --is-heading: #08111f;
+  --is-muted: #3f4a5f;
+  --is-link: #064f9e;
+  --is-border: rgba(23, 32, 51, 0.18);
+  --is-card-shadow: rgba(15, 23, 42, 0.12);
 
   /* Overrides for accents to prevent low-contrast gray/washed text */
   --hi-accent-gold: #b45309;
@@ -1336,79 +1340,52 @@
   opacity: 0.05;
 }
 
-/* Premium Hanging Bulb Toggle Switch styling */
-.india-stories-theme-toggle {
+/* Premium Hanging Switch using Real Lightbulb Image */
+.is-bulb-toggle {
   background: none;
   border: none;
   cursor: pointer;
-  width: 40px;
-  height: 70px;
+  width: 60px;
+  position: fixed;
+  top: 90px;
+  right: 24px;
+  z-index: 1010;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  color: var(--hi-text-muted);
-  transition: color 0.3s ease;
-  position: relative;
+  flex-direction: column;
+  align-items: center;
   overflow: visible;
   padding: 0;
-  z-index: 1010;
+  transition: transform 0.3s ease;
 }
-.india-stories-theme-toggle:focus-visible {
+
+.is-bulb-toggle:focus-visible {
   outline: 2px solid var(--hi-accent-saffron);
   outline-offset: 4px;
   border-radius: 4px;
 }
-.india-stories-bulb-svg {
-  width: 40px;
-  height: 100px;
-  overflow: visible;
+
+.is-bulb-wrap {
+  position: relative;
+  width: 48px;
+  height: auto;
   display: block;
 }
 
-/* Wire, Socket, Glass, and Filament */
-.india-stories-wire {
-  stroke: var(--hi-text-muted);
-  stroke-width: 1.5;
-  fill: none;
-  transition: stroke 0.4s ease;
-}
-.india-stories-socket {
-  fill: var(--hi-text-muted);
-  transition: fill 0.4s ease;
-}
-.india-stories-bulb-glass {
-  stroke: var(--hi-text-muted);
-  stroke-width: 1.5;
-  fill: rgba(255, 255, 255, 0.02);
-  transition: stroke 0.4s ease, fill 0.4s ease;
-}
-.india-stories-bulb-filament {
-  stroke: var(--hi-text-muted);
-  stroke-width: 1.2;
-  fill: none;
-  transition: stroke 0.4s ease;
+.is-bulb-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.5;
+  filter: grayscale(1) brightness(0.65);
+  transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
-/* Pull String & Knob */
-.india-stories-pull-string {
-  stroke: var(--hi-text-muted);
-  stroke-width: 1.2;
-  stroke-dasharray: 2,2;
-  fill: none;
-  transition: stroke 0.4s ease;
-}
-.india-stories-pull-knob {
-  fill: var(--hi-text-muted);
-  transition: fill 0.4s ease;
-}
-
-/* Ambient Backdrop Glow */
-.india-stories-bulb-glow {
+.is-bulb-glow {
   position: absolute;
-  top: 48px;
-  left: 20px;
-  width: 24px;
-  height: 24px;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(245, 158, 11, 0.8) 0%, transparent 70%);
   filter: blur(8px);
@@ -1419,65 +1396,74 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* Hover effects */
-.india-stories-theme-toggle:hover {
-  color: var(--hi-accent-gold);
-}
-.india-stories-theme-toggle:hover .india-stories-bulb-glass {
-  stroke: var(--hi-accent-gold);
-}
-
-/* Light mode overrides for Bulb switch */
-.light-mode .india-stories-theme-toggle {
-  color: var(--is-text);
-}
-.light-mode .india-stories-wire {
-  stroke: var(--is-text);
-}
-.light-mode .india-stories-socket {
-  fill: #b45309;
-}
-.light-mode .india-stories-bulb-glass {
-  stroke: #ea580c;
-  fill: rgba(245, 158, 11, 0.25);
-}
-.light-mode .india-stories-bulb-filament {
-  stroke: #f59e0b;
-}
-.light-mode .india-stories-pull-string {
-  stroke: var(--is-text);
-}
-.light-mode .india-stories-pull-knob {
-  fill: #ea580c;
-}
-.light-mode .india-stories-bulb-glow {
-  opacity: 0.85;
-  transform: translate(-50%, -50%) scale(2.8);
+.is-pull-string {
+  display: block;
+  width: 2px;
+  height: 30px;
+  background-color: var(--hi-text-muted);
+  margin-top: 4px; /* starts below the bulb, no overlap! */
+  transition: background-color 0.4s ease, transform 0.4s ease;
 }
 
-/* Toggle pulled physics animations */
-.india-stories-theme-toggle.is-pulled .india-stories-pull-string-group {
-  animation: pullString 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.india-stories-theme-toggle.is-pulled .india-stories-bulb-group {
-  transform-origin: 20px 25px;
-  animation: bulbSwing 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+.is-pull-knob {
+  display: block;
+  width: 7px;
+  height: 7px;
+  background-color: var(--hi-text-muted);
+  border-radius: 50%;
+  margin-top: -1px;
+  transition: background-color 0.4s ease, transform 0.4s ease;
 }
 
-@keyframes pullString {
+/* Light mode overrides for Switch */
+.light-mode .is-bulb-img {
+  opacity: 1;
+  filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.6)) brightness(1.2) grayscale(0);
+}
+
+.light-mode .is-bulb-glow {
+  opacity: 0.9;
+  transform: translate(-50%, -50%) scale(2.2);
+}
+
+.light-mode .is-pull-string,
+.light-mode .is-pull-knob {
+  background-color: var(--is-text);
+}
+
+/* Toggle pull spring animations */
+.is-bulb-toggle.is-pulled .is-pull-string,
+.is-bulb-toggle.is-pulled .is-pull-knob {
+  animation: pullStringMove 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes pullStringMove {
   0% { transform: translateY(0); }
-  35% { transform: translateY(14px); }
-  70% { transform: translateY(-4px); }
+  35% { transform: translateY(12px); }
+  70% { transform: translateY(-3px); }
   100% { transform: translateY(0); }
 }
 
-@keyframes bulbSwing {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(-8deg); }
-  50% { transform: rotate(6deg); }
-  70% { transform: rotate(-3deg); }
-  85% { transform: rotate(1deg); }
-  100% { transform: rotate(0deg); }
+/* Responsive positions */
+@media (max-width: 768px) {
+  .is-bulb-toggle {
+    top: 78px;
+    right: 14px;
+  }
+  .is-bulb-wrap {
+    width: 38px;
+  }
+  .is-pull-string {
+    height: 24px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .is-bulb-toggle.is-pulled .is-pull-string,
+  .is-bulb-toggle.is-pulled .is-pull-knob {
+    animation: none;
+  }
 }
 
 /* Traditional Indian Print Side Art Panels */

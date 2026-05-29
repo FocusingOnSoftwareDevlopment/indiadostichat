@@ -340,60 +340,38 @@ function initSmoothScroll() {
  * 6. Scoped Hanging Bulb + Pull String Theme Toggle (with premium SVG and micro-animations)
  */
 function initThemeToggle() {
-  const headerRight = document.querySelector('.hidden-india-nav-right');
-  if (!headerRight) {
-    console.warn("India Stories: .hidden-india-nav-right not found in DOM.");
-    return;
-  }
-  console.log("India Stories: Creating and inserting premium hanging bulb toggle...");
+  console.log("India Stories: Creating and appending premium fixed lightbulb image toggle...");
 
   // Create bulb toggle button
   const bulbToggle = document.createElement('button');
   bulbToggle.id = 'hidden-india-bulb-toggle';
-  bulbToggle.className = 'india-stories-theme-toggle';
+  bulbToggle.className = 'is-bulb-toggle';
   bulbToggle.setAttribute('aria-label', 'Toggle India Stories light mode');
   
   const isCurrentlyLight = document.documentElement.classList.contains('light-mode');
   bulbToggle.setAttribute('title', isCurrentlyLight ? 'Pull for dark' : 'Pull for light');
   
-  // Custom hanging bulb SVG content
+  // Hanging switch image & HTML structure
   bulbToggle.innerHTML = `
-    <div class="india-stories-bulb-glow"></div>
-    <svg viewBox="0 0 40 100" class="india-stories-bulb-svg" xmlns="http://www.w3.org/2000/svg">
-      <!-- Wire -->
-      <line class="india-stories-wire" x1="20" y1="0" x2="20" y2="25" />
-      
-      <!-- Bulb Group (Swings on pull) -->
-      <g class="india-stories-bulb-group">
-        <!-- Socket -->
-        <path class="india-stories-socket" d="M 15 25 H 25 V 32 H 15 Z M 17 32 H 23 V 35 H 17 Z" />
-        <!-- Bulb Glass -->
-        <path class="india-stories-bulb-glass" d="M 16 35 C 16 35, 10 38, 10 48 C 10 57, 15 63, 20 63 C 25 63, 30 57, 30 48 C 30 38, 24 35, 24 35 Z" />
-        <!-- Filament -->
-        <path class="india-stories-bulb-filament" d="M 17 46 L 19 39 H 21 L 23 46" />
-      </g>
-      
-      <!-- Pull String Group (Pulls down on click) -->
-      <g class="india-stories-pull-string-group">
-        <!-- Hanging string from socket side -->
-        <line class="india-stories-pull-string" x1="23" y1="30" x2="23" y2="85" />
-        <!-- Pull knob at the bottom -->
-        <circle class="india-stories-pull-knob" cx="23" cy="87" r="2.5" />
-      </g>
-    </svg>
+    <span class="is-bulb-wrap">
+      <img src="/india-stories/images/bulb-toggle.png" alt="" class="is-bulb-img" aria-hidden="true">
+      <span class="is-bulb-glow" aria-hidden="true"></span>
+    </span>
+    <span class="is-pull-string" aria-hidden="true"></span>
+    <span class="is-pull-knob" aria-hidden="true"></span>
   `;
 
-  // Insert bulb toggle as the first element inside nav-right
-  headerRight.insertBefore(bulbToggle, headerRight.firstChild);
+  // Append directly to the body for clean fixed overlay positioning
+  document.body.appendChild(bulbToggle);
 
   bulbToggle.addEventListener('click', (e) => {
     e.preventDefault();
     
-    // Add physics animations classes
+    // Trigger physics spring animations
     bulbToggle.classList.add('is-pulled');
     setTimeout(() => {
       bulbToggle.classList.remove('is-pulled');
-    }, 600); // match animation lengths
+    }, 400); // pull move snap duration
 
     const isLightNow = document.body.classList.toggle('light-mode');
     document.documentElement.classList.toggle('light-mode', isLightNow);
