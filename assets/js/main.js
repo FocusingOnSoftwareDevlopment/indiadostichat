@@ -537,5 +537,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- PWA Installation Click Handler ---
+    const installBtn = document.getElementById('install-app-btn');
+    if (installBtn) {
+        if (window.deferredPrompt) {
+            installBtn.style.display = 'inline-flex';
+        }
+        
+        installBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (window.deferredPrompt) {
+                window.deferredPrompt.prompt();
+                const { outcome } = await window.deferredPrompt.userChoice;
+                console.log(`User choice: ${outcome}`);
+                window.deferredPrompt = null;
+                installBtn.style.display = 'none';
+            }
+        });
+    }
+});
+
+// --- PWA Installation Event Listener (runs immediately) ---
+window.deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    window.deferredPrompt = e;
+    const installBtn = document.getElementById('install-app-btn');
+    if (installBtn) {
+        installBtn.style.display = 'inline-flex';
+    }
 });
 
