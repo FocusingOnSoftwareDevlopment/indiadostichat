@@ -340,25 +340,33 @@ function initSmoothScroll() {
  * 6. Scoped Hanging Bulb + Pull String Theme Toggle (with premium SVG and micro-animations)
  */
 function initThemeToggle() {
-  console.log("India Stories: Creating and appending premium fixed lightbulb image toggle...");
+  console.log("India Stories: Creating and appending premium CSS hanging bulb toggle...");
 
   // Create bulb toggle button
   const bulbToggle = document.createElement('button');
   bulbToggle.id = 'hidden-india-bulb-toggle';
-  bulbToggle.className = 'is-bulb-toggle';
-  bulbToggle.setAttribute('aria-label', 'Toggle India Stories light mode');
+  bulbToggle.className = 'is-theme-toggle';
+  bulbToggle.setAttribute('aria-label', 'Toggle India Stories dark and light mode');
   
   const isCurrentlyLight = document.documentElement.classList.contains('light-mode');
   bulbToggle.setAttribute('title', isCurrentlyLight ? 'Pull for dark' : 'Pull for light');
   
-  // Hanging switch image & HTML structure
+  // Custom premium hanging bulb structure
   bulbToggle.innerHTML = `
-    <span class="is-bulb-wrap">
-      <img src="/india-stories/images/bulb-toggle.png" alt="" class="is-bulb-img" aria-hidden="true">
+    <span class="is-bulb-holder" aria-hidden="true"></span>
+    <span class="is-bulb" aria-hidden="true">
+      <span class="is-bulb-glass">
+        <svg class="is-bulb-svg" viewBox="0 0 30 40" xmlns="http://www.w3.org/2000/svg">
+          <!-- Premium bulb glass outline -->
+          <path class="is-bulb-outline" d="M15,5 C10,5 6,9 6,15 C6,19 8,22 10,25 C11,26 12,28 12,30 H18 C18,28 19,26 20,25 C22,22 24,19 24,15 C24,9 20,5 15,5 Z" fill="none" stroke="currentColor" stroke-width="2" />
+          <!-- Detailed filament -->
+          <path class="is-bulb-filament" d="M11,24 L13,16 L17,16 L19,24 M13,16 Q15,13 17,16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </span>
       <span class="is-bulb-glow" aria-hidden="true"></span>
     </span>
-    <span class="is-pull-string" aria-hidden="true"></span>
-    <span class="is-pull-knob" aria-hidden="true"></span>
+    <span class="is-string" aria-hidden="true"></span>
+    <span class="is-string-knob" aria-hidden="true"></span>
   `;
 
   // Append directly to the body for clean fixed overlay positioning

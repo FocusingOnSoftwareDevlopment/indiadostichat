@@ -52,14 +52,15 @@
 }
 
 .hidden-india-page.light-mode {
-  --is-bg: #fff8ec;
+  --is-bg: #fff7e8;
   --is-surface: #ffffff;
-  --is-surface-soft: #f8ead3;
-  --is-text: #172033;
-  --is-heading: #08111f;
-  --is-muted: #3f4a5f;
+  --is-surface-soft: #f5ead8;
+  --is-heading: #0b1220;
+  --is-text: #1f2937;
+  --is-muted: #374151;
+  --is-soft-text: #4b5563;
   --is-link: #064f9e;
-  --is-border: rgba(23, 32, 51, 0.18);
+  --is-border: rgba(15, 23, 42, 0.18);
   --is-card-shadow: rgba(15, 23, 42, 0.12);
 
   /* Overrides for accents to prevent low-contrast gray/washed text */
@@ -1340,15 +1341,16 @@
   opacity: 0.05;
 }
 
-/* Premium Hanging Switch using Real Lightbulb Image */
-.is-bulb-toggle {
+/* Premium Hanging Switch using CSS Bulb Toggle */
+.is-theme-toggle {
   background: none;
   border: none;
   cursor: pointer;
-  width: 60px;
+  width: 64px;
+  height: auto;
   position: fixed;
-  top: 90px;
-  right: 24px;
+  top: 72px;
+  right: 28px;
   z-index: 1010;
   display: flex;
   flex-direction: column;
@@ -1358,34 +1360,85 @@
   transition: transform 0.3s ease;
 }
 
-.is-bulb-toggle:focus-visible {
+.is-theme-toggle:focus-visible {
   outline: 2px solid var(--hi-accent-saffron);
   outline-offset: 4px;
   border-radius: 4px;
 }
 
-.is-bulb-wrap {
+/* Bulb holder (wire & socket cap) */
+.is-bulb-holder {
+  display: block;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.is-bulb-holder::before {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 16px;
+  background-color: var(--hi-text-muted);
+  transition: background-color 0.4s ease;
+}
+.is-bulb-holder::after {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 8px;
+  background-color: var(--hi-text-muted);
+  border-radius: 2px 2px 0 0;
+  margin-top: -1px;
+  transition: background-color 0.4s ease;
+}
+
+/* Bulb assembly */
+.is-bulb {
   position: relative;
   width: 48px;
-  height: auto;
-  display: block;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.is-bulb-img {
+.is-bulb-glass {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50% 50% 38% 38%;
+  border: 2px solid var(--hi-text-muted);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.4s ease, background-color 0.4s ease;
+  position: relative;
+}
+
+.is-bulb-svg {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  opacity: 0.5;
-  filter: grayscale(1) brightness(0.65);
-  transition: opacity 0.4s ease, filter 0.4s ease;
+  overflow: visible;
 }
 
+.is-bulb-outline {
+  stroke: var(--hi-text-muted);
+  transition: stroke 0.4s ease, fill 0.4s ease;
+}
+
+.is-bulb-filament {
+  stroke: var(--hi-text-muted);
+  transition: stroke 0.4s ease;
+}
+
+/* Glow backdrop */
 .is-bulb-glow {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 32px;
-  height: 32px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(245, 158, 11, 0.8) 0%, transparent 70%);
   filter: blur(8px);
@@ -1396,72 +1449,123 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
-.is-pull-string {
+/* String & Knob - starting below socket side, completely avoiding overlap */
+.is-string {
   display: block;
+  position: absolute;
+  top: 22px; /* starts at the socket base */
+  right: 8px; /* offset to the right side of the bulb outline */
   width: 2px;
-  height: 30px;
+  height: 60px;
   background-color: var(--hi-text-muted);
-  margin-top: 4px; /* starts below the bulb, no overlap! */
   transition: background-color 0.4s ease, transform 0.4s ease;
 }
 
-.is-pull-knob {
+.is-string-knob {
   display: block;
-  width: 7px;
-  height: 7px;
+  position: absolute;
+  top: 81px;
+  right: 5px; /* aligns centered with the 2px string */
+  width: 8px;
+  height: 8px;
   background-color: var(--hi-text-muted);
   border-radius: 50%;
-  margin-top: -1px;
   transition: background-color 0.4s ease, transform 0.4s ease;
 }
 
-/* Light mode overrides for Switch */
-.light-mode .is-bulb-img {
-  opacity: 1;
-  filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.6)) brightness(1.2) grayscale(0);
+/* Light mode overrides for Switch styling */
+.light-mode .is-bulb-holder::before,
+.light-mode .is-bulb-holder::after {
+  background-color: #b45309; /* warm copper/brass metal color */
 }
-
+.light-mode .is-bulb-glass {
+  border-color: #ea580c;
+  background: rgba(245, 158, 11, 0.22);
+}
+.light-mode .is-bulb-outline {
+  stroke: #ea580c;
+  fill: rgba(245, 158, 11, 0.12);
+}
+.light-mode .is-bulb-filament {
+  stroke: #f59e0b;
+}
 .light-mode .is-bulb-glow {
-  opacity: 0.9;
-  transform: translate(-50%, -50%) scale(2.2);
+  opacity: 0.95;
+  transform: translate(-50%, -50%) scale(2.4);
 }
-
-.light-mode .is-pull-string,
-.light-mode .is-pull-knob {
+.light-mode .is-string,
+.light-mode .is-string-knob {
   background-color: var(--is-text);
 }
 
-/* Toggle pull spring animations */
-.is-bulb-toggle.is-pulled .is-pull-string,
-.is-bulb-toggle.is-pulled .is-pull-knob {
-  animation: pullStringMove 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+/* Hover effect */
+.is-theme-toggle:hover .is-bulb-glass {
+  border-color: var(--hi-accent-gold);
+}
+.is-theme-toggle:hover .is-bulb-outline {
+  stroke: var(--hi-accent-gold);
 }
 
-@keyframes pullStringMove {
+/* Toggle pull spring animations */
+.is-theme-toggle.is-pulled .is-string {
+  animation: pullSwitchString 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.is-theme-toggle.is-pulled .is-string-knob {
+  animation: pullSwitchKnob 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes pullSwitchString {
+  0% { transform: translateY(0) scaleY(1); transform-origin: top; }
+  35% { transform: translateY(0) scaleY(1.3); transform-origin: top; }
+  70% { transform: translateY(0) scaleY(0.9); transform-origin: top; }
+  100% { transform: translateY(0) scaleY(1); transform-origin: top; }
+}
+
+@keyframes pullSwitchKnob {
   0% { transform: translateY(0); }
-  35% { transform: translateY(12px); }
+  35% { transform: translateY(11px); }
   70% { transform: translateY(-3px); }
   100% { transform: translateY(0); }
 }
 
-/* Responsive positions */
+/* Responsive Positions for mobile */
 @media (max-width: 768px) {
-  .is-bulb-toggle {
-    top: 78px;
+  .is-theme-toggle {
+    top: 68px;
     right: 14px;
   }
-  .is-bulb-wrap {
+  .is-bulb {
     width: 38px;
+    height: 38px;
   }
-  .is-pull-string {
-    height: 24px;
+  .is-bulb-glass {
+    width: 30px;
+    height: 30px;
+  }
+  .is-string {
+    top: 20px;
+    height: 48px;
+    right: 6px;
+  }
+  .is-string-knob {
+    top: 67px;
+    right: 3px;
+    width: 8px;
+    height: 8px;
+  }
+  .is-bulb-holder::before {
+    height: 12px;
+  }
+  .is-bulb-holder::after {
+    width: 12px;
+    height: 6px;
   }
 }
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  .is-bulb-toggle.is-pulled .is-pull-string,
-  .is-bulb-toggle.is-pulled .is-pull-knob {
+  .is-theme-toggle.is-pulled .is-string,
+  .is-theme-toggle.is-pulled .is-string-knob {
     animation: none;
   }
 }
@@ -1470,20 +1574,19 @@
 .india-stories-side-art-left,
 .india-stories-side-art-right {
   position: fixed;
-  top: 80px;
-  bottom: 80px;
-  width: 140px;
-  max-width: 9vw;
+  top: 90px;
+  bottom: 0;
+  width: 170px;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
   opacity: 0.08;
   transition: opacity 0.5s ease, color 0.5s ease;
 }
 .india-stories-side-art-left {
-  left: 15px;
+  left: 20px;
 }
 .india-stories-side-art-right {
-  right: 15px;
+  right: 20px;
 }
 .india-stories-side-art-svg {
   width: 100%;
@@ -1492,20 +1595,20 @@
   transition: color 0.5s ease;
 }
 
-/* Light mode side art styling updates */
+/* Light mode side art styling updates - Opacity set exactly to 0.18 */
 .light-mode .india-stories-side-art-left,
 .light-mode .india-stories-side-art-right {
-  opacity: 0.07;
+  opacity: 0.18;
 }
 .light-mode .india-stories-side-art-left .india-stories-side-art-svg {
-  color: var(--hi-accent-saffron);
+  color: rgba(217, 119, 6, 0.95); /* saffron */
 }
 .light-mode .india-stories-side-art-right .india-stories-side-art-svg {
-  color: var(--hi-accent-green);
+  color: rgba(22, 101, 52, 0.95); /* forest green */
 }
 
-/* Responsive: hide on mobile screens below 950px */
-@media (max-width: 950px) {
+/* Responsive: hide on mobile screens below 900px */
+@media (max-width: 900px) {
   .india-stories-side-art-left,
   .india-stories-side-art-right {
     display: none;
