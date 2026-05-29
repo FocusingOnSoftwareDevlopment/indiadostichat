@@ -174,9 +174,12 @@
             if (iframe) {
                 iframe.addEventListener('load', function() {
                     if (iframe.src && iframe.src !== 'about:blank' && !iframe.src.endsWith('about:blank')) {
-                        if (loader) {
-                            loader.classList.add("hidden");
-                        }
+                        // Delay hiding the loader by 1.8 seconds to allow the KiwiIRC SPA to boot and render the nickname login page
+                        setTimeout(function() {
+                            if (loader) {
+                                loader.classList.add("hidden");
+                            }
+                        }, 1800);
                     }
                 });
             }
