@@ -274,7 +274,13 @@ body.dark-mode .hero-content {
   background: linear-gradient(90deg, #FF9933, #ffffff, #138808, #FF9933);
   background-size: 300% 100%;
   border-radius: 20px;
-  z-index: -1;
+  z-index: 1;
+  pointer-events: none;
+  padding: 2px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
   animation: heroTricolorBorder 6s linear infinite;
 }
 
