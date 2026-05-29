@@ -22,6 +22,23 @@
 
 /* Base Styles */
 .hidden-india-page {
+  /* Scoped variables for India Stories */
+  --is-bg: #05070d;
+  --is-surface: rgba(255, 255, 255, 0.06);
+  --is-text: #f8fafc;
+  --is-muted: #cbd5e1;
+  --is-heading: #ffffff;
+  --is-link: #93c5fd;
+  --is-border: rgba(255, 255, 255, 0.14);
+
+  /* Map old variables to the scoped variables */
+  --hi-bg: var(--is-bg);
+  --hi-text: var(--is-text);
+  --hi-text-muted: var(--is-muted);
+  --hi-card-bg: var(--is-surface);
+  --hi-card-border: var(--is-border);
+  --hi-accent-white: var(--is-heading);
+
   background-color: var(--hi-bg);
   color: var(--hi-text);
   font-family: var(--hi-font-sans);
@@ -30,6 +47,21 @@
   padding: 0;
   overflow-x: hidden;
   position: relative;
+}
+
+.hidden-india-page.light-mode {
+  --is-bg: #fff8ec; /* warm cream */
+  --is-surface: #ffffff;
+  --is-text: #1f2937; /* navy-charcoal */
+  --is-muted: #4b5563;
+  --is-heading: #0f172a;
+  --is-link: #0b5cad; /* dark blue */
+  --is-border: rgba(15, 23, 42, 0.16);
+
+  /* Overrides for accents to prevent low-contrast gray/washed text */
+  --hi-accent-gold: #b45309;
+  --hi-accent-saffron: #ea580c;
+  --hi-accent-green: #166534;
 }
 
 /* Background Glowing Ambient Orbs */
@@ -1178,8 +1210,8 @@
   border-bottom-color: rgba(15, 23, 42, 0.06);
 }
 .light-mode .hidden-india-drawer-content {
-  background: rgba(241, 245, 249, 0.98);
-  border-left-color: rgba(15, 23, 42, 0.06);
+  background: rgba(253, 246, 236, 0.99); /* match warm cream */
+  border-left-color: var(--is-border);
 }
 .light-mode .hidden-india-drawer-logo span,
 .light-mode .hidden-india-logo span {
@@ -1188,141 +1220,309 @@
   -webkit-text-fill-color: transparent;
 }
 .light-mode .hidden-india-logo {
-  color: #0f172a;
+  color: var(--is-heading);
+}
+.light-mode .hidden-india-drawer-links a {
+  color: var(--is-text);
 }
 .light-mode .hidden-india-drawer-links a:hover {
-  color: #0f172a;
+  color: var(--is-link);
+}
+.light-mode .hidden-india-drawer-close {
+  color: var(--is-text);
+}
+.light-mode .hidden-india-menu-toggle .bar {
+  background-color: var(--is-text);
+}
+.light-mode .hidden-india-menu-toggle:hover .bar {
+  background-color: var(--hi-accent-gold);
+}
+.light-mode .hidden-india-header {
+  background: rgba(255, 248, 236, 0.92);
+  border-bottom-color: var(--is-border);
 }
 .light-mode .hidden-india-state-path {
-  fill: #f1f5f9;
-  stroke: rgba(15, 23, 42, 0.08);
+  fill: #fdf7ec;
+  stroke: var(--is-border);
 }
 .light-mode .hidden-india-state-path:hover {
-  fill: #e2e8f0;
-  stroke: rgba(234, 88, 12, 0.4);
+  fill: #fcf0da;
+  stroke: var(--hi-accent-saffron);
 }
 .light-mode .hidden-india-toc-link {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--is-surface);
+  color: var(--is-text);
+  border: 1px solid var(--is-border);
+}
+.light-mode .hidden-india-toc-link:hover {
+  border-color: var(--hi-accent-gold);
+  color: var(--hi-accent-gold);
 }
 .light-mode .hidden-india-related-card {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--is-surface);
+  color: var(--is-text);
+  border: 1px solid var(--is-border);
+}
+.light-mode .hidden-india-related-card h4 {
+  color: var(--is-heading);
+}
+.light-mode .hidden-india-related-card:hover {
+  border-color: var(--hi-accent-gold);
 }
 .light-mode .hidden-india-faq-item {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--is-surface);
+  border: 1px solid var(--is-border);
 }
 .light-mode .hidden-india-faq-item.active {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(180, 83, 9, 0.3);
+  background: var(--is-surface);
+  border-color: var(--hi-accent-gold);
 }
 .light-mode .hidden-india-faq-question {
-  color: #0f172a;
+  color: var(--is-heading);
 }
 .light-mode .hidden-india-faq-answer-content {
-  color: #334155;
+  color: var(--is-text);
 }
 .light-mode .hidden-india-quote {
-  background: linear-gradient(to right, rgba(234, 88, 12, 0.03), transparent);
+  border-left: 4px solid var(--hi-accent-gold);
+  background: rgba(180, 83, 9, 0.04);
+  color: var(--is-text);
 }
 .light-mode .hidden-india-map-container {
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  background: var(--is-surface);
+  border: 1px solid var(--is-border);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05);
 }
 .light-mode .hidden-india-map-tooltip {
-  background: rgba(255, 255, 255, 0.98);
-  border-color: #b45309;
-  color: #0f172a;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background: var(--is-surface);
+  border-color: var(--hi-accent-gold);
+  color: var(--is-text);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
 }
 .light-mode .hidden-india-map-tooltip::after {
-  border-color: rgba(255, 255, 255, 0.98) transparent transparent;
+  border-color: var(--is-surface) transparent transparent;
 }
 .light-mode .hidden-india-footer {
-  background: #f1f5f9;
-  border-top-color: rgba(15, 23, 42, 0.06);
+  background: #f5ece1;
+  color: var(--is-muted);
+  border-top-color: var(--is-border);
+}
+.light-mode .hidden-india-footer p {
+  color: var(--is-muted);
+}
+.light-mode .hidden-india-footer-links a {
+  color: var(--is-text);
+}
+.light-mode .hidden-india-footer-links a:hover {
+  color: var(--is-link);
+}
+.light-mode .hidden-india-sources-section {
+  border-top: 1px solid var(--is-border);
+}
+.light-mode .hidden-india-sources-title {
+  color: var(--is-heading);
+}
+.light-mode .hidden-india-sources-list li a {
+  color: var(--is-link);
+}
+.light-mode .hidden-india-sources-list li a:hover {
+  color: var(--hi-accent-gold);
+}
+.light-mode .hidden-india-hero {
+  background-image: linear-gradient(to bottom, rgba(255, 248, 236, 0.55), rgba(255, 248, 236, 0.99)), url('images/hero_taj.png') !important;
+}
+.light-mode .hidden-india-page::before,
+.light-mode .hidden-india-page::after {
+  opacity: 0.05;
 }
 
-/* Minimalist Bulb Toggle Button styling */
-.hidden-india-bulb-toggle {
+/* Premium Hanging Bulb Toggle Switch styling */
+.india-stories-theme-toggle {
   background: none;
   border: none;
   cursor: pointer;
   width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  height: 70px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   color: var(--hi-text-muted);
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   position: relative;
   overflow: visible;
   padding: 0;
+  z-index: 1010;
 }
-.hidden-india-bulb-toggle:hover {
-  color: var(--hi-accent-gold);
-  background: rgba(255, 255, 255, 0.05);
+.india-stories-theme-toggle:focus-visible {
+  outline: 2px solid var(--hi-accent-saffron);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
-.light-mode .hidden-india-bulb-toggle:hover {
-  background: rgba(15, 23, 42, 0.05);
-}
-
-/* Bulb SVG styling */
-.hidden-india-bulb-toggle svg {
-  width: 22px;
-  height: 22px;
-  stroke: currentColor;
-  stroke-width: 2;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.india-stories-bulb-svg {
+  width: 40px;
+  height: 100px;
+  overflow: visible;
   display: block;
 }
 
-/* Rays styling */
-.hidden-india-bulb-toggle .bulb-ray {
-  transition: stroke-dashoffset 0.4s ease, opacity 0.4s ease;
-  opacity: 0.3;
+/* Wire, Socket, Glass, and Filament */
+.india-stories-wire {
+  stroke: var(--hi-text-muted);
+  stroke-width: 1.5;
+  fill: none;
+  transition: stroke 0.4s ease;
 }
-.light-mode .hidden-india-bulb-toggle .bulb-ray {
-  opacity: 1;
-  stroke: #d97706;
+.india-stories-socket {
+  fill: var(--hi-text-muted);
+  transition: fill 0.4s ease;
+}
+.india-stories-bulb-glass {
+  stroke: var(--hi-text-muted);
+  stroke-width: 1.5;
+  fill: rgba(255, 255, 255, 0.02);
+  transition: stroke 0.4s ease, fill 0.4s ease;
+}
+.india-stories-bulb-filament {
+  stroke: var(--hi-text-muted);
+  stroke-width: 1.2;
+  fill: none;
+  transition: stroke 0.4s ease;
 }
 
-/* Backdrop glow */
-.hidden-india-bulb-toggle .bulb-glow {
+/* Pull String & Knob */
+.india-stories-pull-string {
+  stroke: var(--hi-text-muted);
+  stroke-width: 1.2;
+  stroke-dasharray: 2,2;
+  fill: none;
+  transition: stroke 0.4s ease;
+}
+.india-stories-pull-knob {
+  fill: var(--hi-text-muted);
+  transition: fill 0.4s ease;
+}
+
+/* Ambient Backdrop Glow */
+.india-stories-bulb-glow {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  top: 48px;
+  left: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: var(--hi-accent-gold);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.8) 0%, transparent 70%);
   filter: blur(8px);
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
   z-index: -1;
-  top: 50%;
-  left: 50%;
+  pointer-events: none;
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* When light mode is active */
-.light-mode .hidden-india-bulb-toggle svg {
-  color: #d97706;
+/* Hover effects */
+.india-stories-theme-toggle:hover {
+  color: var(--hi-accent-gold);
 }
-.light-mode .hidden-india-bulb-toggle svg .bulb-fill {
-  fill: #f59e0b;
-}
-.light-mode .hidden-india-bulb-toggle .bulb-glow {
-  opacity: 0.5;
-  transform: translate(-50%, -50%) scale(3.5);
+.india-stories-theme-toggle:hover .india-stories-bulb-glass {
+  stroke: var(--hi-accent-gold);
 }
 
-/* Toggle shake animation */
-.hidden-india-bulb-toggle.clicked svg {
-  animation: bulbShake 0.4s ease;
+/* Light mode overrides for Bulb switch */
+.light-mode .india-stories-theme-toggle {
+  color: var(--is-text);
 }
-@keyframes bulbShake {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-10deg); }
-  75% { transform: rotate(10deg); }
+.light-mode .india-stories-wire {
+  stroke: var(--is-text);
 }
+.light-mode .india-stories-socket {
+  fill: #b45309;
+}
+.light-mode .india-stories-bulb-glass {
+  stroke: #ea580c;
+  fill: rgba(245, 158, 11, 0.25);
+}
+.light-mode .india-stories-bulb-filament {
+  stroke: #f59e0b;
+}
+.light-mode .india-stories-pull-string {
+  stroke: var(--is-text);
+}
+.light-mode .india-stories-pull-knob {
+  fill: #ea580c;
+}
+.light-mode .india-stories-bulb-glow {
+  opacity: 0.85;
+  transform: translate(-50%, -50%) scale(2.8);
+}
+
+/* Toggle pulled physics animations */
+.india-stories-theme-toggle.is-pulled .india-stories-pull-string-group {
+  animation: pullString 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.india-stories-theme-toggle.is-pulled .india-stories-bulb-group {
+  transform-origin: 20px 25px;
+  animation: bulbSwing 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes pullString {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(14px); }
+  70% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes bulbSwing {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  50% { transform: rotate(6deg); }
+  70% { transform: rotate(-3deg); }
+  85% { transform: rotate(1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Traditional Indian Print Side Art Panels */
+.india-stories-side-art-left,
+.india-stories-side-art-right {
+  position: fixed;
+  top: 80px;
+  bottom: 80px;
+  width: 140px;
+  max-width: 9vw;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.08;
+  transition: opacity 0.5s ease, color 0.5s ease;
+}
+.india-stories-side-art-left {
+  left: 15px;
+}
+.india-stories-side-art-right {
+  right: 15px;
+}
+.india-stories-side-art-svg {
+  width: 100%;
+  height: 100%;
+  color: var(--hi-accent-gold);
+  transition: color 0.5s ease;
+}
+
+/* Light mode side art styling updates */
+.light-mode .india-stories-side-art-left,
+.light-mode .india-stories-side-art-right {
+  opacity: 0.07;
+}
+.light-mode .india-stories-side-art-left .india-stories-side-art-svg {
+  color: var(--hi-accent-saffron);
+}
+.light-mode .india-stories-side-art-right .india-stories-side-art-svg {
+  color: var(--hi-accent-green);
+}
+
+/* Responsive: hide on mobile screens below 950px */
+@media (max-width: 950px) {
+  .india-stories-side-art-left,
+  .india-stories-side-art-right {
+    display: none;
+  }
+}
+
