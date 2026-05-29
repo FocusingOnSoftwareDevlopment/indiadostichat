@@ -1413,15 +1413,20 @@
   border: none;
   cursor: pointer;
   width: 64px;
-  height: 110px;
-  position: fixed;
-  top: 72px;
-  right: 28px;
+  height: 40px;
+  position: relative;
   z-index: 1010;
   overflow: visible;
   padding: 0;
   outline: none;
   display: block;
+}
+
+.is-theme-toggle.is-fallback-body {
+  position: fixed;
+  top: 72px;
+  right: 28px;
+  height: 110px;
 }
 
 .is-theme-toggle:focus-visible {
@@ -1433,13 +1438,14 @@
 /* Bulb holder (wire & socket cap) */
 .is-bulb-holder {
   position: absolute;
-  top: 0;
+  top: -15px; /* wire starts at top of header */
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: top 0.4s ease;
 }
 .is-bulb-holder::before {
   content: '';
@@ -1464,7 +1470,7 @@
 /* Bulb assembly */
 .is-bulb {
   position: absolute;
-  top: 22px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
   width: 48px;
@@ -1472,6 +1478,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: top 0.4s ease;
 }
 
 .is-bulb-glass {
@@ -1521,12 +1528,12 @@
 .is-string {
   display: block;
   position: absolute;
-  top: 24px; /* starts at the socket base */
+  top: 14px; /* starts at the socket base */
   left: calc(50% + 18px); /* offset to the right side of the bulb outline */
   width: 2px;
-  height: 60px;
+  height: 50px;
   background-color: var(--hi-text-muted);
-  transition: background-color 0.4s ease, transform 0.4s ease;
+  transition: background-color 0.4s ease, transform 0.4s ease, top 0.4s ease, height 0.4s ease;
   transform-origin: top;
 }
 
@@ -1545,13 +1552,28 @@
 .is-string-knob {
   display: block;
   position: absolute;
-  top: 84px;
+  top: 64px;
   left: calc(50% + 15px); /* aligns centered with the 2px string */
   width: 8px;
   height: 8px;
   background-color: var(--hi-text-muted);
   border-radius: 50%;
-  transition: background-color 0.4s ease, transform 0.4s ease;
+  transition: background-color 0.4s ease, transform 0.4s ease, top 0.4s ease;
+}
+
+/* Fallback offsets when toggle is placed on body instead of navigation */
+.is-theme-toggle.is-fallback-body .is-bulb-holder {
+  top: 0;
+}
+.is-theme-toggle.is-fallback-body .is-bulb {
+  top: 22px;
+}
+.is-theme-toggle.is-fallback-body .is-string {
+  top: 24px;
+  height: 60px;
+}
+.is-theme-toggle.is-fallback-body .is-string-knob {
+  top: 84px;
 }
 
 /* Light mode overrides for Switch styling */
@@ -1609,13 +1631,16 @@
 /* Responsive Positions for mobile */
 @media (max-width: 768px) {
   .is-theme-toggle {
+    width: 50px;
+    height: 30px;
+  }
+  .is-theme-toggle.is-fallback-body {
     top: 68px;
     right: 14px;
-    width: 50px;
     height: 85px;
   }
   .is-bulb {
-    top: 16px;
+    top: 3px;
     width: 38px;
     height: 38px;
   }
@@ -1624,8 +1649,8 @@
     height: 30px;
   }
   .is-string {
-    top: 18px;
-    height: 48px;
+    top: 5px;
+    height: 40px;
     left: calc(50% + 12px);
   }
   .is-string::before {
@@ -1633,10 +1658,13 @@
     width: 14px;
   }
   .is-string-knob {
-    top: 66px;
+    top: 45px;
     left: calc(50% + 9px);
     width: 8px;
     height: 8px;
+  }
+  .is-bulb-holder {
+    top: -15px;
   }
   .is-bulb-holder::before {
     height: 12px;
@@ -1644,6 +1672,19 @@
   .is-bulb-holder::after {
     width: 12px;
     height: 6px;
+  }
+  .is-theme-toggle.is-fallback-body .is-bulb-holder {
+    top: 0;
+  }
+  .is-theme-toggle.is-fallback-body .is-bulb {
+    top: 16px;
+  }
+  .is-theme-toggle.is-fallback-body .is-string {
+    top: 18px;
+    height: 48px;
+  }
+  .is-theme-toggle.is-fallback-body .is-string-knob {
+    top: 66px;
   }
 }
 

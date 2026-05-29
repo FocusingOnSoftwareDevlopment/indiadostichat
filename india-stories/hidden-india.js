@@ -376,8 +376,16 @@ function initThemeToggle() {
     <span class="is-string-knob" aria-hidden="true"></span>
   `;
 
-  // Append directly to the body for clean fixed overlay positioning
-  document.body.appendChild(bulbToggle);
+  // Append to the navigation right container near the Join button if available
+  const navRight = document.querySelector('.hidden-india-nav-right');
+  if (navRight) {
+    // Insert before the Join Chat button
+    navRight.insertBefore(bulbToggle, navRight.firstChild);
+  } else {
+    // Fallback to body for fixed positioning if nav bar is not present
+    bulbToggle.classList.add('is-fallback-body');
+    document.body.appendChild(bulbToggle);
+  }
 
   bulbToggle.addEventListener('click', (e) => {
     e.preventDefault();
