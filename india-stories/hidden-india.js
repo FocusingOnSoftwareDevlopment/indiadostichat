@@ -47,6 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initRevealOnScroll(prefersReducedMotion);
   initFaqAccordion();
   initSmoothScroll();
+  
+  // Apply initial background hero overlay contrast
+  const isLight = document.documentElement.classList.contains("light-mode");
+  updateHeroOverlay(isLight);
 });
 
 /**
@@ -351,16 +355,19 @@ function initThemeToggle() {
   const isCurrentlyLight = document.documentElement.classList.contains('light-mode');
   bulbToggle.setAttribute('title', isCurrentlyLight ? 'Pull for dark' : 'Pull for light');
   
-  // Custom premium hanging bulb structure
+  // Custom premium hanging bulb structure (socket at top, glass at bottom)
   bulbToggle.innerHTML = `
     <span class="is-bulb-holder" aria-hidden="true"></span>
     <span class="is-bulb" aria-hidden="true">
       <span class="is-bulb-glass">
         <svg class="is-bulb-svg" viewBox="0 0 30 40" xmlns="http://www.w3.org/2000/svg">
-          <!-- Premium bulb glass outline -->
-          <path class="is-bulb-outline" d="M15,5 C10,5 6,9 6,15 C6,19 8,22 10,25 C11,26 12,28 12,30 H18 C18,28 19,26 20,25 C22,22 24,19 24,15 C24,9 20,5 15,5 Z" fill="none" stroke="currentColor" stroke-width="2" />
-          <!-- Detailed filament -->
-          <path class="is-bulb-filament" d="M11,24 L13,16 L17,16 L19,24 M13,16 Q15,13 17,16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          <!-- Socket ribs/thread details -->
+          <line x1="12" y1="5.5" x2="18" y2="5.5" class="is-bulb-rib" stroke="currentColor" stroke-width="1.2" />
+          <line x1="12" y1="7.5" x2="18" y2="7.5" class="is-bulb-rib" stroke="currentColor" stroke-width="1.2" />
+          <!-- Bulb glass outline -->
+          <path class="is-bulb-outline" d="M12,4 H18 V10 C18,14 25,16 25,23 A10,10 0 0,1 5,23 C5,16 12,14 12,10 Z" fill="none" stroke="currentColor" stroke-width="2" />
+          <!-- Filament wires -->
+          <path class="is-bulb-filament" d="M13,10 L13,19 M17,10 L17,19 M13,19 Q15,16 17,19" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
         </svg>
       </span>
       <span class="is-bulb-glow" aria-hidden="true"></span>
@@ -385,6 +392,9 @@ function initThemeToggle() {
     document.documentElement.classList.toggle('light-mode', isLightNow);
     
     bulbToggle.setAttribute('title', isLightNow ? 'Pull for dark' : 'Pull for light');
+    
+    // Dynamically update hero overlay contrast
+    updateHeroOverlay(isLightNow);
     
     try {
       localStorage.setItem('indiaStoriesTheme', isLightNow ? 'light' : 'dark');
@@ -490,4 +500,25 @@ function initSideArt() {
   // Append to the body
   document.body.appendChild(leftArt);
   document.body.appendChild(rightArt);
+}
+
+/**
+ * 8. Dynamically Update Hero Overlay to prevent dark gradient on light text/theme mismatch
+ */
+function updateHeroOverlay(isLight) {
+  const hero = document.querySelector('.hidden-india-hero');
+  if (!hero) return;
+  
+  const bgStyle = hero.style.backgroundImage || getComputedStyle(hero).backgroundImage;
+  if (!bgStyle) return;
+  
+  const urlMatch = bgStyle.match(/url\(['"]?([^'"]+)['"]?\)/);
+  if (urlMatch && urlMatch[1]) {
+    const imageUrl = urlMatch[1];
+    if (isLight) {
+      hero.style.backgroundImage = `linear-gradient(to bottom, rgba(255, 248, 236, 0.55), rgba(255, 248, 236, 0.99)), url('${imageUrl}')`;
+    } else {
+      hero.style.backgroundImage = `linear-gradient(to bottom, rgba(3, 6, 17, 0.7), rgba(3, 6, 17, 0.95)), url('${imageUrl}')`;
+    }
+  }
 }
