@@ -22,7 +22,6 @@
     <meta property="twitter:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.min.css?v=10">
     <style>
         /* Reverted to clean fullscreen layout */
@@ -98,7 +97,17 @@
     </div>
 
     <!-- Fullscreen solid Chat Frame -->
-    <iframe id="chat-frame" src="https://kiwiirc.hybridirc.com/?theme=default#IndiaDostiChat,#trivia,#allindiachat.com" title="IndiaDostiChat Live Chat"></iframe>
+    <iframe id="chat-frame" data-src="https://kiwiirc.hybridirc.com/?theme=default#IndiaDostiChat,#trivia,#allindiachat.com" src="about:blank" title="IndiaDostiChat Live Chat"></iframe>
+    <script>
+        (function() {
+            if (localStorage.getItem("idc_age_gate_accepted") === "true") {
+                var iframe = document.getElementById("chat-frame");
+                if (iframe) {
+                    iframe.src = iframe.getAttribute("data-src");
+                }
+            }
+        })();
+    </script>
     <div style="position: absolute; bottom: 15px; left: 15px; right: 15px; background: rgba(0,0,0,0.85); color: white; padding: 12px 18px; border-radius: 8px; font-size: 0.88rem; font-family: 'Inter', sans-serif; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); max-width: 340px; backdrop-filter: blur(8px); line-height: 1.4;">
         <div style="margin-bottom: 8px;">
             Want to play games? Visit our <a href="../games/" target="_blank" rel="noopener noreferrer" style="color: #FF9933; text-decoration: underline; font-weight: bold;">Games page</a> or support us via <a href="../donate/" target="_blank" rel="noopener noreferrer" style="color: #FF9933; text-decoration: underline; font-weight: bold;">Donation</a>.
@@ -109,6 +118,6 @@
         <button aria-label="Close" onclick="this.parentElement.style.display='none'" style="background:none; border:none; color:#ccc; position:absolute; top:4px; right:6px; cursor:pointer; font-size:16px; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#ccc'">&times;</button>
     </div>
 
-    <script src="../assets/js/main.min.js?v=14" defer></script>
+    <script src="../assets/js/main.min.js?v=17" defer></script>
 </body>
 </html>

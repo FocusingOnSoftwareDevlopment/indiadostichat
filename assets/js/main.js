@@ -327,24 +327,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 5. Back to Top Button ---
-    const backToTopBtn = document.createElement('button');
-    backToTopBtn.className = 'back-to-top';
-    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    backToTopBtn.setAttribute('aria-label', 'Back to top');
-    document.body.appendChild(backToTopBtn);
+    // --- 5. Back to Top / Scroll Down Buttons ---
+    const isChatPage = window.location.pathname.includes("/chat/");
 
-    window.onscroll = function() {
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    };
+    if (!isChatPage) {
+        const backToTopBtn = document.createElement('button');
+        backToTopBtn.className = 'back-to-top';
+        backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        backToTopBtn.setAttribute('aria-label', 'Back to top');
+        document.body.appendChild(backToTopBtn);
 
-    backToTopBtn.onclick = function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+        window.onscroll = function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    } else {
+        // Implement Scroll Down Button for chat page
+        const scrollDownBtn = document.createElement('button');
+        scrollDownBtn.className = 'scroll-down-btn';
+        // Modern SVG arrow down icon
+        scrollDownBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin: auto; display: block;"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>';
+        scrollDownBtn.setAttribute('aria-label', 'Scroll to bottom');
+        document.body.appendChild(scrollDownBtn);
+
+        const checkScroll = () => {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (scrollableHeight > 50 && window.scrollY < scrollableHeight - 50) {
+                scrollDownBtn.classList.add('visible');
+            } else {
+                scrollDownBtn.classList.remove('visible');
+            }
+        };
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('resize', checkScroll);
+        
+        scrollDownBtn.onclick = function() {
+            window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+        };
+        setTimeout(checkScroll, 500);
+    }
 
     // --- 6. Age Gate Logic (for chat.html) ---
     const ageGateModal = document.getElementById("age-gate-modal");
@@ -365,6 +394,10 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem("idc_safety_accepted", "true");
             ageGateModal.classList.remove("active");
             document.body.classList.remove("age-gate-open");
+            const chatFrame = document.getElementById("chat-frame");
+            if (chatFrame && chatFrame.getAttribute("data-src")) {
+                chatFrame.src = chatFrame.getAttribute("data-src");
+            }
         };
 
         ageGateExit.onclick = function() {
