@@ -46,6 +46,12 @@
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
+    const pathLower = window.location.pathname.toLowerCase();
+    const isChatPage = pathLower.includes('/chat/') || 
+                       pathLower.endsWith('/chat') || 
+                       pathLower.endsWith('/chat.html') || 
+                       pathLower.endsWith('/chat/index.html');
+
     // --- 1. Theme Toggle (Dark Mode) ---
     const themeToggle = document.getElementById("theme-toggle");
     const themeIcon = themeToggle ? themeToggle.querySelector(".theme-icon") : null;
@@ -328,8 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 5. Back to Top / Scroll Down Buttons ---
-    const isChatPage = window.location.pathname.includes("/chat/");
-
     if (!isChatPage) {
         const backToTopBtn = document.createElement('button');
         backToTopBtn.className = 'back-to-top';
@@ -429,7 +433,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 7. Dynamic Safety Alert Popup ---
-    const isChatPage = window.location.pathname.includes("/chat/");
     const isSafetyAccepted = localStorage.getItem("idc_safety_accepted") === "true";
     const isAgeGateAccepted = localStorage.getItem("idc_age_gate_accepted") === "true";
 
