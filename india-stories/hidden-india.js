@@ -172,8 +172,53 @@ function initMapInteractivity() {
     };
   });
 
-  const showCityTooltip = (city) => {
-    tooltip.textContent = `${city.name}, ${city.state}`;
+  const getRoomUrl = (cityName, stateName) => {
+    const city = cityName ? cityName.toLowerCase().trim() : "";
+    const state = stateName ? stateName.toLowerCase().trim() : "";
+
+    // Check city match
+    if (city === "delhi") return "/delhi-chat-room/";
+    if (city === "mumbai") return "/mumbai-chat-room/";
+    if (city === "pune") return "/pune-chat-room/";
+    if (city === "bangalore") return "/bangalore-chat-room/";
+    if (city === "chennai") return "/chennai-chat-room/";
+    if (city === "kolkata") return "/kolkata-chat-room/";
+    if (city === "hyderabad") return "/hyderabad-chat-room/";
+    if (city === "ahmedabad") return "/ahmedabad-chat-room/";
+    if (city === "jaipur") return "/jaipur-chat-room/";
+    if (city === "lucknow") return "/lucknow-chat-room/";
+    if (city === "kanpur") return "/kanpur-chat-room/";
+    if (city === "surat") return "/surat-chat-room/";
+    if (city === "amritsar") return "/punjabi-chat-room/";
+
+    // Check state match
+    if (state === "delhi") return "/delhi-chat-room/";
+    if (state === "maharashtra") return "/marathi-chat-room/";
+    if (state === "karnataka") return "/kannada-chat-room/";
+    if (state === "tamil nadu") return "/tamil-chat-room/";
+    if (state === "west bengal") return "/bengali-chat-room/";
+    if (state === "telangana" || state === "andhra pradesh") return "/telugu-chat-room/";
+    if (state === "gujarat") return "/gujarati-chat-room/";
+    if (state === "punjab") return "/punjabi-chat-room/";
+    if (state === "kerala") return "/malayalam-chat-room/";
+    
+    // Default fallback to general chat page
+    return "/chat/";
+  };
+
+  const showCityTooltip = (city, isPersistent) => {
+    if (tooltip.classList.contains('persistent') && !isPersistent) return;
+    
+    if (isPersistent) {
+      tooltip.classList.add('persistent');
+      const url = getRoomUrl(city.name, city.state);
+      tooltip.innerHTML = `
+        <div class="hidden-india-tooltip-title">${city.name}, ${city.state}</div>
+        <a href="${url}" class="hidden-india-tooltip-link">Join Chat Room &rarr;</a>
+      `;
+    } else {
+      tooltip.textContent = `${city.name}, ${city.state}`;
+    }
     
     // Temporarily make active but hidden to get actual dimensions
     tooltip.style.visibility = 'hidden';
@@ -200,10 +245,23 @@ function initMapInteractivity() {
     tooltip.classList.add('active');
   };
 
-  const showStateTooltip = (stateName, event) => {
-    const isNew = tooltip.textContent !== stateName || !tooltip.classList.contains('active');
-    if (isNew) {
+  const showStateTooltip = (stateName, event, isPersistent) => {
+    if (tooltip.classList.contains('persistent') && !isPersistent) return;
+    
+    const isNew = !tooltip.classList.contains('active') || (isPersistent && !tooltip.classList.contains('persistent'));
+    
+    if (isPersistent) {
+      tooltip.classList.add('persistent');
+      const url = getRoomUrl(null, stateName);
+      tooltip.innerHTML = `
+        <div class="hidden-india-tooltip-title">${stateName}</div>
+        <a href="${url}" class="hidden-india-tooltip-link">Join Chat Room &rarr;</a>
+      `;
+    } else {
       tooltip.textContent = stateName;
+    }
+    
+    if (isNew) {
       tooltip.style.visibility = 'hidden';
       tooltip.classList.add('active');
     }
@@ -232,23 +290,24 @@ function initMapInteractivity() {
     tooltip.style.left = `${adjustedLeft}px`;
     tooltip.style.top = `${topPx - 15}px`; // Show slightly above mouse cursor
     
-    if (isNew) {
+    if (isNew || isPersistent) {
       tooltip.classList.add('active');
     }
   };
 
-  const hideTooltip = () => {
-    tooltip.classList.remove('active');
+  const hideTooltip = (force = false) => {
+    if (tooltip.classList.contains('persistent') && !force) return;
+    tooltip.classList.remove('active', 'persistent');
   };
 
   // 1a. Desktop Hover for Cities
   cities.forEach(city => {
     city.el.addEventListener('mouseenter', (e) => {
       e.stopPropagation();
-      showCityTooltip(city);
+      showCityTooltip(city, false);
     });
     city.el.addEventListener('mouseleave', () => {
-      hideTooltip();
+      hideTooltip(false);
     });
   });
 
@@ -257,19 +316,19 @@ function initMapInteractivity() {
     path.addEventListener('mouseenter', (e) => {
       const stateName = path.getAttribute('name');
       if (stateName) {
-        showStateTooltip(stateName, e);
+        showStateTooltip(stateName, e, false);
       }
     });
     
     path.addEventListener('mousemove', (e) => {
       const stateName = path.getAttribute('name');
-      if (stateName && tooltip.classList.contains('active')) {
-        showStateTooltip(stateName, e);
+      if (stateName && tooltip.classList.contains('active') && !tooltip.classList.contains('persistent')) {
+        showStateTooltip(stateName, e, false);
       }
     });
 
     path.addEventListener('mouseleave', () => {
-      hideTooltip();
+      hideTooltip(false);
     });
   });
 
@@ -300,11 +359,14 @@ function initMapInteractivity() {
     // If click is within 45 viewBox units (approx. 20-30px on screen), show city tooltip
     if (minDistance < 45 && closestCity) {
       const isActive = tooltip.classList.contains('active') && 
-                       tooltip.textContent === `${closestCity.name}, ${closestCity.state}`;
+                       tooltip.classList.contains('persistent') &&
+                       tooltip.querySelector('.hidden-india-tooltip-title') &&
+                       tooltip.querySelector('.hidden-india-tooltip-title').textContent.includes(closestCity.name);
       if (isActive) {
-        hideTooltip();
+        hideTooltip(true);
       } else {
-        showCityTooltip(closestCity);
+        tooltip.classList.remove('persistent');
+        showCityTooltip(closestCity, true);
       }
     } else {
       // If we clicked a state path, let's show the state/UT name tooltip!
@@ -313,46 +375,32 @@ function initMapInteractivity() {
         const stateName = clickedStatePath.getAttribute('name');
         if (stateName) {
           const isActive = tooltip.classList.contains('active') && 
-                           tooltip.textContent === stateName;
+                           tooltip.classList.contains('persistent') &&
+                           tooltip.querySelector('.hidden-india-tooltip-title') &&
+                           tooltip.querySelector('.hidden-india-tooltip-title').textContent === stateName;
           if (isActive) {
-            hideTooltip();
+            hideTooltip(true);
           } else {
-            // Re-use showStateTooltip logic but with static click coordinates
-            tooltip.textContent = stateName;
-            
-            // Get tooltip dimensions
-            tooltip.style.visibility = 'hidden';
-            tooltip.classList.add('active');
-            const tooltipWidth = tooltip.offsetWidth;
-            tooltip.classList.remove('active');
-            tooltip.style.visibility = '';
-            
-            let adjustedLeft = clickX;
-            const halfWidth = tooltipWidth / 2;
-            const containerWidth = rect.width;
-            
-            if (adjustedLeft - halfWidth < 10) {
-              adjustedLeft = halfWidth + 10;
-            } else if (adjustedLeft + halfWidth > containerWidth - 10) {
-              adjustedLeft = containerWidth - halfWidth - 10;
-            }
-            
-            tooltip.style.left = `${adjustedLeft}px`;
-            tooltip.style.top = `${clickY - 15}px`;
-            tooltip.classList.add('active');
+            tooltip.classList.remove('persistent');
+            showStateTooltip(stateName, e, true);
           }
         } else {
-          hideTooltip();
+          hideTooltip(true);
         }
       } else {
-        hideTooltip();
+        hideTooltip(true);
       }
     }
   });
 
   // Tap/click anywhere else to dismiss tooltip
   document.addEventListener('click', () => {
-    hideTooltip();
+    hideTooltip(true);
+  });
+
+  // Stop propagation inside tooltip so clicking the link doesn't dismiss it
+  tooltip.addEventListener('click', (e) => {
+    e.stopPropagation();
   });
 }
 

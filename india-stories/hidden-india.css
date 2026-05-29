@@ -342,6 +342,33 @@
   border-color: rgba(3, 6, 17, 0.95) transparent transparent;
 }
 
+/* Persistent click/tap tooltip styling */
+.hidden-india-map-tooltip.persistent {
+  pointer-events: auto;
+  text-align: center;
+  padding: 0.8rem 1.4rem;
+}
+.hidden-india-tooltip-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+.hidden-india-tooltip-link {
+  display: inline-block;
+  color: var(--hi-accent-gold);
+  font-size: 0.8rem;
+  text-decoration: none;
+  font-weight: 600;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 6px;
+  margin-top: 2px;
+  width: 100%;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.hidden-india-tooltip-link:hover {
+  color: #ffffff;
+}
+
 /* Editorial Content Sections */
 .hidden-india-section {
   padding: 5rem 2rem;
@@ -1316,6 +1343,16 @@
 }
 .light-mode .hidden-india-map-tooltip::after {
   border-color: #ffffff transparent transparent !important;
+}
+.light-mode .hidden-india-tooltip-title {
+  color: var(--is-text) !important;
+}
+.light-mode .hidden-india-tooltip-link {
+  color: var(--hi-accent-saffron) !important;
+  border-top-color: rgba(15, 23, 42, 0.1) !important;
+}
+.light-mode .hidden-india-tooltip-link:hover {
+  color: #000000 !important;
 }
 .light-mode .hidden-india-footer {
   background: #f5ead8 !important; /* Slightly darker warm cream for structure */
