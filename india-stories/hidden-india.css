@@ -1,5 +1,14 @@
 /* Hidden India Content Section Custom CSS */
 /* Prefix: hidden-india- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
 
 :root {
   --hi-bg: #030611;
@@ -106,6 +115,9 @@
 .hidden-india-content-wrapper {
   position: relative;
   z-index: 10;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Hero Section */
@@ -1142,10 +1154,19 @@
     padding: 0;
     border-radius: 12px;
   }
+  .hidden-india-content-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
   .hidden-india-hero {
     background-attachment: scroll !important;
     min-height: auto;
     padding: 8rem 1rem 4rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
   .hidden-india-title {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
