@@ -224,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Check if the user is on the chat page directly
-    const pathLower = window.location.pathname.toLowerCase();
     const isDirectChatPage = pathLower.includes('/chat/') || 
                              pathLower.endsWith('/chat') || 
                              pathLower.endsWith('/chat.html') || 
