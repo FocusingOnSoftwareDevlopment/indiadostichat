@@ -1905,7 +1905,8 @@ body.dark-mode .play-guide-box strong {
 }
 
 body.dark-mode .header-stories-btn::before {
-  background: linear-gradient(90deg, #FF9933, #1e293b, #22c55e, #60a5fa, #FF9933);
+  background: linear-gradient(90deg, #FF9933, #22c55e, #60a5fa);
+  animation: none !important;
 }
 
 @keyframes borderGlow {
@@ -2137,6 +2138,26 @@ body.dark-mode .game-card {
   width: 100%;
 }
 
+/* Tricolor animated bottom outline for main header box */
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FF9933, #ffffff, #138808, #FF9933);
+  background-size: 300% 100%;
+  animation: headerTricolorBorder 6s linear infinite;
+  z-index: 1001;
+}
 
+body.dark-mode header::after {
+  background: linear-gradient(90deg, #FF9933, #0f172a, #22c55e, #FF9933);
+}
 
-
+@keyframes headerTricolorBorder {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+  100% { background-position: 0% 0%; }
+}
