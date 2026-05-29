@@ -46,6 +46,52 @@
             right: 0;
             bottom: 0;
         }
+        /* Premium Loading Screen */
+        .chat-loader {
+            position: absolute;
+            inset: 0;
+            background: #0b0f19; /* dark modern background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .chat-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.05);
+            border-top: 4px solid #FF9933; /* Saffron */
+            border-right: 4px solid #ffffff; /* White */
+            border-bottom: 4px solid #138808; /* Green */
+            border-radius: 50%;
+            animation: spin 1s cubic-bezier(0.55, 0.055, 0.675, 0.19) infinite;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 153, 51, 0.15);
+        }
+        .loader-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.05em;
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
     </style>
 <!-- Favicon -->
 
@@ -96,15 +142,52 @@
       </div>
     </div>
 
+    <!-- Premium Loader -->
+    <div id="chat-loader" class="chat-loader">
+        <div class="spinner"></div>
+        <div class="loader-text">Connecting to IndiaDostiChat...</div>
+    </div>
+
     <!-- Fullscreen solid Chat Frame -->
     <iframe id="chat-frame" data-src="https://kiwiirc.hybridirc.com/?theme=default#IndiaDostiChat,#trivia,#allindiachat.com" src="about:blank" title="IndiaDostiChat Live Chat"></iframe>
     <script>
         (function() {
-            if (localStorage.getItem("idc_age_gate_accepted") === "true") {
-                var iframe = document.getElementById("chat-frame");
+            var isAccepted = localStorage.getItem("idc_age_gate_accepted") === "true";
+            var iframe = document.getElementById("chat-frame");
+            var modal = document.getElementById("age-gate-modal");
+            var loader = document.getElementById("chat-loader");
+            
+            if (isAccepted) {
                 if (iframe) {
                     iframe.src = iframe.getAttribute("data-src");
                 }
+            } else {
+                if (modal) {
+                    modal.classList.add("active");
+                    document.body.classList.add("age-gate-open");
+                }
+                if (loader) {
+                    loader.classList.add("hidden");
+                }
+            }
+
+            if (iframe) {
+                iframe.addEventListener('load', function() {
+                    if (iframe.src && iframe.src !== 'about:blank' && !iframe.src.endsWith('about:blank')) {
+                        if (loader) {
+                            loader.classList.add("hidden");
+                        }
+                    }
+                });
+            }
+
+            var acceptBtn = document.getElementById("age-gate-accept");
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', function() {
+                    if (loader) {
+                        loader.classList.remove("hidden");
+                    }
+                });
             }
         })();
     </script>
