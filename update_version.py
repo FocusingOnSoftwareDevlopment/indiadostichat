@@ -15,12 +15,12 @@ def update_js_version():
                     content = f.read()
                 
                 if pattern.search(content):
-                    new_content = pattern.sub('main.min.js?v=17', content)
+                    new_content = pattern.sub('main.min.js?v=18', content)
                     if new_content != content:
                         with open(filepath, 'w', encoding='utf-8') as f:
                             f.write(new_content)
                         rel_path = os.path.relpath(filepath, base_dir)
-                        print(f"Updated JS version to v=17 in {rel_path}")
+                        print(f"Updated JS version to v=18 in {rel_path}")
                         updated_files += 1
 
     print(f"Completed! Updated {updated_files} HTML files.")

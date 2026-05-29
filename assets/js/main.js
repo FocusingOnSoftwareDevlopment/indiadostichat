@@ -358,8 +358,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(scrollDownBtn);
 
         const checkScroll = () => {
+            let isScrolledUp = false;
             const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
             if (scrollableHeight > 50 && window.scrollY < scrollableHeight - 50) {
+                isScrolledUp = true;
+            }
+            if (window.visualViewport) {
+                const vv = window.visualViewport;
+                const maxOffsetTop = document.documentElement.clientHeight - vv.height;
+                if (vv.scale > 1.05 && vv.offsetTop < maxOffsetTop - 20) {
+                    isScrolledUp = true;
+                }
+            }
+            if (isScrolledUp) {
                 scrollDownBtn.classList.add('visible');
             } else {
                 scrollDownBtn.classList.remove('visible');
@@ -368,6 +379,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('resize', checkScroll);
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('scroll', checkScroll);
+            window.visualViewport.addEventListener('resize', checkScroll);
+        }
         
         scrollDownBtn.onclick = function() {
             window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
