@@ -697,6 +697,16 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = link.href;
         }, delay);
     });
+
+    // Dismiss loading animation when page is shown (handles Back button BFCache restores)
+    window.addEventListener('pageshow', function(event) {
+        document.body.classList.remove('is-loading-india-stories');
+        const loader = document.getElementById('india-stories-loader');
+        if (loader) {
+            loader.setAttribute('aria-hidden', 'true');
+            loader.classList.remove('active');
+        }
+    });
 });
 
 // --- PWA Installation Event Listener (runs immediately) ---
