@@ -5,6 +5,7 @@
 
 // Early Theme Check to avoid flash of dark background in light mode
 (function() {
+  console.log("India Stories: Early theme check script running...");
   let savedTheme = null;
   try {
     savedTheme = localStorage.getItem("theme");
@@ -339,7 +340,11 @@ function initSmoothScroll() {
  */
 function initThemeToggle() {
   const headerRight = document.querySelector('.hidden-india-nav-right');
-  if (!headerRight) return;
+  if (!headerRight) {
+    console.warn("India Stories: .hidden-india-nav-right not found in DOM.");
+    return;
+  }
+  console.log("India Stories: Creating and inserting bulb toggle...");
 
   // Create bulb toggle button
   const bulbToggle = document.createElement('button');
