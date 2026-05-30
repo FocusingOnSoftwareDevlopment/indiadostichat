@@ -35,6 +35,11 @@ body.dark-mode .hero {
   background: none !important;
 }
 
+body.dark-mode .hero-content {
+  background: rgba(15, 23, 42, 0.88) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+}
+
 body.dark-mode .hero p {
   color: var(--accent-color) !important;
   font-weight: 500;
