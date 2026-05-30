@@ -454,26 +454,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const safetyOverlay = document.createElement("div");
         safetyOverlay.className = "safety-alert-overlay active";
         safetyOverlay.innerHTML = `
-            <div class="safety-alert-card age-gate-card" style="max-width: 680px; text-align: left; padding: 2.5rem; border-radius: 16px;">
-                <div class="age-gate-icon" style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">🛡️</div>
-                <h2 style="font-size: 1.8rem; font-weight: 700; color: var(--accent-color); margin-bottom: 1.5rem; text-align: center;">Safety & Age Notice</h2>
-                <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">
-                    IndiaDostiChat is intended only for users aged 18 and above. If you are under 18, you must leave this site immediately.
+            <div class="safety-alert-card age-gate-card" style="max-width: 520px; text-align: left; padding: 2rem 1.5rem; border-radius: 16px; margin: 10px;">
+                <div class="age-gate-icon" style="font-size: 2.5rem; margin-bottom: 0.5rem; text-align: center;">🛡️</div>
+                <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--accent-color); margin-bottom: 1rem; text-align: center;">Safety & Age Notice</h2>
+                <p style="font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.5;">
+                    IndiaDostiChat is intended <strong>only for users aged 18 and above</strong>. By entering, you agree to chat responsibly, protect your privacy, and treat others with respect.
                 </p>
-                <p style="font-size: 0.95rem; margin-bottom: 1rem; font-weight: 500;">Before entering, please understand and agree to the following safety guidelines:</p>
-                <ul style="font-size: 0.88rem; margin-bottom: 24px; padding-left: 20px; line-height: 1.6; color: var(--text-color); opacity: 0.9;">
-                    <li style="margin-bottom: 8px;"><strong>Protect Your Privacy:</strong> Do not share phone numbers, home address, passwords, OTP, financial details, private photos, or sensitive information.</li>
-                    <li style="margin-bottom: 8px;"><strong>Stay Safe:</strong> Do not trust strangers with money, personal details, or private content.</li>
-                    <li style="margin-bottom: 8px;"><strong>Prohibited Content:</strong> Do not post or request adult, sexual, abusive, hateful, threatening, illegal, or harmful content.</li>
-                    <li style="margin-bottom: 8px;"><strong>Respect Others:</strong> Do not harass, bully, spam, impersonate, scam, or disturb other users.</li>
-                    <li style="margin-bottom: 8px;"><strong>User Responsibility:</strong> IndiaDostiChat does not verify user identity. Conversations are user-generated, and users are responsible for their own actions.</li>
-                </ul>
-                <p style="font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6;">
-                    By clicking <strong>"I am 18+ and I Agree,"</strong> you confirm that you are at least 18 years old and agree to follow the IndiaDostiChat rules.
+                <p style="font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.5; color: var(--text-color); opacity: 0.9;">
+                    Please read and follow our safety guidelines. You can check all our community guidelines on the <a href="/rules/" style="color: var(--primary-color); font-weight: 600; text-decoration: underline;">Rules Page</a>.
                 </p>
                 <div class="age-gate-actions" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn btn-primary btn-ok" style="background: var(--primary-color); border: none; padding: 12px 40px; border-radius: 999px; color: white; font-weight: 700; cursor: pointer; font-size: 1rem; transition: var(--transition);">I am 18+ and I Agree</button>
-                    <button class="btn btn-secondary btn-leave" style="background: transparent; border: 1px solid var(--border-color); padding: 12px 40px; border-radius: 999px; color: var(--text-color); font-weight: 700; cursor: pointer; font-size: 1rem; transition: var(--transition);">Exit</button>
+                    <button class="btn btn-primary btn-ok" style="background: var(--primary-color); border: none; padding: 10px 30px; border-radius: 999px; color: #0f172a !important; font-weight: 700; cursor: pointer; font-size: 0.95rem; transition: var(--transition);">I am 18+ and I Agree</button>
+                    <button class="btn btn-secondary btn-leave" style="background: transparent; border: 1px solid var(--border-color); padding: 10px 30px; border-radius: 999px; color: var(--text-color); font-weight: 700; cursor: pointer; font-size: 0.95rem; transition: var(--transition);">Exit</button>
                 </div>
             </div>
         `;
