@@ -113,61 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const visitorCountEls = document.querySelectorAll('#visitor-count');
     const joinCountEls = document.querySelectorAll('#join-count');
 
-    // Get today's local date string (YYYY-MM-DD)
-    const today = new Date();
-    const dateStr = today.getFullYear() + '-' + 
-                    String(today.getMonth() + 1).padStart(2, '0') + '-' + 
-                    String(today.getDate()).padStart(2, '0');
-
-    // Clean up older local storage keys
-    try {
-        for (let i = localStorage.length - 1; i >= 0; i--) {
-            const key = localStorage.key(i);
-            if (key) {
-                if ((key.startsWith('idc_visit_counted_') && key !== 'idc_visit_counted_' + dateStr) ||
-                    (key.startsWith('idc_join_counted_') && key !== 'idc_join_counted_' + dateStr)) {
-                    localStorage.removeItem(key);
-                }
-            }
-        }
-    } catch (e) {
-        console.warn("Storage cleanup failed:", e);
-    }
-
-    const visitKey = 'idc_visit_counted_' + dateStr;
-    const joinKey = 'idc_join_counted_' + dateStr;
-
-    // 3a. Community Visits (Visitor Counter) logic
-    if (visitorCountEls.length > 0) {
-        let isVisited = false;
-        try {
-            isVisited = localStorage.getItem(visitKey) === 'true';
-        } catch (e) {}
-
-        const visitorApiUrl = isVisited 
-            ? 'https://api.counterapi.dev/v1/indiadostichat_main/visitors'
-            : 'https://api.counterapi.dev/v1/indiadostichat_main/visitors/up';
-
-        fetch(visitorApiUrl)
-            .then(res => res.json())
-            .then(data => {
-                if (data && typeof data.count !== 'undefined') {
-                    const formattedCount = Number(data.count).toLocaleString();
-                    visitorCountEls.forEach(el => el.innerText = formattedCount);
-                    if (!isVisited) {
-                        try {
-                            localStorage.setItem(visitKey, 'true');
-                        } catch (e) {}
-                    }
-                } else {
-                    visitorCountEls.forEach(el => el.innerText = 'Unavailable');
-                }
-            })
-            .catch(() => {
-                visitorCountEls.forEach(el => el.innerText = 'Unavailable');
-            });
-    }
-
     // Function to update join count elements
     function updateJoinUI(count) {
         const formattedCount = Number(count).toLocaleString();
@@ -197,53 +142,107 @@ document.addEventListener('DOMContentLoaded', () => {
         return Promise.resolve();
     }
 
-    // 3b. Join Chat Counter logic
-    if (joinCountEls.length > 0) {
-        // Fetch current join count (always show it)
-        fetch('https://api.counterapi.dev/v1/indiadostichat_main/join_chat')
-            .then(res => res.json())
-            .then(data => {
-                if (data && typeof data.count !== 'undefined') {
-                    updateJoinUI(data.count);
-                } else {
-                    joinCountEls.forEach(el => el.innerText = 'Unavailable');
-                }
-            })
-            .catch(() => {
-                joinCountEls.forEach(el => el.innerText = 'Unavailable');
-            });
-    }
+    // Delay Counter API initialization by 3 seconds to keep it off the critical path
+    let visitKey = '';
+    let joinKey = '';
+    
+    setTimeout(() => {
+        // Get today's local date string (YYYY-MM-DD)
+        const today = new Date();
+        const dateStr = today.getFullYear() + '-' + 
+                        String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                        String(today.getDate()).padStart(2, '0');
 
-    // Check if the user is on the chat page directly
-    const isDirectChatPage = pathLower.includes('/chat/') || 
-                             pathLower.endsWith('/chat') || 
-                             pathLower.endsWith('/chat.html') || 
-                             pathLower.endsWith('/chat/index.html');
-
-    if (isDirectChatPage) {
-        incrementJoinChat();
-    }
-
-    // Attach click listeners to Join Chat links/buttons on other pages
-    document.addEventListener('click', (e) => {
-        let targetEl = e.target;
-        while (targetEl && targetEl !== document.body) {
-            if (targetEl.tagName === 'A' && targetEl.href) {
-                try {
-                    const url = new URL(targetEl.href, window.location.origin);
-                    const hrefPath = url.pathname.toLowerCase();
-                    if (hrefPath.includes('/chat/') || 
-                        hrefPath.endsWith('/chat') || 
-                        hrefPath.endsWith('/chat.html') || 
-                        hrefPath.endsWith('/chat/index.html')) {
-                        incrementJoinChat();
-                        break;
+        // Clean up older local storage keys
+        try {
+            for (let i = localStorage.length - 1; i >= 0; i--) {
+                const key = localStorage.key(i);
+                if (key) {
+                    if ((key.startsWith('idc_visit_counted_') && key !== 'idc_visit_counted_' + dateStr) ||
+                        (key.startsWith('idc_join_counted_') && key !== 'idc_join_counted_' + dateStr)) {
+                        localStorage.removeItem(key);
                     }
-                } catch (err) {}
+                }
             }
-            targetEl = targetEl.parentElement;
+        } catch (e) {
+            console.warn("Storage cleanup failed:", e);
         }
-    });
+
+        visitKey = 'idc_visit_counted_' + dateStr;
+        joinKey = 'idc_join_counted_' + dateStr;
+
+        // 3a. Community Visits (Visitor Counter) logic
+        if (visitorCountEls.length > 0) {
+            let isVisited = false;
+            try {
+                isVisited = localStorage.getItem(visitKey) === 'true';
+            } catch (e) {}
+
+            const visitorApiUrl = isVisited 
+                ? 'https://api.counterapi.dev/v1/indiadostichat_main/visitors'
+                : 'https://api.counterapi.dev/v1/indiadostichat_main/visitors/up';
+
+            fetch(visitorApiUrl)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && typeof data.count !== 'undefined') {
+                        const formattedCount = Number(data.count).toLocaleString();
+                        visitorCountEls.forEach(el => el.innerText = formattedCount);
+                        if (!isVisited) {
+                            try {
+                                localStorage.setItem(visitKey, 'true');
+                            } catch (e) {}
+                        }
+                    } else {
+                        visitorCountEls.forEach(el => el.innerText = '—');
+                    }
+                })
+                .catch(() => {
+                    visitorCountEls.forEach(el => el.innerText = '—');
+                });
+        }
+
+        // 3b. Join Chat Counter logic
+        if (joinCountEls.length > 0) {
+            fetch('https://api.counterapi.dev/v1/indiadostichat_main/join_chat')
+                .then(res => res.json())
+                .then(data => {
+                    if (data && typeof data.count !== 'undefined') {
+                        updateJoinUI(data.count);
+                    } else {
+                        joinCountEls.forEach(el => el.innerText = '—');
+                    }
+                })
+                .catch(() => {
+                    joinCountEls.forEach(el => el.innerText = '—');
+                });
+        }
+
+        if (isChatPage) {
+            incrementJoinChat();
+        }
+
+        // Attach click listeners to Join Chat links/buttons on other pages
+        document.addEventListener('click', (e) => {
+            let targetEl = e.target;
+            while (targetEl && targetEl !== document.body) {
+                if (targetEl.tagName === 'A' && targetEl.href) {
+                    try {
+                        const url = new URL(targetEl.href, window.location.origin);
+                        const hrefPath = url.pathname.toLowerCase();
+                        if (hrefPath.includes('/chat/') || 
+                            hrefPath.endsWith('/chat') || 
+                            hrefPath.endsWith('/chat.html') || 
+                            hrefPath.endsWith('/chat/index.html')) {
+                            incrementJoinChat();
+                            break;
+                        }
+                    } catch (err) {}
+                }
+                targetEl = targetEl.parentElement;
+            }
+        });
+    }, 3000);
 
     // --- 4. Landing Page Rotating Backgrounds ---
     const landingHeroes = document.querySelectorAll('.landing-hero');
@@ -355,13 +354,25 @@ document.addEventListener('DOMContentLoaded', () => {
         backToTopBtn.setAttribute('aria-label', 'Back to top');
         document.body.appendChild(backToTopBtn);
 
-        window.onscroll = function() {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
+        let scrollTicking = false;
+        let lastScrollY = 0;
+        const updateScrollBtn = () => {
+            // Read layout property synchronously outside requestAnimationFrame
+            lastScrollY = window.scrollY;
+            if (!scrollTicking) {
+                scrollTicking = true;
+                window.requestAnimationFrame(() => {
+                    if (lastScrollY > 300) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                    scrollTicking = false;
+                });
             }
         };
+
+        window.addEventListener('scroll', updateScrollBtn, { passive: true });
 
         backToTopBtn.onclick = function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -370,36 +381,62 @@ document.addEventListener('DOMContentLoaded', () => {
         // Implement Scroll Down Button for chat page
         const scrollDownBtn = document.createElement('button');
         scrollDownBtn.className = 'scroll-down-btn';
-        // Modern SVG arrow down icon
         scrollDownBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin: auto; display: block;"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>';
         scrollDownBtn.setAttribute('aria-label', 'Scroll to bottom');
         document.body.appendChild(scrollDownBtn);
 
+        let chatScrollTicking = false;
+        let lastScrollY = 0;
+        let lastScrollHeight = 0;
+        let lastInnerHeight = 0;
+        let lastClientHeight = 0;
+        let lastVvScale = 1;
+        let lastVvHeight = 0;
+        let lastVvOffsetTop = 0;
+        const hasVisualViewport = !!window.visualViewport;
+
         const checkScroll = () => {
-            let isScrolledUp = false;
-            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (scrollableHeight > 50 && window.scrollY < scrollableHeight - 50) {
-                isScrolledUp = true;
+            // Read all layout properties synchronously in the event handler task before any DOM writes
+            lastScrollY = window.scrollY;
+            lastScrollHeight = document.documentElement.scrollHeight;
+            lastInnerHeight = window.innerHeight;
+            lastClientHeight = document.documentElement.clientHeight;
+            if (hasVisualViewport) {
+                lastVvScale = window.visualViewport.scale;
+                lastVvHeight = window.visualViewport.height;
+                lastVvOffsetTop = window.visualViewport.offsetTop;
             }
-            if (window.visualViewport) {
-                const vv = window.visualViewport;
-                const maxOffsetTop = document.documentElement.clientHeight - vv.height;
-                if (vv.scale > 1.05 && vv.offsetTop < maxOffsetTop - 20) {
-                    isScrolledUp = true;
-                }
-            }
-            if (isScrolledUp) {
-                scrollDownBtn.classList.add('visible');
-            } else {
-                scrollDownBtn.classList.remove('visible');
+
+            if (!chatScrollTicking) {
+                chatScrollTicking = true;
+                window.requestAnimationFrame(() => {
+                    let isScrolledUp = false;
+                    const scrollableHeight = lastScrollHeight - lastInnerHeight;
+                    if (scrollableHeight > 50 && lastScrollY < scrollableHeight - 50) {
+                        isScrolledUp = true;
+                    }
+                    if (hasVisualViewport) {
+                        const maxOffsetTop = lastClientHeight - lastVvHeight;
+                        if (lastVvScale > 1.05 && lastVvOffsetTop < maxOffsetTop - 20) {
+                            isScrolledUp = true;
+                        }
+                    }
+                    
+                    if (isScrolledUp) {
+                        scrollDownBtn.classList.add('visible');
+                    } else {
+                        scrollDownBtn.classList.remove('visible');
+                    }
+                    chatScrollTicking = false;
+                });
             }
         };
 
-        window.addEventListener('scroll', checkScroll);
-        window.addEventListener('resize', checkScroll);
-        if (window.visualViewport) {
-            window.visualViewport.addEventListener('scroll', checkScroll);
-            window.visualViewport.addEventListener('resize', checkScroll);
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        window.addEventListener('resize', checkScroll, { passive: true });
+        if (hasVisualViewport) {
+            window.visualViewport.addEventListener('scroll', checkScroll, { passive: true });
+            window.visualViewport.addEventListener('resize', checkScroll, { passive: true });
         }
         
         scrollDownBtn.onclick = function() {

@@ -9,9 +9,9 @@
 
 
     <!-- Preload Hero LCP and Logo images -->
-    <link rel="preload" href="/assets/logo/logo.webp" as="image" type="image/webp">
-    <link rel="preload" href="/assets/images/home-hero/mumbai-gateway.webp" as="image" type="image/webp" media="(min-width: 769px)">
-    <link rel="preload" href="/assets/images/home-hero/mobile/mumbai-gateway-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)">
+    <link rel="preload" href="/assets/logo/logo-40.webp" as="image" type="image/webp" imagesrcset="/assets/logo/logo-40.webp 1x, /assets/logo/logo-80.webp 2x">
+    <link rel="preload" href="/assets/images/home-hero/mumbai-gateway.webp" as="image" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" href="/assets/images/home-hero/mobile/mumbai-gateway-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
 
     <meta name="description" content="Join IndiaDostiChat, a free anonymous India chat room for Hindi, English, and desi friendship chat. Chat online with Indian friends.">
     <meta name="keywords" content="Indian chat room, India chat room, Hindi chat room, desi chat room, Indian IRC chat, free Indian chat, online Indian friendship chat, friendship chat India, IRC chat India">
@@ -120,7 +120,7 @@
     <header>
         <nav>
             <a href="/" class="logo">
-                <img src="/assets/logo/logo.webp" alt="IndiaDostiChat logo" width="40" height="40" style="height: 40px;" decoding="async" onerror="this.style.display='none'">
+                <img src="/assets/logo/logo-40.webp" srcset="/assets/logo/logo-40.webp 1x, /assets/logo/logo-80.webp 2x" alt="IndiaDostiChat logo" width="40" height="40" style="height: 40px;" decoding="async" onerror="this.style.display='none'">
                 IndiaDostiChat
             </a>
             
@@ -458,7 +458,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <a href="/" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;">
-                    <img src="/assets/logo/logo.webp" alt="IndiaDostiChat logo" width="30" height="30" style="height: 30px;" decoding="async" loading="lazy" onerror="this.style.display='none'"> 
+                    <img src="/assets/logo/logo-30.webp" alt="IndiaDostiChat logo" width="30" height="30" style="height: 30px;" decoding="async" loading="lazy" onerror="this.style.display='none'"> 
                     IndiaDostiChat
                 </a>
                 <p>The premier destination for Indians globally to connect, share, and build friendships in a free Indian chat room.</p>
