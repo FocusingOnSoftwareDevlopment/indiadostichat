@@ -22,11 +22,13 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome (Deferred) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.min.css?v=105">
+    <link rel="stylesheet" href="assets/css/uno-tournament.min.css?v=2">
     
 
     <!-- FAQ Schema -->
@@ -188,7 +190,7 @@
     <header>
         <nav>
             <a href="/" class="logo">
-                <img src="assets/logo/duno-logo.jpg" alt="DUNO Logo" style="height: 60px; width: 60px; border-radius: 12px; object-fit: cover; margin-right: 8px;">
+                <img src="assets/logo/duno-logo.jpg" alt="DUNO Logo" width="60" height="60" style="height: 60px; width: 60px; border-radius: 12px; object-fit: cover; margin-right: 8px;" decoding="async">
                 IndiaDostiChat
             </a>
             
@@ -196,7 +198,7 @@
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
                   <span class="theme-icon">🌙</span>
                 </button>
-                <button class="mobile-menu-btn">
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" id="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
             </div>
@@ -219,7 +221,7 @@
         <section class="uno-hero">
             <h1>IndiaDostiChat DUNO dragon clash card game Tournament</h1>
             <div style="margin: 1.5rem auto;">
-                <img src="assets/uno/media1.png" alt="DUNO Animation" class="uno-hero-gif">
+                <img src="assets/uno/media1.png" alt="DUNO Animation" class="uno-hero-gif" width="1024" height="1024" decoding="async">
             </div>
             <p>
                 Pay ₹25, register your IndiaDostiChat username, and compete for a ₹2500 prize in our community DUNO dragon clash card game tournament.
@@ -266,7 +268,7 @@
             <section class="uno-section">
                 <div class="uno-section-header">
                     <h2 class="section-title" style="margin-bottom: 0;">Tournament Details</h2>
-                    <img src="assets/uno/media2.png" alt="DUNO Details">
+                    <img src="assets/uno/media2.png" alt="DUNO Details" width="1024" height="1024" style="height: 60px; width: auto;" decoding="async" loading="lazy">
                 </div>
                 <div class="uno-details-grid grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
                     <div class="uno-tournament-card card-blue">
@@ -311,7 +313,7 @@
             <section class="uno-section">
                 <div class="uno-section-header">
                     <h2 class="section-title" style="margin-bottom: 0;">Register and Pay</h2>
-                    <img src="assets/uno/media3.png" alt="DUNO Register">
+                    <img src="assets/uno/media3.png" alt="DUNO Register" width="1024" height="1024" style="height: 60px; width: auto;" decoding="async" loading="lazy">
                 </div>
                 <div class="uno-form-card">
                     <form id="uno-form" class="uno-form">
@@ -425,7 +427,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <a href="/" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block; vertical-align: middle;">
-                    <img src="assets/logo/duno-logo.jpg" alt="DUNO Logo" style="height: 48px; width: 48px; border-radius: 10px; object-fit: cover; margin-right: 8px; vertical-align: middle;"> 
+                    <img src="assets/logo/duno-logo.jpg" alt="DUNO Logo" width="48" height="48" style="height: 48px; width: 48px; border-radius: 10px; object-fit: cover; margin-right: 8px; vertical-align: middle;" decoding="async" loading="lazy"> 
                     IndiaDostiChat
                 </a>
                 <p>The premier destination for Indians globally to connect, share, and build friendships in a free Indian chat room.</p>
@@ -445,9 +447,9 @@
             <div class="footer-section">
                 <h4>Connect With Us</h4>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Visit IndiaDostiChat Facebook page"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Visit IndiaDostiChat Twitter profile"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Visit IndiaDostiChat Instagram profile"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>

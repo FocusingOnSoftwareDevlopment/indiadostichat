@@ -90,16 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.onclick = function() {
             navLinks.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (icon) {
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            }
+            mobileMenuBtn.classList.toggle('active');
         };
     }
 
@@ -201,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         updateJoinUI(data.count);
                     }
                 })
-                .catch(err => console.error("Error incrementing join count:", err));
+                .catch(err => console.warn("Error incrementing join count:", err));
         }
         return Promise.resolve();
     }
@@ -280,38 +271,62 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (heroBgLayers.length > 0) {
         const heroImages = [
-            { src: "assets/images/home-hero/mumbai-gateway.webp", label: "Mumbai" },
-            { src: "assets/images/home-hero/delhi-india-gate.webp", label: "Delhi" },
-            { src: "assets/images/home-hero/hyderabad-charminar.webp", label: "Hyderabad" },
-            { src: "assets/images/home-hero/jaipur-hawa-mahal.webp", label: "Jaipur" },
-            { src: "assets/images/home-hero/kerala-backwaters.webp", label: "Kerala" },
-            { src: "assets/images/home-hero/kashmir-mountains.webp", label: "Kashmir" },
-            { src: "assets/images/home-hero/varanasi-ghats.webp", label: "Varanasi" },
-            { src: "assets/images/home-hero/goa-beach.webp", label: "Goa" },
-            { src: "assets/images/home-hero/india-festival-lights.webp", label: "India" }
+            { name: "mumbai-gateway", label: "Mumbai", loaded: true },
+            { name: "delhi-india-gate", label: "Delhi", loaded: false },
+            { name: "hyderabad-charminar", label: "Hyderabad", loaded: false },
+            { name: "jaipur-hawa-mahal", label: "Jaipur", loaded: false },
+            { name: "kerala-backwaters", label: "Kerala", loaded: false },
+            { name: "kashmir-mountains", label: "Kashmir", loaded: false },
+            { name: "varanasi-ghats", label: "Varanasi", loaded: false },
+            { name: "goa-beach", label: "Goa", loaded: false },
+            { name: "india-festival-lights", label: "India", loaded: false }
         ];
+
+        const isMobile = window.innerWidth <= 768;
+        function getHeroSrc(name) {
+            if (isMobile) {
+                return `/assets/images/home-hero/mobile/${name}-mobile.webp`;
+            }
+            return `/assets/images/home-hero/${name}.webp`;
+        }
 
         let currentImgIdx = 0;
         let activeLayerIdx = 0;
 
-        // Preload other images after the page loads
+        // Lazy load rotating images one by one after window load (lazy queue)
         window.addEventListener('load', () => {
-            for (let i = 1; i < heroImages.length; i++) {
+            const loadNextImage = (idx) => {
+                if (idx >= heroImages.length) return;
                 const img = new Image();
-                img.src = heroImages[i].src;
-            }
+                img.onload = () => {
+                    heroImages[idx].loaded = true;
+                    setTimeout(() => loadNextImage(idx + 1), 2000);
+                };
+                img.onerror = () => {
+                    setTimeout(() => loadNextImage(idx + 1), 2000);
+                };
+                img.src = getHeroSrc(heroImages[idx].name);
+            };
+            
+            // Start queue after 4 seconds
+            setTimeout(() => loadNextImage(1), 4000);
         });
 
         if (!prefersReducedMotion && heroBgLayers.length >= 2) {
             setInterval(() => {
                 const nextImgIdx = (currentImgIdx + 1) % heroImages.length;
-                const nextLayerIdx = 1 - activeLayerIdx;
                 
+                // Do not switch or request image if it hasn't loaded yet
+                if (nextImgIdx !== 0 && !heroImages[nextImgIdx].loaded) {
+                    return;
+                }
+                
+                const nextLayerIdx = 1 - activeLayerIdx;
                 const activeLayer = heroBgLayers[activeLayerIdx];
                 const inactiveLayer = heroBgLayers[nextLayerIdx];
 
                 // Set image on the inactive layer
-                inactiveLayer.style.backgroundImage = `url('${heroImages[nextImgIdx].src}')`;
+                inactiveLayer.style.backgroundImage = `url('${getHeroSrc(heroImages[nextImgIdx].name)}')`;
                 
                 // Add active to inactive layer, remove from active
                 inactiveLayer.classList.add('active');
@@ -336,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isChatPage) {
         const backToTopBtn = document.createElement('button');
         backToTopBtn.className = 'back-to-top';
-        backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        backToTopBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: block; margin: auto;"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>';
         backToTopBtn.setAttribute('aria-label', 'Back to top');
         document.body.appendChild(backToTopBtn);
 
@@ -552,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify(payload)
-                    }).catch(err => console.error("Form submission error", err));
+                    }).catch(err => console.warn("Form submission error", err));
 
                     if (message) {
                         message.textContent = "Payment successful. Registration submitted. Payment ID: " + response.razorpay_payment_id + ". Your payment will be manually verified before slot confirmation.";

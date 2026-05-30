@@ -1,0 +1,745 @@
+/* UNO Tournament Styles */
+:root {
+  --uno-red: #ff3b30;
+  --uno-yellow: #ffcc00;
+  --uno-green: #34c759;
+  --uno-blue: #007aff;
+  --uno-red-glow: rgba(255, 59, 48, 0.35);
+  --uno-yellow-glow: rgba(255, 204, 0, 0.35);
+  --uno-green-glow: rgba(52, 199, 89, 0.35);
+  --uno-blue-glow: rgba(0, 122, 255, 0.35);
+}
+
+body.uno-tournament-page {
+  background-image: linear-gradient(rgba(248, 249, 250, 0.75), rgba(248, 249, 250, 0.75)), url('../uno/duno-bg.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body.uno-tournament-page.dark-mode {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('../uno/duno-bg.png');
+}
+
+/* Animated Floating UNO Cards Background */
+.uno-bg-floating-cards {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.uno-floating-card {
+  --card-opacity: 0.18;
+  position: absolute;
+  width: 60px;
+  height: 90px;
+  border-radius: 8px;
+  border: 3px solid white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  opacity: 0; /* starts hidden, controlled by keyframes */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  color: white;
+  user-select: none;
+}
+
+body.dark-mode .uno-floating-card {
+  --card-opacity: 0.12;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Classic UNO Card Designs in CSS */
+.uno-floating-card.red {
+  background: radial-gradient(circle, #ff4d4d, #cc0000);
+}
+.uno-floating-card.yellow {
+  background: radial-gradient(circle, #ffeb3b, #fbc02d);
+  color: #1e293b;
+  border-color: #1e293b;
+}
+body.dark-mode .uno-floating-card.yellow {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: white;
+}
+.uno-floating-card.green {
+  background: radial-gradient(circle, #4caf50, #2e7d32);
+}
+.uno-floating-card.blue {
+  background: radial-gradient(circle, #2196f3, #1565c0);
+}
+.uno-floating-card.wild {
+  background: radial-gradient(circle, #6b21a8, #1e1b4b);
+  border-color: #fbbf24;
+  color: #fbbf24;
+}
+body.dark-mode .uno-floating-card.wild {
+  border-color: #fbbf24;
+  color: #fbbf24;
+}
+
+.uno-floating-card::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  transform: rotate(-25deg);
+  z-index: 1;
+}
+
+.uno-floating-card-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: 28px;
+  z-index: 2;
+  text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+}
+.uno-floating-card.yellow .uno-floating-card-center {
+  text-shadow: none;
+}
+body.dark-mode .uno-floating-card.yellow .uno-floating-card-center {
+  text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+}
+
+.uno-floating-card-corner {
+  display: flex;
+  justify-content: flex-start;
+  z-index: 2;
+}
+.uno-floating-card-corner.bottom {
+  justify-content: flex-end;
+  transform: rotate(180deg);
+}
+
+/* Animations for Floating Cards */
+@keyframes floatUp {
+  0% {
+    transform: translateY(110vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--card-opacity);
+  }
+  90% {
+    opacity: var(--card-opacity);
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.uno-card-1 { left: 5%; animation: floatUp 25s linear infinite; animation-delay: 0s; }
+.uno-card-2 { left: 22%; animation: floatUp 18s linear infinite; animation-delay: -5s; width: 50px; height: 75px; font-size: 12px; }
+.uno-card-3 { left: 45%; animation: floatUp 30s linear infinite; animation-delay: -12s; }
+.uno-card-4 { left: 65%; animation: floatUp 22s linear infinite; animation-delay: -3s; width: 55px; height: 82px; }
+.uno-card-5 { left: 82%; animation: floatUp 27s linear infinite; animation-delay: -8s; }
+.uno-card-6 { left: 92%; animation: floatUp 20s linear infinite; animation-delay: -15s; width: 45px; height: 68px; font-size: 10px; }
+
+/* Dynamic Hero Section */
+.uno-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8)), url('../uno/duno-bg.png') center/cover no-repeat;
+  color: white;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 28px 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.uno-hero h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  line-height: 1.15;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #ff3b30, #ffcc00, #34c759, #007aff, #ff3b30);
+  background-size: 400% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowText 6s linear infinite;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+}
+
+@keyframes rainbowText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+.uno-hero-gif {
+  max-width: 100%;
+  height: auto;
+  max-height: 180px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+.uno-hero-gif:hover {
+  transform: scale(1.03);
+}
+
+.uno-hero p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 1.5rem auto;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.uno-hero-badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.uno-badge {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #fff;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.uno-badge:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+}
+.uno-badge.accent-yellow {
+  color: var(--uno-yellow);
+  border-color: rgba(254, 240, 138, 0.3);
+}
+.uno-badge.accent-red {
+  color: #ff5b57;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Glassmorphism Cards */
+.uno-tournament-card, .uno-form-card, .uno-section-card {
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 20px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+  z-index: 1;
+  position: relative;
+}
+
+.uno-tournament-card {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+  padding: 1.75rem;
+  text-align: center;
+}
+body.dark-mode .uno-tournament-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Card Hover Glows */
+.uno-tournament-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px var(--hover-glow);
+  border-color: var(--hover-border);
+}
+
+/* Individual Card Themes using HSL and custom values */
+.card-blue {
+  --hover-border: var(--uno-blue);
+  --hover-glow: var(--uno-blue-glow);
+}
+.card-red {
+  --hover-border: var(--uno-red);
+  --hover-glow: var(--uno-red-glow);
+}
+.card-yellow {
+  --hover-border: var(--uno-yellow);
+  --hover-glow: var(--uno-yellow-glow);
+}
+.card-green {
+  --hover-border: var(--uno-green);
+  --hover-glow: var(--uno-green-glow);
+}
+
+.uno-tournament-card i {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+.uno-tournament-card h3 {
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+}
+.uno-tournament-card p {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+/* Registration Form Card */
+.uno-form-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+  border-top: 6px solid transparent !important;
+  border-image: linear-gradient(90deg, var(--uno-red), var(--uno-yellow), var(--uno-green), var(--uno-blue)) 1;
+  padding: 2.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+body.dark-mode .uno-form-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 6px solid transparent !important;
+  border-image: linear-gradient(90deg, var(--uno-red), var(--uno-yellow), var(--uno-green), var(--uno-blue)) 1;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Form input custom focus styling */
+.uno-form .form-group {
+  margin-bottom: 1.25rem;
+}
+.uno-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.uno-form .form-control {
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+body.dark-mode .uno-form .form-control {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+}
+.uno-form .form-control:focus {
+  border-color: var(--uno-blue);
+  box-shadow: 0 0 0 4px var(--uno-blue-glow);
+  outline: none;
+}
+
+/* Animated Vibrant Pay Button */
+.uno-pay-btn {
+  background: linear-gradient(135deg, var(--uno-red), var(--uno-yellow), var(--uno-green), var(--uno-blue));
+  background-size: 300% 300%;
+  color: white !important;
+  border: none;
+  padding: 1.1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background-position 0.5s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  animation: gradientShift 6s ease infinite, pulseGlowBtn 2s infinite;
+  margin-top: 1rem;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseGlowBtn {
+  0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.5), 0 6px 20px rgba(0, 0, 0, 0.15); }
+  50% { box-shadow: 0 0 0 12px rgba(52, 199, 89, 0), 0 6px 20px rgba(0, 0, 0, 0.15); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.5), 0 6px 20px rgba(0, 0, 0, 0.15); }
+}
+
+.uno-pay-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+.uno-pay-btn:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.form-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  display: none;
+}
+
+.form-message:not(:empty) {
+  display: block;
+}
+
+.form-message.success {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.form-message.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.form-message.info {
+  background-color: #e0f2fe;
+  color: #075985;
+  border: 1px solid #bae6fd;
+}
+
+body.dark-mode .form-message.success { background-color: rgba(22, 101, 52, 0.2); color: #4ade80; border-color: rgba(74, 222, 128, 0.2); }
+body.dark-mode .form-message.error { background-color: rgba(153, 27, 27, 0.2); color: #f87171; border-color: rgba(248, 113, 113, 0.2); }
+body.dark-mode .form-message.info { background-color: rgba(7, 89, 133, 0.2); color: #38bdf8; border-color: rgba(56, 189, 248, 0.2); }
+
+/* UNO Tournament Layout Rules */
+.uno-section {
+  margin: 4rem 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  z-index: 1;
+  position: relative;
+}
+
+.uno-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 2rem;
+}
+.uno-section-header img {
+  height: 60px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.uno-section-card {
+  margin: 4rem 0;
+  padding: 2.25rem;
+  border-radius: 20px;
+}
+
+.uno-verification-card {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-left: 6px solid #eab308 !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
+}
+body.dark-mode .uno-verification-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-left: 6px solid #eab308 !important;
+}
+
+.uno-safety-card {
+  background: rgba(239, 68, 68, 0.08) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+  border-left: 6px solid #ef4444 !important;
+  box-shadow: 0 8px 32px 0 rgba(239, 68, 68, 0.05);
+}
+body.dark-mode .uno-safety-card {
+  background: rgba(239, 68, 68, 0.12) !important;
+}
+
+.uno-privacy-card {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
+}
+body.dark-mode .uno-privacy-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.faq-list .faq-item {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.faq-list .faq-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 122, 255, 0.3);
+}
+body.dark-mode .faq-list .faq-item {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uno-hero,
+  .uno-card-float,
+  .uno-pay-btn,
+  .uno-floating-card {
+    animation: none !important;
+  }
+}
+
+/* Layout configurations for Embed Mode (?embed=true) */
+body.uno-embed-mode {
+  background-attachment: scroll;
+}
+body.uno-embed-mode header,
+body.uno-embed-mode footer {
+  display: none !important;
+}
+body.uno-embed-mode main {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+body.uno-embed-mode .container {
+  max-width: 100% !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  margin: 0 !important;
+}
+body.uno-embed-mode .uno-hero {
+  border-radius: 0 !important;
+  padding: 2.5rem 1rem !important;
+}
+body.uno-embed-mode .uno-hero h1 {
+  font-size: 2.2rem;
+}
+body.uno-embed-mode .uno-section {
+  margin: 2rem 0 !important;
+}
+body.uno-embed-mode .uno-section-card {
+  margin: 2rem 0 !important;
+  padding: 1.5rem !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .uno-hero {
+    padding: 3.5rem 1.25rem;
+  }
+  .uno-hero h1 {
+    font-size: 2.2rem;
+  }
+  .uno-section {
+    margin: 2.5rem 0;
+  }
+  .uno-form-card {
+    padding: 1.75rem 1.25rem;
+  }
+  .uno-tournament-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Mobile details grid to save space */
+@media (max-width: 500px) {
+  .uno-hero h1 {
+    font-size: 1.85rem;
+  }
+  .uno-hero p {
+    font-size: 1rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+  .uno-hero-gif {
+    max-height: 140px !important;
+  }
+  .uno-details-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+  .uno-tournament-card {
+    padding: 1rem 0.5rem !important;
+    border-radius: 12px !important;
+  }
+  .uno-tournament-card i {
+    font-size: 1.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .uno-tournament-card h3 {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  .uno-tournament-card p {
+    font-size: 0.95rem !important;
+  }
+  
+  /* Make the 7th item (Age) span across both columns to look clean */
+  .uno-tournament-card:nth-child(7) {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.75rem !important;
+  }
+  .uno-tournament-card:nth-child(7) i {
+    margin-bottom: 0 !important;
+    font-size: 1.25rem !important;
+  }
+  .uno-tournament-card:nth-child(7) h3 {
+    margin-bottom: 0 !important;
+    display: inline-block;
+  }
+  .uno-tournament-card:nth-child(7) p {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+  .uno-section-header img {
+    height: 40px !important;
+  }
+}
+
+/* Play Now Section Styles */
+.uno-play-now-section {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.uno-play-btn-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--uno-red), var(--uno-yellow));
+  color: #fff !important;
+  padding: 1.1rem 2.75rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  border-radius: 50px;
+  box-shadow: 0 0 20px var(--uno-red-glow);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: pulseGlow 2s infinite;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.uno-play-btn-glow:hover {
+  transform: scale(1.06) translateY(-3px);
+  box-shadow: 0 0 30px var(--uno-yellow-glow);
+  background: linear-gradient(135deg, var(--uno-yellow), var(--uno-red));
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.uno-play-btn-glow i {
+  font-size: 1.5rem;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px var(--uno-red-glow);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--uno-yellow-glow), 0 0 15px var(--uno-red-glow);
+  }
+  100% {
+    box-shadow: 0 0 15px var(--uno-red-glow);
+  }
+}
+
+.play-guide-box {
+  text-align: left;
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 5px solid var(--uno-yellow);
+}
+
+body.dark-mode .play-guide-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 5px solid var(--uno-yellow);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.play-guide-box h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #1e293b;
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.dark-mode .play-guide-box h4 {
+  color: var(--uno-yellow);
+}
+
+.play-guide-box ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+body.dark-mode .play-guide-box ul {
+  color: #cbd5e1;
+}
+
+.play-guide-box li {
+  margin-bottom: 0.5rem;
+}
+
+.play-guide-box li:last-child {
+  margin-bottom: 0;
+}
+
+.play-guide-box strong {
+  color: #0f172a;
+}
+
+body.dark-mode .play-guide-box strong {
+  color: #fff;
+}

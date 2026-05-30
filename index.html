@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.indiadostichat.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.counterapi.dev https://api.razorpay.com; frame-src 'self' https://checkout.razorpay.com;">
     <title>IndiaDostiChat - Free Anonymous India Chat Room</title>
+    
+
+
+    <!-- Preload Hero LCP and Logo images -->
+    <link rel="preload" href="/assets/logo/logo.webp" as="image" type="image/webp">
+    <link rel="preload" href="/assets/images/home-hero/mumbai-gateway.webp" as="image" type="image/webp" media="(min-width: 769px)">
+    <link rel="preload" href="/assets/images/home-hero/mobile/mumbai-gateway-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)">
+
     <meta name="description" content="Join IndiaDostiChat, a free anonymous India chat room for Hindi, English, and desi friendship chat. Chat online with Indian friends.">
     <meta name="keywords" content="Indian chat room, India chat room, Hindi chat room, desi chat room, Indian IRC chat, free Indian chat, online Indian friendship chat, friendship chat India, IRC chat India">
     <link rel="canonical" href="https://www.indiadostichat.com/">
@@ -22,13 +31,8 @@
     <meta property="twitter:url" content="https://www.indiadostichat.com/">
     <meta property="twitter:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.min.css?v=24">
+    <link rel="stylesheet" href="/assets/css/style.min.css?v=25">
     
 
     <!-- WebSite Schema -->
@@ -116,7 +120,7 @@
     <header>
         <nav>
             <a href="/" class="logo">
-                <img src="assets/logo/logo.svg" alt="IndiaDostiChat Indian Chat Room Logo" style="height: 40px;" onerror="this.style.display='none'">
+                <img src="/assets/logo/logo.webp" alt="IndiaDostiChat logo" width="40" height="40" style="height: 40px;" decoding="async" onerror="this.style.display='none'">
                 IndiaDostiChat
             </a>
             
@@ -124,9 +128,13 @@
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
                   <span class="theme-icon">🌙</span>
                 </button>
-                <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" id="mobile-menu-btn">
+                    <svg class="icon-menu" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" style="display: block; margin: auto;">
+                        <line class="line-1" x1="3" y1="6" x2="21" y2="6" style="transition: transform 0.3s, opacity 0.3s;"></line>
+                        <line class="line-2" x1="3" y1="12" x2="21" y2="12" style="transition: transform 0.3s, opacity 0.3s;"></line>
+                        <line class="line-3" x1="3" y1="18" x2="21" y2="18" style="transition: transform 0.3s, opacity 0.3s;"></line>
+                    </svg>
+                </button>
             </div>
             
             <ul class="nav-links">
@@ -146,19 +154,19 @@
         <section class="hero">
             <!-- Dynamic rotating background layers -->
             <div class="hero-rotating-bg">
-                <div class="hero-bg-layer active" style="background-image: url('assets/images/home-hero/mumbai-gateway.webp');"></div>
+                <div class="hero-bg-layer active"></div>
                 <div class="hero-bg-layer"></div>
             </div>
             <div class="hero-bg-overlay"></div>
 
             <div class="hero-content">
-                <h1 class="hero-flag-heading"><img src="assets/images/indian-flag.svg" alt="Indian Flag" class="hero-flag-icon"> <span>Free India Chat Room 🇮🇳</span></h1>
+                <h1 class="hero-flag-heading"><img src="/assets/images/indian-flag.svg" alt="Indian Flag" class="hero-flag-icon" width="48" height="32" decoding="async"> <span>Free India Chat Room 🇮🇳</span></h1>
                 <p class="hero-subtitle">Join IndiaDostiChat 💬 To Chat With Indian Friends 👥 Online Using A Nickname. Enjoy Hindi, English, Hinglish, Desi Friendship Chat 🤝, Games 🎮, And Community Conversations From Mobile 📱 Or Desktop 💻.</p>
                 <div class="hero-buttons">
                     <a href="chat/" class="btn-primary">Join Indian Chat Room</a>
                     <a href="/india-stories/" class="header-stories-btn" style="padding: 0.8rem 2.2rem; border-radius: 25px; font-size: 1.05rem;">India Stories</a>
-                    <button id="install-app-btn" class="btn-secondary" style="display: none; padding: 0.8rem 2.2rem; border-radius: 25px; font-size: 1.05rem; cursor: pointer; align-items: center; gap: 8px; justify-content: center; background: transparent; font-family: inherit;">
-                        <i class="fas fa-download"></i> Install App
+                    <button id="install-app-btn" class="btn-secondary" aria-label="Install IndiaDostiChat app" style="display: none; padding: 0.8rem 2.2rem; border-radius: 25px; font-size: 1.05rem; cursor: pointer; align-items: center; gap: 8px; justify-content: center; background: transparent; font-family: inherit;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 1.1em; height: 1.1em; margin-right: 6px; vertical-align: -2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Install App
                     </button>
                 </div>
                 <p class="hero-helper-text" style="margin-top: 1.8rem; font-size: 0.98rem; max-width: 780px; margin-left: auto; margin-right: auto; opacity: 0.9; line-height: 1.6; color: var(--text-color); position: relative; z-index: 2;">
@@ -168,7 +176,7 @@
 
             <!-- Side capsule showing background city name -->
             <div class="hero-location-sidebar">
-                <i class="fas fa-map-marker-alt"></i>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 1.2em; height: 1.2em; vertical-align: middle;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 <span class="hero-location-text">Mumbai</span>
             </div>
         </section>
@@ -177,17 +185,17 @@
             <h2 class="section-title">Anonymous India Chat with Nickname</h2>
             <div class="grid">
                 <div class="card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Free Indian Chat Room for Hindi and English Users</h3>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; width: 64px; height: 64px; display: block; margin-left: auto; margin-right: auto;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <h3>Anonymous India Chat with Nickname</h3>
                     <p>Connect with thousands of friendly people from India and across the globe. Secure, fast, and incredibly fun. Join our free Indian chat room today.</p>
                 </div>
                 <div class="card">
-                    <i class="fas fa-users"></i>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; width: 64px; height: 64px; display: block; margin-left: auto; margin-right: auto;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                     <h3>Meet Indian Friends Online</h3>
                     <p>IndiaDostiChat is the perfect place to meet new Indian friends online. Join our active community and start building lasting friendships.</p>
                 </div>
                 <div class="card">
-                    <i class="fas fa-user-secret"></i>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; width: 64px; height: 64px; display: block; margin-left: auto; margin-right: auto;"><path d="M2 10h20"></path><path d="M6 10c0-2.2 1.8-4 4-4h4c2.2 0 4 1.8 4 4"></path><path d="M12 2a3 3 0 0 0-3 3h6a3 3 0 0 0-3-3z"></path><path d="M10 10v4a2 2 0 0 0 4 0v-4"></path><circle cx="8" cy="17" r="2"></circle><circle cx="16" cy="17" r="2"></circle></svg>
                     <h3>Safe and Friendly Desi Chat Community</h3>
                     <p>Protected by modern bot-prevention technologies. Our moderators ensure a clean and respectful environment for all desi users.</p>
                 </div>
@@ -195,21 +203,22 @@
             
             <div class="grid" style="margin-top: 2rem;">
                 <div class="card">
-                    <i class="fas fa-gamepad"></i>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; width: 64px; height: 64px; display: block; margin-left: auto; margin-right: auto;"><rect x="2" y="6" width="20" height="12" rx="3"></rect><path d="M6 12h4"></path><path d="M8 10v4"></path><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="10" x2="18.01" y2="10"></line></svg>
                     <h3>Play Monster Hunt and Trivia</h3>
                     <p>Experience more than just chatting. Play exciting IRC games like Monster Hunt and Trivia with our active community members.</p>
                 </div>
                 <div class="card">
-                    <i class="fas fa-mobile-alt"></i>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; width: 64px; height: 64px; display: block; margin-left: auto; margin-right: auto;"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
                     <h3>Join IndiaDostiChat from Mobile or Desktop</h3>
                     <p>Chat anywhere, anytime. Our platform is perfectly optimized for desktop, tablet, and mobile devices without any app installation.</p>
                 </div>
                 <div class="card" style="border: 2px solid var(--primary-color);">
-                    <i class="fas fa-heart" style="color: #e74c3c;"></i>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="font-size: 3rem; margin-bottom: 1rem; width: 64px; height: 64px; display: block; margin-left: auto; margin-right: auto; fill: #e74c3c;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                     <h3>Support IndiaDostiChat</h3>
                     <p>IndiaDostiChat is a free community. Your donations help us keep the servers running and the chat safe for everyone.</p>
                     <a href="donate/" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Support Us</a>
                 </div>
+            </div>
         </section>
 
         <!-- Preview the IndiaDostiChat Room Section -->
@@ -227,12 +236,12 @@
                         <span class="dot green"></span>
                     </div>
                     <div class="browser-address">
-                        <i class="fas fa-lock" style="font-size: 0.75rem; color: #10b981;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 0.85em; height: 0.85em; vertical-align: middle;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                         <span>https://www.indiadostichat.com/chat/</span>
                     </div>
                 </div>
                 <div class="browser-body">
-                    <img src="assets/images/screenshots/indiadostichat-room-preview.webp" alt="IndiaDostiChat room preview showing #indiadostichat.com channel" loading="lazy">
+                    <img src="/assets/images/screenshots/indiadostichat-room-preview.webp" alt="IndiaDostiChat room preview showing #indiadostichat.com channel" width="1184" height="653" decoding="async" loading="lazy">
                 </div>
             </div>
             <p class="image-caption">
@@ -248,7 +257,7 @@
             
             <!-- Colorful Gaming Illustration -->
             <div style="max-width: 480px; margin: 0 auto 3rem; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.06); border: 1px solid var(--border-color);">
-                <img src="assets/images/games-illustration.webp" alt="Vibrant gaming illustration for IndiaDostiChat" style="width: 100%; height: auto; display: block;" loading="lazy">
+                <img src="/assets/images/games-illustration.webp" alt="Vibrant gaming illustration for IndiaDostiChat" width="800" height="800" style="width: 100%; height: auto; display: block;" decoding="async" loading="lazy">
             </div>
             
             <!-- Game Cards Grid -->
@@ -330,7 +339,7 @@
                     <a href="bangalore-chat-room/" class="card" style="background: linear-gradient(135deg, #84fab0, #8fd3f4); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Bangalore Chat</a>
                     <a href="kolkata-chat-room/" class="card" style="background: linear-gradient(135deg, #fccb90, #d57eeb); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Kolkata Chat</a>
                     <a href="chennai-chat-room/" class="card" style="background: linear-gradient(135deg, #e0c3fc, #8ec5fc); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Chennai Chat</a>
-                    <a href="hyderabad-chat-room/" class="card" style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: #fff; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Hyderabad Chat</a>
+                    <a href="hyderabad-chat-room/" class="card" style="background: linear-gradient(135deg, #e0f2fe, #bae6fd); color: #1e293b; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Hyderabad Chat</a>
                     <a href="pune-chat-room/" class="card" style="background: linear-gradient(135deg, #fa709a, #fee140); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Pune Chat</a>
                     <a href="jaipur-chat-room/" class="card" style="background: linear-gradient(135deg, #f6d365, #fda085); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Jaipur Chat</a>
                     <a href="ahmedabad-chat-room/" class="card" style="background: linear-gradient(135deg, #cfd9df, #e2ebf0); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Ahmedabad Chat</a>
@@ -339,12 +348,12 @@
                     <a href="kanpur-chat-room/" class="card" style="background: linear-gradient(135deg, #fdcbf1, #e6dee9); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Kanpur Chat</a>
                     
                     <!-- Languages & General -->
-                    <a href="india-chat/" class="card" style="background: linear-gradient(135deg, #11998e, #38ef7d); color: #fff; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">India Chat</a>
-                    <a href="hindi-chat/" class="card" style="background: linear-gradient(135deg, #ff0844, #ffb199); color: #fff; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Hindi Chat</a>
+                    <a href="india-chat/" class="card" style="background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #1e293b; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">India Chat</a>
+                    <a href="hindi-chat/" class="card" style="background: linear-gradient(135deg, #fee2e2, #fecaca); color: #1e293b; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Hindi Chat</a>
                     <a href="tamil-chat-room/" class="card" style="background: linear-gradient(135deg, #43e97b, #38f9d7); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Tamil Chat</a>
                     <a href="telugu-chat-room/" class="card" style="background: linear-gradient(135deg, #fa709a, #fee140); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Telugu Chat</a>
-                    <a href="bengali-chat-room/" class="card" style="background: linear-gradient(135deg, #30cfd0, #330867); color: #fff; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Bengali Chat</a>
-                    <a href="marathi-chat-room/" class="card" style="background: linear-gradient(135deg, #f78ca0, #f9748f); color: #fff; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Marathi Chat</a>
+                    <a href="bengali-chat-room/" class="card" style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff); color: #1e293b; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Bengali Chat</a>
+                    <a href="marathi-chat-room/" class="card" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #1e293b; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Marathi Chat</a>
                     <a href="gujarati-chat-room/" class="card" style="background: linear-gradient(135deg, #89f7fe, #66a6ff); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Gujarati Chat</a>
                     <a href="punjabi-chat-room/" class="card" style="background: linear-gradient(135deg, #fccb90, #d57eeb); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Punjabi Chat</a>
                     <a href="malayalam-chat-room/" class="card" style="background: linear-gradient(135deg, #e0c3fc, #8ec5fc); color: #333; text-decoration: none; padding: 1rem; text-align: center; font-weight: 700; font-size: 0.95rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Malayalam Chat</a>
@@ -358,55 +367,55 @@
                 <h2 style="text-align: center; color: var(--accent-color); margin-bottom: 2.5rem;">Popular India Chat Pages</h2>
                 <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem;">
                     <a href="india-chat/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-comments" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">India Chat</h3>
                     </a>
                     <a href="allindiachat/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-globe" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">All India Chat</h3>
                     </a>
                     <a href="anonymous-indian-chat/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-user-secret" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><path d="M2 10h20"></path><path d="M6 10c0-2.2 1.8-4 4-4h4c2.2 0 4 1.8 4 4"></path><path d="M12 2a3 3 0 0 0-3 3h6a3 3 0 0 0-3-3z"></path><path d="M10 10v4a2 2 0 0 0 4 0v-4"></path><circle cx="8" cy="17" r="2"></circle><circle cx="16" cy="17" r="2"></circle></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Anonymous Indian Chat</h3>
                     </a>
                     <a href="hindi-chat/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-language" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><path d="M2 5h12M7 2v3M7 5c0 4.4-3.6 8-8 8M5 9c1.6 2.2 4 4 7 4M22 22l-5-10-5 10M14 18h6"></path></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Hindi Chat</h3>
                     </a>
                     <a href="desi-chat/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-users" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Desi Chat</h3>
                     </a>
                     <a href="indian-friendship-chat/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-heart" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Indian Friendship Chat</h3>
                     </a>
                     <a href="mobile-indian-chat/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-mobile-alt" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Mobile Indian Chat</h3>
                     </a>
                     <a href="irc-chat-india/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-terminal" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">IRC Chat India</h3>
                     </a>
                     <a href="mumbai-chat-room/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-city" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><path d="M3 21h18M3 7v14M13 3v18M21 10v11M7 11h.01M7 15h.01M17 14h.01M17 18h.01"></path></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Mumbai Chat Room</h3>
                     </a>
                     <a href="hyderabad-chat-room/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-mosque" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><path d="M12 2v6M12 8c-3 0-5 2-5 5h10c0-3-2-5-5-5zM3 21h18M5 13v8M19 13v8M9 21v-4a3 3 0 0 1 6 0v4"></path></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Hyderabad Chat Room</h3>
                     </a>
                     <a href="marathi-chat-room/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-om" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><path d="M12 6a3 3 0 110 6 3 3 0 010-6zM12 14v4"/></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Marathi Chat Room</h3>
                     </a>
                     <a href="telugu-chat-room/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-university" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><path d="M4 22v-4M20 22v-4M4 18h16M12 2L2 7h20L12 2zM8 18v-8M16 18v-8M12 18v-8"></path></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Telugu Chat Room</h3>
                     </a>
                     <a href="punjabi-chat-room/" class="card" style="text-decoration: none; padding: 1.5rem; text-align: center; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <i class="fas fa-drum" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.7rem; height: 1.7rem; margin-bottom: 0.5rem;"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M12 22V8M7 5l10 14"></path></svg>
                         <h3 style="font-size: 1.1rem; margin-bottom: 0;">Punjabi Chat Room</h3>
                     </a>
                 </div>
@@ -449,7 +458,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <a href="/" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;">
-                    <img src="assets/logo/logo.svg" alt="IndiaDostiChat Indian Chat Room Logo" style="height: 30px;" onerror="this.style.display='none'"> 
+                    <img src="/assets/logo/logo.webp" alt="IndiaDostiChat logo" width="30" height="30" style="height: 30px;" decoding="async" loading="lazy" onerror="this.style.display='none'"> 
                     IndiaDostiChat
                 </a>
                 <p>The premier destination for Indians globally to connect, share, and build friendships in a free Indian chat room.</p>
@@ -457,49 +466,55 @@
             <div class="footer-section">
                 <h4>Explore IndiaDostiChat</h4>
                 <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-                    <li><a href="" style="color: #ccc; text-decoration: none;">Home</a></li>
-                    <li><a href="chat/" style="color: #ccc; text-decoration: none;">Chat</a></li>
-                    <li><a href="india-chat/" style="color: #ccc; text-decoration: none;">India Chat</a></li>
-                    <li><a href="allindiachat/" style="color: #ccc; text-decoration: none;">All India Chat</a></li>
-                    <li><a href="anonymous-indian-chat/" style="color: #ccc; text-decoration: none;">Anonymous Indian Chat</a></li>
-                    <li><a href="hindi-chat/" style="color: #ccc; text-decoration: none;">Hindi Chat</a></li>
-                    <li><a href="desi-chat/" style="color: #ccc; text-decoration: none;">Desi Chat</a></li>
-                    <li><a href="indian-friendship-chat/" style="color: #ccc; text-decoration: none;">Indian Friendship Chat</a></li>
-                    <li><a href="mobile-indian-chat/" style="color: #ccc; text-decoration: none;">Mobile Indian Chat</a></li>
-                    <li><a href="games/" style="color: #ccc; text-decoration: none;">Games</a></li>
-                    <li><a href="donate/" style="color: #ccc; text-decoration: none;">Donate</a></li>
-                    <li><a href="rules/" style="color: #ccc; text-decoration: none;">Rules</a></li>
-                    <li><a href="contact/" style="color: #ccc; text-decoration: none;">Contact</a></li>
-                    <li><a href="sitemap/" style="color: #ccc; text-decoration: none;">Sitemap</a></li>
+                    <li><a href="/" style="color: #cbd5e1; text-decoration: none;">Home</a></li>
+                    <li><a href="chat/" style="color: #cbd5e1; text-decoration: none;">Chat</a></li>
+                    <li><a href="india-chat/" style="color: #cbd5e1; text-decoration: none;">India Chat</a></li>
+                    <li><a href="allindiachat/" style="color: #cbd5e1; text-decoration: none;">All India Chat</a></li>
+                    <li><a href="anonymous-indian-chat/" style="color: #cbd5e1; text-decoration: none;">Anonymous Indian Chat</a></li>
+                    <li><a href="hindi-chat/" style="color: #cbd5e1; text-decoration: none;">Hindi Chat</a></li>
+                    <li><a href="desi-chat/" style="color: #cbd5e1; text-decoration: none;">Desi Chat</a></li>
+                    <li><a href="indian-friendship-chat/" style="color: #cbd5e1; text-decoration: none;">Indian Friendship Chat</a></li>
+                    <li><a href="mobile-indian-chat/" style="color: #cbd5e1; text-decoration: none;">Mobile Indian Chat</a></li>
+                    <li><a href="games/" style="color: #cbd5e1; text-decoration: none;">Games</a></li>
+                    <li><a href="donate/" style="color: #cbd5e1; text-decoration: none;">Donate</a></li>
+                    <li><a href="rules/" style="color: #cbd5e1; text-decoration: none;">Rules</a></li>
+                    <li><a href="contact/" style="color: #cbd5e1; text-decoration: none;">Contact</a></li>
+                    <li><a href="sitemap/" style="color: #cbd5e1; text-decoration: none;">Sitemap</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Connect With Us</h4>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Visit IndiaDostiChat Facebook page" class="social-link">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="#" aria-label="Visit IndiaDostiChat Twitter profile" class="social-link">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                    </a>
+                    <a href="#" aria-label="Visit IndiaDostiChat Instagram profile" class="social-link">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; border-top: 1px solid var(--border-color); padding: 2rem 1rem 1rem;">
             <p>&copy; 2026 IndiaDostiChat.com. All Rights Reserved.</p>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; font-weight: 500; font-size: 0.95rem; color: #aaa;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; font-weight: 500; font-size: 0.95rem; color: #cbd5e1;">
                 <div>
-                    <i class="fas fa-users" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.2em; height: 1.2em; margin-right: 0.4rem; vertical-align: middle;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                     Community Visits: <span id="visitor-count">Loading...</span>
                 </div>
                 <div>
-                    <i class="fas fa-comments" style="color: var(--accent-color); margin-right: 0.5rem;"></i>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.2em; height: 1.2em; margin-right: 0.4rem; vertical-align: middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     Chat Entries: <span id="join-count">Loading...</span>
                 </div>
             </div>
-            <p style="font-size: 0.8rem; color: #777; margin: 0; text-align: center; max-width: 600px; line-height: 1.4;">
+            <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0; text-align: center; max-width: 600px; line-height: 1.4;">
                 Community activity is counted from real page visits and Join Chat actions, not random clicks.
             </p>
         </div>
     </footer>
 
-    <script src="assets/js/main.min.js?v=18" defer></script>
+    <script src="/assets/js/main.min.js?v=20" defer></script>
 </body>
 </html>
