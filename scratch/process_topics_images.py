@@ -8,19 +8,19 @@ dest_dir = r"c:\Users\mks1j\.gemini\antigravity\scratch\indiadostichat_seo\asset
 os.makedirs(dest_dir, exist_ok=True)
 
 image_mappings = {
-    "topic_money": "money-talk.webp",
-    "topic_korea": "korea-talk.webp",
-    "topic_japan": "japan-talk.webp",
-    "topic_anime": "anime-discussion.webp",
-    "topic_kpop": "kpop-discussion.webp",
-    "topic_travel": "travel-talk.webp",
-    "topic_food": "food-talk.webp",
+    "topic_money": "money-chat.webp",
+    "topic_korea": "korea-chat.webp",
+    "topic_japan": "japan-chat.webp",
+    "topic_anime": "anime-chat.webp",
+    "topic_kpop": "kpop-chat.webp",
+    "topic_travel": "travel-chat.webp",
+    "topic_food": "food-chat.webp",
     "topic_gaming": "gaming-chat.webp",
     "topic_ai": "ai-chat.webp",
-    "topic_friendship": "international-friendship.webp"
+    "topic_friendship": "international-friendship-chat.webp"
 }
 
-print("Starting dynamic image processing with exact names...")
+print("Starting dynamic image processing for CHAT naming...")
 
 for pattern, target_name in image_mappings.items():
     search_path = os.path.join(brain_dir, f"{pattern}_*.png")

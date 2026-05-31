@@ -5,18 +5,18 @@ base_dir = r"c:\Users\mks1j\.gemini\antigravity\scratch\indiadostichat_seo"
 topics_dir = os.path.join(base_dir, "topics")
 os.makedirs(topics_dir, exist_ok=True)
 
-# 10 Topics configurations
+# 10 Topics configurations with -chat slugs and highly specific chat keywords
 topics_config = [
     {
-        "slug": "money-talk",
-        "title": "Money Talk - Personal Finance, Saving & Budgeting Chat Room",
-        "h1": "Money Talk & Personal Finance Chat",
-        "meta_desc": "Join IndiaDostiChat's Money Talk room to discuss personal finance, budgeting, investments, saving tips, and financial independence with friendly peers.",
-        "image": "money-talk.webp",
-        "image_alt": "Personal finance, saving and wealth growth illustration showing piggy bank and coins",
-        "intro_p": "Welcome to Money Talk, the ultimate destination on IndiaDostiChat for open, honest, and anonymous discussions about personal finance, wealth building, and smart money management. Money is one of the most important aspects of our daily lives, yet it remains a taboo subject in many Indian households and social circles. Whether you want to discuss budgeting strategies, share tips on mutual funds and stock markets, ask about side hustles, or talk about the road to financial independence (FIRE), our community provides a supportive space. Chatting about money anonymously allows you to share real experiences, questions, and insights without the fear of judgment or social comparison.",
-        "p1": "In today's fast-paced economy, managing your money is about more than just earning a salary; it's about making your money work for you. Many young adults are navigating the complex world of personal finance for the first time—from understanding tax structures and retirement planning to choosing between renting and buying a home. The Money Talk chat room connects you with peers who are on the same journey. Here, you can discuss the pros and cons of different investment avenues, compare financial apps, and exchange advice on avoiding common debt traps. It is a collaborative environment where beginners can learn from more experienced community members.",
-        "p2": "We believe that financial literacy should be accessible to everyone. By engaging in peer-to-peer discussions, you can demystify complex terms like compound interest, emergency funds, asset allocation, and liquid assets. Share your favorite books, podcasts, and calculators that helped you understand money better. Remember, while the community is full of passionate individuals sharing their experiences, all chats are for educational and entertainment purposes. It's a place to brainstorm ideas, seek motivation for your savings goals, and build the discipline needed for a secure financial future.",
+        "slug": "money-chat",
+        "title": "Money Chat - Personal Finance & Budgeting Chat Room",
+        "h1": "Money Chat & Personal Finance Chat Room",
+        "meta_desc": "Join our free money chat room to chat about personal finance, budgeting tips, stock investments, savings, and financial planning with peers.",
+        "image": "money-chat.webp",
+        "image_alt": "Personal finance chat, wealth building and saving money chat graphic",
+        "intro_p": "Welcome to the Money Chat room, the ultimate destination on IndiaDostiChat for open, honest, and anonymous chats about personal finance, wealth building, and smart money management. Money is one of the most important aspects of our daily lives, yet it remains a taboo subject in many Indian households and social circles. Whether you want to join a budgeting chat, chat about mutual funds and stock market investing, ask about side hustles, or exchange ideas in our financial independence chat, our community provides a supportive space. Chatting about money anonymously allows you to share real experiences, questions, and insights without the fear of judgment or social comparison.",
+        "p1": "In today's fast-paced economy, managing your money is about more than just earning a salary; it's about making your money work for you. Many young adults are navigating the complex world of personal finance for the first time—from understanding tax structures and retirement planning to choosing between renting and buying a home. The Money Chat room connects you with peers who are on the same journey. Here, you can chat about the pros and cons of different investment avenues, compare financial apps, and exchange advice on avoiding common debt traps. It is a collaborative environment where beginners can learn from more experienced community members.",
+        "p2": "We believe that financial literacy should be accessible to everyone. By engaging in peer-to-peer chats, you can demystify complex terms like compound interest, emergency funds, asset allocation, and liquid assets. Share your favorite books, podcasts, and calculators that helped you understand money better. Remember, while the community is full of passionate individuals sharing their experiences, all chats are for educational and entertainment purposes. It's a place to brainstorm ideas, seek motivation for your savings goals, and build the discipline needed for a secure financial future.",
         "ideas": [
             "How to start investing in mutual funds with a small monthly budget",
             "What are the best budgeting apps for students and young professionals in India",
@@ -31,33 +31,33 @@ topics_config = [
         ],
         "faqs": [
             {
-                "q": "Is registration required to discuss finance on IndiaDostiChat?",
+                "q": "Is registration required to chat about finance on IndiaDostiChat?",
                 "a": "No, you do not need to register or share any personal information. Simply choose a nickname and join the chat room instantly."
             },
             {
-                "q": "Can I get professional financial advice in the Money Talk chat?",
-                "a": "No. The discussions in the chat are for peer-to-peer sharing, education, and brainstorming. You should always consult a certified financial advisor before making major investment decisions."
+                "q": "Can I get professional financial advice in the Money Chat?",
+                "a": "No. The chats in the room are for peer-to-peer sharing, education, and brainstorming. You should always consult a certified financial advisor before making major investment decisions."
             },
             {
                 "q": "Are there rules against promoting financial schemes or courses?",
                 "a": "Yes. IndiaDostiChat has a strict zero-tolerance policy against spam, promotional links, selling financial courses, or advertising multi-level marketing (MLM) schemes. Violators are banned immediately."
             },
             {
-                "q": "How can I protect my privacy while discussing money?",
+                "q": "How can I protect my privacy while chatting about money?",
                 "a": "Because our platform is nickname-based and anonymous, you should never share your real name, bank details, contact information, or precise location in public rooms."
             }
         ]
     },
     {
-        "slug": "korea-talk",
-        "title": "Korea Talk - Korean Culture, Language & Travel Chat Room",
-        "h1": "Korea Talk & Korean Culture Chat",
-        "meta_desc": "Connect with fellow Korean culture enthusiasts on IndiaDostiChat. Discuss K-Dramas, Korean food, language learning, and travel experiences.",
-        "image": "korea-talk.webp",
-        "image_alt": "Traditional Korean hanok architecture illustration with mountains in the background",
-        "intro_p": "Welcome to Korea Talk, the dedicated space on IndiaDostiChat for everyone fascinated by the rich heritage, language, and modern culture of South Korea. The Hallyu wave has swept across the globe, creating a massive community of fans who love everything from classic K-Dramas and language learning to traditional cuisine. Whether you are studying Korean and looking for a study buddy, planning a trip to Seoul, or eager to review the latest television drama releases, this chat room is your virtual gateway. Connect with fellow enthusiasts, share recommendations, and celebrate your shared passion in a friendly, interactive setting.",
-        "p1": "Korea is a land of beautiful contrasts, where ancient palaces stand next to futuristic skyscrapers, and quiet mountains overlook bustling city streets. In Korea Talk, we dive deep into these various facets. Members regularly share their travel itineraries, discuss the best budget stays in Busan, and trade tips on how to apply for a tourist visa. It's a great place to learn about Korean social etiquette, historical customs, and regional celebrations like Chuseok. By sharing stories and travel tips, you can prepare for an authentic trip that goes beyond the standard tourist tracks.",
-        "p2": "For language learners, Korea Talk offers an invaluable resource. Learning Hangul and mastering honorifics can be challenging, but practicing with peers makes it engaging and fun. Share your favorite textbooks, vocabulary apps, and learning strategies. You can also discuss how watching K-Dramas has helped you understand colloquial expressions and cultural nuances. Beyond language, we discuss Korean culinary delights—from making authentic Kimchi and Tteokbokki at home to finding the best Korean restaurants and grocery stores in major Indian cities. Join the community today and start sharing your love for Korea!",
+        "slug": "korea-chat",
+        "title": "Korea Chat - Korean Culture, Language & K-Drama Chat Room",
+        "h1": "Korea Chat & K-Drama Chat Room",
+        "meta_desc": "Connect with fellow Korean culture fans in our Korea chat room. Chat about K-Dramas, learn Korean, chat about K-beauty, and travel experiences.",
+        "image": "korea-chat.webp",
+        "image_alt": "Korea chat room illustration depicting traditional hanok architecture and mountains",
+        "intro_p": "Welcome to the Korea Chat room, the dedicated space on IndiaDostiChat for everyone fascinated by the rich heritage, language, and modern culture of South Korea. The Hallyu wave has swept across the globe, creating a massive community of fans who love everything from classic K-Dramas and language learning to traditional cuisine. Whether you are studying Korean and looking for a language exchange chat, planning a trip to Seoul, or eager to chat about the latest television drama releases, this chat room is your virtual gateway. Connect with fellow enthusiasts, share recommendations, and celebrate your shared passion in a friendly, interactive setting.",
+        "p1": "Korea is a land of beautiful contrasts, where ancient palaces stand next to futuristic skyscrapers, and quiet mountains overlook bustling city streets. In Korea Chat, we dive deep into these various facets. Members regularly share their travel itineraries, chat about the best budget stays in Busan, and trade tips on how to apply for a tourist visa. It's a great place to learn about Korean social etiquette, historical customs, and regional celebrations like Chuseok. By sharing stories and travel tips, you can prepare for an authentic trip that goes beyond the standard tourist tracks.",
+        "p2": "For language learners, Korea Chat offers an invaluable resource. Learning Hangul and mastering honorifics can be challenging, but practicing with peers makes it engaging and fun. Share your favorite textbooks, vocabulary apps, and learning strategies. You can also discuss how watching K-Dramas has helped you understand colloquial expressions and cultural nuances. Beyond language, we chat about Korean culinary delights—from making authentic Kimchi and Tteokbokki at home to finding the best Korean restaurants and grocery stores in major Indian cities. Join the community today and start sharing your love for Korea!",
         "ideas": [
             "What are the best free resources and apps for learning the Korean language online",
             "Must-visit places in Seoul, Busan, and Jeju Island for first-time travelers",
@@ -77,28 +77,28 @@ topics_config = [
             },
             {
                 "q": "Can I find travel buddies for my trip to South Korea?",
-                "a": "Yes! Korea Talk is a great place to meet other travelers who are planning trips, allowing you to share itineraries and travel tips."
+                "a": "Yes! Korea Chat is a great place to meet other travelers who are planning trips, allowing you to share itineraries and travel tips."
             },
             {
-                "q": "Are we allowed to discuss K-pop in this room?",
-                "a": "Yes, cultural discussions of all kinds are welcome, though we also have a dedicated K-pop discussion room for music-specific chats."
+                "q": "Are we allowed to chat about K-pop in this room?",
+                "a": "Yes, cultural chats of all kinds are welcome, though we also have a dedicated K-pop chat room for music-specific chats."
             },
             {
                 "q": "Is the chat room free and anonymous?",
-                "a": "Yes, IndiaDostiChat is 100% free and registration-free. You only need a nickname to join the discussion."
+                "a": "Yes, IndiaDostiChat is 100% free and registration-free. You only need a nickname to join the chat."
             }
         ]
     },
     {
-        "slug": "japan-talk",
-        "title": "Japan Talk - Japan Travel, Culture & Language Chat Room",
-        "h1": "Japan Talk & Japanese Culture Chat",
-        "meta_desc": "Talk about Japan's heritage, travel destinations, Japanese language learning, and cultural experiences on IndiaDostiChat's Japan Talk.",
-        "image": "japan-talk.webp",
-        "image_alt": "Minimalist graphic design showing Mount Fuji, cherry blossoms, and red sun",
-        "intro_p": "Welcome to Japan Talk on IndiaDostiChat, a vibrant community space for discussing the culture, language, travel destinations, and traditional heritage of Japan. From the serene temples of Kyoto and the majestic silhouette of Mount Fuji to the neon-lit streets of Tokyo and Osaka, Japan captures the imagination of travelers and culture lovers worldwide. Whether you are preparing for the JLPT exams, planning a backpacking trip through the Japanese countryside, or want to discuss traditional arts like tea ceremonies and origami, you will find welcoming peers here. Join us to share your experiences and learn more about the Land of the Rising Sun.",
-        "p1": "India and Japan share deep historical and cultural bonds, and today, that mutual interest is stronger than ever. In our Japan Talk room, members discuss everything from travel logistics—like using the Japan Rail Pass and navigating the Tokyo subway—to seasonal travel highlights. Share your tips on the best spots to view the cherry blossoms (Sakura) in spring or the vibrant red maples in autumn. You can also get recommendations for budget-friendly accommodations like capsule hotels and traditional ryokans, helping you plan a memorable trip on a realistic budget.",
-        "p2": "Language study is another major focus in Japan Talk. Learning Kanji, Hiragana, and Katakana requires dedication, and having a group of study partners makes the process much easier. Discuss study guides, online dictionaries, and effective methods for vocabulary memorization. We also talk about Japanese cuisine, which is celebrated globally for its focus on freshness and presentation. Share your favorite recipes for sushi, tempura, gyoza, and regional ramen variations, or discuss where to find authentic Japanese ingredients. Discover the concept of Ikigai and how Japanese philosophies shape daily life.",
+        "slug": "japan-chat",
+        "title": "Japan Chat - Japan Travel, Culture & Language Chat Room",
+        "h1": "Japan Chat & Japanese Culture Chat Room",
+        "meta_desc": "Chat about Japan travel, culture, heritage, and learn Japanese online. Join our free Japan chat room to connect with fans.",
+        "image": "japan-chat.webp",
+        "image_alt": "Japan chat room graphics showing Mount Fuji, cherry blossoms, and red sun",
+        "intro_p": "Welcome to Japan Chat on IndiaDostiChat, a vibrant community space for chatting about the culture, language, travel destinations, and traditional heritage of Japan. From the serene temples of Kyoto and the majestic silhouette of Mount Fuji to the neon-lit streets of Tokyo and Osaka, Japan captures the imagination of travelers and culture lovers worldwide. Whether you are preparing for the JLPT exams, planning a backpacking trip through the Japanese countryside, or want to chat about traditional arts like tea ceremonies and origami, you will find welcoming peers here. Join us to share your experiences and learn more about the Land of the Rising Sun.",
+        "p1": "India and Japan share deep historical and cultural bonds, and today, that mutual interest is stronger than ever. In our Japan Chat room, members chat about everything from travel logistics—like using the Japan Rail Pass and navigating the Tokyo subway—to seasonal travel highlights. Share your tips on the best spots to view the cherry blossoms (Sakura) in spring or the vibrant red maples in autumn. You can also get recommendations for budget-friendly accommodations like capsule hotels and traditional ryokans, helping you plan a memorable trip on a realistic budget.",
+        "p2": "Language study is another major focus in Japan Chat. Learning Kanji, Hiragana, and Katakana requires dedication, and having a group of study partners makes the process much easier. Chat about study guides, online dictionaries, and effective methods for vocabulary memorization. We also chat about Japanese cuisine, which is celebrated globally for its focus on freshness and presentation. Share your favorite recipes for sushi, tempura, gyoza, and regional ramen variations, or discuss where to find authentic Japanese ingredients. Discover the concept of Ikigai and how Japanese philosophies shape daily life.",
         "ideas": [
             "Practical tips for planning a budget-friendly trip to Japan as an independent traveler",
             "Understanding the JLPT (Japanese Language Proficiency Test) structure and study strategies",
@@ -113,12 +113,12 @@ topics_config = [
         ],
         "faqs": [
             {
-                "q": "Is the Japan Talk room conducted in Japanese?",
+                "q": "Is the Japan Chat room conducted in Japanese?",
                 "a": "No, most members communicate in English, Hindi, or Hinglish. Japanese learners are welcome to practice their writing, but translation is usually provided."
             },
             {
-                "q": "Can I discuss anime and manga in this room?",
-                "a": "Yes! Anime and manga are major parts of Japanese culture. You can discuss them here, or head over to our dedicated Anime Discussion room."
+                "q": "Can I chat about anime and manga in this room?",
+                "a": "Yes! Anime and manga are major parts of Japanese culture. You can chat about them here, or head over to our dedicated Anime Chat room."
             },
             {
                 "q": "How can I join the chat room anonymously?",
@@ -131,20 +131,20 @@ topics_config = [
         ]
     },
     {
-        "slug": "anime-discussion",
-        "title": "Anime Discussion - Free Anime & Manga Chat Room",
-        "h1": "Anime & Manga Discussion Chat",
-        "meta_desc": "Join IndiaDostiChat's Anime Discussion to talk about your favorite anime series, manga recommendations, movie reviews, and fan art.",
-        "image": "anime-discussion.webp",
-        "image_alt": "Anime style scenery illustration showing classroom window looking out to summer sky",
-        "intro_p": "Welcome to Anime Discussion, the premier chat space on IndiaDostiChat for anime fans, manga readers, and digital artists. Anime has evolved from a niche hobby into a global cultural phenomenon, connecting millions of fans through breathtaking animation, deep storytelling, and memorable characters. Whether you are a fan of classic shonen adventures, emotional slice-of-life dramas, thrilling psychological mysteries, or the beautiful films of Studio Ghibli, our chat room is the perfect place to share your thoughts. Join a friendly community of fans to discuss recent episodes, recommend manga, and share your creative digital art.",
-        "p1": "What makes anime so special is its ability to cover a vast range of genres and themes, often pushing the boundaries of what animation can achieve. In our Anime Discussion room, we celebrate this diversity. Members share their custom watchlists, debate the adaptation choices of manga-to-anime series, and review theatrical releases. You can find recommendations based on your favorite themes, whether you are looking for an action-packed series to binge-watch or a heartwarming slice-of-life story for a quiet evening. It is a welcoming space for both veteran otaku and beginners starting their anime journey.",
-        "p2": "Beyond watching and reading, this room is a hub for creativity. Many members are passionate digital artists, cosplayers, and musicians who draw inspiration from anime aesthetics. Discuss drawing techniques, software recommendations for digital art, and how to create original characters. You can also talk about the incredible soundtracks, composers, and opening theme songs that bring these stories to life. Our community maintains a positive and respectful atmosphere, ensuring that fans of all series can discuss their interests without gatekeeping or negativity.",
+        "slug": "anime-chat",
+        "title": "Anime Chat - Free Anime & Manga Chat Room | IndiaDostiChat",
+        "h1": "Anime Chat & Manga Chat Room",
+        "meta_desc": "Join our free anime chat room to chat about your favorite anime series, manga recommendations, movie reviews, and fan art with fellow fans.",
+        "image": "anime-chat.webp",
+        "image_alt": "Anime chat room illustration with a school classroom window overlooking a summer sky",
+        "intro_p": "Welcome to Anime Chat, the premier chat space on IndiaDostiChat for anime fans, manga readers, and digital artists. Anime has evolved from a niche hobby into a global cultural phenomenon, connecting millions of fans through breathtaking animation, deep storytelling, and memorable characters. Whether you are a fan of classic shonen adventures, emotional slice-of-life dramas, thrilling psychological mysteries, or the beautiful films of Studio Ghibli, our anime chat room is the perfect place to chat about your thoughts. Join a friendly community of fans to chat about recent episodes, recommend manga, and share your creative digital art.",
+        "p1": "What makes anime so special is its ability to cover a vast range of genres and themes, often pushing the boundaries of what animation can achieve. In our Anime Chat room, we celebrate this diversity. Members share their custom watchlists, debate the adaptation choices of manga-to-anime series, and review theatrical releases. You can find recommendations based on your favorite themes, whether you are looking for an action-packed series to binge-watch or a heartwarming slice-of-life story for a quiet evening. It is a welcoming space for both veteran otaku and beginners starting their anime journey.",
+        "p2": "Beyond watching and reading, this room is a hub for creativity. Many members are passionate digital artists, cosplayers, and musicians who draw inspiration from anime aesthetics. Chat about drawing techniques, software recommendations for digital art, and how to create original characters. You can also chat about the incredible soundtracks, composers, and opening theme songs that bring these stories to life. Our community maintains a positive and respectful atmosphere, ensuring that fans of all series can chat about their interests without gatekeeping or negativity.",
         "ideas": [
             "Underrated anime series that deserve more attention and where to watch them",
             "Our favorite Studio Ghibli movies and their visual artistry and storytelling themes",
             "Comparing manga to their anime adaptations: which format delivers the better experience",
-            "Discussion on classic shonen series vs. modern psychological and thriller anime",
+            "Chatting about classic shonen series vs. modern psychological and thriller anime",
             "The best slice-of-life and cozy anime series for a relaxing weekend watch",
             "Reviewing recent theatrical anime movie releases and discussing their animation quality",
             "Top recommendations and advice for beginners starting their anime journey",
@@ -166,21 +166,21 @@ topics_config = [
                 "a": "Yes, it is 100% free and does not require registration. Just pick a nickname and start chatting."
             },
             {
-                "q": "Are discussions kept family-friendly?",
+                "q": "Are chats kept family-friendly?",
                 "a": "Yes. Our volunteer moderators enforce our rules to ensure the chat environment is respectful, welcoming, and safe for all users."
             }
         ]
     },
     {
-        "slug": "kpop-discussion",
-        "title": "K-Pop Discussion - Connect with K-Pop Fans Online",
-        "h1": "K-Pop Discussion & Fan Chat",
-        "meta_desc": "Discuss K-Pop music, album releases, choreography, concert vibes, and fan theories on IndiaDostiChat's K-Pop Discussion page.",
-        "image": "kpop-discussion.webp",
-        "image_alt": "Concert stage illustration with neon lights, light beams and microphone on a stand",
-        "intro_p": "Welcome to K-Pop Discussion, the dedicated meeting point on IndiaDostiChat for K-Pop fans to connect, share music, and talk about the global music phenomenon. Korean pop music has taken the world by storm, known for its high-energy choreographies, high-production music videos, and unique fashion styles. Whether you want to discuss the latest comeback, analyze music video concepts, share your favorite b-side tracks, or talk about the excitement of live concerts, this chat room is for you. Join fellow fans in a positive, welcoming environment where music brings everyone together.",
+        "slug": "kpop-chat",
+        "title": "K-Pop Chat - Connect with K-Pop Fans Online | IndiaDostiChat",
+        "h1": "K-Pop Chat & Music Fan Chat Room",
+        "meta_desc": "Join our free K-pop chat room. Chat about K-pop music, album comebacks, choreography, concert vibes, and fan theories with other stans.",
+        "image": "kpop-chat.webp",
+        "image_alt": "K-pop chat room illustration of a concert stage with neon lights and silhouettes",
+        "intro_p": "Welcome to K-Pop Chat, the dedicated meeting point on IndiaDostiChat for K-Pop fans to connect, share music, and talk about the global music phenomenon. Korean pop music has taken the world by storm, known for its high-energy choreographies, high-production music videos, and unique fashion styles. Whether you want to chat about the latest comeback, analyze music video concepts, share your favorite b-side tracks, or chat about the excitement of live concerts in our K-pop fan chat, this chat room is for you. Join fellow fans in a positive, welcoming environment where music brings everyone together.",
         "p1": "What sets K-Pop apart is the deep connection between artists and their global communities of fans. From custom lightsticks and fan chants to synchronized choreography and concept storylines, K-Pop offers a unique entertainment experience. In our chat room, members share their experiences of attending concerts, unboxing albums, and learning dance routines. It is a great place to stay updated on upcoming tours, award shows, and new music releases. By sharing your favorite tracks, you can discover new groups and solo artists across various subgenres like pop, hip-hop, and R&B.",
-        "p2": "We believe in celebrating music and creativity. Many members enjoy practicing dance covers, editing video montages, and discussing the visual design and fashion trends seen in music videos. Share your favorite choreographies, tips for learning dance steps at home, and reviews of live performances. Our K-Pop Discussion room focuses on maintaining a friendly, positive atmosphere, free from toxicity and fan wars, so that everyone can express their appreciation for music in a supportive space.",
+        "p2": "We believe in celebrating music and creativity. Many members enjoy practicing dance covers, editing video montages, and chatting about the visual design and fashion trends seen in music videos. Share your favorite choreographies, tips for learning dance steps at home, and reviews of live performances. Our K-Pop Chat room focuses on maintaining a friendly, positive atmosphere, free from toxicity and fan wars, so that everyone can express their appreciation for music in a supportive space.",
         "ideas": [
             "What makes K-pop choreography so unique, energetic, and engaging for fans",
             "How K-pop music videos push the boundaries of visual effects and conceptual storytelling",
@@ -195,8 +195,8 @@ topics_config = [
         ],
         "faqs": [
             {
-                "q": "Can I talk about any K-pop group or solo artist?",
-                "a": "Yes! All artists, groups, and soloists from all music generations are welcome to be discussed in a respectful manner."
+                "q": "Can I chat about any K-pop group or solo artist?",
+                "a": "Yes! All artists, groups, and soloists from all music generations are welcome to be chatted about in a respectful manner."
             },
             {
                 "q": "Do I need to sign up to join the K-pop chat?",
@@ -213,15 +213,15 @@ topics_config = [
         ]
     },
     {
-        "slug": "travel-talk",
-        "title": "Travel Talk - Travel Tips, Backpacking Chat & Guides",
-        "h1": "Travel Talk & Backpacking Chat",
-        "meta_desc": "Share travel experiences, solo backpacking tips, destination recommendations, and budget itineraries on IndiaDostiChat's Travel Talk.",
-        "image": "travel-talk.webp",
-        "image_alt": "Travel icons illustration showing suitcase, globe, camera and small airplane",
-        "intro_p": "Welcome to Travel Talk, the central hub on IndiaDostiChat for backpackers, solo travelers, and adventure seekers to share stories, travel tips, and itineraries. Traveling is one of the most rewarding ways to experience the world, learn about different cultures, and meet new people. Whether you are planning a trek in the Himalayas, a beach getaway in Goa, or a budget-friendly trip abroad, this chat room connects you with fellow explorers. Share your travel hacks, ask for destination recommendations, and get real, unfiltered advice from experienced travelers who have been there.",
-        "p1": "One of the biggest hurdles in planning a trip is finding reliable, practical information. In Travel Talk, you can ask direct questions about transport schedules, budget accommodations, and local safety guidelines. Discuss the pros and cons of staying in backpacker hostels versus local homestays, and share your favorite packing hacks to keep your luggage light. Sharing firsthand experiences helps other community members avoid common travel scams, locate hidden gems off the beaten path, and budget their trips more effectively.",
-        "p2": "For solo travelers, especially those planning their first solo trip, the community offers support and encouragement. Discuss safety precautions, useful travel apps, and how to meet friendly locals and fellow travelers on the road. We also celebrate the culinary aspect of travel—discussing where to find the best street food, authentic regional cuisines, and traditional markets. Join Travel Talk to inspire your next adventure, refine your travel plans, and connect with people who share your passion for exploring the world.",
+        "slug": "travel-chat",
+        "title": "Travel Chat - Backpacking Tips, Travel Guides & Chat Room",
+        "h1": "Travel Chat & Backpackers Chat Room",
+        "meta_desc": "Chat about travel guides, backpacking experiences, solo travel, and budget itineraries in our free travel chat room.",
+        "image": "travel-chat.webp",
+        "image_alt": "Travel chat room vector illustration of travel suitcase and globe",
+        "intro_p": "Welcome to Travel Chat, the central hub on IndiaDostiChat for backpackers, solo travelers, and adventure seekers to chat about stories, travel tips, and itineraries. Traveling is one of the most rewarding ways to experience the world, learn about different cultures, and meet new people. Whether you are planning a trek in the Himalayas, a beach getaway in Goa, or a budget-friendly trip abroad, this travel chat room connects you with fellow explorers. Share your travel hacks, ask for destination recommendations, and get real, unfiltered advice from experienced travelers who have been there.",
+        "p1": "One of the biggest hurdles in planning a trip is finding reliable, practical information. In Travel Chat, you can ask direct questions about transport schedules, budget accommodations, and local safety guidelines. Chat about the pros and cons of staying in backpacker hostels versus local homestays, and share your favorite packing hacks to keep your luggage light. Sharing firsthand experiences helps other community members avoid common travel scams, locate hidden gems off the beaten path, and budget their trips more effectively.",
+        "p2": "For solo travelers, especially those planning their first solo trip, the community offers support and encouragement. Chat about safety precautions, useful travel apps, and how to meet friendly locals and fellow travelers on the road. We also celebrate the culinary aspect of travel—chatting about where to find the best street food, authentic regional cuisines, and traditional markets. Join Travel Chat to inspire your next adventure, refine your travel plans, and connect with people who share your passion for exploring the world.",
         "ideas": [
             "Backpacking across India: budget-friendly routes, hostel guides, and local transport options",
             "Essential safety tips and packing advice for solo travelers, especially women",
@@ -240,7 +240,7 @@ topics_config = [
                 "a": "While you can share helpful tips and describe your travel experiences, spamming promotional links or advertising travel agencies is not allowed."
             },
             {
-                "q": "Is the Travel Talk room helpful for international travel?",
+                "q": "Is the Travel Chat room helpful for international travel?",
                 "a": "Yes! Many members travel internationally and share advice on visas, currency exchange, and itineraries for destinations around the world."
             },
             {
@@ -254,15 +254,15 @@ topics_config = [
         ]
     },
     {
-        "slug": "food-talk",
-        "title": "Food Talk - Cooking Recipes, Street Food & Culinary Chat",
-        "h1": "Food Talk & Cooking Chat Room",
-        "meta_desc": "Talk about cooking, recipes, regional street foods, baking, and global cuisines with fellow foodies on IndiaDostiChat's Food Talk.",
-        "image": "food-talk.webp",
-        "image_alt": "Steaming bowl of ramen with eggs and chopsticks flat vector illustration",
-        "intro_p": "Welcome to Food Talk, the delicious corner of IndiaDostiChat where foodies, home cooks, and culinary enthusiasts gather to discuss recipes, street food, baking, and global cuisines. Food is a universal language that brings people together, reflecting history, culture, and personal memories. Whether you are looking for quick weeknight recipe ideas, baking tips for beginners, recommendations for the best street food in Delhi or Mumbai, or eager to discuss global culinary trends, our chat room is open. Connect with others, share your cooking successes, and discover new flavors.",
-        "p1": "India is famous for its rich and diverse culinary landscape, with each state offering unique spices, traditional cooking methods, and regional specialties. In Food Talk, we celebrate this variety. Members swap recipes for classic comfort foods like biryani, butter chicken, dosa, and street snacks like golgappe. You can learn about traditional spice blends, discuss the secrets to achieving the perfect texture in curries, and share cooking hacks that save time in the kitchen. It is an interactive space where you can ask for cooking advice and get instant help.",
-        "p2": "Beyond traditional Indian cooking, our discussions explore international cuisines, baking techniques, and healthy lifestyle choices. Share your recipes for homemade pasta, fresh salads, breads, and desserts. You can also discuss dietary preferences like vegetarian, vegan, and gluten-free cooking, trading tips on simple ingredient swaps. Whether you are a beginner learning how to cook your first meal or an experienced cook sharing advanced techniques, Food Talk is a friendly space to share your culinary journey.",
+        "slug": "food-chat",
+        "title": "Food Chat - Cooking Recipes, Street Food & Foodie Chat Room",
+        "h1": "Food Chat & Cooking Recipes Chat Room",
+        "meta_desc": "Join our free food chat room to chat about cooking, recipes, regional street foods, baking, and global cuisines with fellow foodies.",
+        "image": "food-chat.webp",
+        "image_alt": "Food chat room illustration of steaming ramen bowl",
+        "intro_p": "Welcome to Food Chat, the delicious corner of IndiaDostiChat where foodies, home cooks, and culinary enthusiasts gather to chat about recipes, street food, baking, and global cuisines in a dedicated food chat room. Food is a universal language that brings people together, reflecting history, culture, and personal memories. Whether you are looking for quick weeknight recipe ideas, baking tips for beginners, recommendations for the best street food in Delhi or Mumbai, or eager to chat about global culinary trends, our foodie chat is open. Connect with others, share your cooking successes, and discover new flavors.",
+        "p1": "India is famous for its rich and diverse culinary landscape, with each state offering unique spices, traditional cooking methods, and regional specialties. In Food Chat, we celebrate this variety. Members chat about and swap recipes for classic comfort foods like biryani, butter chicken, dosa, and street snacks like golgappe. You can learn about traditional spice blends, chat about the secrets to achieving the perfect texture in curries, and share cooking hacks that save time in the kitchen. It is an interactive space where you can ask for cooking advice and get instant help.",
+        "p2": "Beyond traditional Indian cooking, our chats explore international cuisines, baking techniques, and healthy lifestyle choices. Share your recipes for homemade pasta, fresh salads, breads, and desserts. You can also chat about dietary preferences like vegetarian, vegan, and gluten-free cooking, trading tips on simple ingredient swaps. Whether you are a beginner learning how to cook your first meal or an experienced cook sharing advanced techniques, Food Chat is a friendly space to share your culinary journey.",
         "ideas": [
             "Secret ingredients and cooking techniques that elevate home-cooked Indian meals",
             "The great biryani debate: comparing Hyderabadi, Lucknowi, and Kolkata styles",
@@ -285,7 +285,7 @@ topics_config = [
                 "a": "While the main chat is text-based, you can describe your cooking processes, share ingredient lists, and talk about presentation."
             },
             {
-                "q": "Is the Food Talk chat free to access?",
+                "q": "Is the Food Chat room free to access?",
                 "a": "Yes, IndiaDostiChat is 100% free. No registration or signup is required; you only need a nickname to start chatting."
             },
             {
@@ -297,13 +297,13 @@ topics_config = [
     {
         "slug": "gaming-chat",
         "title": "Gaming Chat - Video Games, Esports & Console Chat Room",
-        "h1": "Gaming Chat & Video Games Room",
-        "meta_desc": "Join Gaming Chat on IndiaDostiChat to discuss PC/console games, mobile gaming, esports tournaments, and retro video games.",
+        "h1": "Gaming Chat & Video Games Chat Room",
+        "meta_desc": "Join our free gaming chat room to chat about PC/console games, mobile gaming, competitive esports, and retro video games with other gamers.",
         "image": "gaming-chat.webp",
-        "image_alt": "Sleek video game controller with neon purple and blue glowing accents",
-        "intro_p": "Welcome to Gaming Chat on IndiaDostiChat, the ultimate gathering place for video game players, esports fans, and console gamers. Gaming has become one of the most popular forms of entertainment and community building in the world. Whether you play competitive multiplayer shooters, immersive single-player role-playing games (RPGs), mobile games on your phone, or retro classics from older consoles, this chat room is for you. Connect with fellow players, share gaming news, coordinate multiplayer matches, and talk about your favorite gaming moments.",
-        "p1": "The gaming landscape is constantly evolving, with new game releases, hardware updates, and competitive esports tournaments happening regularly. In our Gaming Chat room, members stay updated on the latest industry trends. Discuss the performance of new graphics cards, share reviews of recently launched titles, and debate PC versus console gaming setups. For mobile gamers, it is a great space to find teammates, discuss strategies, and talk about popular titles that are highly active in India. Sharing tips and hardware recommendations helps everyone optimize their gaming experience.",
-        "p2": "In addition to modern titles, our community has a strong appreciation for indie games and retro classics. Share your recommendations for hidden gems created by independent developers, or discuss the nostalgic games of your childhood. Plus, IndiaDostiChat features built-in text-based games like Monster Hunt and Trivia that you can play directly in our main chat rooms, combining chatting and gaming in one place. Join Gaming Chat today to share your passion, meet new gaming friends, and play along with the community.",
+        "image_alt": "Gaming chat room illustration showing game controller with neon glows",
+        "intro_p": "Welcome to Gaming Chat on IndiaDostiChat, the ultimate gathering place for video game players, esports fans, and console gamers. Gaming has become one of the most popular forms of entertainment and community building in the world. Whether you play competitive multiplayer shooters, immersive single-player role-playing games (RPGs), mobile games on your phone, or retro classics from older consoles, our gamer chat room is for you. Connect with fellow players, share gaming news, coordinate multiplayer matches, and chat about your favorite gaming moments.",
+        "p1": "The gaming landscape is constantly evolving, with new game releases, hardware updates, and competitive esports tournaments happening regularly. In our Gaming Chat room, members stay updated on the latest industry trends. Chat about the performance of new graphics cards, share reviews of recently launched titles, and chat about PC versus console gaming setups. For mobile gamers, it is a great space to find teammates, chat about strategies, and chat about popular titles that are highly active in India. Sharing tips and hardware recommendations helps everyone optimize their gaming experience.",
+        "p2": "In addition to modern titles, our community has a strong appreciation for indie games and retro classics. Share your recommendations for hidden gems created by independent developers, or chat about the nostalgic games of your childhood. Plus, IndiaDostiChat features built-in text-based games like Monster Hunt and Trivia that you can play directly in our main chat rooms, combining chatting and gaming in one place. Join Gaming Chat today to share your passion, meet new gaming friends, and play along with the community.",
         "ideas": [
             "Discussing PC vs. console vs. mobile gaming preferences and hardware performance",
             "The rapid growth of competitive esports tournaments and teams in India",
@@ -337,14 +337,14 @@ topics_config = [
     },
     {
         "slug": "ai-chat",
-        "title": "AI Chat - Artificial Intelligence, Tech & Future Talk",
-        "h1": "AI Chat & Future Tech Discussion",
-        "meta_desc": "Discuss AI advancements, machine learning, tech trends, automation, and the future of technology on IndiaDostiChat's AI Chat.",
+        "title": "AI Chat Room - Artificial Intelligence, Tech & Future Chat Room",
+        "h1": "AI Chat & Future Tech Chat Room",
+        "meta_desc": "Join our AI chat room to chat about artificial intelligence, machine learning advances, tech trends, automation, and coding scripts with enthusiasts.",
         "image": "ai-chat.webp",
-        "image_alt": "Neural network graphic showing glowing nodes and connections on a dark background",
-        "intro_p": "Welcome to AI Chat on IndiaDostiChat, a forward-looking space where technology enthusiasts, developers, and curious minds gather to discuss artificial intelligence, machine learning, and future tech trends. AI is transforming how we work, create, communicate, and solve global challenges. Whether you are a software engineer working with neural networks, a student interested in prompt engineering, or someone curious about how automation will shape future careers, this room is open. Connect with others to share news, discuss ethical questions, and explore the cutting edge of tech.",
-        "p1": "The pace of technological innovation can feel overwhelming, with new models, tools, and research papers being released almost daily. In AI Chat, we break down these developments in a clear and accessible way. Members discuss the practical uses of generative AI tools in creative work, software development, and daily productivity. Share your favorite programming resources, discuss the difference between machine learning algorithms, and talk about how AI is being integrated into fields like medicine, finance, and education.",
-        "p2": "Beyond the technical details, this room is a place for discussing the broader social impact of technology. We engage in discussions about the ethics of artificial intelligence, intellectual property rights, data privacy, and the future of work. How do we ensure technology benefits everyone? What are the limits of machine intelligence, and when will we see true Artificial General Intelligence (AGI)? AI Chat provides a space to debate these interesting concepts with fellow technology enthusiasts. Join us today to share your insights and stay informed.",
+        "image_alt": "AI chat room graphic representing neural network connections",
+        "intro_p": "Welcome to AI Chat on IndiaDostiChat, a forward-looking space where technology enthusiasts, developers, and curious minds gather to chat about artificial intelligence, machine learning, and future tech trends in our free tech chat room. AI is transforming how we work, create, communicate, and solve global challenges. Whether you are a software engineer working with neural networks, a student interested in prompt engineering, or someone curious about how automation will shape future careers, this room is open. Connect with others to share news, discuss ethical questions, and explore the cutting edge of tech.",
+        "p1": "The pace of technological innovation can feel overwhelming, with new models, tools, and research papers being released almost daily. In AI Chat, we break down these developments in a clear and accessible way. Members chat about the practical uses of generative AI tools in creative work, software development, and daily productivity. Share your favorite programming resources, chat about the difference between machine learning algorithms, and talk about how AI is being integrated into fields like medicine, finance, and education.",
+        "p2": "Beyond the technical details, this room is a place for chatting about the broader social impact of technology. We engage in chats about the ethics of artificial intelligence, intellectual property rights, data privacy, and the future of work. How do we ensure technology benefits everyone? What are the limits of machine intelligence, and when will we see true Artificial General Intelligence (AGI)? AI Chat provides a space to debate these interesting concepts with fellow technology enthusiasts. Join us today to share your insights and stay informed.",
         "ideas": [
             "How generative AI is changing creative industries, digital art, and writing",
             "The ethical implications of artificial intelligence and automated decision-making systems",
@@ -372,20 +372,20 @@ topics_config = [
             },
             {
                 "q": "Can I ask for coding help in the chat?",
-                "a": "Yes! Tech-minded members often exchange coding advice, discuss algorithms, and share helpful development resources."
+                "a": "Yes! Tech-minded members often exchange coding advice, chat about algorithms, and share helpful development resources."
             }
         ]
     },
     {
-        "slug": "international-friendship",
-        "title": "International Friendship - Global Chat & Cultural Exchange",
-        "h1": "International Friendship & Cultural Exchange",
-        "meta_desc": "Connect with people worldwide on IndiaDostiChat's International Friendship page. Share cultures, practice languages, and make friends.",
-        "image": "international-friendship.webp",
-        "image_alt": "Diverse group of people holding hands in a circle around a globe vector illustration",
-        "intro_p": "Welcome to International Friendship on IndiaDostiChat, a global space designed for cross-cultural communication, language practice, and building friendships across borders. In our interconnected world, making friends from different cultural backgrounds is a powerful way to expand our perspectives, build empathy, and learn about the world. Whether you want to practice a new language, share traditional stories, learn about holidays celebrated in other countries, or simply chat with friendly people worldwide, this chat room is your international hub. Connect with a global community and celebrate our shared humanity.",
-        "p1": "Every culture has its own unique customs, festivals, culinary habits, and daily routines. In our International Friendship room, members enjoy exchanging these cultural details. Share stories about your local festivals, discuss traditional music and instruments, and describe your favorite regional dishes. It is a virtual cultural exchange where you can discover both the interesting differences and the surprising similarities that connect people from different parts of the world. Sharing these stories helps build mutual respect and global understanding.",
-        "p2": "For language learners, the chat room offers a friendly environment to practice speaking with native speakers. Share language learning tips, discuss translation nuances, and help others learn your native language. Since IndiaDostiChat is nickname-based and anonymous, it provides a safe, low-pressure space to converse and build confidence. We are committed to keeping our international community positive and inclusive. Join the room, say hello, and start building meaningful friendships with people from all over the world.",
+        "slug": "international-friendship-chat",
+        "title": "International Friendship Chat - Global Cultural Exchange Chat Room",
+        "h1": "International Friendship Chat Room",
+        "meta_desc": "Connect with friends worldwide. Join our free international friendship chat room for cultural exchanges and global penpals.",
+        "image": "international-friendship-chat.webp",
+        "image_alt": "International friendship chat room graphic with diverse group holding hands around the globe",
+        "intro_p": "Welcome to the International Friendship Chat room on IndiaDostiChat, a global space designed for cross-cultural communication, language practice, and building friendships across borders in our free global chat. Traveling is one of the most rewarding ways to experience the world, learn about different cultures, and meet new people. Whether you want to practice a new language, share traditional stories, learn about holidays celebrated in other countries, or simply chat with friendly people worldwide, this friendship chat room is your international hub. Connect with a global community and celebrate our shared humanity.",
+        "p1": "Every culture has its own unique customs, festivals, culinary habits, and daily routines. In our International Friendship Chat room, members enjoy chatting about these cultural details. Share stories about your local festivals, discuss traditional music and instruments, and describe your favorite regional dishes. It is a virtual cultural exchange where you can discover both the interesting differences and the surprising similarities that connect people from different parts of the world. Sharing these stories helps build mutual respect and global understanding.",
+        "p2": "For language learners, the chat room offers a friendly environment to chat and practice speaking with native speakers. Share language learning tips, chat about translation nuances, and help others learn your native language. Since IndiaDostiChat is nickname-based and anonymous, it provides a safe, low-pressure space to converse and build confidence. We are committed to keeping our international community positive and inclusive. Join the room, say hello, and start building meaningful friendships with people from all over the world.",
         "ideas": [
             "Sharing interesting cultural traditions, regional celebrations, and local festivals",
             "Practical tips for learning and practicing new languages with native speakers in chat",
@@ -404,7 +404,7 @@ topics_config = [
                 "a": "Yes! IndiaDostiChat welcomes users from every country and cultural background. We celebrate global diversity and cross-cultural friendships."
             },
             {
-                "q": "What languages are spoken in the International Friendship room?",
+                "q": "What languages are spoken in the International Friendship Chat room?",
                 "a": "Most conversations are in English, but members are welcome to practice and share phrases in any language they are learning."
             },
             {
@@ -471,7 +471,7 @@ def generate_breadcrumb_schema(topic_slug, topic_title):
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Trending Topics",
+                "name": "Trending Chat Topics",
                 "item": "https://www.indiadostichat.com/topics/"
             },
             {
@@ -699,7 +699,7 @@ for config in topics_config:
 
             <!-- Related Topics Section -->
             <section style="margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 2rem;">
-                <h3 style="color: var(--accent-color); margin-bottom: 1.2rem; font-size: 1.4rem;">Explore More Trending Topics</h3>
+                <h3 style="color: var(--accent-color); margin-bottom: 1.2rem; font-size: 1.4rem;">Explore More Trending Chat Rooms</h3>
                 <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin: 0;">
                     {related_html_list}
                 </ul>
@@ -794,7 +794,7 @@ for config in topics_config:
                 <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-color); margin-bottom: 1.5rem; opacity: 0.9;">{meta_desc}</p>
             </div>
             <a href="{slug}/" style="align-self: flex-start; padding: 0.6rem 1.5rem; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 0.9rem; transition: background 0.2s;">
-                Join Discussion
+                Join Chat Room
             </a>
         </div>
     </div>
@@ -814,7 +814,7 @@ bc_index_schema = json.dumps({
         {
             "@type": "ListItem",
             "position": 2,
-            "name": "Trending Topics",
+            "name": "Trending Chat Topics",
             "item": "https://www.indiadostichat.com/topics/"
         }
     ]
@@ -825,21 +825,21 @@ index_html_content = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trending Discussion Topics | IndiaDostiChat</title>
-    <meta name="description" content="Discover popular discussion topics on IndiaDostiChat including personal finance, Japan & Korea culture, anime, K-pop, travel, food, gaming, and technology.">
+    <title>Trending Chat Topics & Chat Rooms | IndiaDostiChat</title>
+    <meta name="description" content="Discover popular chat rooms and trending chat topics on IndiaDostiChat including personal finance chat, anime chat, gaming chat, travel chat, and food chat.">
     <link rel="canonical" href="https://www.indiadostichat.com/topics/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Trending Discussion Topics | IndiaDostiChat">
-    <meta property="og:description" content="Discover popular discussion topics on IndiaDostiChat including personal finance, Japan & Korea culture, anime, K-pop, travel, food, gaming, and technology.">
+    <meta property="og:title" content="Trending Chat Topics & Chat Rooms | IndiaDostiChat">
+    <meta property="og:description" content="Discover popular chat rooms and trending chat topics on IndiaDostiChat including personal finance chat, anime chat, gaming chat, travel chat, and food chat.">
     <meta property="og:url" content="https://www.indiadostichat.com/topics/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Trending Discussion Topics | IndiaDostiChat">
-    <meta name="twitter:description" content="Discover popular discussion topics on IndiaDostiChat including personal finance, Japan & Korea culture, anime, K-pop, travel, food, gaming, and technology.">
+    <meta name="twitter:title" content="Trending Chat Topics & Chat Rooms | IndiaDostiChat">
+    <meta name="twitter:description" content="Discover popular chat rooms and trending chat topics on IndiaDostiChat including personal finance chat, anime chat, gaming chat, travel chat, and food chat.">
     <meta name="twitter:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
 
     <link rel="stylesheet" href="../assets/css/style.min.css?v={css_version}">
@@ -917,9 +917,9 @@ index_html_content = f"""<!DOCTYPE html>
 
     <main>
         <section class="landing-hero">
-            <h1>Trending Discussion Topics</h1>
+            <h1>Trending Chat Topics & Rooms</h1>
             <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto; line-height: 1.6; opacity: 0.95;">
-                Explore community-driven chat topics. Find peers who share your interests and join the conversation in real time!
+                Explore community-driven chat rooms and chat topics. Find peers who share your interests and join the conversation in real time!
             </p>
             <p style="font-size: 0.95rem; margin-top: 1rem; opacity: 0.8; font-weight: 500;">
                 {calendar_svg} Updated for 2026
@@ -928,7 +928,7 @@ index_html_content = f"""<!DOCTYPE html>
 
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem 4rem;">
             <p style="line-height: 1.8; font-size: 1.1rem; color: var(--text-color); max-width: 800px; margin: 2rem auto 0; text-align: center;">
-                Welcome to the IndiaDostiChat Trending Topics index. Here, you can browse through specialized discussion spaces curated for our global community members. Whether you want to share budget travel tips, debate modern tech and AI advancements, learn about languages, or talk about popular culture, these pages offer a rich peer-to-peer connection. Select a topic card below to view starters, guides, and enter the live chat room.
+                Welcome to the IndiaDostiChat Trending Chat Topics index. Here, you can browse through specialized chat rooms curated for our global community members. Whether you want to join personal finance chats, anime chats, travel chats, gaming chats, or food chats, these pages connect you instantly. Select a chat card below to view starters, guides, and enter the live chat room.
             </p>
 
             <div class="topics-grid">

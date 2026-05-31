@@ -6,16 +6,16 @@ topics_dir = os.path.join(base_dir, "topics")
 images_dir = os.path.join(base_dir, "assets", "images", "topics")
 
 slugs = [
-    "money-talk",
-    "korea-talk",
-    "japan-talk",
-    "anime-discussion",
-    "kpop-discussion",
-    "travel-talk",
-    "food-talk",
+    "money-chat",
+    "korea-chat",
+    "japan-chat",
+    "anime-chat",
+    "kpop-chat",
+    "travel-chat",
+    "food-chat",
     "gaming-chat",
     "ai-chat",
-    "international-friendship"
+    "international-friendship-chat"
 ]
 
 print("=== EXTRA VERIFICATION RUN ===")

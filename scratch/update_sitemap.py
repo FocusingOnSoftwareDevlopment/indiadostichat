@@ -45,16 +45,16 @@ non_stories_urls = [
     "https://www.indiadostichat.com/malayalam-chat-room/",
     "https://www.indiadostichat.com/sitemap/",
     "https://www.indiadostichat.com/topics/",
-    "https://www.indiadostichat.com/topics/money-talk/",
-    "https://www.indiadostichat.com/topics/korea-talk/",
-    "https://www.indiadostichat.com/topics/japan-talk/",
-    "https://www.indiadostichat.com/topics/anime-discussion/",
-    "https://www.indiadostichat.com/topics/kpop-discussion/",
-    "https://www.indiadostichat.com/topics/travel-talk/",
-    "https://www.indiadostichat.com/topics/food-talk/",
+    "https://www.indiadostichat.com/topics/money-chat/",
+    "https://www.indiadostichat.com/topics/korea-chat/",
+    "https://www.indiadostichat.com/topics/japan-chat/",
+    "https://www.indiadostichat.com/topics/anime-chat/",
+    "https://www.indiadostichat.com/topics/kpop-chat/",
+    "https://www.indiadostichat.com/topics/travel-chat/",
+    "https://www.indiadostichat.com/topics/food-chat/",
     "https://www.indiadostichat.com/topics/gaming-chat/",
     "https://www.indiadostichat.com/topics/ai-chat/",
-    "https://www.indiadostichat.com/topics/international-friendship/"
+    "https://www.indiadostichat.com/topics/international-friendship-chat/"
 ]
 
 # Scan india-stories directory to build the list of indexable stories URLs
