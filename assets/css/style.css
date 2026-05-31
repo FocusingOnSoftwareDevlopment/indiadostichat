@@ -759,7 +759,53 @@ footer {
 
 .footer-section h4 {
   color: var(--primary-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  max-width: 480px;
+}
+
+.footer-links li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.75rem 0.5rem 0.75rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer-links li:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.footer-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  width: 100%;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-links a svg.icon-link {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  stroke-width: 2px;
+  fill: none;
 }
 
 .footer-section p {
@@ -912,37 +958,27 @@ footer {
   }
 
   .footer-section {
-    text-align: center !important;
+    text-align: left !important;
     min-width: 0 !important;
+    max-width: 360px !important;
+    margin: 0 auto !important;
+    padding: 0 10px !important;
+    width: 100% !important;
   }
 
   .footer-section .logo {
     display: inline-flex !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     margin-bottom: 1rem !important;
   }
 
-  .footer-section ul {
-    grid-template-columns: repeat(2, minmax(110px, 1fr)) !important;
-    justify-content: center !important;
-    justify-items: center !important;
-    max-width: 320px !important;
-    margin: 0 auto !important;
-    gap: 0.6rem 1rem !important;
-  }
-
-  .footer-section ul li {
-    text-align: center !important;
-    width: 100% !important;
-  }
-
-  .footer-section ul li a {
-    display: block !important;
-    text-align: center !important;
+  .footer-links {
+    max-width: 100% !important;
+    margin: 0 !important;
   }
 
   .footer-section .social-links {
-    justify-content: center !important;
+    justify-content: flex-start !important;
   }
 
   .section-title {
