@@ -7,7 +7,9 @@ logo_dir = os.path.dirname(logo_png)
 sizes = {
     "logo-30.webp": (30, 30),
     "logo-40.webp": (40, 40),
-    "logo-80.webp": (80, 80)
+    "logo-80.webp": (80, 80),
+    "logo.webp": (256, 256),
+    "logo-512x512.png": (512, 512)
 }
 
 print("Generating logo variants...")
