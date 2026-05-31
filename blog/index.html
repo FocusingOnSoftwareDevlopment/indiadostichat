@@ -3,55 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IndiaDostiChat Blog - Indian Chat & Online Friendship Topics</title>
-    <meta name="description" content="Explore topics on Indian chat, online friendship, IRC chat, and community news on the IndiaDostiChat blog. Stay updated with our desi chat community.">
+    <title>IndiaDostiChat Blog - Indian Chat & Cultural Exchange Topics</title>
+    <meta name="description" content="Explore topics on Mumbai chat rooms, Indian-Korean friendship, language practice, and cultural exchange on the IndiaDostiChat blog.">
     <link rel="canonical" href="https://www.indiadostichat.com/blog/">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
+    <!-- Open Graph -->
+    <meta property="og:title" content="IndiaDostiChat Blog - Indian Chat & Cultural Exchange Topics">
+    <meta property="og:description" content="Explore topics on Mumbai chat rooms, Indian-Korean friendship, language practice, and cultural exchange on the IndiaDostiChat blog.">
     <meta property="og:url" content="https://www.indiadostichat.com/blog/">
-    <meta property="og:title" content="IndiaDostiChat Blog - Indian Chat & Online Friendship">
-    <meta property="og:description" content="Read the latest news and community stories from IndiaDostiChat.">
+    <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.indiadostichat.com/blog/">
-    <meta property="twitter:title" content="IndiaDostiChat Blog - Indian Chat & Online Friendship">
-    <meta property="twitter:description" content="Read the latest news and community stories from IndiaDostiChat.">
-    <meta property="twitter:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IndiaDostiChat Blog - Indian Chat & Cultural Exchange Topics">
+    <meta name="twitter:description" content="Explore topics on Mumbai chat rooms, Indian-Korean friendship, language practice, and cultural exchange on the IndiaDostiChat blog.">
+    <meta name="twitter:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/style.min.css?v=10">
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=25">
+    <link rel="prefetch" href="../chat/">
+    
+    <!-- Custom styling for index layout -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+        }
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06) !important;
+        }
+        .landing-hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--hero-bg-gradient-start, #0f172a), var(--hero-bg-gradient-end, #1e293b));
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+        .landing-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+    </style>
+
+    <!-- Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.indiadostichat.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Community Blog",
+      "item": "https://www.indiadostichat.com/blog/"
+    }
+  ]
+}
+    </script>
 <!-- Favicon -->
-
 <link rel="icon" href="/favicon.ico?v=3" sizes="any">
-
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=3">
-
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png?v=3">
-
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png?v=3">
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3">
-
 <link rel="manifest" href="/site.webmanifest?v=3">
-
 </head>
 <body>
-
     <header>
         <nav>
             <a href="../" class="logo">
-                <img src="../assets/logo/logo.svg" alt="IndiaDostiChat Indian Chat Room Logo" style="height: 40px;" onerror="this.style.display='none'">
+                <img src="../assets/logo/logo-40.webp" alt="IndiaDostiChat logo" width="40" height="40" style="height: 40px;" decoding="async" onerror="this.style.display='none'">
                 IndiaDostiChat
             </a>
             <div class="nav-controls" style="display: flex; align-items: center; gap: 10px;">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
                   <span class="theme-icon">🌙</span>
                 </button>
-                <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" id="mobile-menu-btn">
+                    <svg class="icon-menu" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" style="display: block; margin: auto;">
+                        <line class="line-1" x1="3" y1="6" x2="21" y2="6" style="transition: transform 0.3s, opacity 0.3s;"></line>
+                        <line class="line-2" x1="3" y1="12" x2="21" y2="12" style="transition: transform 0.3s, opacity 0.3s;"></line>
+                        <line class="line-3" x1="3" y1="18" x2="21" y2="18" style="transition: transform 0.3s, opacity 0.3s;"></line>
+                    </svg>
+                </button>
             </div>
             
             <ul class="nav-links">
@@ -63,119 +110,155 @@
                 <li><a href="../rules/">Rules</a></li>
                 <li><a href="../contact/">Contact</a></li>
                 <li><a href="../donate/">Donate</a></li>
-</ul>
+            </ul>
         </nav>
     </header>
 
-    
     <main>
         <section class="landing-hero">
-            <h1>IndiaDostiChat Blog - Insights into Indian Online Communities</h1>
-            <p>Explore articles about online safety, making friends, and the evolution of Indian chat rooms.</p>
+            <h1>IndiaDostiChat Community Blog</h1>
+            <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto; line-height: 1.6; opacity: 0.95;">
+                Explore insights on Indian chat rooms, international friendships, language study roadmaps, and cross-cultural exchange.
+            </p>
+            <p style="font-size: 0.95rem; margin-top: 1rem; opacity: 0.8; font-weight: 500;">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align: -1px; margin-right: 0.4rem; opacity: 0.8;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Updated for 2026
+            </p>
         </section>
 
-        <div class="container">
-            <section class="blog-intro" style="margin-bottom: 3rem; line-height: 1.8; color: var(--text-color);">
-                <p>Welcome to the official IndiaDostiChat blog. Here, we delve into the world of **anonymous Indian chat**, exploring how digital spaces bring desis together across continents. Our articles provide valuable tips on staying safe online, making meaningful connections, and understanding the culture of our vibrant community. Whether you're a long-time member or a newcomer, our blog is your guide to getting the most out of your **free Indian chat room** experience.</p>
-            </section>
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem 4rem;">
+            <p style="line-height: 1.8; font-size: 1.1rem; color: var(--text-color); max-width: 800px; margin: 2rem auto 0; text-align: center;">
+                Welcome to our official community blog. Here, we share guides, tips, and stories designed to help you get the most out of IndiaDostiChat. Whether you're interested in connecting with local Mumbaikars, practicing your Korean language skills, or understanding the cultural exchange between India and Korea, explore our featured articles below.
+            </p>
 
-            <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
-                <!-- Blog Cards -->
-                <article class="card" style="padding: 1.5rem; border: 1px solid var(--border-color);">
-                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Best Free Indian Chat Rooms</h3>
-                    <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">Discover why IndiaDostiChat stands out as the top choice for those looking for a high-quality, free Indian chat experience.</p>
-                    <a href="../india-chat/" class="btn-secondary" style="font-size: 0.9rem;">Read More</a>
-                </article>
-
-                <article class="card" style="padding: 1.5rem; border: 1px solid var(--border-color);">
-                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Anonymous Indian Chat Guide</h3>
-                    <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">Learn how to navigate the world of anonymous chatting while protecting your privacy and staying safe.</p>
-                    <a href="../anonymous-indian-chat/" class="btn-secondary" style="font-size: 0.9rem;">Read More</a>
-                </article>
-
-                <article class="card" style="padding: 1.5rem; border: 1px solid var(--border-color);">
-                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Hindi Chat Room Online</h3>
-                    <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">Exploring the popularity of Hindi chat and how it keeps the global Indian diaspora connected to their roots.</p>
-                    <a href="../hindi-chat/" class="btn-secondary" style="font-size: 0.9rem;">Read More</a>
-                </article>
-
-                <article class="card" style="padding: 1.5rem; border: 1px solid var(--border-color);">
-                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Desi Chat Room for Friendship</h3>
-                    <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">How to build genuine and lasting friendships in the vibrant world of desi online communities.</p>
-                    <a href="../desi-chat/" class="btn-secondary" style="font-size: 0.9rem;">Read More</a>
-                </article>
-
-                <article class="card" style="padding: 1.5rem; border: 1px solid var(--border-color);">
-                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Mobile Indian Chat Room</h3>
-                    <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">The ultimate guide to chatting on the go without the need for any app downloads.</p>
-                    <a href="../mobile-indian-chat/" class="btn-secondary" style="font-size: 0.9rem;">Read More</a>
-                </article>
-
-                <article class="card" style="padding: 1.5rem; border: 1px solid var(--border-color);">
-                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Safe Online Chatting Tips</h3>
-                    <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">Crucial advice on how to enjoy your chat experience while keeping your personal information secure.</p>
-                    <a href="../rules/" class="btn-secondary" style="font-size: 0.9rem;">Read More</a>
-                </article>
+            <div class="topics-grid">
+                
+    <div class="card" style="border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--card-bg); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        <img src="../assets/images/topics/mumbai-chat-room-thumb.webp" alt="Mumbai Chat Room: Where Bollywood Dreams and Desi Hearts Connect Online" width="300" height="300" style="width: 100%; height: 200px; object-fit: cover;" decoding="async" loading="lazy">
+        <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="font-size: 0.8rem; font-weight: bold; color: var(--primary-color); text-transform: uppercase; margin-bottom: 0.5rem; display: flex; gap: 1rem;">
+                    <span>Desi Communities</span>
+                    <span style="opacity: 0.6; font-weight: normal;">5 min read</span>
+                </div>
+                <h3 style="margin-top: 0; margin-bottom: 0.8rem; color: var(--accent-color); font-size: 1.3rem; line-height: 1.4;">Mumbai Chat Room: Where Bollywood Dreams and Desi Hearts Connect Online</h3>
+                <p style="font-size: 0.92rem; line-height: 1.6; color: var(--text-color); margin-bottom: 1.5rem; opacity: 0.9;">Step into our free Mumbai chat room. Connect with Mumbaikars, discuss cutting chai, local train stories, Bollywood movies, and the city that never sleeps.</p>
+            </div>
+            <a href="mumbai-chat-room/" style="align-self: flex-start; padding: 0.6rem 1.5rem; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 0.9rem; transition: background 0.2s;">
+                Read Article
+            </a>
+        </div>
+    </div>
+    
+    <div class="card" style="border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--card-bg); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        <img src="../assets/images/topics/indian-korean-friendship-thumb.webp" alt="Indian Korean Friendship: Exploring Culture, Language, and Global Connections" width="300" height="300" style="width: 100%; height: 200px; object-fit: cover;" decoding="async" loading="lazy">
+        <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="font-size: 0.8rem; font-weight: bold; color: var(--primary-color); text-transform: uppercase; margin-bottom: 0.5rem; display: flex; gap: 1rem;">
+                    <span>Cultural Exchange</span>
+                    <span style="opacity: 0.6; font-weight: normal;">4 min read</span>
+                </div>
+                <h3 style="margin-top: 0; margin-bottom: 0.8rem; color: var(--accent-color); font-size: 1.3rem; line-height: 1.4;">Indian Korean Friendship: Exploring Culture, Language, and Global Connections</h3>
+                <p style="font-size: 0.92rem; line-height: 1.6; color: var(--text-color); margin-bottom: 1.5rem; opacity: 0.9;">Connect with Korean friends online. Practice language learning, share food recipes like kimchi and biryani, and explore cultural exchange between India and Korea.</p>
+            </div>
+            <a href="indian-korean-friendship/" style="align-self: flex-start; padding: 0.6rem 1.5rem; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 0.9rem; transition: background 0.2s;">
+                Read Article
+            </a>
+        </div>
+    </div>
+    
+    <div class="card" style="border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--card-bg); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        <img src="../assets/images/topics/india-korea-cultural-exchange-community-thumb.webp" alt="India-Korea Cultural Exchange Community: Friendship, Study, Travel, and Opportunities" width="300" height="300" style="width: 100%; height: 200px; object-fit: cover;" decoding="async" loading="lazy">
+        <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="font-size: 0.8rem; font-weight: bold; color: var(--primary-color); text-transform: uppercase; margin-bottom: 0.5rem; display: flex; gap: 1rem;">
+                    <span>Community Guide</span>
+                    <span style="opacity: 0.6; font-weight: normal;">6 min read</span>
+                </div>
+                <h3 style="margin-top: 0; margin-bottom: 0.8rem; color: var(--accent-color); font-size: 1.3rem; line-height: 1.4;">India-Korea Cultural Exchange Community: Friendship, Study, Travel, and Opportunities</h3>
+                <p style="font-size: 0.92rem; line-height: 1.6; color: var(--text-color); margin-bottom: 1.5rem; opacity: 0.9;">Join our India-Korea cultural exchange community. Explore language roadmaps, study resources, scholarship guides, jobs in Korea, travel tips, and cultural similarities.</p>
+            </div>
+            <a href="india-korea-cultural-exchange-community/" style="align-self: flex-start; padding: 0.6rem 1.5rem; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 0.9rem; transition: background 0.2s;">
+                Read Article
+            </a>
+        </div>
+    </div>
+    
+    <div class="card" style="border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--card-bg); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        <img src="../assets/images/topics/india-korea-cultural-exchange-complete-guide-thumb.webp" alt="India-Korea Cultural Exchange: The Complete Guide to Language, Education, and Careers" width="300" height="300" style="width: 100%; height: 200px; object-fit: cover;" decoding="async" loading="lazy">
+        <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="font-size: 0.8rem; font-weight: bold; color: var(--primary-color); text-transform: uppercase; margin-bottom: 0.5rem; display: flex; gap: 1rem;">
+                    <span>Pillar Article</span>
+                    <span style="opacity: 0.6; font-weight: normal;">12 min read</span>
+                </div>
+                <h3 style="margin-top: 0; margin-bottom: 0.8rem; color: var(--accent-color); font-size: 1.3rem; line-height: 1.4;">India-Korea Cultural Exchange: The Complete Guide to Language, Education, and Careers</h3>
+                <p style="font-size: 0.92rem; line-height: 1.6; color: var(--text-color); margin-bottom: 1.5rem; opacity: 0.9;">Our ultimate pillar guide to India-Korea cultural exchange. Discover language roadmaps, study abroad scholarships, job search tips, travel guides, and food culture.</p>
+            </div>
+            <a href="india-korea-cultural-exchange-complete-guide/" style="align-self: flex-start; padding: 0.6rem 1.5rem; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 0.9rem; transition: background 0.2s;">
+                Read Article
+            </a>
+        </div>
+    </div>
+    
             </div>
         </div>
     </main>
 
-    
     <footer>
-        <div class="footer-content">
+        <div class="footer-content" style="max-width: 1200px; margin: 0 auto; padding: 3rem 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
             <div class="footer-section">
-                <a href="../" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;">
-                    <img src="../assets/logo/logo.svg" alt="IndiaDostiChat Indian Chat Room Logo" style="height: 30px;" onerror="this.style.display='none'"> 
+                <a href="../" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block; text-decoration: none;">
+                    <img src="../assets/logo/logo-30.webp" alt="IndiaDostiChat logo" width="30" height="30" style="height: 30px;" decoding="async" loading="lazy" onerror="this.style.display='none'"> 
                     IndiaDostiChat
                 </a>
-                <p>The premier destination for Indians globally to connect, share, and build friendships in a free Indian chat room.</p>
+                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">
+                    The premier destination for Indians globally to connect, share, and build friendships in a free Indian chat room.
+                </p>
             </div>
             <div class="footer-section">
-                <h4>Explore IndiaDostiChat</h4>
-                <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-                    <li><a href="../" style="color: #ccc; text-decoration: none;">Home</a></li>
-                    <li><a href="../chat/" style="color: #ccc; text-decoration: none;">Chat</a></li>
-                    <li><a href="../india-chat/" style="color: #ccc; text-decoration: none;">India Chat</a></li>
-                    <li><a href="../allindiachat/" style="color: #ccc; text-decoration: none;">All India Chat</a></li>
-                    <li><a href="../anonymous-indian-chat/" style="color: #ccc; text-decoration: none;">Anonymous Indian Chat</a></li>
-                    <li><a href="../hindi-chat/" style="color: #ccc; text-decoration: none;">Hindi Chat</a></li>
-                    <li><a href="../desi-chat/" style="color: #ccc; text-decoration: none;">Desi Chat</a></li>
-                    <li><a href="../indian-friendship-chat/" style="color: #ccc; text-decoration: none;">Indian Friendship Chat</a></li>
-                    <li><a href="../mobile-indian-chat/" style="color: #ccc; text-decoration: none;">Mobile Indian Chat</a></li>
-                    <li><a href="../games/" style="color: #ccc; text-decoration: none;">Games</a></li>
-                    <li><a href="../donate/" style="color: #ccc; text-decoration: none;">Donate</a></li>
-                    <li><a href="../rules/" style="color: #ccc; text-decoration: none;">Rules</a></li>
-                    <li><a href="../contact/" style="color: #ccc; text-decoration: none;">Contact</a></li>
-                    <li><a href="../sitemap/" style="color: #ccc; text-decoration: none;">Sitemap</a></li>
+                <h4 style="color: #fff; margin-bottom: 1.2rem; font-size: 1.1rem;">Explore IndiaDostiChat</h4>
+                <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 0; margin: 0;">
+                    <li><a href="../" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Home</a></li>
+                    <li><a href="../chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Chat</a></li>
+                    <li><a href="../india-chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">India Chat</a></li>
+                    <li><a href="../allindiachat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">All India Chat</a></li>
+                    <li><a href="../anonymous-indian-chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Anonymous Chat</a></li>
+                    <li><a href="../hindi-chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Hindi Chat</a></li>
+                    <li><a href="../desi-chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Desi Chat</a></li>
+                    <li><a href="../games/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Games</a></li>
+                    <li><a href="../donate/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Donate</a></li>
+                    <li><a href="../rules/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Rules</a></li>
+                    <li><a href="../contact/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Contact</a></li>
+                    <li><a href="../sitemap/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Sitemap</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Connect With Us</h4>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <h4 style="color: #fff; margin-bottom: 1.2rem; font-size: 1.1rem;">Connect With Us</h4>
+                <div class="social-links" style="display: flex; gap: 1.2rem; align-items: center; color: #cbd5e1;">
+                    <a href="#" aria-label="Facebook" style="color: inherit; text-decoration: none;"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle;"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h3V1H13c-3.3 0-4 1.7-4 4v3z"/></svg></a>
+                    <a href="#" aria-label="Twitter" style="color: inherit; text-decoration: none;"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle;"><path d="M18.2 2.4h3.3L14.3 11l8.5 11.3h-6.7L11 15.6l-6 6.7H1.7l7.6-8.7L1.2 2.4h6.9l4.6 6.1 5.5-6.1zm-1.2 17.5h1.8L7 4.2H5.1l11.9 15.7z"/></svg></a>
+                    <a href="#" aria-label="Instagram" style="color: inherit; text-decoration: none;"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align: middle;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; border-top: 1px solid var(--border-color); padding: 2rem 1rem 1rem;">
-            <p>&copy; 2026 IndiaDostiChat.com. All Rights Reserved.</p>
+        <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; border-top: 1px solid var(--border-color); padding: 2rem 1rem 1rem; max-width: 1200px; margin: 0 auto; text-align: center;">
+            <p style="margin: 0; color: #94a3b8; font-size: 0.9rem;">&copy; 2026 IndiaDostiChat.com. All Rights Reserved.</p>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; font-weight: 500; font-size: 0.95rem; color: #aaa;">
-                <div>
-                    <i class="fas fa-users" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
-                    Community Visits: <span id="visitor-count">Loading...</span>
+                <div style="display: flex; align-items: center;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: -2px; margin-right: 0.5rem; color: var(--primary-color);"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    Community Visits: <span id="visitor-count" style="margin-left: 0.2rem;">Loading...</span>
                 </div>
-                <div>
-                    <i class="fas fa-comments" style="color: var(--accent-color); margin-right: 0.5rem;"></i>
-                    Chat Entries: <span id="join-count">Loading...</span>
+                <div style="display: flex; align-items: center;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: -2px; margin-right: 0.5rem; color: var(--accent-color);"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+                    Chat Entries: <span id="join-count" style="margin-left: 0.2rem;">Loading...</span>
                 </div>
             </div>
-            <p style="font-size: 0.8rem; color: #777; margin: 0; text-align: center; max-width: 600px; line-height: 1.4;">
+            <p style="font-size: 0.8rem; color: #777; margin: 0; max-width: 600px; line-height: 1.4;">
                 Community activity is counted from real page visits and Join Chat actions, not random clicks.
             </p>
         </div>
     </footer>
 
-    <script src="../assets/js/main.min.js?v=18" defer></script>
+    <script src="../assets/js/main.min.js?v=20" defer></script>
 </body>
 </html>

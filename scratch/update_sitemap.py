@@ -11,6 +11,10 @@ non_stories_urls = [
     "https://www.indiadostichat.com/about/",
     "https://www.indiadostichat.com/games/",
     "https://www.indiadostichat.com/blog/",
+    "https://www.indiadostichat.com/blog/mumbai-chat-room/",
+    "https://www.indiadostichat.com/blog/indian-korean-friendship/",
+    "https://www.indiadostichat.com/blog/india-korea-cultural-exchange-community/",
+    "https://www.indiadostichat.com/blog/india-korea-cultural-exchange-complete-guide/",
     "https://www.indiadostichat.com/contact/",
     "https://www.indiadostichat.com/chat/",
     "https://www.indiadostichat.com/rules/",
@@ -130,6 +134,10 @@ for url in non_stories_urls:
         lastmod = "2026-05-11"
         if "allindiachat" in url:
             lastmod = "2026-05-17"
+    elif "/blog/" in url:
+        priority = "0.8"
+        changefreq = "weekly"
+        lastmod = "2026-05-31"
     elif url in [
         "https://www.indiadostichat.com/about/",
         "https://www.indiadostichat.com/games/",
