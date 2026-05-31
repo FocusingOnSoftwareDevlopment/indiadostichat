@@ -186,12 +186,33 @@
             <!-- Hero Topic Banner Image -->
             <img class="hero-banner" src="../../assets/images/topics/korea-chat.webp" alt="Korea chat room illustration depicting traditional hanok architecture and mountains" width="800" height="800" decoding="async">
 
-            <!-- Fast Join CTA Button (Top Position) -->
-            <div style="text-align: center; margin: 2rem 0 3rem;">
-                <a href="../../chat/" class="btn-primary" style="font-size: 1.35rem; padding: 1.1rem 2.8rem; background-color: #28a745; border-color: #28a745; box-shadow: 0 4px 15px rgba(40,167,69,0.3); text-decoration: none; border-radius: 25px; display: inline-block; color: white; font-weight: bold; transition: transform 0.2s ease;">
-                    Join Live Chat Room
-                </a>
-                <p style="font-size: 0.9rem; margin-top: 0.8rem; opacity: 0.8; font-weight: 500;">No registration required &bull; 100% Free &bull; Join in 5 seconds</p>
+            <!-- Live Chat Preview Section -->
+            <div class="chat-preview-section" style="padding: 20px 0; margin: 20px auto;">
+                <h2 class="section-title" style="margin-bottom: 0.5rem; font-size: 2rem;">Korea Chat & K-Drama Chat Room Live Preview</h2>
+                <p class="chat-preview-p" style="margin-bottom: 1.5rem;">
+                    Start chatting in our free Korea Chat & K-Drama Chat Room room. The chat client loads directly below.
+                </p>
+                <div class="chat-preview-container" style="margin: 0 auto;">
+                    <div class="chat-preview-loading">
+                        <div class="preview-spinner"></div>
+                        <div>Loading Live Chat Preview...</div>
+                    </div>
+                    <iframe
+                      src="https://kiwiirc.hybridirc.com/#IndiaDostiChat"
+                      title="Korea Chat & K-Drama Chat Room Live Chat Preview"
+                      loading="eager"
+                      allow="clipboard-read; clipboard-write"
+                      class="chat-preview-frame">
+                    </iframe>
+                </div>
+                <div class="chat-preview-fallback" style="margin-top: 0.8rem; margin-bottom: 1rem;">
+                    If the chat does not load properly, use the mobile site button below.
+                </div>
+                <div>
+                    <a href="https://www.indiadostichat.com/chat/" class="mobile-chat-btn">
+                      Click Here for Mobile Site
+                    </a>
+                </div>
             </div>
 
             <!-- Intro Section -->
