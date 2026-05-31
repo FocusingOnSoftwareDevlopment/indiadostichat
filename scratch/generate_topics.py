@@ -420,7 +420,7 @@ topics_config = [
 ]
 
 # Theme versions
-css_version = "25"
+css_version = "26"
 js_version = "20"
 
 # SVG Icons code
