@@ -588,6 +588,8 @@ for config in topics_config:
 
     <link rel="stylesheet" href="../../assets/css/style.min.css?v={css_version}">
     <link rel="prefetch" href="../../chat/">
+    <link rel="preconnect" href="https://kiwiirc.hybridirc.com">
+    <link rel="prefetch" href="https://kiwiirc.hybridirc.com/?theme=default#IndiaDostiChat,#trivia,#allindiachat.com">
     
     <!-- Custom styling to guarantee system font fallback and styling refinement -->
     <style>
@@ -896,6 +898,8 @@ index_html_content = f"""<!DOCTYPE html>
 
     <link rel="stylesheet" href="../assets/css/style.min.css?v={css_version}">
     <link rel="prefetch" href="../chat/">
+    <link rel="preconnect" href="https://kiwiirc.hybridirc.com">
+    <link rel="prefetch" href="https://kiwiirc.hybridirc.com/?theme=default#IndiaDostiChat,#trivia,#allindiachat.com">
     
     <!-- Custom styling for index layout -->
     <style>
