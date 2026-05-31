@@ -420,7 +420,7 @@ topics_config = [
 ]
 
 # Theme versions
-css_version = "26"
+css_version = "27"
 js_version = "20"
 
 # SVG Icons code
@@ -597,6 +597,7 @@ for config in topics_config:
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
         }}
         .hero-banner {{
+            width: 100%;
             max-width: 800px;
             height: auto;
             border-radius: var(--border-radius);
@@ -616,6 +617,17 @@ for config in topics_config:
             font-size: 2.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
+        }}
+        @media (max-width: 768px) {{
+            .landing-hero h1 {{
+                font-size: 1.8rem !important;
+            }}
+            .landing-hero {{
+                padding: 2rem 1rem !important;
+            }}
+            .hero-banner {{
+                margin: 1rem auto !important;
+            }}
         }}
     </style>
 

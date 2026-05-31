@@ -20,7 +20,7 @@
     <meta name="twitter:description" content="Chat about travel guides, backpacking experiences, solo travel, and budget itineraries in our free travel chat room.">
     <meta name="twitter:image" content="https://www.indiadostichat.com/assets/images/topics/travel-chat.webp">
 
-    <link rel="stylesheet" href="../../assets/css/style.min.css?v=26">
+    <link rel="stylesheet" href="../../assets/css/style.min.css?v=27">
     <link rel="prefetch" href="../../chat/">
     <link rel="preconnect" href="https://kiwiirc.hybridirc.com">
     <link rel="prefetch" href="https://kiwiirc.hybridirc.com/?theme=default#IndiaDostiChat,#trivia,#allindiachat.com">
@@ -31,6 +31,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
         }
         .hero-banner {
+            width: 100%;
             max-width: 800px;
             height: auto;
             border-radius: var(--border-radius);
@@ -50,6 +51,17 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
+        }
+        @media (max-width: 768px) {
+            .landing-hero h1 {
+                font-size: 1.8rem !important;
+            }
+            .landing-hero {
+                padding: 2rem 1rem !important;
+            }
+            .hero-banner {
+                margin: 1rem auto !important;
+            }
         }
     </style>
 

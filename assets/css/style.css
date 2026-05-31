@@ -909,6 +909,11 @@ footer {
   .footer-content {
     flex-direction: column;
   }
+
+  .section-title {
+    font-size: 1.8rem !important;
+    margin-bottom: 1.5rem !important;
+  }
 }
 
 /* Back to Top Button */

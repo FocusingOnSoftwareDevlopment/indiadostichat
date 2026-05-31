@@ -6,7 +6,7 @@ base_dir = r"c:\Users\mks1j\.gemini\antigravity\scratch\indiadostichat_seo"
 blog_dir = os.path.join(base_dir, "blog")
 os.makedirs(blog_dir, exist_ok=True)
 
-css_version = "25"
+css_version = "27"
 js_version = "20"
 
 downloads_dir = r"C:\Users\mks1j\Downloads\files"
@@ -445,6 +445,7 @@ for config in blogs_data:
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
         }}
         .hero-banner {{
+            width: 100%;
             max-width: 800px;
             height: auto;
             border-radius: var(--border-radius);
@@ -485,7 +486,7 @@ for config in blogs_data:
         }}
         @media (max-width: 768px) {{
             .landing-hero h1 {{
-                font-size: 1.75rem !important;
+                font-size: 1.6rem !important;
             }}
             .landing-hero {{
                 padding: 2.5rem 1rem !important;
@@ -499,7 +500,20 @@ for config in blogs_data:
                 font-size: 0.85rem !important;
             }}
             .toc-container {{
-                padding: 1rem !important;
+                padding: 1.2rem 1rem !important;
+            }}
+            .container h2 {{
+                font-size: 1.4rem !important;
+            }}
+            .container h3 {{
+                font-size: 1.2rem !important;
+            }}
+            .container .btn-primary {{
+                font-size: 1.1rem !important;
+                padding: 0.9rem 1.8rem !important;
+                width: 90% !important;
+                max-width: 320px !important;
+                display: inline-block !important;
             }}
         }}
     </style>

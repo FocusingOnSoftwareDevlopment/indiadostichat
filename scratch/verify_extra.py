@@ -107,11 +107,11 @@ for slug in slugs:
             html_errors += 1
         
         # Check CSS and JS versions
-        css_match = "style.min.css?v=25" in content
+        css_match = "style.min.css?v=27" in content
         js_match = "main.min.js?v=20" in content
         
         if not css_match:
-            print(f"  [FAIL] {slug} is not using style.min.css?v=25")
+            print(f"  [FAIL] {slug} is not using style.min.css?v=27")
             html_errors += 1
         if not js_match:
             print(f"  [FAIL] {slug} is not using main.min.js?v=20")
