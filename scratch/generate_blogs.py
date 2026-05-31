@@ -446,6 +446,25 @@ for config in blogs_data:
             align-items: center;
             gap: 0.4rem;
         }}
+        @media (max-width: 768px) {{
+            .landing-hero h1 {{
+                font-size: 1.75rem !important;
+            }}
+            .landing-hero {{
+                padding: 2.5rem 1rem !important;
+            }}
+            .hero-banner {{
+                margin: 1rem auto !important;
+                max-width: 100% !important;
+            }}
+            .blog-meta {{
+                gap: 0.8rem !important;
+                font-size: 0.85rem !important;
+            }}
+            .toc-container {{
+                padding: 1rem !important;
+            }}
+        }}
     </style>
 
     <!-- Schemas JSON-LD -->
@@ -720,6 +739,18 @@ index_html_content = f"""<!DOCTYPE html>
             font-size: 2.8rem;
             margin-bottom: 1rem;
             font-weight: 700;
+        }}
+        @media (max-width: 768px) {{
+            .landing-hero h1 {{
+                font-size: 2rem !important;
+            }}
+            .landing-hero {{
+                padding: 2.5rem 1rem !important;
+            }}
+            .topics-grid {{
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }}
         }}
     </style>
 

@@ -8,83 +8,148 @@
     <meta name="keywords" content="Mumbai chat room, Mumbai chat, free Mumbai chat room, online Mumbai chat, IndiaDostiChat">
     <link rel="canonical" href="https://www.indiadostichat.com/mumbai-chat-room/">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Mumbai Chat Room - Join Free India Chat | IndiaDostiChat">
-    <meta property="og:description" content="Looking for a Mumbai chat room? Join IndiaDostiChat to connect with users from Mumbai and across India. 100% free, anonymous, and mobile-friendly!">
-    <meta property="og:url" content="https://www.indiadostichat.com/mumbai-chat-room/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.indiadostichat.com/assets/logo/logo.svg">
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=25">
+    <link rel="prefetch" href="../chat/">
+    
+    <!-- Custom styling to guarantee system font fallback and styling refinement -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+        }
+        .landing-hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--hero-bg-gradient-start, #0f172a), var(--hero-bg-gradient-end, #1e293b));
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+        .landing-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .version-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+        }
+        .version-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .landing-hero h1 {
+                font-size: 1.8rem !important;
+            }
+            .landing-hero {
+                padding: 2.5rem 1rem !important;
+            }
+            .version-section {
+                padding: 1.5rem !important;
+            }
+            .version-title {
+                font-size: 1.4rem !important;
+            }
+        }
+    </style>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/style.min.css?v=10">
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.indiadostichat.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mumbai Chat Room",
+          "item": "https://www.indiadostichat.com/mumbai-chat-room/"
+        }
+      ]
+    }
+    </script>
 
     <!-- FAQ Schema -->
     <script type="application/ld+json">
     {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is there a dedicated Mumbai chat room?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Users looking for Mumbai chat can join the main IndiaDostiChat room and connect with Indian users from different places, including Mumbai residents. We keep everyone in a central room to ensure the highest level of activity."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I chat using a nickname?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Absolutely. Privacy is our top priority. You can choose any nickname you like and start chatting instantly without sharing any personal information."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is IndiaDostiChat free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, our chat rooms are 100% free to use, and there are no hidden subscription charges."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What games can I play in the chat?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can participate in community games like Monster Hunt and Trivia, which are fully integrated into our chat channels."
-      }
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is there a dedicated Mumbai chat room?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Users looking for Mumbai chat can join the main IndiaDostiChat room and connect with Indian users from different places, including Mumbai residents. We keep everyone in a central room to ensure the highest level of activity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I chat using a nickname?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Privacy is our top priority. You can choose any nickname you like and start chatting instantly without sharing any personal information."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is IndiaDostiChat free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our chat rooms are 100% free to use, and there are no hidden subscription charges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What games can I play in the chat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can participate in community games like Monster Hunt and Trivia, which are fully integrated into our chat channels."
+          }
+        }
+      ]
     }
-  ]
-}
     </script>
+
 <!-- Favicon -->
-
 <link rel="icon" href="/favicon.ico?v=3" sizes="any">
-
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=3">
-
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png?v=3">
-
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png?v=3">
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3">
-
 <link rel="manifest" href="/site.webmanifest?v=3">
-
 </head>
 <body>
+
     <header>
         <nav>
             <a href="../" class="logo">
-                <img src="../assets/logo/logo.svg" alt="IndiaDostiChat Logo" style="height: 40px;">
+                <img src="../assets/logo/logo-40.webp" alt="IndiaDostiChat logo" width="40" height="40" style="height: 40px;" decoding="async" onerror="this.style.display='none'">
                 IndiaDostiChat
             </a>
             <div class="nav-controls" style="display: flex; align-items: center; gap: 10px;">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
                   <span class="theme-icon">🌙</span>
+                </button>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" id="mobile-menu-btn">
+                    <svg class="icon-menu" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" style="display: block; margin: auto;">
+                        <line class="line-1" x1="3" y1="6" x2="21" y2="6" style="transition: transform 0.3s, opacity 0.3s;"></line>
+                        <line class="line-2" x1="3" y1="12" x2="21" y2="12" style="transition: transform 0.3s, opacity 0.3s;"></line>
+                        <line class="line-3" x1="3" y1="18" x2="21" y2="18" style="transition: transform 0.3s, opacity 0.3s;"></line>
+                    </svg>
                 </button>
             </div>
             
@@ -97,132 +162,252 @@
                 <li><a href="../rules/">Rules</a></li>
                 <li><a href="../contact/">Contact</a></li>
                 <li><a href="../donate/">Donate</a></li>
-</ul>
+            </ul>
         </nav>
     </header>
 
-    
     <main>
         <section class="landing-hero">
-            <h1>Mumbai Chat Room - Connect with Local Friends</h1>
-            <p>Looking for a Mumbai chat room? Join IndiaDostiChat to connect with users from Mumbai and across India. 100% free, anonymous, and mobile-friendly!</p>
+            <h1>Mumbai Chat Room</h1>
+            <p style="font-size: 1.15rem; max-width: 800px; margin: 0 auto; line-height: 1.6; opacity: 0.95;">
+                Welcome to the Mumbai Chat Room content hub. Explore our collection of Mumbai stories, emotional connections, and Bollywood-style chatter.
+            </p>
         </section>
 
-        <div class="container">
-                        <section style="margin-bottom: 3rem; line-height: 1.8; color: var(--text-color);">
-                <p>Mumbai users looking for <a href="../india-chat/" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">India chat room</a> options can join the main IndiaDostiChat room to connect with users from different cities. Simply <a href="../chat/" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">Join IndiaDostiChat</a> to get started chatting. Welcome to our dedicated page for Mumbai users. Known as the city of dreams, the home of Bollywood, and the lifeline of local trains, Mumbai has a fast-paced culture and energy that is unmatched. Whether you are living in South Mumbai, the suburbs, or abroad, our platform offers a wonderful way to connect with people who share your love for Mumbai's unique vibe. While many users look for a specific **Mumbai chat room**, the best experience is found when everyone gathers in one large, active community.</p>
-                
-                <h2 style="margin: 2rem 0 1rem; color: var(--accent-color);">Connecting with the Mumbai Community</h2>
-                <p>Mumbai is a melting pot of cultures, and our chat rooms reflect that diversity. You will find users discussing everything from local news and Bollywood releases to sports and stock market trends. Engaging with a larger community allows you to meet Mumbaikars as well as people from other Indian cities, creating a rich tapestry of conversations. It is a fantastic digital space for networking, making new friends, and participating in lively discussions.</p>
-                
-                <h2 style="margin: 2rem 0 1rem; color: var(--accent-color);">Why Join the Main IndiaDostiChat Room?</h2>
-                <p>Users looking for Mumbai chat can join the main IndiaDostiChat room and connect with Indian users from different places. This ensures that you always find someone online to talk to, regardless of the time of day.</p>
-                
-                <h2 style="margin: 2rem 0 1rem; color: var(--accent-color);">Discussing Mumbai Culture and Local Vibes</h2>
-                <p>From the iconic Marine Drive and Gateway of India to the delicious street food like Vada Pav and cutting chai, Mumbai has a rich cultural heritage that residents are proud to share. In our chat rooms, users often exchange local recommendations, discuss Mumbai's festivals like Ganesh Chaturthi, and talk about the daily hustle of the city. Celebrating Mumbai's unique identity makes the chat experience feel warm and close to home.</p>
-
-                <h2 style="margin: 2rem 0 1rem; color: var(--accent-color);">Safe and Moderated Desi Chat Community</h2>
-                <p>Safety and privacy are core values of IndiaDostiChat. You can join the chat anonymously using just a nickname—no registration or personal data required. Our dedicated team of volunteer moderators ensures a clean, respectful, and safe moderated environment for all Mumbai users. We implement advanced anti-bot and anti-spam measures so you can enjoy a safe, hassle-free conversation.</p>
-
-                <div style="text-align: center; margin: 3rem 0;">
-                    <a href="../chat/" class="btn-primary" style="font-size: 1.3rem; padding: 1rem 3rem; font-weight: bold;">Join the Main Chat Room</a>
-                </div>
-
-                <h2 style="margin: 2rem 0 1rem; color: var(--accent-color);">Join from Mobile or Desktop</h2>
-                <p>IndiaDostiChat is a 100% web-based platform. You can access our chat directly from your mobile browser while you're on the move or from your desktop at home. Our interface is designed to be responsive and easy to navigate, providing a premium experience on all devices.</p>
-
-                <h2 style="margin: 2rem 0 1rem; color: var(--accent-color);">Interactive IRC Games</h2>
-                <p>To keep the fun going, we have integrated popular IRC games directly into our platform. You can team up with other chatters to play the exciting Monster Hunt game or test your knowledge in our Trivia channel. These games are perfect icebreakers and help build stronger connections with other users.</p>
-
-                <h2 style="margin: 2rem 0 1rem; color: var(--accent-color);">Building Desi Friendships Online</h2>
-                <p>IndiaDostiChat is more than just a website; it's a social hub. Many of our users have formed genuine friendships that have lasted for years. Whether you're looking for a casual chat or a long-term friend, you'll find a welcoming community here that understands your cultural background.</p>
-
-                <h2 style="margin: 2rem 0 1rem; color: var(--accent-color);">Conclusion</h2>
-                <p>IndiaDostiChat is the premier choice for people looking for a reliable and engaging online chat experience. By focusing on privacy, safety, and community, we have built a platform that truly serves the needs of modern Indian users. Join the IndiaDostiChat main room today and start your journey of desi friendship and fun!</p>
-            </section>
-
-            <section class="faq-section" style="background: var(--card-bg); padding: 2rem; border-radius: 10px; border: 1px solid var(--border-color);">
-                <h2 style="margin-bottom: 2rem; text-align: center;">Frequently Asked Questions</h2>
-                <div style="margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.1rem; color: var(--primary-color);">Is there a dedicated Mumbai chat room?</h3>
-                    <p>Users looking for Mumbai chat can join the main IndiaDostiChat room and connect with Indian users from different places, including Mumbai residents. We keep everyone in a central room to ensure the highest level of activity.</p>
-                </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.1rem; color: var(--primary-color);">Can I chat using a nickname?</h3>
-                    <p>Absolutely. Privacy is our top priority. You can choose any nickname you like and start chatting instantly without sharing any personal information.</p>
-                </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.1rem; color: var(--primary-color);">Is IndiaDostiChat free to use?</h3>
-                    <p>Yes, our chat rooms are 100% free to use, and there are no hidden subscription charges.</p>
-                </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.1rem; color: var(--primary-color);">What games can I play in the chat?</h3>
-                    <p>You can participate in community games like Monster Hunt and Trivia, which are fully integrated into our chat channels.</p>
-                </div>
-            </section>
+        <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 1rem 3rem;">
             
+            <!-- VERSION 1 -->
+            <section class="version-section">
+                <h2 class="version-title">Mumbai Chat Room – Real Mumbai Vibes Online 🇮🇳</h2>
+                <p style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem;">
+                    Mumbai kabhi sota nahi… aur na hi Mumbai ke log. From late-night Marine Drive talks to local train stories, every Mumbaikar has a unique vibe. IndiaDostiChat brings together people from Mumbai who want friendly conversations, fun chats, and real desi connections online.
+                </p>
+                <p style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem;">
+                    Whether you are from Andheri, Dadar, Bandra, Navi Mumbai, Thane, Borivali, or South Bombay — you’ll instantly feel at home here.
+                </p>
+
+                <h3 style="color: var(--accent-color); margin-top: 1.5rem; margin-bottom: 1rem;">Mumbai Style Conversations</h3>
+                <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 1.2rem; margin-left: 0; line-height: 1.8; color: var(--text-color); font-style: italic;">
+                    “Kaay mhantay Mumbai?” 😄<br>
+                    “Scene kya hai?”<br>
+                    “Cutting chai pe discussion kare?” ☕<br>
+                    “Aaj local train ne phir late kar diya!” 🚆
+                </blockquote>
+                <p style="line-height: 1.8; color: var(--text-color); margin-top: 1rem;">
+                    Our Mumbai chat community feels natural because people can talk in Hindi, Marathi, English, or full Mumbai Hinglish without judgment.
+                </p>
+
+                <h3 style="color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem;">Why Mumbai Users Love IndiaDostiChat</h3>
+                <ul style="line-height: 2; color: var(--text-color); margin-bottom: 1.5rem; padding-left: 1.5rem;">
+                    <li>Fast and lightweight chat experience</li>
+                    <li>Anonymous nickname-based chatting</li>
+                    <li>Meet people from Mumbai and across India</li>
+                    <li>Friendly desi atmosphere</li>
+                    <li>Mobile-friendly chat room</li>
+                    <li>Late-night active users</li>
+                    <li>Bollywood, cricket, food, and Mumbai memes discussions</li>
+                </ul>
+
+                <h3 style="color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem;">Feel the Real Mumbai Connection</h3>
+                <p style="line-height: 1.8; color: var(--text-color);">
+                    Mumbai is not just a city — it’s an emotion. From Ganpati celebrations to midnight street food cravings, from dreams to struggles, every Mumbaikar has stories worth sharing.
+                </p>
+                <p style="line-height: 1.8; font-weight: bold; color: var(--primary-color);">
+                    “Apun yahan sirf chat nahi karte… dosti banate hai.” ❤️
+                </p>
+                <p style="line-height: 1.8; color: var(--text-color);">
+                    Join IndiaDostiChat Mumbai today and connect with real people who understand the spirit of Maximum City.
+                </p>
+            </section>
+
+            <!-- Fast Join CTA Button -->
+            <div style="text-align: center; margin: 3.5rem 0;">
+                <a href="../chat/" class="btn-primary" style="font-size: 1.35rem; padding: 1.2rem 2.8rem; background-color: #28a745; border-color: #28a745; box-shadow: 0 4px 15px rgba(40,167,69,0.3); text-decoration: none; border-radius: 25px; display: inline-block; color: white; font-weight: bold; transition: transform 0.2s ease;">
+                    Join Live Chat Room
+                </a>
+                <p style="font-size: 0.9rem; margin-top: 0.8rem; opacity: 0.7;">No registration required &bull; 100% Free &bull; Join in 5 seconds</p>
+            </div>
+
+            <!-- VERSION 2 -->
+            <section class="version-section">
+                <h2 class="version-title">Mumbai Chat Room – Where Mumbai Hearts Connect ❤️</h2>
+                <p style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem;">
+                    Mumbai is not just a city. It is a feeling carried by millions of people every single day.
+                </p>
+                <ul style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem; list-style-type: none; padding-left: 0;">
+                    <li style="margin-bottom: 0.5rem;">🚆 Some are returning home tired in crowded local trains…</li>
+                    <li style="margin-bottom: 0.5rem;">🌊 Some are sitting alone near Marine Drive watching the waves silently…</li>
+                    <li style="margin-bottom: 0.5rem;">☕ Some are working night shifts with chai beside them…</li>
+                    <li style="margin-bottom: 0.5rem;">💬 And some are simply looking for one genuine conversation after a long day.</li>
+                </ul>
+                <p style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem;">
+                    IndiaDostiChat Mumbai is made for those people. Here, strangers slowly become familiar names. Late-night talks become memories. And simple “hello” messages sometimes heal lonely hearts.
+                </p>
+
+                <h3 style="color: var(--accent-color); margin-top: 1.5rem; margin-bottom: 1rem;">The Real Spirit of Mumbai Lives Here</h3>
+                <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 1.2rem; margin-left: 0; line-height: 1.8; color: var(--text-color); font-style: italic;">
+                    “Kaay mhantay?”<br>
+                    “Bhau scene kya hai?”<br>
+                    “Cutting chai pe baat kare?” ☕<br>
+                    “Local train ne aaj phir jaan leli…” 🚆
+                </blockquote>
+                <p style="line-height: 1.8; color: var(--text-color); margin-top: 1rem;">
+                    Only a Mumbaikar truly understands another Mumbaikar. The fast life… The dreams… The struggles hidden behind smiles… The feeling of standing alone in a crowd of millions. That is why this Mumbai chat room feels different.
+                </p>
+
+                <h3 style="color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem;">Mumbai Never Sleeps… Neither Do Conversations Here 🌃</h3>
+                <p style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem;">
+                    At 2 AM, when the city becomes quieter… people come online to share thoughts they cannot tell anyone else. Some talk about:
+                </p>
+                <ul style="line-height: 1.8; color: var(--text-color); padding-left: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                    <li>❤️ Love</li>
+                    <li>💪 Life struggles</li>
+                    <li>💼 Career pressure</li>
+                    <li>🎬 Bollywood gossip</li>
+                    <li>🏏 Cricket</li>
+                    <li>🌧️ Rain memories</li>
+                    <li>🤝 Friendships</li>
+                    <li>💔 Heartbreaks</li>
+                    <li>✨ Dreams they never gave up on</li>
+                </ul>
+                <p style="line-height: 1.8; color: var(--text-color); margin-top: 1.5rem;">
+                    And sometimes… people simply stay online because they do not want to feel alone.
+                </p>
+            </section>
+
+            <!-- VERSION 3 -->
+            <section class="version-section">
+                <h2 class="version-title">Mumbai Chat Room – Where Bollywood Dreams Meet Real Conversations 🎬❤️</h2>
+                <p style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem;">
+                    Mumbai… The city where millions arrive carrying dreams in their eyes. Some come to become actors. Some musicians. Some writers. Some simply come searching for a better life.
+                </p>
+                <p style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem;">
+                    And somewhere between crowded local trains, rainy streets, late-night chai stalls, and glowing city lights… people search for connection. IndiaDostiChat Mumbai is built for those hearts.
+                </p>
+
+                <h3 style="color: var(--accent-color); margin-top: 1.5rem; margin-bottom: 1rem;">Bollywood Lives In Every Corner Of Mumbai 🎥</h3>
+                <p style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem;">
+                    In Mumbai, Bollywood is not only cinema. It is part of life. People fall in love like old romantic movies. Friendships feel like emotional film scenes. Heartbreaks happen while listening to sad songs during monsoon nights.
+                </p>
+                <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 1.2rem; margin-left: 0; line-height: 1.8; color: var(--text-color); font-style: italic;">
+                    “Palat… palat…” 😄<br>
+                    “Ek cutting chai aur ek filmy conversation.” ☕<br>
+                    “Yeh Mumbai hai mere dost… yahan sapne bhi bhaagte hai.”
+                </blockquote>
+                <p style="line-height: 1.8; color: var(--text-color); margin-top: 1rem;">
+                    From Bandra streets to Marine Drive… from Juhu beaches to Film City dreams… every place carries memories of cinema and emotions.
+                </p>
+
+                <h3 style="color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem;">Mumbai Rain + Old Songs + Late Night Chats 🌧️🎶</h3>
+                <p style="line-height: 1.8; color: var(--text-color); margin-bottom: 1.5rem;">
+                    There is something magical about Mumbai nights. Rain outside. Earphones playing emotional Bollywood songs. City lights reflecting on wet roads. And a stranger online asking: <strong>“Kaise ho?”</strong>
+                </p>
+                <p style="line-height: 1.8; color: var(--text-color);">
+                    Sometimes that small question feels more comforting than anything else.
+                </p>
+
+                <h3 style="color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem;">Join The Most Emotional Mumbai Chat Community 🇮🇳</h3>
+                <p style="line-height: 1.8; color: var(--text-color);">
+                    If Bollywood songs make you emotional… If Mumbai rains remind you of memories… If you believe conversations can still feel genuine… Then IndiaDostiChat Mumbai is waiting for you.
+                </p>
+                <p style="line-height: 1.8; color: var(--text-color); font-weight: bold;">
+                    Because in the city of dreams… sometimes strangers become the most unforgettable part of the story. ❤️
+                </p>
+            </section>
+
+            <!-- Light FAQ section -->
+            <section style="margin-bottom: 3.5rem;">
+                <h2 style="color: var(--accent-color); margin-bottom: 2rem; font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">
+                    Frequently Asked Questions
+                </h2>
+                <div class="faq-container">
+                    <div style="margin-bottom: 2rem; border-left: 4px solid var(--accent-color); padding-left: 1.5rem;">
+                        <h3 style="color: var(--primary-color); margin-top: 0; margin-bottom: 0.5rem; font-size: 1.25rem;">Is there a dedicated Mumbai chat room?</h3>
+                        <p style="margin: 0; line-height: 1.6;">Users looking for Mumbai chat can join the main IndiaDostiChat room and connect with Indian users from different places, including Mumbai residents. We keep everyone in a central room to ensure the highest level of activity.</p>
+                    </div>
+                    <div style="margin-bottom: 2rem; border-left: 4px solid var(--accent-color); padding-left: 1.5rem;">
+                        <h3 style="color: var(--primary-color); margin-top: 0; margin-bottom: 0.5rem; font-size: 1.25rem;">Can I chat using a nickname?</h3>
+                        <p style="margin: 0; line-height: 1.6;">Absolutely. Privacy is our top priority. You can choose any nickname you like and start chatting instantly without sharing any personal information.</p>
+                    </div>
+                    <div style="margin-bottom: 2rem; border-left: 4px solid var(--accent-color); padding-left: 1.5rem;">
+                        <h3 style="color: var(--primary-color); margin-top: 0; margin-bottom: 0.5rem; font-size: 1.25rem;">Is IndiaDostiChat free to use?</h3>
+                        <p style="margin: 0; line-height: 1.6;">Yes, our chat rooms are 100% free to use, and there are no hidden subscription charges.</p>
+                    </div>
+                    <div style="margin-bottom: 2rem; border-left: 4px solid var(--accent-color); padding-left: 1.5rem;">
+                        <h3 style="color: var(--primary-color); margin-top: 0; margin-bottom: 0.5rem; font-size: 1.25rem;">What games can I play in the chat?</h3>
+                        <p style="margin: 0; line-height: 1.6;">You can participate in community games like Monster Hunt and Trivia, which are fully integrated into our chat channels.</p>
+                    </div>
+                </div>
+            </section>
+
             <div style="margin-top: 3rem; text-align: center; margin-bottom: 3rem;">
                 <a href="../" style="color: var(--primary-color); text-decoration: none; font-weight: bold; font-size: 1.1rem;">&larr; Back to IndiaDostiChat Home</a>
             </div>
+
         </div>
     </main>
 
-    
     <footer>
-        <div class="footer-content">
+        <div class="footer-content" style="max-width: 1200px; margin: 0 auto; padding: 3rem 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
             <div class="footer-section">
-                <a href="../" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;">
-                    <img src="../assets/logo/logo.svg" alt="IndiaDostiChat Indian Chat Room Logo" style="height: 30px;" onerror="this.style.display='none'"> 
+                <a href="../" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block; text-decoration: none;">
+                    <img src="../assets/logo/logo-30.webp" alt="IndiaDostiChat logo" width="30" height="30" style="height: 30px;" decoding="async" loading="lazy" onerror="this.style.display='none'"> 
                     IndiaDostiChat
                 </a>
-                <p>The premier destination for Indians globally to connect, share, and build friendships in a free Indian chat room.</p>
+                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">
+                    The premier destination for Indians globally to connect, share, and build friendships in a free Indian chat room.
+                </p>
             </div>
             <div class="footer-section">
-                <h4>Explore IndiaDostiChat</h4>
-                <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-                    <li><a href="../" style="color: #ccc; text-decoration: none;">Home</a></li>
-                    <li><a href="../chat/" style="color: #ccc; text-decoration: none;">Chat</a></li>
-                    <li><a href="../india-chat/" style="color: #ccc; text-decoration: none;">India Chat</a></li>
-                    <li><a href="../allindiachat/" style="color: #ccc; text-decoration: none;">All India Chat</a></li>
-                    <li><a href="../anonymous-indian-chat/" style="color: #ccc; text-decoration: none;">Anonymous Indian Chat</a></li>
-                    <li><a href="../hindi-chat/" style="color: #ccc; text-decoration: none;">Hindi Chat</a></li>
-                    <li><a href="../desi-chat/" style="color: #ccc; text-decoration: none;">Desi Chat</a></li>
-                    <li><a href="../indian-friendship-chat/" style="color: #ccc; text-decoration: none;">Indian Friendship Chat</a></li>
-                    <li><a href="../mobile-indian-chat/" style="color: #ccc; text-decoration: none;">Mobile Indian Chat</a></li>
-                    <li><a href="../games/" style="color: #ccc; text-decoration: none;">Games</a></li>
-                    <li><a href="../donate/" style="color: #ccc; text-decoration: none;">Donate</a></li>
-                    <li><a href="../rules/" style="color: #ccc; text-decoration: none;">Rules</a></li>
-                    <li><a href="../contact/" style="color: #ccc; text-decoration: none;">Contact</a></li>
-                    <li><a href="../sitemap/" style="color: #ccc; text-decoration: none;">Sitemap</a></li>
+                <h4 style="color: #fff; margin-bottom: 1.2rem; font-size: 1.1rem;">Explore IndiaDostiChat</h4>
+                <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 0; margin: 0;">
+                    <li><a href="../" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Home</a></li>
+                    <li><a href="../chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Chat</a></li>
+                    <li><a href="../india-chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">India Chat</a></li>
+                    <li><a href="../allindiachat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">All India Chat</a></li>
+                    <li><a href="../anonymous-indian-chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Anonymous Chat</a></li>
+                    <li><a href="../hindi-chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Hindi Chat</a></li>
+                    <li><a href="../desi-chat/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Desi Chat</a></li>
+                    <li><a href="../games/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Games</a></li>
+                    <li><a href="../donate/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Donate</a></li>
+                    <li><a href="../rules/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Rules</a></li>
+                    <li><a href="../contact/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Contact</a></li>
+                    <li><a href="../sitemap/" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Sitemap</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Connect With Us</h4>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <h4 style="color: #fff; margin-bottom: 1.2rem; font-size: 1.1rem;">Connect With Us</h4>
+                <div class="social-links" style="display: flex; gap: 1.2rem; align-items: center; color: #cbd5e1;">
+                    <a href="#" aria-label="Facebook" style="color: inherit; text-decoration: none;">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle;"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h3V1H13c-3.3 0-4 1.7-4 4v3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Twitter" style="color: inherit; text-decoration: none;">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle;"><path d="M18.2 2.4h3.3L14.3 11l8.5 11.3h-6.7L11 15.6l-6 6.7H1.7l7.6-8.7L1.2 2.4h6.9l4.6 6.1 5.5-6.1zm-1.2 17.5h1.8L7 4.2H5.1l11.9 15.7z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" style="color: inherit; text-decoration: none;">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align: middle;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; border-top: 1px solid var(--border-color); padding: 2rem 1rem 1rem;">
-            <p>&copy; 2026 IndiaDostiChat.com. All Rights Reserved.</p>
+        <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; border-top: 1px solid var(--border-color); padding: 2rem 1rem 1rem; max-width: 1200px; margin: 0 auto; text-align: center;">
+            <p style="margin: 0; color: #94a3b8; font-size: 0.9rem;">&copy; 2026 IndiaDostiChat.com. All Rights Reserved.</p>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; font-weight: 500; font-size: 0.95rem; color: #aaa;">
-                <div>
-                    <i class="fas fa-users" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
-                    Community Visits: <span id="visitor-count">Loading...</span>
+                <div style="display: flex; align-items: center;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: -2px; margin-right: 0.5rem; color: var(--primary-color);"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    Community Visits: <span id="visitor-count" style="margin-left: 0.2rem;">Loading...</span>
                 </div>
-                <div>
-                    <i class="fas fa-comments" style="color: var(--accent-color); margin-right: 0.5rem;"></i>
-                    Chat Entries: <span id="join-count">Loading...</span>
+                <div style="display: flex; align-items: center;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: -2px; margin-right: 0.5rem; color: var(--accent-color);"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+                    Chat Entries: <span id="join-count" style="margin-left: 0.2rem;">Loading...</span>
                 </div>
             </div>
-            <p style="font-size: 0.8rem; color: #777; margin: 0; text-align: center; max-width: 600px; line-height: 1.4;">
+            <p style="font-size: 0.8rem; color: #777; margin: 0; max-width: 600px; line-height: 1.4;">
                 Community activity is counted from real page visits and Join Chat actions, not random clicks.
             </p>
         </div>
     </footer>
-        
-    <script src="../assets/js/main.min.js?v=18" defer></script>
+
+    <script src="../assets/js/main.min.js?v=20" defer></script>
 </body>
 </html>
