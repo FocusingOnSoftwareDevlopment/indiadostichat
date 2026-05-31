@@ -527,6 +527,42 @@ for config in topics_config:
             <p style="margin: 0; line-height: 1.6;">{faq["a"]}</p>
         </div>"""
 
+    # Define topic-specific floating backgrounds
+    bg_decor_html = ""
+    if slug == "japan-chat":
+        bg_decor_html = """
+    <div class="topic-bg-decor">
+        <div class="decor-item" style="top: 15%; left: 8%;">🌸</div>
+        <div class="decor-item" style="top: 30%; right: 10%;">⛩️</div>
+        <div class="decor-item" style="top: 55%; left: 5%;">🗻</div>
+        <div class="decor-item" style="top: 75%; right: 7%;">🍣</div>
+        <div class="decor-item" style="top: 85%; left: 12%;">🏯</div>
+        <div class="decor-item" style="top: 45%; right: 15%;">🌸</div>
+    </div>
+"""
+    elif slug == "korea-chat":
+        bg_decor_html = """
+    <div class="topic-bg-decor">
+        <div class="decor-item" style="top: 15%; left: 8%;">🇰🇷</div>
+        <div class="decor-item" style="top: 30%; right: 10%;">🫶</div>
+        <div class="decor-item" style="top: 55%; left: 5%;">🥢</div>
+        <div class="decor-item" style="top: 75%; right: 7%;">🥬</div>
+        <div class="decor-item" style="top: 85%; left: 12%;">🏙️</div>
+        <div class="decor-item" style="top: 45%; right: 15%;">🫶</div>
+    </div>
+"""
+    elif slug == "anime-chat":
+        bg_decor_html = """
+    <div class="topic-bg-decor">
+        <div class="decor-item" style="top: 15%; left: 8%;">🍥</div>
+        <div class="decor-item" style="top: 30%; right: 10%;">⚡</div>
+        <div class="decor-item" style="top: 55%; left: 5%;">🦊</div>
+        <div class="decor-item" style="top: 75%; right: 7%;">🍙</div>
+        <div class="decor-item" style="top: 85%; left: 12%;">💫</div>
+        <div class="decor-item" style="top: 45%; right: 15%;">🌸</div>
+    </div>
+"""
+
     # HTML Template for topic subpage
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -597,6 +633,7 @@ for config in topics_config:
 <link rel="manifest" href="/site.webmanifest?v=3">
 </head>
 <body>
+    {bg_decor_html}
     <header>
         <nav>
             <a href="../../" class="logo">
@@ -640,19 +677,19 @@ for config in topics_config:
             <!-- Hero Topic Banner Image -->
             <img class="hero-banner" src="../../assets/images/topics/{image}" alt="{image_alt}" width="800" height="800" decoding="async">
 
+            <!-- Fast Join CTA Button (Top Position) -->
+            <div style="text-align: center; margin: 2rem 0 3rem;">
+                <a href="../../chat/" class="btn-primary" style="font-size: 1.35rem; padding: 1.1rem 2.8rem; background-color: #28a745; border-color: #28a745; box-shadow: 0 4px 15px rgba(40,167,69,0.3); text-decoration: none; border-radius: 25px; display: inline-block; color: white; font-weight: bold; transition: transform 0.2s ease;">
+                    Join Live Chat Room
+                </a>
+                <p style="font-size: 0.9rem; margin-top: 0.8rem; opacity: 0.8; font-weight: 500;">No registration required &bull; 100% Free &bull; Join in 5 seconds</p>
+            </div>
+
             <!-- Intro Section -->
             <section style="margin-bottom: 3rem; line-height: 1.8; color: var(--text-color); font-size: 1.08rem;">
                 <p style="margin-bottom: 1.5rem;">{intro_p}</p>
                 <p style="margin-bottom: 1.5rem;">{p1}</p>
                 <p style="margin-bottom: 1.5rem;">{p2}</p>
-
-                <!-- Fast Join CTA Button -->
-                <div style="text-align: center; margin: 3.5rem 0;">
-                    <a href="../../chat/" class="btn-primary" style="font-size: 1.35rem; padding: 1.2rem 2.8rem; background-color: #28a745; border-color: #28a745; box-shadow: 0 4px 15px rgba(40,167,69,0.3); text-decoration: none; border-radius: 25px; display: inline-block; color: white; font-weight: bold; transition: transform 0.2s ease;">
-                        Join Live Chat Room
-                    </a>
-                    <p style="font-size: 0.9rem; margin-top: 0.8rem; opacity: 0.7;">No registration required &bull; 100% Free &bull; Join in 5 seconds</p>
-                </div>
             </section>
 
             <!-- Conversation Ideas Section -->
@@ -785,17 +822,32 @@ for config in topics_config:
     meta_desc = config["meta_desc"]
     image_thumb = f"{os.path.splitext(config['image'])[0]}-thumb.webp"
     
+    card_class = "card"
+    card_watermark_html = ""
+    if slug == "japan-chat":
+        card_class = "card theme-japan"
+        card_watermark_html = '<div class="card-watermark" style="opacity: 0.15;"><span>🌸</span><span>⛩️</span><span>🗻</span><span>🍣</span><span>🏯</span></div>'
+    elif slug == "korea-chat":
+        card_class = "card theme-korea"
+        card_watermark_html = '<div class="card-watermark" style="opacity: 0.15;"><span>🇰🇷</span><span>🥬</span><span>🫶</span><span>🥢</span><span>🏙️</span></div>'
+    elif slug == "anime-chat":
+        card_class = "card theme-anime"
+        card_watermark_html = '<div class="card-watermark" style="opacity: 0.15;"><span>🍥</span><span>🌸</span><span>🦊</span><span>⚡</span><span>🍙</span></div>'
+        
     cards_html += f"""
-    <div class="card" style="border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--card-bg); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
-        <img src="../assets/images/topics/{image_thumb}" alt="{config["image_alt"]}" width="300" height="300" style="width: 100%; height: 200px; object-fit: cover;" decoding="async" loading="lazy">
-        <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="{card_class}" style="border: 1px solid var(--border-color); border-radius: var(--border-radius); background: var(--card-bg); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02); position: relative; isolation: isolate;">
+        {card_watermark_html}
+        <img src="../assets/images/topics/{image_thumb}" alt="{config["image_alt"]}" width="300" height="300" style="width: 100%; height: 200px; object-fit: cover; position: relative; z-index: 2;" decoding="async" loading="lazy">
+        <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 2;">
             <div>
+                <div style="margin-bottom: 0.8rem;">
+                    <a href="{slug}/" class="join-badge-index" style="padding: 0.5rem 1.2rem; background: #28a745; color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 0.85rem; display: inline-block; box-shadow: 0 3px 8px rgba(40,167,69,0.2);">
+                        Join Chat Room ➔
+                    </a>
+                </div>
                 <h3 style="margin-top: 0; margin-bottom: 0.8rem; color: var(--accent-color); font-size: 1.35rem;">{h1}</h3>
-                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-color); margin-bottom: 1.5rem; opacity: 0.9;">{meta_desc}</p>
+                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-color); margin-bottom: 0; opacity: 0.9;">{meta_desc}</p>
             </div>
-            <a href="{slug}/" style="align-self: flex-start; padding: 0.6rem 1.5rem; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 0.9rem; transition: background 0.2s;">
-                Join Chat Room
-            </a>
         </div>
     </div>
     """

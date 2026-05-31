@@ -1634,5 +1634,221 @@ body.dark-mode .game-card {
   }
 }
 
+/* Trending Topic Chat Room Cards */
+.topic-card {
+  position: relative;
+  text-decoration: none;
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: var(--border-radius);
+  background: var(--card-bg);
+  overflow: hidden;
+  isolation: isolate; /* Ensures watermarks stay inside */
+}
+
+.topic-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+  border-color: var(--primary-color);
+}
+
+.topic-card .join-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff !important;
+  background: #28a745;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(40,167,69,0.25);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.topic-card:hover .join-badge {
+  transform: scale(1.08);
+  background: #218838;
+}
+
+.topic-card .card-emoji {
+  font-size: 2.6rem;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.topic-card:hover .card-emoji {
+  transform: scale(1.2) rotate(8deg);
+}
+
+.topic-card h3 {
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--text-color);
+  z-index: 2;
+  font-weight: 700;
+}
+
+/* Background Themed Gradients and Watermarks */
+.topic-card .card-watermark {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  font-size: 1.3rem;
+  z-index: 1;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  padding: 0.5rem;
+}
+
+.topic-card:hover .card-watermark {
+  opacity: 0.22;
+  transform: scale(1.05);
+}
+
+body.dark-mode .topic-card .card-watermark {
+  opacity: 0.06;
+}
+body.dark-mode .topic-card:hover .card-watermark {
+  opacity: 0.12;
+}
+
+/* Individual card theme styling */
+/* Japan Chat Card */
+.topic-card.theme-japan {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(255, 182, 193, 0.2) 100%);
+}
+body.dark-mode .topic-card.theme-japan {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(251, 113, 133, 0.1) 100%);
+}
+.topic-card.theme-japan .join-badge {
+  background: #e11d48; /* Red for cherry blossom/Japan vibes */
+  box-shadow: 0 4px 10px rgba(225, 29, 72, 0.3);
+}
+.topic-card.theme-japan:hover .join-badge {
+  background: #be123c;
+}
+
+/* Korea Chat Card */
+.topic-card.theme-korea {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(147, 197, 253, 0.2) 100%);
+}
+body.dark-mode .topic-card.theme-korea {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(59, 130, 246, 0.1) 100%);
+}
+.topic-card.theme-korea .join-badge {
+  background: #3b82f6; /* Blue for South Korea flag vibes */
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+.topic-card.theme-korea:hover .join-badge {
+  background: #2563eb;
+}
+
+/* Anime Chat Card */
+.topic-card.theme-anime {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(196, 181, 253, 0.25) 100%);
+}
+body.dark-mode .topic-card.theme-anime {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(139, 92, 246, 0.12) 100%);
+}
+.topic-card.theme-anime .join-badge {
+  background: #8b5cf6; /* Purple for anime vibes */
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+}
+.topic-card.theme-anime:hover .join-badge {
+  background: #7c3aed;
+}
+
+/* Page Watermarks on Topic Detail Pages */
+.topic-bg-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.08;
+  transition: opacity 0.3s ease;
+}
+body.dark-mode .topic-bg-decor {
+  opacity: 0.04;
+}
+.decor-item {
+  position: absolute;
+  font-size: 3.5rem;
+  animation: floatSlow 15s infinite ease-in-out;
+}
+.decor-item:nth-child(even) {
+  animation-duration: 20s;
+  animation-delay: -5s;
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(20deg); }
+}
+
+/* Card theming for Topics Index page */
+.card.theme-japan {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(255, 182, 193, 0.15) 100%);
+}
+body.dark-mode .card.theme-japan {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(251, 113, 133, 0.08) 100%);
+}
+.card.theme-japan .join-badge-index {
+  background: #e11d48 !important;
+  box-shadow: 0 4px 10px rgba(225, 29, 72, 0.25);
+}
+.card.theme-japan .join-badge-index:hover {
+  background: #be123c !important;
+}
+
+.card.theme-korea {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(147, 197, 253, 0.15) 100%);
+}
+body.dark-mode .card.theme-korea {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(59, 130, 246, 0.08) 100%);
+}
+.card.theme-korea .join-badge-index {
+  background: #3b82f6 !important;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
+}
+.card.theme-korea .join-badge-index:hover {
+  background: #2563eb !important;
+}
+
+.card.theme-anime {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(196, 181, 253, 0.2) 100%);
+}
+body.dark-mode .card.theme-anime {
+  background: linear-gradient(135deg, var(--card-bg) 60%, rgba(139, 92, 246, 0.1) 100%);
+}
+.card.theme-anime .join-badge-index {
+  background: #8b5cf6 !important;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.25);
+}
+.card.theme-anime .join-badge-index:hover {
+  background: #7c3aed !important;
+}
+
+.join-badge-index {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.join-badge-index:hover {
+  transform: scale(1.05);
+}
+
+
+
 
 
