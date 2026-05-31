@@ -1867,13 +1867,58 @@ body.dark-mode .card.theme-anime {
   opacity: 0.95;
 }
 
-.chat-preview-frame {
+.chat-preview-container {
+  position: relative;
   width: 100%;
   height: 650px;
-  border: 0;
   border-radius: 14px;
-  background: #111;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.chat-preview-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+  gap: 12px;
+  opacity: 0.8;
+}
+
+.preview-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.05);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: preview-spin 1s linear infinite;
+}
+
+body.dark-mode .preview-spinner {
+  border: 3px solid rgba(255, 255, 255, 0.05);
+  border-top: 3px solid var(--primary-color);
+}
+
+@keyframes preview-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.chat-preview-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  position: relative;
+  z-index: 2; /* Renders on top of the loading message */
+  background: transparent; /* Avoids black flash */
 }
 
 .chat-preview-fallback {
@@ -1910,7 +1955,7 @@ body.dark-mode .card.theme-anime {
     margin: 20px auto;
   }
 
-  .chat-preview-frame {
+  .chat-preview-container {
     height: 520px;
     border-radius: 8px;
   }
@@ -1920,6 +1965,7 @@ body.dark-mode .card.theme-anime {
     max-width: 320px;
   }
 }
+
 
 
 

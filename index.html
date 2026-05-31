@@ -187,13 +187,19 @@
             <p class="chat-preview-p">
                 Start chatting with Indian friends online. The chat room loads directly below.
             </p>
-            <iframe
-              src="https://kiwiirc.hybridirc.com/#IndiaDostiChat"
-              title="IndiaDostiChat Live Chat Preview"
-              loading="eager"
-              allow="clipboard-read; clipboard-write"
-              class="chat-preview-frame">
-            </iframe>
+            <div class="chat-preview-container">
+                <div class="chat-preview-loading">
+                    <div class="preview-spinner"></div>
+                    <div>Loading Live Chat Preview...</div>
+                </div>
+                <iframe
+                  src="https://kiwiirc.hybridirc.com/#IndiaDostiChat"
+                  title="IndiaDostiChat Live Chat Preview"
+                  loading="eager"
+                  allow="clipboard-read; clipboard-write"
+                  class="chat-preview-frame">
+                </iframe>
+            </div>
             <div class="chat-preview-fallback">
                 If the chat does not load properly, use the mobile site button below.
             </div>
