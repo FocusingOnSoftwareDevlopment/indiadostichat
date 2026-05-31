@@ -1975,136 +1975,109 @@ body.dark-mode .preview-spinner {
     max-width: 320px;
   }
 
-  /* Horizontal scroll for Features & Trending Topics on mobile */
-  .features-grid,
-  .popular-rooms-grid {
-    display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-behavior: smooth !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding: 1rem 2rem 2rem !important;
-    margin: 0 -2rem !important;
-    gap: 1.25rem !important;
-    scrollbar-width: thin !important;
-    scrollbar-color: var(--primary-color) transparent !important;
-  }
-
+  /* Grid layouts for Features & Trending Topics on mobile, grouped like PC but compact */
   .features-grid {
-    margin-top: -1rem !important;
-  }
-
-  .popular-rooms-section .container {
-    padding: 0 !important;
-    max-width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    padding: 0 1rem !important;
+    margin: 0 !important;
+    overflow-x: visible !important;
   }
 
   .features-grid .card {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
     align-items: center !important;
-    text-align: left !important;
-    gap: 1.25rem !important;
-    flex: 0 0 82vw !important;
-    max-width: 340px !important;
-    min-width: 270px !important;
-    padding: 1.25rem !important;
-    scroll-snap-align: center !important;
+    text-align: center !important;
+    padding: 1.25rem 0.75rem !important;
     margin: 0 !important;
+    flex: none !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 100% !important;
   }
 
   .features-grid .card svg.icon {
-    margin: 0 !important;
+    margin: 0 auto 0.75rem !important;
     flex-shrink: 0 !important;
-    width: 48px !important;
-    height: 48px !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: block !important;
   }
 
-  .features-grid .card .card-content {
-    text-align: left !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.25rem !important;
-  }
-
-  .features-grid .card .card-content h3 {
-    margin: 0 !important;
-    font-size: 1.1rem !important;
+  .features-grid .card h3 {
+    margin: 0 0 0.5rem !important;
+    font-size: 0.95rem !important;
     line-height: 1.3 !important;
   }
 
-  .features-grid .card .card-content p {
+  .features-grid .card p {
     margin: 0 !important;
-    font-size: 0.85rem !important;
+    font-size: 0.78rem !important;
     line-height: 1.4 !important;
-    opacity: 0.9 !important;
+    opacity: 0.85 !important;
   }
 
-  .features-grid .card .card-content .btn-primary {
-    margin-top: 0.5rem !important;
+  .features-grid .card .btn-primary {
+    margin-top: auto !important; /* Push support button to bottom of card */
+    padding: 0.4rem 1rem !important;
+    font-size: 0.8rem !important;
     width: auto !important;
     display: inline-block !important;
-    padding: 0.5rem 1.25rem !important;
-    font-size: 0.85rem !important;
-    align-self: flex-start !important;
+  }
+
+  .popular-rooms-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    padding: 0 1rem !important;
+    margin: 0 !important;
+    overflow-x: visible !important;
   }
 
   .popular-rooms-grid .topic-card {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
     align-items: center !important;
-    justify-content: flex-start !important;
-    text-align: left !important;
-    gap: 1rem !important;
-    padding: 1.25rem 1rem !important;
-    flex: 0 0 58vw !important;
-    max-width: 220px !important;
-    min-width: 170px !important;
-    scroll-snap-align: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.4rem !important;
+    padding: 1.25rem 0.5rem !important;
     margin: 0 !important;
+    flex: none !important;
+    min-width: 0 !important;
+    max-width: none !important;
     position: relative !important;
+    height: 100% !important;
   }
 
   .popular-rooms-grid .topic-card .card-emoji {
-    font-size: 2rem !important;
+    font-size: 1.8rem !important;
     margin: 0 !important;
     flex-shrink: 0 !important;
   }
 
   .popular-rooms-grid .topic-card h3 {
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
     margin: 0 !important;
     font-weight: 700 !important;
     line-height: 1.3 !important;
   }
 
   .popular-rooms-grid .topic-card .join-badge {
-    position: absolute !important;
-    top: 6px !important;
-    right: 6px !important;
+    position: static !important;
     font-size: 0.6rem !important;
-    padding: 0.15rem 0.5rem !important;
+    padding: 0.2rem 0.5rem !important;
     border-radius: 10px !important;
     box-shadow: none !important;
+    display: inline-block !important;
   }
 
+  /* Hide scrollbars for these grids as they no longer scroll horizontally */
   .features-grid::-webkit-scrollbar,
   .popular-rooms-grid::-webkit-scrollbar {
-    height: 5px !important;
-    display: block !important;
-  }
-  .features-grid::-webkit-scrollbar-track,
-  .popular-rooms-grid::-webkit-scrollbar-track {
-    background: transparent !important;
-  }
-  .features-grid::-webkit-scrollbar-thumb,
-  .popular-rooms-grid::-webkit-scrollbar-thumb {
-    background: rgba(255, 153, 51, 0.45) !important;
-    border-radius: 10px !important;
-  }
-  .features-grid::-webkit-scrollbar-thumb:hover,
-  .popular-rooms-grid::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 153, 51, 0.8) !important;
+    display: none !important;
   }
 }
 
