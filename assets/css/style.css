@@ -1954,6 +1954,11 @@ body.dark-mode .preview-spinner {
   box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
 }
 
+.popular-rooms-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
 @media (max-width: 768px) {
   .chat-preview-section {
     padding: 10px;
@@ -1968,6 +1973,61 @@ body.dark-mode .preview-spinner {
   .mobile-chat-btn {
     width: 90%;
     max-width: 320px;
+  }
+
+  /* Horizontal scroll for Features & Trending Topics on mobile */
+  .features-grid,
+  .popular-rooms-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 1rem 2rem 2rem !important;
+    margin: 0 -2rem !important;
+    gap: 1.25rem !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--primary-color) transparent !important;
+  }
+
+  .features-grid {
+    margin-top: -1rem !important;
+  }
+
+  .popular-rooms-section .container {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .features-grid .card {
+    flex: 0 0 280px !important;
+    scroll-snap-align: center !important;
+    margin: 0 !important;
+  }
+
+  .popular-rooms-grid .topic-card {
+    flex: 0 0 180px !important;
+    scroll-snap-align: center !important;
+    margin: 0 !important;
+  }
+
+  .features-grid::-webkit-scrollbar,
+  .popular-rooms-grid::-webkit-scrollbar {
+    height: 5px !important;
+    display: block !important;
+  }
+  .features-grid::-webkit-scrollbar-track,
+  .popular-rooms-grid::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  .features-grid::-webkit-scrollbar-thumb,
+  .popular-rooms-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 153, 51, 0.45) !important;
+    border-radius: 10px !important;
+  }
+  .features-grid::-webkit-scrollbar-thumb:hover,
+  .popular-rooms-grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 153, 51, 0.8) !important;
   }
 }
 
