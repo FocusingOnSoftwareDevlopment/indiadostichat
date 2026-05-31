@@ -23,7 +23,7 @@ class QuietHandler(SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
         pass # Suppress logging to keep output clean
 
-server = HTTPServer(('localhost', PORT), QuietHandler)
+server = HTTPServer(('127.0.0.1', PORT), QuietHandler)
 
 def start_server():
     # Change working directory to project root so SimpleHTTPRequestHandler serves files from there
@@ -32,7 +32,7 @@ def start_server():
 
 server_thread = threading.Thread(target=start_server, daemon=True)
 server_thread.start()
-print(f"Started local server on port {PORT}...")
+print(f"Started local server on port {PORT}...", flush=True)
 
 # 3. Test each URL
 failures = []
@@ -41,12 +41,13 @@ html_extension_failures = []
 non_200_failures = []
 
 for url in urls:
+    print(f"Testing: {url}", flush=True)
     # Check if URL ends with .html
     if ".html" in url:
         html_extension_failures.append(url)
         
     # Rewrite live URL to local server URL
-    local_url = url.replace("https://www.indiadostichat.com", f"http://localhost:{PORT}")
+    local_url = url.replace("https://www.indiadostichat.com", f"http://127.0.0.1:{PORT}")
     
     try:
         req = urllib.request.Request(local_url, headers={'User-Agent': 'Mozilla/5.0'})

@@ -43,8 +43,18 @@ non_stories_urls = [
     "https://www.indiadostichat.com/gujarati-chat-room/",
     "https://www.indiadostichat.com/punjabi-chat-room/",
     "https://www.indiadostichat.com/malayalam-chat-room/",
-    "https://www.indiadostichat.com/kannada-chat-room/",
-    "https://www.indiadostichat.com/sitemap/"
+    "https://www.indiadostichat.com/sitemap/",
+    "https://www.indiadostichat.com/topics/",
+    "https://www.indiadostichat.com/topics/money-talk/",
+    "https://www.indiadostichat.com/topics/korea-talk/",
+    "https://www.indiadostichat.com/topics/japan-talk/",
+    "https://www.indiadostichat.com/topics/anime-discussion/",
+    "https://www.indiadostichat.com/topics/kpop-discussion/",
+    "https://www.indiadostichat.com/topics/travel-talk/",
+    "https://www.indiadostichat.com/topics/food-talk/",
+    "https://www.indiadostichat.com/topics/gaming-chat/",
+    "https://www.indiadostichat.com/topics/ai-chat/",
+    "https://www.indiadostichat.com/topics/international-friendship/"
 ]
 
 # Scan india-stories directory to build the list of indexable stories URLs
@@ -142,6 +152,13 @@ for url in non_stories_urls:
         priority = "0.5"
         changefreq = "weekly"
         lastmod = "2026-05-16"
+    elif "/topics/" in url:
+        if url == "https://www.indiadostichat.com/topics/":
+            priority = "0.8"
+        else:
+            priority = "0.7"
+        changefreq = "weekly"
+        lastmod = "2026-05-31"
     else:
         priority = "0.8"
         changefreq = "weekly"
