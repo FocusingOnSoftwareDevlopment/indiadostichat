@@ -908,6 +908,41 @@ footer {
   
   .footer-content {
     flex-direction: column;
+    gap: 2.5rem !important;
+  }
+
+  .footer-section {
+    text-align: center !important;
+    min-width: 0 !important;
+  }
+
+  .footer-section .logo {
+    display: inline-flex !important;
+    justify-content: center !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .footer-section ul {
+    grid-template-columns: repeat(2, minmax(110px, 1fr)) !important;
+    justify-content: center !important;
+    justify-items: center !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    gap: 0.6rem 1rem !important;
+  }
+
+  .footer-section ul li {
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .footer-section ul li a {
+    display: block !important;
+    text-align: center !important;
+  }
+
+  .footer-section .social-links {
+    justify-content: center !important;
   }
 
   .section-title {
