@@ -2,8 +2,8 @@ import os
 import re
 import datetime
 
-sitemap_path = r"c:\Users\mks1j\.gemini\antigravity\scratch\indiadostichat_seo\sitemap.xml"
-stories_dir = r"c:\Users\mks1j\.gemini\antigravity\scratch\indiadostichat_seo\india-stories"
+sitemap_path = "sitemap.xml"
+stories_dir = "india-stories"
 
 # Define the 38 original non-stories URLs exactly
 non_stories_urls = [
@@ -47,6 +47,7 @@ non_stories_urls = [
     "https://www.indiadostichat.com/gujarati-chat-room/",
     "https://www.indiadostichat.com/punjabi-chat-room/",
     "https://www.indiadostichat.com/malayalam-chat-room/",
+    "https://www.indiadostichat.com/kannada-chat-room/",
     "https://www.indiadostichat.com/sitemap/",
     "https://www.indiadostichat.com/topics/",
     "https://www.indiadostichat.com/topics/money-chat/",
