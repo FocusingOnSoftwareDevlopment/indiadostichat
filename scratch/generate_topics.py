@@ -1,7 +1,7 @@
 import os
 import json
 
-base_dir = r"c:\Users\mks1j\.gemini\antigravity\scratch\indiadostichat_seo"
+base_dir = "."
 topics_dir = os.path.join(base_dir, "topics")
 os.makedirs(topics_dir, exist_ok=True)
 
@@ -505,7 +505,7 @@ for config in topics_config:
             related_links.append(other)
             count += 1
             
-    related_html_list = ""
+    related_html_list = '<li><a href="../" style="color: var(--primary-color); text-decoration: none; font-weight: bold;">View All Topics ➔</a></li>\n'
     for r in related_links:
         related_html_list += f'<li><a href="../{r["slug"]}/" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">{r["h1"]}</a></li>\n'
     
